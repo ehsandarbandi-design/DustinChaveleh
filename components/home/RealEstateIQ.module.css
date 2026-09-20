@@ -1,0 +1,15 @@
+.section {
+  --marker: var(--taupe);              /* BUILD.md: label + ■ in Taupe on this section */
+  min-height: 70vh;
+  min-height: 70svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.headline { grid-column: 1 / span 16; }
+.sub { grid-column: 1 / span 16; margin-top: var(--space-m); }
+.actions { grid-column: 1 / -1; margin-top: var(--space-l); }
+
+@media (max-width: 767px) {
+  .headline, .sub { grid-column: 1 / -1; }
+}
