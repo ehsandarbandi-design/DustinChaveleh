@@ -1,0 +1,4 @@
+.section { min-height: 60vh; min-height: 60svh; }
+.headline { grid-column: 1 / span 16; }
+.link { grid-column: 1 / -1; justify-self: start; margin-top: var(--space-l); }
+@media (max-width: 767px) { .headline { grid-column: 1 / -1; } }

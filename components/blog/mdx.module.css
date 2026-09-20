@@ -1,0 +1,12 @@
+.p { margin: 0 0 var(--space-m); }
+.heading { margin: var(--space-l) 0 var(--space-s); }
+.list { margin: 0 0 var(--space-m); padding-left: 1.2em; list-style: disc; }
+.ordered { list-style: decimal; }
+.item { margin-bottom: var(--space-2xs); }
+.quote { margin: var(--space-l) 0; }
+.rule { margin: var(--space-l) 0; }
+/* Images break out of the text column to the page margins */
+.figure { margin: var(--space-l) 0 var(--space-l) calc(50% - 50vw + var(--gutter)); width: calc(100vw - 2 * var(--gutter)); }
+.media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--stone); }
+.img { object-fit: cover; }
+.caption { margin-top: var(--space-xs); color: var(--graphite); }

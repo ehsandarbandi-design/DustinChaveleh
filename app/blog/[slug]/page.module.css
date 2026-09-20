@@ -1,0 +1,9 @@
+.article { padding-top: var(--space-2xl); padding-bottom: var(--section-pad); }
+.column { grid-column: 7 / span 12; min-width: 0; }
+.header { display: flex; flex-direction: column; gap: var(--space-s); margin-bottom: var(--space-l); }
+.meta { display: flex; flex-wrap: wrap; gap: var(--space-s); color: var(--graphite); }
+.tags { color: var(--taupe); }
+.body { display: flex; flex-direction: column; }
+.needed { color: var(--taupe); margin-top: var(--space-m); }
+.rule { margin: var(--space-l) 0; }
+@media (max-width: 767px) { .column { grid-column: 1 / -1; } }

@@ -37,4 +37,8 @@ placeholders until their data is supplied.
 
 ## Add a blog post
 
-Added with the blog engine (build step 7).
+1. Add the post to `posts` in `lib/copy.ts` (date, title, URL slug, excerpt, cover image under
+   `public/images/blog/`, tags). The blog index, category pages and home page read from there.
+2. Put the article body in `content/blog/<slug>.mdx` as Markdown (see `content/blog/README.md`).
+
+A post without a body still gets its page (metadata and excerpt) with a visible marker where the body belongs.
