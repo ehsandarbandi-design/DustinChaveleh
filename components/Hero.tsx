@@ -1,13 +1,9 @@
 "use client";
 import { useEffect, useRef, type Ref } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CustomEase } from "gsap/CustomEase";
 import Button from "./Button";
+import { afterFirstPaint } from "@/lib/afterFirstPaint";
 import { home } from "@/lib/copy";
 import styles from "./Hero.module.css";
-
-gsap.registerPlugin(ScrollTrigger, CustomEase);
 
 /* Motion values read from the Figma timelines (frames 585:1633 desktop, 601:1042 mobile), as design px of
    travel over one full scroll. `layerScale` is the photo layers' size in that frame relative to 1792px,
@@ -68,7 +64,15 @@ export default function Hero() {
     const root = rootRef.current;
     if (!root) return;
     const logo = document.getElementById("nav-logo");
-    const mm = gsap.matchMedia();
+    let cancelled = false;
+    let mm: gsap.MatchMedia | null = null;
+
+    // GSAP is imported after first paint so the hero markup renders before any script work.
+    const cancel = afterFirstPaint(async () => {
+        const [{ default: gsap }, { ScrollTrigger }, { CustomEase }] = await Promise.all([import("gsap"), import("gsap/ScrollTrigger"), import("gsap/CustomEase")]);
+        if (cancelled) return;
+        gsap.registerPlugin(ScrollTrigger, CustomEase);
+        mm = gsap.matchMedia();
 
     mm.add(
       { mobile: "(max-width: 767px)", desktop: "(min-width: 768px)", reduce: "(prefers-reduced-motion: reduce)" },
@@ -143,7 +147,13 @@ export default function Hero() {
       },
     );
 
-    return () => mm.revert();
+    });
+
+    return () => {
+      cancelled = true;
+      cancel();
+      mm?.revert();
+    };
   }, []);
 
   return (

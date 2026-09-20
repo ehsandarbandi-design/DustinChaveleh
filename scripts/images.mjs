@@ -75,7 +75,8 @@ for (const job of selected) {
       const dest = path.join(ROOT, rel);
       await mkdir(path.dirname(dest), { recursive: true });
       let pipeline = input.clone().resize({ ...size, withoutEnlargement: true });
-      pipeline = fmt === "avif" ? pipeline.avif({ quality: 55, effort: 4 }) : pipeline.webp({ quality: 82, effort: 5, alphaQuality: 95 });
+      const small = (size.width || 0) > 0 && (size.width || 0) <= 1280 && job.group === "hero";
+      pipeline = fmt === "avif" ? pipeline.avif({ quality: small ? 45 : 55, effort: 4 }) : pipeline.webp({ quality: 82, effort: 5, alphaQuality: 95 });
       const info = await pipeline.toFile(dest);
       record[rel] = { source: job.src, width: info.width, height: info.height, bytes: info.size };
       console.log(`${rel}  ${info.width}×${info.height}  ${Math.round(info.size / 1024)} KB`);

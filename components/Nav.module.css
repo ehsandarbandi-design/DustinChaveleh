@@ -11,13 +11,14 @@
   color: var(--header-fg);
   transition: background-color 300ms ease, color 300ms ease;
 }
-/* The Figma nav-bar gradient (exported asset) — shown only over the hero, cross-faded over 300ms */
+/* The Figma nav-bar haze — a CSS gradient sampled from the export (one colour, 98% → 0%), so it is not an
+   LCP candidate the way an image would be — shown only over the hero, cross-faded over 300ms */
 .header::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("/images/hero/nav-bar-bg.png") center / 100% 100% no-repeat;
+  background: linear-gradient(to bottom, rgb(var(--hero-haze) / 0.98), rgb(var(--hero-haze) / 0));
   opacity: 0;
   transition: opacity 300ms ease;
   pointer-events: none;

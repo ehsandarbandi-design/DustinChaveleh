@@ -13,7 +13,7 @@ import { site } from "@/lib/copy";
 
 // The only two fonts: Inter 300/400/700 and Inconsolata 300, display: swap.
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "700"], display: "swap", variable: "--font-inter" });
-const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300"], display: "swap", variable: "--font-inconsolata" });
+const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300"], display: "swap", preload: false, variable: "--font-inconsolata" });
 
 export const metadata: Metadata = {
   title: site.title,

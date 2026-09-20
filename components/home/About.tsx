@@ -29,7 +29,7 @@ export default function About() {
           </TextLink>
         </div>
         <Reveal as="figure" className={styles.media}>
-          <Img src="/images/portrait/dustin-1.webp" alt={site.logo} fill sizes="(max-width: 767px) 100vw, 50vw" className={styles.img} />
+          <Img src="/images/portrait/dustin-1.webp" alt={site.logo} fill sizes="(max-width: 767px) 100vw, 50vw" className={styles.img} eager />
         </Reveal>
       </div>
     </Section>

@@ -15,20 +15,19 @@ This file is written by that script — do not edit by hand.
 | `public/images/blog/why-real-estate-deals-fall-through.webp` | `assets/images/blog/Why Real Estate Deals Fall Through.jpg` | 1600 × 2400 | 101 KB |
 | `public/images/guides/for-buyers.webp` | `assets/images/For Buyers.jpg` | 1600 × 1067 | 233 KB |
 | `public/images/guides/for-sellers.webp` | `assets/images/For Sellers.jpg` | 1600 × 1067 | 362 KB |
-| `public/images/hero/bay-1280.avif` | `assets/images/hero/Bay.png` | 1280 × 950 | 36 KB |
+| `public/images/hero/bay-1280.avif` | `assets/images/hero/Bay.png` | 1280 × 950 | 22 KB |
 | `public/images/hero/bay-1280.webp` | `assets/images/hero/Bay.png` | 1280 × 950 | 58 KB |
 | `public/images/hero/bay-2560.avif` | `assets/images/hero/Bay.png` | 2560 × 1900 | 123 KB |
 | `public/images/hero/bay-2560.webp` | `assets/images/hero/Bay.png` | 2560 × 1900 | 190 KB |
-| `public/images/hero/city-1280.avif` | `assets/images/hero/City.png` | 1280 × 950 | 101 KB |
+| `public/images/hero/city-1280.avif` | `assets/images/hero/City.png` | 1280 × 950 | 72 KB |
 | `public/images/hero/city-1280.webp` | `assets/images/hero/City.png` | 1280 × 950 | 187 KB |
 | `public/images/hero/city-2560.avif` | `assets/images/hero/City.png` | 2560 × 1900 | 259 KB |
 | `public/images/hero/city-2560.webp` | `assets/images/hero/City.png` | 2560 × 1900 | 456 KB |
-| `public/images/hero/clouds-1280.avif` | `assets/images/hero/Cloude.png` | 1280 × 950 | 42 KB |
+| `public/images/hero/clouds-1280.avif` | `assets/images/hero/Cloude.png` | 1280 × 950 | 30 KB |
 | `public/images/hero/clouds-1280.webp` | `assets/images/hero/Cloude.png` | 1280 × 950 | 125 KB |
 | `public/images/hero/clouds-2560.avif` | `assets/images/hero/Cloude.png` | 2560 × 1900 | 105 KB |
 | `public/images/hero/clouds-2560.webp` | `assets/images/hero/Cloude.png` | 2560 × 1900 | 354 KB |
-| `public/images/hero/nav-bar-bg.png` | `Figma › Hero Section (585:1633) › Nav Bar background, exported via the Figma MCP` | 1024 × 68 | 15 KB |
-| `public/images/hero/sky-1280.avif` | `assets/images/hero/Sky.png` | 1280 × 950 | 21 KB |
+| `public/images/hero/sky-1280.avif` | `assets/images/hero/Sky.png` | 1280 × 950 | 15 KB |
 | `public/images/hero/sky-1280.webp` | `assets/images/hero/Sky.png` | 1280 × 950 | 30 KB |
 | `public/images/hero/sky-2560.avif` | `assets/images/hero/Sky.png` | 2560 × 1900 | 54 KB |
 | `public/images/hero/sky-2560.webp` | `assets/images/hero/Sky.png` | 2560 × 1900 | 80 KB |

@@ -11,6 +11,7 @@
   /* hero-only effect colors */
   --hero-night: #050063;
   --hero-glow: rgba(255, 229, 160, 0.4);
+  --hero-haze: 134 176 199;          /* nav-bar haze over the hero, sampled from the Figma export (rgb) */
 
   /* type — desktop sizes (mobile sizes below 768px follow) */
   --h1: 76px; --h2: 50px; --h3: 33px; --h4: 21px;

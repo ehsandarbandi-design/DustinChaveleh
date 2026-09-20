@@ -87,7 +87,7 @@
     "source": "assets/images/hero/Sky.png",
     "width": 1280,
     "height": 950,
-    "bytes": 21514
+    "bytes": 15333
   },
   "public/images/hero/sky-1280.webp": {
     "source": "assets/images/hero/Sky.png",
@@ -111,7 +111,7 @@
     "source": "assets/images/hero/Bay.png",
     "width": 1280,
     "height": 950,
-    "bytes": 37189
+    "bytes": 23025
   },
   "public/images/hero/bay-1280.webp": {
     "source": "assets/images/hero/Bay.png",
@@ -135,7 +135,7 @@
     "source": "assets/images/hero/City.png",
     "width": 1280,
     "height": 950,
-    "bytes": 103690
+    "bytes": 74061
   },
   "public/images/hero/city-1280.webp": {
     "source": "assets/images/hero/City.png",
@@ -159,19 +159,13 @@
     "source": "assets/images/hero/Cloude.png",
     "width": 1280,
     "height": 950,
-    "bytes": 42749
+    "bytes": 30281
   },
   "public/images/hero/clouds-1280.webp": {
     "source": "assets/images/hero/Cloude.png",
     "width": 1280,
     "height": 950,
     "bytes": 128196
-  },
-  "public/images/hero/nav-bar-bg.png": {
-    "source": "Figma › Hero Section (585:1633) › Nav Bar background, exported via the Figma MCP",
-    "width": 1024,
-    "height": 68,
-    "bytes": 15622
   },
   "public/images/neighborhoods/twin-peaks.webp": {
     "source": "assets/images/neighborhoods/ Twin Peaks.jpg",
