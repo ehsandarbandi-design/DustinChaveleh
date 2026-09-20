@@ -5,6 +5,7 @@
 export type LinkItem = { label: string; href: string };
 
 export const site = {
+  url: "https://www.dustinchaveleh.com",
   title: "Dustin Chaveleh | San Francisco based REALTOR®",
   // metaDescription: marked [TODO] in content/copy.md
   logo: "Dustin Chaveleh",

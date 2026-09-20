@@ -16,6 +16,7 @@ const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "700"], display
 const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300"], display: "swap", preload: false, variable: "--font-inconsolata" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: site.title,
   // description: the meta description is marked [TODO] in content/copy.md
 };
