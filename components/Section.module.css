@@ -15,6 +15,7 @@
   --line: var(--paper); --marker: var(--ink);
   --outline-color: var(--ink); --outline-flip: var(--paper);
   --btn-bg: var(--ink); --btn-fg: var(--paper); --btn-bg-hover: var(--graphite);
+  --placeholder: var(--paper);
 }
 .ink {
   --tone-bg: var(--ink); --tone-fg: var(--paper);

@@ -53,6 +53,7 @@
   --btn-bg: var(--ink);
   --btn-fg: var(--paper);
   --btn-bg-hover: var(--graphite);
+  --placeholder: var(--stone);      /* image placeholder block; Paper on Stone sections */
 }
 
 /* Below 1280px the desktop nav no longer fits (≈1235px needed): mobile menu, 24px padding + 32px logo */

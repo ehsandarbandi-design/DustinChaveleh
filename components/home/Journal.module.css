@@ -1,0 +1,18 @@
+.headline { grid-column: 1 / span 14; }
+
+/* Three cards, each 7 of 24 columns wide, the row spanning column 1 to column 24 */
+.cards {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--col-gap);
+  margin-top: var(--space-l);
+}
+.card { width: calc((100% - 23 * var(--col-gap)) / 24 * 7 + 6 * var(--col-gap)); flex: none; }
+
+.actions { display: flex; justify-content: flex-end; margin-top: var(--space-l); }
+
+@media (max-width: 767px) {
+  .headline { grid-column: 1 / -1; }
+  .cards { flex-direction: column; gap: var(--space-l); }
+  .card { width: 100%; }
+}
