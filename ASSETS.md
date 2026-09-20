@@ -35,6 +35,7 @@ This file is written by that script — do not edit by hand.
 | `public/images/logos/car-white.webp` | `assets/images/logos/car 1 white.png` | 112 × 112 | 6 KB |
 | `public/images/logos/keller-williams-white.webp` | `assets/images/logos/KellerWilliamsWhite.png` | 168 × 112 | 4 KB |
 | `public/images/logos/realtor-white.webp` | `assets/images/logos/Realtor white.png` | 101 × 112 | 1 KB |
+| `public/images/market/bird-view.webp` | `assets/images/Bird view.webp` | 1600 × 1198 | 291 KB |
 | `public/images/neighborhoods/castro.webp` | `assets/images/neighborhoods/castro.jpg` | 1600 × 2133 | 293 KB |
 | `public/images/neighborhoods/civic-center.webp` | `assets/images/neighborhoods/civic-center.jpg` | 1600 × 2000 | 255 KB |
 | `public/images/neighborhoods/duboce-triangle.webp` | `assets/images/neighborhoods/Duboce Triangle.jpg` | 1600 × 1067 | 359 KB |
