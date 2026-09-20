@@ -1,6 +1,6 @@
 import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
-import TextLink from "@/components/TextLink";
+import Button from "@/components/Button";
 import Img from "@/components/Img";
 import { home, site } from "@/lib/copy";
 import styles from "./About.module.css";
@@ -25,9 +25,9 @@ export default function About() {
           ))}
           <Reveal as="p" className={`mono ${styles.smallPrint}`}>{about.smallPrint}</Reveal>
           <Reveal className={styles.link}>
-            <TextLink href={about.link.href} className="h4">
+            <Button variant="tertiary" href={about.link.href}>
               {about.link.label}
-            </TextLink>
+            </Button>
           </Reveal>
         </div>
         <Reveal as="figure" mode="clip" className={styles.media}>

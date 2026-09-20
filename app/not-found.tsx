@@ -1,10 +1,10 @@
 import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
-import TextLink from "@/components/TextLink";
+import Button from "@/components/Button";
 import { site } from "@/lib/copy";
 import styles from "./not-found.module.css";
 
-/** /404 (BUILD.md §5): the H1 "This page has moved on." and a text link home. Nothing else. */
+/** /404 (BUILD.md §5): the H1 "This page has moved on." and a tertiary button home. Nothing else. */
 export default function NotFound() {
   return (
     <main className="below-header">
@@ -14,9 +14,9 @@ export default function NotFound() {
             This page has moved on.
           </Reveal>
           <Reveal className={styles.link}>
-            <TextLink href="/" className="h4">
+            <Button variant="tertiary" href="/">
               {site.nav[0].label}
-            </TextLink>
+            </Button>
           </Reveal>
         </div>
       </Section>

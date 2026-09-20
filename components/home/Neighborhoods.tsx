@@ -2,7 +2,7 @@ import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import Card from "@/components/Card";
 import Rail from "@/components/Rail";
-import TextLink from "@/components/TextLink";
+import Button from "@/components/Button";
 import { home } from "@/lib/copy";
 import styles from "./Neighborhoods.module.css";
 
@@ -18,9 +18,9 @@ export default function Neighborhoods() {
         counter
         trailing={
           <Reveal>
-            <TextLink href={neighborhoods.link.href} className="h4">
+            <Button variant="tertiary" href={neighborhoods.link.href}>
               {neighborhoods.link.label}
-            </TextLink>
+            </Button>
           </Reveal>
         }
       >

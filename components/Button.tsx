@@ -4,7 +4,8 @@ import Arrow from "./Arrow";
 import styles from "./Button.module.css";
 
 type Props = {
-  variant?: "filled" | "outlined";
+  /** filled = primary, outlined = secondary, tertiary = Mono label over a 2px Ink bar, no box. */
+  variant?: "filled" | "outlined" | "tertiary";
   /** Every button label starts with the ⤷ arrow except the hero and nav CTA (pass arrow={false}). */
   arrow?: boolean;
   href?: string;
@@ -16,7 +17,7 @@ type Props = {
 };
 
 export default function Button({ variant = "filled", arrow = true, href, type = "button", onClick, className = "", disabled, children }: Props) {
-  const cls = [styles.button, styles[variant], variant === "filled" ? "mono" : "h4", className].join(" ");
+  const cls = [styles.button, styles[variant], variant === "outlined" ? "h4" : "mono", className].join(" ");
   const label = (
     <>
       {arrow ? <Arrow /> : null}

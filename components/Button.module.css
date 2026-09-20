@@ -1,6 +1,7 @@
 /* Hover mechanic (from the reference recordings): the fill is a block anchored to the bottom edge.
-   Filled: the Ink fill drains down to a 1px bottom line and the text flips to Ink.
-   Outlined: the fill rises from the bottom edge to fill the button; on leave it drains back down. */
+   Filled (primary): the Ink fill drains down to a 1px bottom line and the text flips to Ink.
+   Outlined (secondary): the fill rises from the bottom edge to fill the button; on leave it drains back down.
+   Tertiary: a 2px bar under the label rises the same way. */
 .button {
   position: relative;
   isolation: isolate;
@@ -28,6 +29,11 @@
 .outlined::before { height: 0; background: var(--outline-color); }
 .outlined:hover, .outlined:focus-visible { color: var(--outline-flip); }
 .outlined:hover::before, .outlined:focus-visible::before { height: 100%; }
+
+.tertiary { color: var(--outline-color); padding: 12px 0; }
+.tertiary::before { height: 2px; background: var(--outline-color); }
+.tertiary:hover, .tertiary:focus-visible { color: var(--outline-flip); }
+.tertiary:hover::before, .tertiary:focus-visible::before { height: 100%; }
 
 /* Long labels ("Read the full article on Business Insider") wrap on phones instead of overflowing */
 @media (max-width: 767px) {

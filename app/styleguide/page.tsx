@@ -118,12 +118,14 @@ export default function Styleguide() {
         <Hairline />
 
         <div className={styles.block}>
-          <p className={`mono ${styles.blockTitle}`}>Button · filled / outlined</p>
+          <p className={`mono ${styles.blockTitle}`}>Button · primary (filled) / secondary (outlined) / tertiary (bar)</p>
           <div className={styles.rowWrap}>
             <Button href={home.journal.button.href}>{home.journal.button.label}</Button>
             <Button type="button">{contactForm.button}</Button>
             <Button variant="outlined" arrow={false} href={site.cta.href}>{site.cta.label}</Button>
             <Button variant="outlined" href={site.propertySearch}>Start Your Property Search</Button>
+            <Button variant="tertiary" href={home.about.link.href}>{home.about.link.label}</Button>
+            <Button variant="tertiary" arrow={false} href={home.journal.button.href}>{home.journal.cardLink}</Button>
           </div>
         </div>
         <Hairline />

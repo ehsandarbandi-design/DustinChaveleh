@@ -4,6 +4,7 @@ import Hairline from "@/components/Hairline";
 import Img from "@/components/Img";
 import Card from "@/components/Card";
 import TextLink from "@/components/TextLink";
+import Button from "@/components/Button";
 import { blog, home, posts, neighborhoodPosts, type Post } from "@/lib/copy";
 import styles from "./BlogIndex.module.css";
 
@@ -59,9 +60,9 @@ export default function BlogIndex({ category }: { category?: string }) {
               <Reveal as="p" className={`p2 ${styles.excerpt}`}>{featured.excerpt}</Reveal>
               {featured.href ? (
                 <Reveal>
-                  <TextLink href={featured.href} className="h4">
+                  <Button variant="tertiary" arrow={false} href={featured.href}>
                     {home.journal.cardLink}
-                  </TextLink>
+                  </Button>
                 </Reveal>
               ) : null}
             </div>

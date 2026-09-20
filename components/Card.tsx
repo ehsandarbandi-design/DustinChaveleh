@@ -1,6 +1,6 @@
 import Img from "./Img";
 import Reveal from "./Reveal";
-import TextLink from "./TextLink";
+import Button from "./Button";
 import styles from "./Card.module.css";
 
 export type CardProps = {
@@ -17,7 +17,7 @@ export type CardProps = {
 };
 
 /** Card (blog / neighborhood): no box, no border, no shadow. Image (wiping up into view like every other photo,
- *  no hover effect), then meta, .h3 title, .p3 text, text link. */
+ *  no hover effect), then meta, .h3 title, .p3 text, tertiary button ("Read more →" carries its own arrow). */
 export default function Card({ image, meta, title, text, link, sizes = "(max-width: 767px) 100vw, 33vw", className = "" }: CardProps) {
   return (
     <article className={`${styles.card} ${className}`}>
@@ -28,9 +28,9 @@ export default function Card({ image, meta, title, text, link, sizes = "(max-wid
       <h3 className={`h3 ${styles.title}`}>{title}</h3>
       {text ? <p className={`p3 ${styles.text}`}>{text}</p> : null}
       {link ? (
-        <TextLink href={link.href} className={`p3 ${styles.link}`}>
+        <Button variant="tertiary" arrow={false} href={link.href} className={styles.link}>
           {link.label}
-        </TextLink>
+        </Button>
       ) : null}
     </article>
   );
