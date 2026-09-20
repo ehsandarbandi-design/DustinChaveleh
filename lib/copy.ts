@@ -194,7 +194,7 @@ export const meetDustin = {
       "In August 2026, Business Insider featured my fitness transformation as part of their longevity series, The Long-Term Investment. The short version: I rebuilt my training and nutrition from the ground up, and it ended up reshaping more than my physique — it gave me the confidence and consistency that helped me close my first deal less than a year later.",
       "The habits weren't complicated. Show up, track progress, trust the process. Turns out that's a pretty good blueprint for building a business too.",
     ],
-    button: { label: "Read the full article on Business Insider", href: "" } as LinkItem, // article URL is [TODO] in content/copy.md
+    button: { label: "Read the full article on Business Insider", href: "https://www.businessinsider.com/fitness-transformation-burned-fat-built-muscle-launched-real-estate-career-2026-8" } as LinkItem,
   },
   quote: {
     text: "I got into real estate in 2019, just before the pandemic reshaped the market. Through my own experience, I saw how powerful real estate can be as a tool for building wealth, creating stability, and planning for the future. Now, my goal is to share that perspective with others—helping them understand the true power of real estate while making the home buying process feel approachable, clear, and far less overwhelming.",
@@ -219,11 +219,7 @@ export const marketUpdate = {
   charts: [
     { title: "Median Sale Prices in SF for SFH, Condos & TICs Over the Last Ten Years" },
     { title: "Percentage of Asking Price in SF for SFH, Condos & TICs Over the Last Ten Years" },
-    {
-      title: "Home Price Appreciation Over Time — San Francisco vs California",
-      legend: ["+15%+", "+5–14%", "+1–4%", "Flat", "−1–9%", "−10%+"],
-      source: "Sources: Case-Shiller SF MSA Index, FHFA All-Transactions HPI, CAR · Approximate annual figures · Not investment advice",
-    },
+    { title: "Home Price Appreciation Over Time — San Francisco vs California" }, // data, legend and sources: content/market-charts.json
   ],
   take: {
     label: "DUSTIN'S TAKE 2026",
@@ -236,10 +232,9 @@ export const marketUpdate = {
   wantMore: {
     label: "WANT MORE?",
     body: "View the latest housing market statistics, including home prices, inventory levels, and trends affecting buyers and sellers.",
-    // both report URLs are [TODO] in content/copy.md
     links: [
-      { label: "Keller Williams Market Report", href: "" },
-      { label: "SF City Data Portal", href: "" },
+      { label: "Keller Williams Market Report", href: "https://www.dustinchaveleh.com/s/KW-Advisors-San-Francisco-Market-Report-June-2026.pdf" },
+      { label: "SF City Data Portal", href: "https://data.sfgov.org/browse?sortBy=relevance&page=1&pageSize=20" },
     ] as LinkItem[],
     button: { label: "Start Your Property Search", href: "https://zenlist.com/a/dustin.chaveleh" } as LinkItem,
   },

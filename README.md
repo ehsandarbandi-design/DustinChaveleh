@@ -31,8 +31,9 @@ names: `hero portrait neighborhoods press logos`) writes resized WebP/AVIF versi
 ## Update the Market Update stats
 
 Edit `content/market-stats.json`. Each entry has a `label`, `value`, `change` and `note`; they are
-shown word for word on `/market-update`. The chart blocks stay as labelled placeholders until chart data
-is supplied.
+shown word for word on `/market-update`. Chart data lives in `content/market-charts.json` (the Home Price
+Appreciation grid: one `[year, percent]` pair per year, per series). The other two charts stay as labelled
+placeholders until their data is supplied.
 
 ## Add a blog post
 

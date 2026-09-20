@@ -5,6 +5,8 @@ import Hairline from "@/components/Hairline";
 import Button from "@/components/Button";
 import { marketUpdate, site } from "@/lib/copy";
 import marketStats from "@/content/market-stats.json";
+import marketCharts from "@/content/market-charts.json";
+import AppreciationGrid from "@/components/AppreciationGrid";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = { title: `${marketUpdate.headline} — ${site.logo}` };
@@ -45,21 +47,15 @@ export default function MarketUpdatePage() {
           <Reveal as="figure" key={chart.title} delay={i * 80} className={styles.chart}>
             <figcaption className={styles.chartCaption}>
               <h2 className="h3">{chart.title}</h2>
-              {"legend" in chart && chart.legend ? (
-                <ul className={styles.legend}>
-                  {chart.legend.map((item) => (
-                    <li key={item} className="mono">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
             </figcaption>
-            {/* Chart data is [TODO] in content/copy.md — a labelled placeholder, never invented numbers */}
-            <div className={styles.placeholder}>
-              <span className="mono">[ CHART DATA NEEDED ]</span>
-            </div>
-            {"source" in chart && chart.source ? <p className={`p3 ${styles.source}`}>{chart.source}</p> : null}
+            {i === 2 ? (
+              <AppreciationGrid series={marketCharts.appreciation.series as { key: string; label: string; source: string; data: [number, number][] }[]} legend={marketCharts.appreciation.legend} />
+            ) : (
+              /* Data for the first two charts is still [TODO] in content/copy.md — a labelled placeholder, never invented numbers */
+              <div className={styles.placeholder}>
+                <span className="mono">[ CHART DATA NEEDED ]</span>
+              </div>
+            )}
           </Reveal>
         ))}
       </section>
@@ -81,13 +77,9 @@ export default function MarketUpdatePage() {
           <p className={`p2 ${styles.wantMoreBody}`}>{wantMore.body}</p>
           <div className={styles.actions}>
             {wantMore.links.map((link) => (
-              <span key={link.label} className={styles.action}>
-                {/* the report URLs are [TODO] in content/copy.md */}
-                <Button variant="outlined" type="button">
-                  {link.label}
-                </Button>
-                <span className={`mono ${styles.needed}`}>[ URL NEEDED ]</span>
-              </span>
+              <Button key={link.label} variant="outlined" href={link.href}>
+                {link.label}
+              </Button>
             ))}
             <Button href={wantMore.button.href}>{wantMore.button.label}</Button>
           </div>

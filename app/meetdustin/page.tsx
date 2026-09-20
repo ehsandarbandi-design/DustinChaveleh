@@ -56,11 +56,9 @@ export default function MeetDustinPage() {
           ))}
         </ul>
         <div className={styles.featuredAction}>
-          {/* the article URL is [TODO] in content/copy.md — until then this button has no destination */}
-          <Button variant="outlined" type="button">
+          <Button variant="outlined" href={featured.button.href}>
             {featured.button.label}
           </Button>
-          <span className={`mono ${styles.needed}`}>[ URL NEEDED ]</span>
         </div>
       </Section>
 
