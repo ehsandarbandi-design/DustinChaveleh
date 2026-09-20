@@ -8,12 +8,14 @@ type Props = {
   as?: "div" | "h1" | "h2" | "h3" | "p" | "li" | "figure";
   className?: string;
   style?: CSSProperties;
+  /** For the header theme when the revealed element is itself a section-level block. */
+  "data-tone"?: string;
 };
 
 /** Reveal on scroll (BUILD.md §2.4): rises 24px and fades in over --dur-slow with --ease, once,
  *  at 20% into view. Use only on section headings, images and cards — never on every element.
  *  prefers-reduced-motion is handled in reset.css: the element is simply visible. */
-export default function Reveal({ children, delay = 0, as = "div", className, style }: Props) {
+export default function Reveal({ children, delay = 0, as = "div", className, style, ...rest }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [done, setDone] = useState(false);
 
@@ -37,7 +39,7 @@ export default function Reveal({ children, delay = 0, as = "div", className, sty
 
   const Tag = as as "div";
   return (
-    <Tag ref={ref} data-reveal={done ? "done" : "pending"} className={className} style={{ ...style, transitionDelay: delay ? `${delay}ms` : undefined }}>
+    <Tag ref={ref} {...rest} data-reveal={done ? "done" : "pending"} className={className} style={{ ...style, transitionDelay: delay ? `${delay}ms` : undefined }}>
       {children}
     </Tag>
   );
