@@ -1,18 +1,14 @@
 .headline { grid-column: 1 / span 14; }
-
-/* Three cards, each 7 of 24 columns wide, the row spanning column 1 to column 24 */
-.cards {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--col-gap);
+/* Three 7-column cards per view: the gaps are what is left of 24 columns after 3 × 7 */
+.rail {
+  --card: calc((100% - 23 * var(--col-gap)) / 24 * 7 + 6 * var(--col-gap));
+  --rail-gap: calc((100% - 3 * var(--card)) / 2);
   margin-top: var(--space-l);
 }
-.card { width: calc((100% - 23 * var(--col-gap)) / 24 * 7 + 6 * var(--col-gap)); flex: none; }
-
-.actions { display: flex; justify-content: flex-end; margin-top: var(--space-l); }
+.card { width: var(--card); }
 
 @media (max-width: 767px) {
   .headline { grid-column: 1 / -1; }
-  .cards { flex-direction: column; gap: var(--space-l); }
-  .card { width: 100%; }
+  /* 6 of 8 columns so the next card peeks in */
+  .rail { --card: calc((100% - 7 * var(--col-gap)) / 8 * 6 + 5 * var(--col-gap)); --rail-gap: var(--col-gap); }
 }
