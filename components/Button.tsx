@@ -1,22 +1,24 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
+import Arrow from "./Arrow";
 import styles from "./Button.module.css";
 
 type Props = {
   variant?: "filled" | "outlined";
-  /** Every button label starts with "⤷ " except the hero and nav CTA (pass arrow={false}). */
+  /** Every button label starts with the ⤷ arrow except the hero and nav CTA (pass arrow={false}). */
   arrow?: boolean;
   href?: string;
   type?: "button" | "submit";
+  onClick?: MouseEventHandler<HTMLElement>;
   className?: string;
   children: ReactNode;
 };
 
-export default function Button({ variant = "filled", arrow = true, href, type = "button", className = "", children }: Props) {
+export default function Button({ variant = "filled", arrow = true, href, type = "button", onClick, className = "", children }: Props) {
   const cls = [styles.button, styles[variant], variant === "filled" ? "mono" : "h4", className].join(" ");
   const label = (
     <>
-      {arrow ? <span aria-hidden="true">⤷</span> : null}
+      {arrow ? <Arrow /> : null}
       {arrow ? " " : null}
       {children}
     </>
@@ -24,19 +26,19 @@ export default function Button({ variant = "filled", arrow = true, href, type = 
   if (href) {
     if (/^https?:/.test(href)) {
       return (
-        <a href={href} className={cls} target="_blank" rel="noreferrer">
+        <a href={href} className={cls} target="_blank" rel="noreferrer" onClick={onClick}>
           {label}
         </a>
       );
     }
     return (
-      <Link href={href} className={cls}>
+      <Link href={href} className={cls} onClick={onClick}>
         {label}
       </Link>
     );
   }
   return (
-    <button type={type} className={cls}>
+    <button type={type} className={cls} onClick={onClick}>
       {label}
     </button>
   );
