@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import Hairline from "@/components/Hairline";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
@@ -28,7 +29,7 @@ export default async function PostPage({ params }: Params) {
   const post = findPost(slug);
   if (!post) notFound();
   const source = await readPostBody(slug);
-  const body = source ? (await compileMDX({ source, components: mdxComponents, options: { parseFrontmatter: true } })).content : null;
+  const body = source ? (await compileMDX({ source, components: mdxComponents, options: { parseFrontmatter: true, mdxOptions: { remarkPlugins: [remarkGfm] } } })).content : null;
 
   return (
     <main className="below-header">
