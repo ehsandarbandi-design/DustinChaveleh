@@ -1,6 +1,7 @@
 # Source assets never go in git (BUILD.md §8). Web versions live in public/ — see ASSETS.md.
 assets/
 *.mp4
+!public/videos/*.mp4
 
 # dependencies
 node_modules/

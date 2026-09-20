@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import Img from "@/components/Img";
 import Button from "@/components/Button";
 import Hairline from "@/components/Hairline";
+import Video from "@/components/Video";
 import { meetDustin, site } from "@/lib/copy";
 import assets from "@/scripts/assets.json";
 import styles from "./page.module.css";
@@ -23,7 +24,7 @@ export const metadata: Metadata = { title: `${meetDustin.headline} — ${site.lo
 
 /** /meetdustin (BUILD.md §5, laid out like the reference "Our Founder" screen): the H1 across the top, then the
  *  subheadline, body and outlined button in columns 1–11 beside the portrait in columns 13–24; As Featured In on Stone (Figma 630:39: publication
- *  left, body + button and the screenshot collage in columns 13–24), the pull-quote on Ink, three hairline resource rows. */
+ *  left, body + button and the screenshot collage in columns 13–24), the pull-quote over the background loop (Ink scrim), three hairline resource rows. */
 export default function MeetDustinPage() {
   const { featured, quote, resources } = meetDustin;
   return (
@@ -86,7 +87,8 @@ export default function MeetDustinPage() {
       </Section>
 
       <section className={`${styles.quote} page`} data-tone="ink">
-        <div className="grid">
+        <Video src="/videos/meetdustin-quote-loop" className={styles.quoteVideo} />
+        <div className={`grid ${styles.quoteGrid}`}>
           <blockquote className={styles.blockquote}>
             <Reveal as="p" className="p1">
               {quote.text}

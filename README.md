@@ -42,3 +42,16 @@ placeholders until their data is supplied.
 2. Put the article body in `content/blog/<slug>.mdx` as Markdown (see `content/blog/README.md`).
 
 A post without a body still gets its page (metadata and excerpt) with a visible marker where the body belongs.
+
+## Videos
+
+Background loops live in `public/videos/`, named by where they play (`meetdustin-quote-loop`), as MP4 (H.264) +
+WebM with no audio, 1920px wide, plus a poster JPG with the same name. The `<Video>` component plays them muted,
+looping, inline, only once they come near the viewport, and shows the poster under `prefers-reduced-motion`.
+The sources stay in `assets/videos/` (not committed). Made with ffmpeg:
+
+```bash
+ffmpeg -i source.mp4 -an -vf "scale=1920:-2" -c:v libx264 -preset slow -crf 26 -pix_fmt yuv420p -movflags +faststart public/videos/NAME.mp4
+ffmpeg -i source.mp4 -an -vf "scale=1920:-2" -c:v libvpx-vp9 -b:v 0 -crf 34 -row-mt 1 public/videos/NAME.webm
+ffmpeg -i source.mp4 -vf "scale=1600:-2" -frames:v 1 -q:v 9 public/videos/NAME.jpg
+```
