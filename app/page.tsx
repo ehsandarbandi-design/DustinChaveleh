@@ -1,5 +1,14 @@
-// Placeholder: the home page is built in build step 4 (hero) onward.
-// Until then this renders nothing between the nav and the footer; the design system is at /styleguide.
+import Hero from "@/components/Hero";
+import styles from "./page.module.css";
+
 export default function Home() {
-  return <main className="below-header" />;
+  return (
+    <main>
+      <Hero />
+      <div className={styles.after}>
+        {/* Sections 2–9 are added here one at a time (BUILD.md §4). */}
+        <div className={styles.placeholder} data-tone="paper" />
+      </div>
+    </main>
+  );
 }

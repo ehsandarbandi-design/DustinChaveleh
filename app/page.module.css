@@ -1,0 +1,8 @@
+/* Everything after the hero sits above it (the hero is pinned underneath) and slides up to cover it. */
+.after {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+}
+/* Build step 5 replaces this with the About section. */
+.placeholder { min-height: 100vh; min-height: 100svh; }

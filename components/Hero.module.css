@@ -1,0 +1,89 @@
+/* Positions are fractions of the Figma frames: desktop 1792 × 988 (585:1633), mobile 393 × 852 (601:1042). */
+.hero {
+  --k: 1;                                   /* layer scale, set from JS (1792px × --k wide) */
+  --outline-color: var(--paper);
+  --outline-flip: var(--ink);
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 896px * var(--k));
+  width: calc(1792px * var(--k));
+  height: calc(1330px * var(--k));
+  pointer-events: none;
+  will-change: transform;
+}
+.layer img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* The name, Inter Bold — one of the two allowed exceptions to the type sheet. 175px at 1792, 72px at 393. */
+.line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.lineDesktop { top: 42.8%; }               /* centre y 422.88 / 988 */
+.lineMobile1, .lineMobile2 { display: none; }
+.word {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: min(9.766vw, 175px);
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--paper);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.night {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-night);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sub {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  top: 55.9%;                              /* centre y 552 / 988 */
+  transform: translateY(-50%);
+  margin: 0;
+  text-align: center;
+  color: var(--paper);
+}
+.cta {
+  position: absolute;
+  left: 50%;
+  top: 65.5%;                              /* top y 647 / 988 */
+  transform: translateX(-50%);
+}
+
+.spacer { height: 52.7vh; height: 52.7svh; }   /* pin distance 152.7vh minus the hero's own 100vh */
+
+@media (max-width: 767px) {
+  .lineDesktop { display: none; }
+  .lineMobile1 { display: flex; top: 28.8%; }   /* "Dustin"   centre y 245.5 / 852 */
+  .lineMobile2 { display: flex; top: 39.0%; }   /* "Chaveleh" centre y 332.5 / 852 */
+  .word { font-size: min(18.32vw, 72px); }
+  .hero .sub { top: 51.4%; font-size: var(--p2-m); }   /* Figma: Inter Light 20px = the mobile P2 size; centre y 438 / 852 */
+  .cta { top: 56%; }                             /* top y 477 / 852 */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .night { opacity: 0.5; }                 /* still hero at dusk, no pin, no parallax */
+  .spacer { display: none; }
+  .layer, .word { will-change: auto; }
+}
