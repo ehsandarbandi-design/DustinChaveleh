@@ -1,0 +1,9 @@
+{
+  "_comment": "Market Update stats (content/copy.md › Market Update › Stats). Update monthly; text is shown word for word.",
+  "stats": [
+    { "label": "Median sale price", "value": "$2.2M", "change": "+22% YoY", "note": "Median sale price rising from $1.8M to $2.2M year-over-year reflects continued price appreciation, meaning buyers are operating in a higher-cost market with increased competition pushing overall values up." },
+    { "label": "Median Days on Market", "value": "13 days", "change": "−1 days YoY", "note": "Days on market holding steady suggests buyers don't necessarily have more time to hesitate—well-priced homes are still moving quickly, so hesitation can still mean missing out on the best opportunities." },
+    { "label": "Median Sale vs List", "value": "123%", "change": "+12 pts YoY", "note": "Buyers are competing more aggressively and pushing prices further above list than last year." },
+    { "label": "Months of Inventory", "value": "1.1 month", "change": "−47% YoY", "note": "At the current sales pace, all available homes on the market would sell in about 30 days, indicating a very strong seller's market." }
+  ]
+}

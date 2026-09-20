@@ -210,3 +210,37 @@ export const meetDustin = {
     ],
   },
 };
+
+// Market Update (/market-update) — the stats live in content/market-stats.json
+export const marketUpdate = {
+  label: "MARKET UPDATE",
+  headline: "The San Francisco Real Estate Market— Today",
+  intro: "A monthly read for buyers, sellers, and anyone curious about where the SF market is headed. No fluff. Just data, context, and Dustin's honest take on what it means for you.",
+  charts: [
+    { title: "Median Sale Prices in SF for SFH, Condos & TICs Over the Last Ten Years" },
+    { title: "Percentage of Asking Price in SF for SFH, Condos & TICs Over the Last Ten Years" },
+    {
+      title: "Home Price Appreciation Over Time — San Francisco vs California",
+      legend: ["+15%+", "+5–14%", "+1–4%", "Flat", "−1–9%", "−10%+"],
+      source: "Sources: Case-Shiller SF MSA Index, FHFA All-Transactions HPI, CAR · Approximate annual figures · Not investment advice",
+    },
+  ],
+  take: {
+    label: "DUSTIN'S TAKE 2026",
+    body: [
+      "San Francisco entered 2026 with renewed momentum. After the post-COVID slowdown, the city is showing clear signs of recovery — businesses are returning, new leadership is focused on revitalization, and buyer confidence is steadily rebuilding.",
+      "In the housing market, demand has returned, but inventory remains tight — and that imbalance is creating real opportunity on well-positioned homes. Across the city, properties are attracting multiple offers, with buyers pushing prices beyond the list in the most desirable segments.",
+      "For buyers, the advantage is being prepared — having financing in place and the ability to act decisively when the right home hits the market. For sellers, the advantage is timing and pricing correctly, as serious buyers are active and competition can quickly drive strong outcomes when a property is positioned well.",
+    ],
+  },
+  wantMore: {
+    label: "WANT MORE?",
+    body: "View the latest housing market statistics, including home prices, inventory levels, and trends affecting buyers and sellers.",
+    // both report URLs are [TODO] in content/copy.md
+    links: [
+      { label: "Keller Williams Market Report", href: "" },
+      { label: "SF City Data Portal", href: "" },
+    ] as LinkItem[],
+    button: { label: "Start Your Property Search", href: "https://zenlist.com/a/dustin.chaveleh" } as LinkItem,
+  },
+};

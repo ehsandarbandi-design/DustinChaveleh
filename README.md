@@ -28,6 +28,12 @@ Source photos live in `assets/` and are not committed. `npm run images` (optiona
 names: `hero portrait neighborhoods press logos`) writes resized WebP/AVIF versions into
 `public/images/` and records the mapping in `ASSETS.md`.
 
-## Add a blog post / update the Market Update stats
+## Update the Market Update stats
 
-Added in later build steps (blog engine and Market Update page).
+Edit `content/market-stats.json`. Each entry has a `label`, `value`, `change` and `note`; they are
+shown word for word on `/market-update`. The chart blocks stay as labelled placeholders until chart data
+is supplied.
+
+## Add a blog post
+
+Added with the blog engine (build step 7).
