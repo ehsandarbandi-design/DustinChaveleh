@@ -7,7 +7,6 @@
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
-  scroll-padding-left: 0;
   margin-right: calc(-1 * var(--gutter));
   padding-right: var(--gutter);
   scrollbar-width: none;
@@ -16,7 +15,17 @@
 .scroller > * { flex: none; scroll-snap-align: start; }
 .scroller:focus-visible { outline: 2px solid currentColor; outline-offset: 8px; }
 
-.controls { display: flex; align-items: center; justify-content: space-between; gap: var(--space-m); }
+/* Controls on the 24-column grid: left half (columns 1–12) and right half (13–24) */
+.controls { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); column-gap: var(--col-gap); row-gap: var(--space-m); align-items: center; }
+.left { grid-column: 1 / span 12; display: flex; align-items: center; gap: var(--space-m); }
+.right { grid-column: 13 / -1; display: flex; align-items: center; justify-content: flex-end; gap: var(--space-m); }
+
+/* "01 / 11" over a hairline that fills as you scroll */
+.counter { display: flex; flex-direction: column; gap: var(--space-2xs); width: calc(50% - var(--col-gap) / 2); }   /* 6 of the left half's 12 columns */
+.counter p { color: var(--taupe); }
+.track { height: 1px; background: var(--line); }
+.fill { height: 100%; background: var(--ink); transform-origin: left; transition: transform var(--dur-fast) ease; }
+
 .chevrons { display: flex; gap: var(--space-xs); }
 .chevron {
   display: inline-flex;
@@ -31,3 +40,8 @@
 }
 .chevron:hover:not(:disabled) { background: var(--outline-color); color: var(--outline-flip); }
 .chevron:disabled { opacity: 0.3; cursor: default; }
+
+@media (max-width: 767px) {
+  .left, .right { grid-column: 1 / -1; justify-content: space-between; }
+  .counter { width: 100%; }
+}

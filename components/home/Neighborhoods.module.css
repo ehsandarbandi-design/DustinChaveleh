@@ -1,0 +1,7 @@
+/* 6-column cards, 20px apart: four per view on desktop */
+.rail { --card: calc((100% - 23 * var(--col-gap)) / 24 * 6 + 5 * var(--col-gap)); --rail-gap: var(--col-gap); }
+.card { width: var(--card); }
+
+@media (max-width: 767px) {
+  .rail { --card: calc((100% - 7 * var(--col-gap)) / 8 * 6 + 5 * var(--col-gap)); }
+}

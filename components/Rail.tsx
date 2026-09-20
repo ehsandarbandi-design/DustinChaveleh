@@ -6,6 +6,10 @@ type Props = {
   children: ReactNode;
   /** Rendered at the left of the controls row (e.g. the section's button). */
   leading?: ReactNode;
+  /** Rendered at the right of the controls row, before the chevrons (e.g. a text link). */
+  trailing?: ReactNode;
+  /** "01 / 11" counter and a hairline progress bar on the left (BUILD.md §4.6). */
+  counter?: boolean;
   className?: string;
 };
 
@@ -17,19 +21,28 @@ function Chevron({ direction }: { direction: "prev" | "next" }) {
   );
 }
 
+const pad = (n: number) => String(n).padStart(2, "0");
+
 /** A row of cards that scrolls sideways with the wheel, drag/swipe, arrow keys (native scroll-snap)
  *  and the Previous / Next chevrons. Cards set their own width. */
-export default function Rail({ children, leading, className = "" }: Props) {
+export default function Rail({ children, leading, trailing, counter = false, className = "" }: Props) {
   const scroller = useRef<HTMLDivElement>(null);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
+  const [state, setState] = useState({ atStart: true, atEnd: false, index: 0, count: 0, progress: 0 });
 
   useEffect(() => {
     const el = scroller.current;
     if (!el) return;
     const update = () => {
-      setAtStart(el.scrollLeft <= 1);
-      setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 1);
+      const max = el.scrollWidth - el.clientWidth;
+      const items = Array.from(el.children) as HTMLElement[];
+      const stride = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : el.clientWidth;
+      setState({
+        atStart: el.scrollLeft <= 1,
+        atEnd: el.scrollLeft >= max - 1,
+        index: Math.min(items.length - 1, Math.round(el.scrollLeft / stride)),
+        count: items.length,
+        progress: max > 0 ? Math.min(1, Math.max(0, el.scrollLeft / max)) : 1,
+      });
     };
     update();
     el.addEventListener("scroll", update, { passive: true });
@@ -56,14 +69,29 @@ export default function Rail({ children, leading, className = "" }: Props) {
         {children}
       </div>
       <div className={styles.controls}>
-        <div>{leading}</div>
-        <div className={styles.chevrons}>
-          <button type="button" className={styles.chevron} aria-label="Previous" onClick={() => step(-1)} disabled={atStart}>
-            <Chevron direction="prev" />
-          </button>
-          <button type="button" className={styles.chevron} aria-label="Next" onClick={() => step(1)} disabled={atEnd}>
-            <Chevron direction="next" />
-          </button>
+        <div className={styles.left}>
+          {counter ? (
+            <div className={styles.counter}>
+              <p className="mono" aria-live="polite">
+                {pad(state.index + 1)} / {pad(state.count)}
+              </p>
+              <div className={styles.track} aria-hidden="true">
+                <div className={styles.fill} style={{ transform: `scaleX(${state.progress})` }} />
+              </div>
+            </div>
+          ) : null}
+          {leading}
+        </div>
+        <div className={styles.right}>
+          {trailing}
+          <div className={styles.chevrons}>
+            <button type="button" className={styles.chevron} aria-label="Previous" onClick={() => step(-1)} disabled={state.atStart}>
+              <Chevron direction="prev" />
+            </button>
+            <button type="button" className={styles.chevron} aria-label="Next" onClick={() => step(1)} disabled={state.atEnd}>
+              <Chevron direction="next" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
