@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Real Estate IQ — Guess SF Home Prices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e8e2d8;--bg-light:#f2eee9;--bg-dark:#d5cbb8;--white:#ffffff;--black:#0d0d0d;
+  --app-h:764px;--darkgray:#666666;--gray:#999999;--metagray:#787570;--divider:#ffffff;--track-bg:#dddbd3;--icon:#49454F;
+  --gold:#b8820f;--legend:#daa520;--rookie:#de5330;--agent:#2355c0;--shark:#6db281;
+  --adj-minus:#cc3030;--adj-plus:#1a9e5a;--red:#cc3030;
+  --font-header:'Barlow Condensed',sans-serif;--font-label:'Barlow',sans-serif;--font-mono:'DM Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+#introScreen,#settingsScreen,#returningEmailScreen,#gameScreen,#resultsScreen,#revealOverlay,#loadingScreen{font-family:var(--font-label);color:var(--black)}
+.screen{display:none}
+.screen.active{display:flex;flex-direction:column;gap:1px;padding:1px 0;min-height:var(--app-h);background:var(--white);width:100%;max-width:500px;margin-left:auto;margin-right:auto}
+/* Game screen locks to the viewport — no scrolling while playing, no trailing gap */
+#gameScreen.active{padding:0;height:var(--app-h);min-height:0;overflow:visible}
+.spacer-grow{background:var(--bg);flex:1 1 auto;min-height:0}
+#settingsScreen.active,#returningEmailScreen.active{height:var(--app-h);min-height:0;overflow:hidden}
+#identityBlock,#welcomeBackBlock{display:flex;flex-direction:column;gap:1px}
+#welcomeBackBlock{flex:1 1 auto;min-height:0}
+.welcome-row{background:var(--white);height:75px;padding:12px 8px;display:flex;align-items:center}
+.welcome-row p{font-family:var(--font-header);font-weight:800;font-size:clamp(26px,9vw,40px);line-height:1.2;color:var(--black);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-title{font-family:var(--font-header);font-weight:800;font-size:80px;line-height:0.95;letter-spacing:0;color:var(--black);opacity:.9}
+.row{background:var(--bg);padding:12px 16px;position:relative}
+.label-strip{background:var(--white);height:32px;padding:0 16px;display:flex;align-items:center;font-family:var(--font-mono);font-size:12px;letter-spacing:1.44px;color:var(--darkgray);text-transform:uppercase}
+.header-bar{display:flex;gap:1px}
+.icon-btn{background:var(--bg);display:flex;align-items:center;justify-content:center;width:68px;height:68px;flex-shrink:0;cursor:pointer;border:none;color:var(--icon);padding:10px}
+.icon-btn svg{width:24px;height:24px;display:block}
+.icon-btn.grow{flex:1;width:auto;justify-content:flex-start}
+.icon-btn.sm{width:56px;height:56px}
+.returning-row{background:var(--bg);flex:1;display:flex;align-items:center;padding:0 16px;cursor:pointer;border:none;text-align:left}
+.returning-row p{font-family:var(--font-label);font-weight:600;font-size:12px;letter-spacing:1.44px;color:var(--black)}
+.title-tile{background:var(--bg);padding:12px 16px}
+.title-tile .line1{font-family:var(--font-header);font-weight:800;font-size:min(80px,20vw);line-height:0.95;color:var(--black);opacity:.9}
+.title-tile .line2{font-family:var(--font-header);font-weight:800;font-size:min(80px,20vw);line-height:0.95;color:var(--gold);opacity:.9}
+.title-tile.plain .line1,.title-tile.plain .line2{color:var(--black)}
+.field-input{background:var(--bg);padding:12px 16px;display:flex;flex-direction:column;gap:8px;min-height:64px;justify-content:center}
+.field-input label{font-family:var(--font-label);font-weight:600;font-size:12px;letter-spacing:1.44px;color:var(--black);text-transform:uppercase}
+.field-input input{border:none;background:transparent;outline:none;font-family:var(--font-mono);font-size:14px;letter-spacing:1px;color:var(--black);width:100%}
+.field-input input::placeholder{color:var(--gray);font-family:var(--font-mono)}
+.field-input.email{position:relative}
+.field-input.email small{font-family:var(--font-mono);font-size:9px;color:var(--gray);letter-spacing:.5px;margin-top:2px}
+.spacer-32{background:var(--bg);height:32px}
+.spacer-64{background:var(--bg);height:64px}
+.difficulty-row{display:flex;gap:1px}
+.diff-card{flex:1;padding:12px 16px;cursor:pointer;display:flex;flex-direction:column;gap:4px;background:var(--bg-light);transition:background .15s}
+.diff-card.active{background:var(--bg)}
+.diff-card .d-name{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black)}
+.diff-card .d-line{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;color:var(--darkgray)}
+.btn-row{display:flex;gap:1px}
+.btn-black{background:var(--black);color:var(--white);border:none;cursor:pointer;height:58px;padding:0 40px;font-family:var(--font-header);font-weight:800;font-size:20px;letter-spacing:1.6px;text-align:center;display:flex;align-items:center;justify-content:center;width:100%;transition:opacity .15s;white-space:nowrap}
+.btn-black:active{opacity:.8}
+.btn-row .btn-black{padding-left:20px;padding-right:20px}
+.btn-black.flex{flex:1;min-width:0}
+.btn-black.narrow{width:auto}
+.btn-black.disabled{opacity:.45;pointer-events:none}
+.btn-success{background:var(--shark);color:var(--white)}
+#loadingScreen{position:fixed;inset:0;background:var(--white);z-index:200;display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+#loadingScreen.show{display:flex}
+.loading-logo{font-family:var(--font-header);font-weight:800;font-size:40px;letter-spacing:2px;color:var(--black)}
+.loading-text{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:var(--darkgray);animation:blink 1s infinite alternate}
+@keyframes blink{from{opacity:1}to{opacity:.3}}
+/* ===== Intro ===== */
+.intro-paragraph{background:var(--bg);padding:12px 16px;font-family:var(--font-mono);font-weight:500;font-size:14px;line-height:1.6;color:var(--black)}
+.section-title-bar{background:var(--white);padding:8px 16px}
+.section-title-bar p{font-family:var(--font-mono);font-size:12px;letter-spacing:1.44px;color:var(--darkgray);text-transform:uppercase}
+.step-item{background:var(--bg);padding:16px;display:flex;flex-direction:column;gap:8px}
+.step-item .s-num{font-family:var(--font-header);font-weight:800;font-size:40px;letter-spacing:0.8px;color:var(--gold);line-height:1}
+.step-item .s-title{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black)}
+.step-item .s-desc{font-family:var(--font-mono);font-weight:400;font-size:12px;letter-spacing:1.44px;color:var(--darkgray);line-height:1.5}
+.tier-stat{background:var(--bg);height:80px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.tier-stat .t-name{font-family:var(--font-header);font-weight:800;font-size:26px;letter-spacing:0.26px}
+.tier-stat .t-range{font-family:var(--font-mono);font-weight:500;font-size:14px;color:var(--metagray)}
+.lb-tabs{display:flex;gap:1px}
+.lb-tab{flex:1;height:64px;display:flex;align-items:center;padding:12px 16px;background:var(--bg-light);cursor:pointer;font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black)}
+.lb-tab.active{background:var(--bg)}
+.lb-wrap{max-height:400px;overflow-y:auto}
+.lb-list{display:flex;flex-direction:column;gap:1px}
+.lb-row{background:var(--bg);height:56px;padding:12px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.lb-row.me{background:var(--bg-dark)}
+.lb-left{display:flex;gap:4px;align-items:flex-start;flex:1 1 auto;min-width:0}
+.lb-rank{font-family:var(--font-label);font-weight:600;font-size:12px;letter-spacing:1.44px;width:16px;flex-shrink:0}
+.lb-meta{min-width:0;flex:1 1 auto;display:flex;flex-direction:column;gap:2px}
+.lb-meta .lb-name{font-family:var(--font-label);font-weight:600;font-size:12px;letter-spacing:1px;color:var(--black);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-meta .lb-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:1px;color:var(--metagray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb-tier{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;text-align:left;width:100px;flex-shrink:0;color:var(--shark)}
+.lb-score{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;text-align:right;width:100px;flex-shrink:0;color:var(--shark)}
+.lb-empty{background:var(--bg);padding:32px 20px;text-align:center;font-family:var(--font-mono);font-size:11px;color:var(--darkgray);letter-spacing:1px;line-height:1.7}
+.lb-empty strong{color:var(--gold);display:block;margin-bottom:6px;font-size:13px;letter-spacing:2px}
+/* ===== Game ===== */
+#gameScreen .game-inner{width:100%;height:100%;display:flex;flex-direction:column;gap:1px;padding:1px 0}
+.game-inner > *{flex-shrink:0}
+.game-inner > .photo-gallery{flex:0 0 242px}
+.game-header-row{display:flex;gap:1px;height:56px}
+.game-title{flex:1 1 auto;background:var(--bg);height:56px;display:flex;align-items:center;padding:0 16px;min-width:0}
+.game-title p{font-family:var(--font-header);font-weight:800;font-size:20px;color:var(--black);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-row{display:flex;gap:1px;height:56px}
+.nav-stat{background:var(--bg);flex:1;min-width:0;height:56px;padding:12px 16px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center}
+.nav-stat .n-val{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black)}
+.nav-stat .n-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;color:var(--darkgray)}
+.nav-timer{background:var(--bg);flex:1;min-width:0;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;gap:4px}
+.nav-timer .t-val{font-family:var(--font-header);font-weight:800;font-size:26px;color:var(--black);transition:color .3s}
+.nav-timer .t-val.warn{color:var(--adj-minus)}
+.nav-timer .t-val.crit{color:var(--red);animation:pulse .5s infinite alternate}
+@keyframes pulse{from{opacity:1}to{opacity:.35}}
+.timer-track{background:var(--track-bg);height:2px;width:40px;overflow:hidden}
+.timer-fill{background:var(--gold);height:100%;transition:width 1s linear,background .3s}
+.photo-gallery{background:var(--bg);position:relative;width:100%;height:242px;flex:0 0 242px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.photo-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .4s ease;background-color:#d8d0c0}
+.photo-slide.active{opacity:1}
+.photo-slide.broken{display:flex;align-items:center;justify-content:center;color:var(--darkgray);font-family:var(--font-mono);font-size:11px;letter-spacing:2px;background-image:none!important}
+.photo-badge{position:absolute;top:0;right:0;background:rgba(0,0,0,0.42);color:#fff;font-family:var(--font-mono);font-size:9px;padding:3px 9px;letter-spacing:0.54px;z-index:4}
+.photo-nav-controls{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;z-index:4;pointer-events:none}
+.photo-arrow{background:rgba(0,0,0,0.42);border:none;width:48px;height:48px;border-radius:0;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;pointer-events:auto;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.photo-arrow:hover{background:rgba(0,0,0,0.62)}
+.photo-arrow svg{width:24px;height:24px;display:block;fill:currentColor}
+.photo-arrow.right svg{transform:scaleX(-1)}
+.scoreboard-row{display:flex;gap:1px;height:42px}
+.scoreboard-cell{flex:1;background:var(--bg);height:42px;padding:0 16px;display:flex;align-items:center;min-width:0}
+.scoreboard-cell p{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stats-bar{display:flex;gap:1px;height:56px}
+.stats-cell{flex:1;background:var(--bg);height:56px;padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
+.stats-cell .sc-val{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stats-cell .sc-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;color:var(--darkgray)}
+.listed-row{background:var(--bg);height:57px;padding:0 16px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.listed-row .l-val{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black)}
+.listed-row .l-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;color:var(--darkgray)}
+.price-box{display:flex;gap:1px;align-items:stretch;height:80px}
+.adj-btn{background:var(--bg);flex:1 1 auto;min-width:0;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 4px;font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;-webkit-tap-highlight-color:transparent;user-select:none;transition:transform .1s}
+.adj-btn:active{transform:scale(.96)}
+.adj-btn.minus{color:var(--adj-minus)}
+.adj-btn.plus{color:var(--adj-plus)}
+.price-display{background:var(--bg);flex:0 1 240px;width:240px;min-width:0;display:flex;align-items:center;justify-content:center;padding:0 8px}
+.price-display p{font-family:var(--font-header);font-weight:800;font-size:clamp(30px,10vw,40px);letter-spacing:0.8px;color:var(--gold);text-align:center;transition:color .15s}
+.slider-container{background:var(--bg);height:74px;padding:8px 8px 0;display:flex;flex-direction:column}
+.slider-marks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:8px;line-height:12px;letter-spacing:.3px;color:var(--darkgray);margin:0;padding:0 2px}
+input[type="range"]{-webkit-appearance:none;width:100%;height:3px;margin-top:auto;margin-bottom:28px;background:linear-gradient(to right,var(--slider-fill-color,var(--gold)) 0%,var(--slider-fill-color,var(--gold)) var(--fill,11%),var(--track-bg) var(--fill,11%),var(--track-bg) 100%);outline:none;cursor:pointer;transition:background .15s}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--gold);border:3px solid var(--bg);box-shadow:0 0 0 1.5px var(--gold);cursor:grab}
+input[type="range"]::-webkit-slider-thumb:active{cursor:grabbing;transform:scale(1.15)}
+@media(max-width:768px){input,textarea,select{font-size:16px!important}}
+/* ===== Reveal overlay — full screen ===== */
+#revealOverlay{display:none;position:fixed;inset:0;z-index:100;overflow-y:auto;flex-direction:column;background:var(--white)}
+#revealOverlay.show{display:flex}
+.reveal-inner{background:var(--white);width:100%;max-width:500px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;gap:1px;padding:1px 0}
+.reveal-spacer{background:var(--bg);flex:1;min-height:56px}
+.reveal-verdict-tile{background:var(--bg);padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+.reveal-verdict-tile .rv-head{font-family:var(--font-header);font-weight:800;font-size:min(80px,20vw);line-height:0.95}
+.reveal-verdict-tile .rv-pts{font-family:var(--font-header);font-weight:800;font-size:min(40px,10vw);letter-spacing:0.8px}
+.reveal-price-row{background:var(--bg);min-height:64px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;opacity:0;transition:opacity .4s ease}
+.reveal-price-row.revealed{opacity:1}
+.reveal-price-row .rp-label{font-family:var(--font-mono);font-size:12px;letter-spacing:1.44px}
+.reveal-price-row .rp-value{font-family:var(--font-header);font-weight:800;font-size:26px;letter-spacing:0.26px;text-align:right}
+.reveal-notes-row{background:var(--bg);padding:12px 16px;min-height:60px;display:flex;align-items:center}
+.reveal-notes-row p{font-family:var(--font-mono);font-weight:500;font-size:14px;color:var(--black);line-height:1.5;opacity:0;transition:opacity .5s ease}
+.reveal-notes-row.visible p{opacity:1}
+/* ===== Results ===== */
+#resultsScreen{display:none}
+#resultsScreen.active{display:block;background:var(--white);width:100%;max-width:500px;margin-left:auto;margin-right:auto}
+.end-card{display:none;flex-direction:column}
+.end-card #breakdownList{flex:1 1 auto;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:1px}
+.end-card .lb-wrap{flex:1 1 auto;min-height:0;max-height:none}
+.end-card.active{display:flex;height:var(--app-h);overflow:hidden}
+.end-card-inner{width:100%;height:100%;display:flex;flex-direction:column;gap:1px;padding:1px 0}
+.end-card-inner > *{flex-shrink:0}
+.tier-tile{background:var(--bg);padding:12px 16px 20px;display:flex;flex-direction:column;gap:8px}
+.tier-tile .tier-name{font-family:var(--font-header);font-weight:800;font-size:min(80px,20vw);line-height:0.95}
+.tier-tile .tier-score{font-family:var(--font-header);font-weight:800;font-size:min(40px,10vw);letter-spacing:0.8px}
+.result-paragraph{background:var(--bg);padding:12px 16px;font-family:var(--font-mono);font-weight:500;font-size:14px;color:var(--black);line-height:1.5}
+.breakdown-row{background:var(--bg);min-height:56px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.breakdown-row .bd-name{font-family:var(--font-label);font-weight:600;font-size:12px;letter-spacing:1.2px;color:var(--black)}
+.breakdown-row .bd-sub{font-family:var(--font-mono);font-size:10px;letter-spacing:1px;color:var(--darkgray);margin-top:2px}
+.breakdown-row .bd-pts{font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--shark);flex-shrink:0}
+.rank-tile{background:var(--bg);padding:12px 16px 20px;display:flex;flex-direction:column;gap:8px}
+.rank-tile .rank-num{font-family:var(--font-header);font-weight:800;font-size:min(80px,20vw);line-height:0.95;color:var(--gold)}
+.rank-tile .rank-score{font-family:var(--font-header);font-weight:800;font-size:min(40px,10vw);letter-spacing:0.8px;color:var(--gold)}
+.shortlist-tile{background:var(--bg);padding:12px 16px;display:flex;flex-direction:column}
+.shortlist-tile p{font-family:var(--font-header);font-weight:800;font-size:min(80px,20vw);line-height:0.95;color:var(--gold)}
+.error-line{background:var(--bg);padding:0 16px 10px;font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:1px;display:none}
+.pill-row{display:flex;gap:1px;flex-wrap:wrap}
+.pill-btn{flex:1;min-width:110px;background:var(--bg-light);padding:14px 10px;text-align:center;cursor:pointer;font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black)}
+.pill-btn.active{background:var(--bg)}
+.agent-row{display:flex;gap:1px}
+.agent-btn{flex:1;background:var(--bg-light);border:none;padding:16px;text-align:center;cursor:pointer;font-family:var(--font-header);font-weight:800;font-size:18px;letter-spacing:0.72px;color:var(--black)}
+.agent-btn.selected.yes{background:var(--shark);color:#fff}
+.agent-btn.selected.no{background:var(--bg-dark)}
+.feedback-box{background:var(--bg);padding:12px 16px;flex:1 1 auto;min-height:0;display:flex}
+.feedback-box textarea{width:100%;flex:1 1 auto;min-height:0;border:none;background:transparent;outline:none;font-family:var(--font-mono);font-weight:400;font-size:12px;letter-spacing:1.44px;color:var(--black);padding:0;resize:vertical;line-height:1.5}
+.feedback-box textarea::placeholder{color:var(--darkgray)}
+.thanks-tile{background:var(--bg);padding:12px 16px 20px}
+.thanks-tile .line1{font-family:var(--font-header);font-weight:800;font-size:clamp(40px,10vw,64px);line-height:1;color:var(--black)}
+.thanks-tile p.sub{font-family:var(--font-mono);font-size:13px;color:var(--darkgray);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="loading-logo" id="__unused" style="display:none"></div>
+<div id="loadingScreen"><div class="loading-logo">REAL ESTATE IQ</div><div class="loading-text">LOADING THIS WEEK'S HOMES...</div></div>
+
+<!-- ============ INTRO ============ -->
+<div id="introScreen" class="screen active">
+  <div class="spacer-64"></div>
+  <div class="title-tile"><div class="line1">REAL ESTATE</div><div class="line2">IQ</div></div>
+  <div class="intro-paragraph">We show you an SF home. You guess the sale price. Harder than it sounds.</div>
+  <div class="spacer-64"></div>
+  <button class="btn-black" onclick="goToSettings('solo')">Play Game</button>
+  <div class="spacer-64"></div>
+  <div class="section-title-bar"><p>How It Works</p></div>
+  <div class="step-item"><div class="s-num">01</div><div class="s-title">Study the listing</div><div class="s-desc">Real SF home photos, neighborhood, beds, baths, sqft.</div></div>
+  <div class="step-item"><div class="s-num">02</div><div class="s-title">Guess the sale price</div><div class="s-desc">Slider + fine-tune buttons. One shot per home.</div></div>
+  <div class="step-item"><div class="s-num">03</div><div class="s-title">Score by accuracy</div><div class="s-desc">Within 10% = 1,000 pts. 50%+ off = 50 pts.</div></div>
+  <div class="step-item"><div class="s-num">04</div><div class="s-title">Earn your tier</div><div class="s-desc">Your average per home determines your rank.</div></div>
+  <div class="spacer-64"></div>
+  <div class="section-title-bar"><p>Scoring Tiers</p></div>
+  <div class="tier-stat"><div class="t-name" style="color:var(--rookie)">ROOKIE</div><div class="t-range">0&ndash;399</div></div>
+  <div class="tier-stat"><div class="t-name" style="color:var(--agent)">AGENT</div><div class="t-range">400&ndash;649</div></div>
+  <div class="tier-stat"><div class="t-name" style="color:var(--shark)">SHARK</div><div class="t-range">650&ndash;849</div></div>
+  <div class="tier-stat"><div class="t-name" style="color:var(--legend)">LEGEND</div><div class="t-range">850+</div></div>
+  <div class="spacer-64"></div>
+  <div class="section-title-bar"><p>Leaderboard</p></div>
+  <div class="lb-tabs" id="introLbTabs">
+    <div class="lb-tab active" data-diff="EASY" onclick="setIntroLbTab('EASY')">Easy Mode</div>
+    <div class="lb-tab" data-diff="HARD" onclick="setIntroLbTab('HARD')">Hard Mode</div>
+  </div>
+  <div class="lb-wrap" id="introLbWrap"><div class="lb-list" id="introLbBody"><div class="lb-empty"><strong>LEADERBOARD LOADING&hellip;</strong>Hold tight.</div></div></div>
+  <div class="spacer-64"></div>
+  <div class="title-tile plain"><div class="line1">READY TO PROVE</div><div class="line2">YOU KNOW SF?</div></div>
+  <div class="intro-paragraph">Real homes. Real prices. One shot at Legend.</div>
+  <div class="spacer-64"></div>
+  <button class="btn-black" onclick="goToSettings('solo')">Play Game</button>
+  <div class="spacer-64"></div>
+</div>
+
+<!-- ============ SETTINGS / CHALLENGE FRIENDS / RETURNING-WELCOME ============ -->
+<div id="settingsScreen" class="screen">
+  <div class="header-bar">
+    <button class="icon-btn grow" onclick="backToIntro()" aria-label="Back"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 18L8 12L14 6L15.4 7.4L10.8 12L15.4 16.6L14 18Z"/></svg></button>
+    <button class="icon-btn" id="settingsSoundBtn" onclick="toggleSound()" aria-label="Sound"></button>
+  </div>
+  <div class="title-tile compact" id="settingsTitleTile"><div class="line1" id="settingsTitleLine1">REAL ESTATE</div><div class="line2" id="settingsTitleLine2">IQ</div></div>
+
+  <div id="welcomeBackBlock" style="display:none">
+    <div class="welcome-row"><p id="wbGreeting">Welcome back, Name!</p></div>
+    <div class="stats-bar">
+      <div class="stats-cell"><div class="sc-val" id="wbGames">0</div><div class="sc-lbl">Games</div></div>
+      <div class="stats-cell"><div class="sc-val" id="wbRank">#0</div><div class="sc-lbl">Rank</div></div>
+      <div class="stats-cell"><div class="sc-val" id="wbBest">0</div><div class="sc-lbl">Best Score</div></div>
+    </div>
+    <div class="spacer-grow"></div>
+  </div>
+
+  <div id="identityBlock">
+    <div class="field-input"><label>Your Name</label><input type="text" id="playerInitials" placeholder="YOUR NAME" maxlength="20"></div>
+    <div class="field-input"><label>Your Neighborhood</label><input type="text" id="playerNeighborhood" placeholder="YOUR NEIGHBORHOOD" autocomplete="off"></div>
+    <div class="header-bar">
+      <button class="returning-row" onclick="goToReturningEmail()"><p>Returning Player? Log Back In</p></button>
+      <div class="icon-btn" style="cursor:default"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 19V17H14.1C15.15 17 16.0625 16.6667 16.8375 16C17.6125 15.3333 18 14.5 18 13.5C18 12.5 17.6125 11.6667 16.8375 11C16.0625 10.3333 15.15 10 14.1 10H7.8L10.4 12.6L9 14L4 9L9 4L10.4 5.4L7.8 8H14.1C15.7167 8 17.1042 8.525 18.2625 9.575C19.4208 10.625 20 11.9333 20 13.5C20 15.0667 19.4208 16.375 18.2625 17.425C17.1042 18.475 15.7167 19 14.1 19H7Z"/></svg></div>
+    </div>
+  </div>
+
+  <div class="label-strip">Difficulty</div>
+  <div class="difficulty-row" id="difficultyRow">
+    <div class="diff-card active" data-diff="EASY" onclick="setDifficulty('EASY')"><div class="d-name">EASY</div><div class="d-line">60 sec/home &middot; 5 homes</div><div class="d-line">Plenty of time</div></div>
+    <div class="diff-card" data-diff="HARD" onclick="setDifficulty('HARD')"><div class="d-name">HARD</div><div class="d-line">30 sec/home &middot; 10 homes</div><div class="d-line">Trust your gut</div></div>
+  </div>
+  <div class="spacer-grow"></div>
+
+  <div class="btn-row" id="settingsSoloButtons">
+    <button class="btn-black flex" onclick="startGame()">Play Solo</button>
+    <button class="btn-black narrow" onclick="goToSettings('friends')">Challenge Friends</button>
+  </div>
+  <button class="btn-black" id="settingsFriendsButton" style="display:none" onclick="handleFriendsButton()">Create &amp; Copy Challenge Link</button>
+  <button class="btn-black" id="settingsWelcomeButton" style="display:none" onclick="startGame()">Start Game</button>
+</div>
+
+<!-- ============ RETURNING PLAYER — EMAIL LOOKUP ============ -->
+<div id="returningEmailScreen" class="screen">
+  <div class="header-bar">
+    <button class="icon-btn grow" onclick="backToSettingsFromReturning()" aria-label="Back"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 18L8 12L14 6L15.4 7.4L10.8 12L15.4 16.6L14 18Z"/></svg></button>
+    <button class="icon-btn" onclick="toggleSound()" aria-label="Sound" id="returningSoundBtn"></button>
+  </div>
+  <div class="title-tile compact"><div class="line1">REAL ESTATE</div><div class="line2">IQ</div></div>
+  <div class="spacer-32"></div>
+  <div class="intro-paragraph" style="font-family:var(--font-header);font-weight:800;font-size:20px;color:var(--black)">Let's find your profile.</div>
+  <div class="spacer-32"></div>
+  <div class="field-input"><label>Your Email</label><input type="email" id="returningEmail" placeholder="you@email.com" inputmode="email" autocomplete="email"></div>
+  <div class="error-line" id="returningError" style="display:block;padding:8px 16px 0"></div>
+  <div class="spacer-grow"></div>
+  <button class="btn-black" id="returningFindBtn" onclick="lookupReturningUser()">Find Me</button>
+</div>
+
+<!-- ============ GAME ============ -->
+<div id="gameScreen" class="screen">
+  <div class="game-inner">
+    <div class="game-header-row">
+      <div class="game-title"><p>REAL ESTATE IQ</p></div>
+      <button class="icon-btn sm" onclick="toggleSound()" aria-label="Sound" id="gameSoundBtn"></button>
+    </div>
+    <div class="nav-row">
+      <div class="nav-stat"><div class="n-val" id="headerHomeLabel">1/5</div><div class="n-lbl">Home</div></div>
+      <div class="nav-timer"><div class="t-val" id="timerDisplay">0:30</div><div class="timer-track"><div class="timer-fill" id="timerBar" style="width:100%"></div></div></div>
+      <div class="nav-stat"><div class="n-val" id="scoreDisplay">0</div><div class="n-lbl">pts</div></div>
+    </div>
+    <div class="photo-gallery" id="photoGallery">
+      <div class="photo-badge" id="photoCount">1/4</div>
+      <div class="photo-nav-controls">
+        <button class="photo-arrow left" onclick="prevPhoto()" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path d="M14 18L8 12L14 6L15.4 7.4L10.8 12L15.4 16.6L14 18Z"/></svg></button>
+        <button class="photo-arrow right" onclick="nextPhoto()" aria-label="Next photo"><svg viewBox="0 0 24 24"><path d="M14 18L8 12L14 6L15.4 7.4L10.8 12L15.4 16.6L14 18Z"/></svg></button>
+      </div>
+    </div>
+    <div class="scoreboard-row">
+      <div class="scoreboard-cell"><p id="propNeighborhoodText">&mdash;</p></div>
+      <div class="scoreboard-cell"><p id="propStyle">&mdash;</p></div>
+    </div>
+    <div class="stats-bar">
+      <div class="stats-cell"><div class="sc-val" id="propBeds">&mdash;</div><div class="sc-lbl">Beds</div></div>
+      <div class="stats-cell"><div class="sc-val" id="propBaths">&mdash;</div><div class="sc-lbl">Baths</div></div>
+      <div class="stats-cell"><div class="sc-val" id="propSqft">&mdash;</div><div class="sc-lbl">SqFt</div></div>
+    </div>
+    <div class="listed-row"><div class="l-val" id="propListPrice">&mdash;</div><div class="l-lbl">Listed At</div></div>
+    <div class="label-strip" style="text-align:left">What Did This Home Sell For?</div>
+    <div class="price-box">
+      <button class="adj-btn minus" id="adjusterMinus" onmousedown="startAdjust(-1)" onmouseup="stopAdjust()" onmouseleave="stopAdjust()" ontouchstart="startAdjust(-1);event.preventDefault()" ontouchend="stopAdjust()" ontouchcancel="stopAdjust()">&minus; <span id="adjusterMinusLabel">$25K</span></button>
+      <div class="price-display"><p id="priceBig">$2,000,000</p></div>
+      <button class="adj-btn plus" id="adjusterPlus" onmousedown="startAdjust(1)" onmouseup="stopAdjust()" onmouseleave="stopAdjust()" ontouchstart="startAdjust(1);event.preventDefault()" ontouchend="stopAdjust()" ontouchcancel="stopAdjust()">+ <span id="adjusterPlusLabel">$25K</span></button>
+    </div>
+    <div class="slider-container">
+      <div class="slider-marks"><span>$100K</span><span>$1M</span><span>$2M</span><span>$5M</span><span>$10M</span><span>$20M</span></div>
+      <input type="range" id="priceSlider" min="0" max="1000" step="1" value="500" oninput="onSliderChange(this.value)">
+    </div>
+    <button class="btn-black" onclick="submitGuess()">Lock in My Guess</button>
+  </div>
+</div>
+
+<!-- ============ REVEAL OVERLAY (full screen) ============ -->
+<div id="revealOverlay">
+  <div class="reveal-inner">
+    <div class="reveal-spacer"></div>
+    <div class="reveal-verdict-tile" id="revealVerdictTile">
+      <div class="rv-head" id="revealVerdict">SO CLOSE!</div>
+      <div class="rv-pts" id="revealPts">+500 pts</div>
+    </div>
+    <div class="reveal-price-row" id="revealRowList"><span class="rp-label" style="color:var(--black)">List Price</span><span class="rp-value" id="revealList" style="color:var(--black)"></span></div>
+    <div class="reveal-price-row" id="revealRowGuess"><span class="rp-label" id="revealGuessLabel">Your guess</span><span class="rp-value" id="revealGuess"></span></div>
+    <div class="reveal-price-row" id="revealRowSale"><span class="rp-label" style="color:var(--gold)">Sales Price</span><span class="rp-value" id="revealActual" style="color:var(--gold)"></span></div>
+    <div class="reveal-notes-row" id="revealNotesRow"><p id="revealNotes"></p></div>
+    <button class="btn-black" id="nextBtn" onclick="nextRound()">Next Property</button>
+    <div class="reveal-spacer"></div>
+  </div>
+</div>
+
+<!-- ============ RESULTS ============ -->
+<div id="resultsScreen">
+  <!-- Screen 1: Tier + round breakdown -->
+  <div class="end-card active" id="endScreen1"><div class="end-card-inner">
+    <div class="label-strip">Your Level</div>
+    <div class="tier-tile" id="tierTile"><div class="tier-name" id="endTierName">ROOKIE</div><div class="tier-score" id="endScoreLine">0 pts</div></div>
+    <div class="result-paragraph" id="endTierMsg"></div>
+    <div class="label-strip">Round Breakdown</div>
+    <div id="breakdownList"></div>
+    <div class="spacer-grow"></div>
+    <button class="btn-black" onclick="showEndScreen(2)">Continue</button>
+    
+  </div></div>
+
+  <!-- Screen 2: Rank + leaderboard -->
+  <div class="end-card" id="endScreen2"><div class="end-card-inner">
+    <div class="label-strip">You Ranked</div>
+    <div class="rank-tile"><div class="rank-num" id="endRankNum">#1</div><div class="rank-score" id="endRankScore">0 pts</div></div>
+    <div class="label-strip">The Leaderboard</div>
+    <div class="lb-tabs" id="endLbTabs">
+      <div class="lb-tab active" data-diff="EASY" onclick="setEndLbTab('EASY')">Easy Mode</div>
+      <div class="lb-tab" data-diff="HARD" onclick="setEndLbTab('HARD')">Hard Mode</div>
+    </div>
+    <div class="lb-wrap" id="endLbWrap"><div class="lb-list" id="endLbBody"><div class="lb-empty">Loading&hellip;</div></div></div>
+    <div class="spacer-grow"></div>
+    <button class="btn-black" onclick="showEndScreen(3)">Continue</button>
+    <div class="btn-row" style="margin-top:1px">
+      <button class="btn-black flex" onclick="resetGame()">Play Again</button>
+      <button class="btn-black narrow" onclick="challengeFromResults()">Challenge Friends</button>
+    </div>
+    
+  </div></div>
+
+  <!-- Screen 3: Saturday Shortlist -->
+  <div class="end-card" id="endScreen3"><div class="end-card-inner">
+    <div class="shortlist-tile"><p>GET THE SATURDAY SHORTLIST?</p></div>
+    <div class="label-strip">Get Open House List</div>
+    <div class="field-input"><label>Your Phone Number</label><input type="tel" id="endShortlistPhone" placeholder="(123) 456- 7890" inputmode="tel" autocomplete="tel"></div>
+    <div class="error-line" id="shortlistPhoneError" style="display:none;padding:0 16px 10px">Enter a valid phone number to subscribe</div>
+    <div class="label-strip">Where Are You In Your Search?</div>
+    <div class="pill-row" id="searchTimeline">
+      <div class="pill-btn" onclick="selectTimeline(this,'Within 3 months')">0-3 mo</div>
+      <div class="pill-btn" onclick="selectTimeline(this,'3–12 months')">3-12 mo</div>
+      <div class="pill-btn" onclick="selectTimeline(this,'Just exploring')">Exploring</div>
+    </div>
+    <div class="label-strip">Are You Currently Working With An Agent?</div>
+    <div class="agent-row" id="agentBtnRow">
+      <button class="agent-btn yes" onclick="answerAgent(true)">Yes</button>
+      <button class="agent-btn no" onclick="answerAgent(false)">No</button>
+    </div>
+    <div class="label-strip">Any Question For Dustin?</div>
+    <div class="feedback-box"><textarea id="endFeedback" placeholder="Buying, selling or have a question? Drop it here."></textarea></div>
+    <div class="spacer-grow"></div>
+    <button class="btn-black" onclick="submitShortlist(true)" id="endYesBtn">Text Me Open Houses</button>
+    <div class="btn-row" style="margin-top:1px">
+      <button class="btn-black flex" onclick="exitShortlist('again')">Play Again</button>
+      <button class="btn-black narrow" onclick="exitShortlist('challenge')">Challenge Friends</button>
+    </div>
+    
+  </div></div>
+
+  <!-- Screen 4: Thanks / final leaderboard -->
+  <div class="end-card" id="endScreen4"><div class="end-card-inner">
+    <div class="thanks-tile"><div class="line1" id="endThanksHeadline">THANKS FOR PLAYING</div><p class="sub" id="endThanksSub">Challenge a friend — see who knows SF better.</p></div>
+    <div class="label-strip">The Leaderboard</div>
+    <div class="lb-wrap" id="endFinalLbWrap"><div class="lb-list" id="endFinalLbBody"><div class="lb-empty">Loading&hellip;</div></div></div>
+    <div class="spacer-grow"></div>
+    <button id="finalSubmitBtn" class="btn-black" onclick="handleFinalSubmit()">Play Again</button>
+    
+  </div></div>
+</div>
+
+<script>
+const SHEET_CSV_URL='https://docs.google.com/spreadsheets/d/1veVXAVzNQiCN8kd7tXVe7Qok0Qz-J5tXaV3g9Dw-bv0/export?format=csv&gid=498948193',FORM_SUBMIT_URL='https://docs.google.com/forms/d/e/1FAIpQLSd0d_da3Mm_8Jbg2hBOZjemoc4Q2gDR7XLWcCELgc04QpYn5Q/formResponse',LEADERBOARD_CSV_URL='https://docs.google.com/spreadsheets/d/1KVLze4dmyjVikSAL0RzMUbpNMlR_6BvDbudkeLQOfOQ/gviz/tq?tqx=out:csv&gid=729865303',FORM_FIELD_IDS={name:'entry.658731963',neighborhood:'entry.672869886',score:'entry.670434627',tier:'entry.721469213',email:'entry.1620523193',phone:'entry.775873738',feedback:'entry.2138804549'},GAME_URL='https://www.dustinchaveleh.com/playrealestateiq';
+const FALLBACK_HOMES=[{neighborhood:"Castro",style:"Victorian",beds:3,baths:2,sqft:1820,listPrice:1695000,price:1895000,notes:"",photos:["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80","https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80","https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80","https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=900&q=80"]},{neighborhood:"Noe Valley",style:"Edwardian",beds:2,baths:1,sqft:1100,listPrice:995000,price:1195000,notes:"",photos:["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80","https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80","https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=900&q=80","https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=900&q=80"]},{neighborhood:"Haight",style:"SFH",beds:4,baths:3,sqft:2340,listPrice:2195000,price:2450000,notes:"",photos:["https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80","https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80","https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=900&q=80","https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=900&q=80"]},{neighborhood:"Glen Park",style:"Bungalow",beds:2,baths:1,sqft:980,listPrice:949000,price:1075000,notes:"",photos:["https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=80","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80","https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80","https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=900&q=80"]},{neighborhood:"Pacific Heights",style:"Victorian SFH",beds:5,baths:4,sqft:3800,listPrice:3495000,price:3950000,notes:"",photos:["https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80","https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=900&q=80","https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=900&q=80","https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=900&q=80"]},{neighborhood:"Mission",style:"Loft",beds:1,baths:1,sqft:850,listPrice:849000,price:925000,notes:"",photos:["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80","https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80","https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80","https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=900&q=80"]}];
+const TIERS=[{min:0,max:399,name:'ROOKIE',color:'var(--rookie)',msg:'Keep studying those comps.'},{min:400,max:649,name:'AGENT',color:'var(--agent)',msg:'Solid market instincts.'},{min:650,max:849,name:'SHARK',color:'var(--shark)',msg:"You're reading SF like a pro."},{min:850,max:9999,name:'LEGEND',color:'var(--legend)',msg:'Unreal accuracy.'}];
+const DIFFICULTIES={EASY:{homes:5,time:60},HARD:{homes:10,time:30}};
+const VERDICTS=[{max:.10,pts:1000,text:'NAILED IT!',color:'var(--shark)'},{max:.20,pts:750,text:'SO CLOSE!',color:'var(--agent)'},{max:.35,pts:500,text:'NOT BAD',color:'var(--gold)'},{max:.50,pts:250,text:'GETTING WARM',color:'var(--gold)'},{max:Infinity,pts:50,text:'WAY OFF!',color:'var(--rookie)'}];
+
+let allSheetHomes=[],gameHomes=[],currentRound=0,totalScore=0,currentPhoto=0,roundResults=[],timerInterval=null,timeLeft=60,ROUND_TIME=60,usingFallback=false,lastPriceVal=1000000,colorResetTimer=null,adjustHoldInterval=null,adjustHoldTimeout=null,adjustHoldStartTime=0,playerRank=0,returningUserData=null,agentAnswerSubmitted=false,sliderColorResetTimer=null,leaderboardData=[],introLbDiff='EASY',endLbDiff='EASY',settingsMode='solo',friendsLinkState='default',challengeCode=null,challengeHost=null;
+let cfg={initials:'',neighborhood:'',email:'',difficulty:'EASY',sound:true};
+
+/* ===== Icons ===== */
+const ICON_UNMUTE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 20.725V18.675C15.5 18.2417 16.7083 17.4083 17.625 16.175C18.5417 14.9417 19 13.5417 19 11.975C19 10.4083 18.5417 9.00833 17.625 7.775C16.7083 6.54167 15.5 5.70833 14 5.275V3.225C16.0667 3.69167 17.75 4.7375 19.05 6.3625C20.35 7.9875 21 9.85833 21 11.975C21 14.0917 20.35 15.9625 19.05 17.5875C17.75 19.2125 16.0667 20.2583 14 20.725ZM3 15V9H7L12 4V20L7 15H3ZM14 16V7.95C14.7833 8.31667 15.3958 8.86667 15.8375 9.6C16.2792 10.3333 16.5 11.1333 16.5 12C16.5 12.85 16.2792 13.6375 15.8375 14.3625C15.3958 15.0875 14.7833 15.6333 14 16ZM10 8.85L7.85 11H5V13H7.85L10 15.15V8.85Z"/></svg>';
+const ICON_MUTE='<svg viewBox="0 0 24 24" fill="none"><path d="M18.1475 18.5615C16.9993 19.637 15.6181 20.3592 14 20.7246V18.6748C15.0599 18.3686 15.9725 17.8609 16.7412 17.1553L18.1475 18.5615ZM9.21777 9.63184L7.84961 11H5V13H7.84961L10 15.1504V10.4141L12 12.4141V20L7 15H3V9H7L7.79297 8.20703L9.21777 9.63184ZM14 3.22461C16.0666 3.69126 17.7498 4.73742 19.0498 6.3623C20.3497 7.98721 20.9999 9.85809 21 11.9746C21 13.8581 20.4834 15.5459 19.4541 17.04L18.0117 15.5977C18.6698 14.5095 19 13.3021 19 11.9746C18.9999 10.4082 18.5415 9.00856 17.625 7.77539C16.7084 6.54209 15.4999 5.70873 14 5.27539V3.22461ZM14.9668 15.3809C14.6797 15.624 14.3588 15.832 14 16V14.4141L14.9668 15.3809ZM14 7.9502C14.7833 8.31685 15.3962 8.86635 15.8379 9.59961C16.2796 10.3329 16.5 11.1333 16.5 12C16.5 12.6126 16.3827 13.1916 16.1533 13.7393L14 11.5859V7.9502ZM12 9.58594L9.20703 6.79297L12 4V9.58594Z" fill="currentColor"/><path d="M2 3L20.5 21.5" stroke="currentColor" stroke-width="2"/></svg>';
+function renderSoundButtons(){const html=cfg.sound?ICON_UNMUTE:ICON_MUTE;['settingsSoundBtn','returningSoundBtn','gameSoundBtn'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=html});}
+function toggleSound(){cfg.sound=!cfg.sound;renderSoundButtons();}
+
+/* ===== Screen routing ===== */
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const res=document.getElementById('resultsScreen');if(res&&id!=='resultsScreen'){res.classList.remove('active');res.style.display=''}const el=document.getElementById(id);if(el)el.classList.add('active');window.scrollTo(0,0)}
+function backToIntro(){showScreen('introScreen')}
+
+/* ===== Settings screen (solo / friends / returning-welcome) ===== */
+function goToSettings(mode){
+  settingsMode=mode||'solo';
+  playMenuOpen();
+  showScreen('settingsScreen');
+  document.getElementById('welcomeBackBlock').style.display='none';
+  document.getElementById('identityBlock').style.display='';
+  document.getElementById('settingsSoloButtons').style.display=settingsMode==='solo'?'flex':'none';
+  document.getElementById('settingsFriendsButton').style.display=settingsMode==='friends'?'flex':'none';
+  document.getElementById('settingsWelcomeButton').style.display='none';
+  const line1=document.getElementById('settingsTitleLine1'),line2=document.getElementById('settingsTitleLine2');
+  if(settingsMode==='friends'){
+    line1.textContent='Challenge your';line1.style.color='black';
+    line2.textContent='Friends';line2.style.color='black';
+    friendsLinkState='default';
+    const btn=document.getElementById('settingsFriendsButton');
+    btn.textContent=challengeCode&&challengeHost?'Start Playing':'Create & Copy Challenge Link';
+    btn.classList.remove('btn-success');
+  }else{
+    line1.textContent='REAL ESTATE';line1.style.color='black';
+    line2.textContent='IQ';line2.style.color='var(--gold)';
+  }
+  returningUserData=null;
+  setTimeout(()=>{const el=document.getElementById('playerInitials');if(el)el.focus()},100);
+}
+function setDifficulty(d){cfg.difficulty=d;document.querySelectorAll('.diff-card').forEach(c=>c.classList.toggle('active',c.dataset.diff===d));}
+
+function goToReturningEmail(){showScreen('returningEmailScreen');document.getElementById('returningError').style.display='none';document.getElementById('returningError').textContent='';setTimeout(()=>document.getElementById('returningEmail').focus(),100)}
+function backToSettingsFromReturning(){showScreen('settingsScreen')}
+
+async function lookupReturningUser(){
+  const emailInput=document.getElementById('returningEmail');const email=emailInput.value.trim().toLowerCase();const errEl=document.getElementById('returningError');const btn=document.getElementById('returningFindBtn');
+  if(!email||!email.includes('@')){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return}
+  errEl.style.display='none';btn.textContent='...';btn.classList.add('disabled');
+  try{
+    let csvText='';const urls=[LEADERBOARD_CSV_URL+'&t='+Date.now(),'https://docs.google.com/spreadsheets/d/1KVLze4dmyjVikSAL0RzMUbpNMlR_6BvDbudkeLQOfOQ/gviz/tq?tqx=out:csv&gid=729865303&t='+Date.now()];
+    for(const url of urls){try{const res=await fetch(url,{cache:'no-store',redirect:'follow'});if(res.ok){csvText=await res.text();if(csvText&&csvText.length>20)break}}catch(e){continue}}
+    if(!csvText)throw new Error('fetch failed');
+    const rows=parseCSV(csvText);if(rows.length<2)throw new Error('no rows');
+    const headers=rows[0].map(h=>(h||'').trim().toLowerCase().replace(/^"|"$/g,''));
+    let emailCol=-1;for(let i=0;i<headers.length;i++){if(headers[i]==='email'||headers[i].includes('email')){emailCol=i;break}}
+    const nameCol=headers.findIndex(h=>h==='name'||h.includes('name'));const neighborhoodCol=headers.findIndex(h=>h==='neighborhood'||h.includes('neighborhood'));const scoreCol=headers.findIndex(h=>h==='score'||h.includes('score'));const tierCol=headers.findIndex(h=>h==='tier'||h.includes('tier'));
+    if(emailCol<0){errEl.textContent='Email lookup not available yet. Play a game and save with your email first!';errEl.style.display='block';btn.textContent='Find Me';btn.classList.remove('disabled');return}
+    let bestMatch=null,gamesCount=0;
+    for(let i=1;i<rows.length;i++){const r=rows[i];if(!r||r.length<=emailCol)continue;const rowEmail=(r[emailCol]||'').trim().toLowerCase();if(rowEmail===email){gamesCount++;const score=cleanInt(scoreCol>=0?r[scoreCol]:0);if(!bestMatch||score>bestMatch.score){const rawTier=tierCol>=0?(r[tierCol]||'').trim().toUpperCase():'';const parsed=parseTierField(rawTier);bestMatch={name:nameCol>=0?(r[nameCol]||'').trim():'',neighborhood:neighborhoodCol>=0?(r[neighborhoodCol]||'').trim():'',score,tierName:parsed.tier,difficulty:parsed.difficulty}}}}
+    if(!bestMatch){errEl.textContent='No account found with that email. Play a game and save your score to get started!';errEl.style.display='block';btn.textContent='Find Me';btn.classList.remove('disabled');return}
+    bestMatch.gamesPlayed=gamesCount;bestMatch.email=email;returningUserData=bestMatch;
+    cfg.initials=(bestMatch.name||'PLAYER').toUpperCase();cfg.neighborhood=bestMatch.neighborhood||'';cfg.email=email;cfg.difficulty=bestMatch.difficulty||'EASY';
+    document.getElementById('playerInitials').value=cfg.initials;document.getElementById('playerNeighborhood').value=cfg.neighborhood;
+    let rank=1;for(const e of leaderboardData){if(e.difficulty===cfg.difficulty&&e.score>bestMatch.score)rank++}
+    settingsMode='returning';
+    showScreen('settingsScreen');
+    document.getElementById('settingsTitleLine1').textContent='REAL ESTATE';document.getElementById('settingsTitleLine1').style.color='black';
+    document.getElementById('settingsTitleLine2').textContent='IQ';document.getElementById('settingsTitleLine2').style.color='var(--gold)';
+    document.getElementById('identityBlock').style.display='none';
+    document.getElementById('welcomeBackBlock').style.display='';
+    document.getElementById('settingsSoloButtons').style.display='none';
+    document.getElementById('settingsFriendsButton').style.display='none';
+    document.getElementById('settingsWelcomeButton').style.display='flex';
+    document.getElementById('wbGreeting').textContent='Welcome back, '+(bestMatch.name||'Player')+'!';
+    document.getElementById('wbGames').textContent=gamesCount;
+    document.getElementById('wbRank').textContent='#'+rank;
+    document.getElementById('wbBest').textContent=bestMatch.score.toLocaleString();
+    setDifficulty(cfg.difficulty);
+    playCashRegister();
+  }catch(e){console.error('Lookup error:',e);errEl.textContent='Could not look up your account. Try again later.';errEl.style.display='block'}
+  btn.textContent='Find Me';btn.classList.remove('disabled');
+}
+
+/* ===== Challenge Friends ===== */
+function mulberry32(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function makeChallengeCode(){return Math.random().toString(36).slice(2,8).toUpperCase()}
+function handleFriendsButton(){
+  const initials=(document.getElementById('playerInitials').value.trim()||'PLAYER').toUpperCase();
+  cfg.initials=initials;cfg.neighborhood=document.getElementById('playerNeighborhood').value.trim();
+  if(friendsLinkState==='ready'){startGame();return}
+  if(!challengeCode)challengeCode=makeChallengeCode();
+  const url=GAME_URL+'?challenge='+challengeCode+'&diff='+cfg.difficulty+'&host='+encodeURIComponent(initials);
+  const btn=document.getElementById('settingsFriendsButton');
+  const copyThenState=()=>{
+    btn.textContent='Linked Copied! Share it';btn.classList.add('btn-success');playShortlistChime();
+    setTimeout(()=>{btn.textContent='Start Playing';btn.classList.remove('btn-success');friendsLinkState='ready'},2200);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(copyThenState).catch(copyThenState)}else{copyThenState()}
+}
+function challengeFromResults(){challengeCode=null;challengeHost=null;goToSettings('friends')}
+
+/* ===== Difficulty / Intro ===== */
+function formatTimer(s){return s>=60?Math.floor(s/60)+':'+String(s%60).padStart(2,'0'):'0:'+String(s).padStart(2,'0')}
+
+/* ===== Audio ===== */
+let audioCtx=null;function getAudioCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();return audioCtx}
+function playCashRegister(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;const o1=ctx.createOscillator(),g1=ctx.createGain();o1.type='sine';o1.frequency.setValueAtTime(1200,now);o1.frequency.setValueAtTime(1600,now+.06);o1.frequency.setValueAtTime(2000,now+.12);g1.gain.setValueAtTime(.15,now);g1.gain.exponentialRampToValueAtTime(.01,now+.25);o1.connect(g1);g1.connect(ctx.destination);o1.start(now);o1.stop(now+.25);const o2=ctx.createOscillator(),g2=ctx.createGain();o2.type='sine';o2.frequency.setValueAtTime(2200,now+.13);g2.gain.setValueAtTime(.12,now+.13);g2.gain.exponentialRampToValueAtTime(.01,now+.4);o2.connect(g2);g2.connect(ctx.destination);o2.start(now+.13);o2.stop(now+.4)}catch(e){}}
+function playWrongBuzz(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;const o=ctx.createOscillator(),g=ctx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(120,now);g.gain.setValueAtTime(.15,now);g.gain.exponentialRampToValueAtTime(.01,now+.4);o.connect(g);g.connect(ctx.destination);o.start(now);o.stop(now+.4)}catch(e){}}
+function playGameCompleteFanfare(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;const notes=[523.25,659.25,783.99,1046.50];notes.forEach((freq,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.12,now+i*.12);g.gain.exponentialRampToValueAtTime(.01,now+i*.12+.3);o.connect(g);g.connect(ctx.destination);o.start(now+i*.12);o.stop(now+i*.12+.3)})}catch(e){}}
+function playTick(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;const o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.frequency.value=1000;g.gain.setValueAtTime(.04,now);g.gain.exponentialRampToValueAtTime(.001,now+.03);o.connect(g);g.connect(ctx.destination);o.start(now);o.stop(now+.05)}catch(e){}}
+function playCountdownTick(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;const o=ctx.createOscillator(),g=ctx.createGain();o.type='square';o.frequency.value=timeLeft<=5?1200:880;g.gain.setValueAtTime(timeLeft<=5?0.14:0.1,now);g.gain.exponentialRampToValueAtTime(.001,now+(timeLeft<=5?0.12:0.07));o.connect(g);g.connect(ctx.destination);o.start(now);o.stop(now+.15);if(timeLeft<=5){const o2=ctx.createOscillator(),g2=ctx.createGain();o2.type='square';o2.frequency.value=1400;g2.gain.setValueAtTime(0.08,now+0.08);g2.gain.exponentialRampToValueAtTime(.001,now+0.18);o2.connect(g2);g2.connect(ctx.destination);o2.start(now+0.08);o2.stop(now+0.2)}}catch(e){}}
+function playCompletionBell(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=1046.5;g.gain.setValueAtTime(.12,now);g.gain.exponentialRampToValueAtTime(.01,now+.6);o.connect(g);g.connect(ctx.destination);o.start(now);o.stop(now+.6)}catch(e){}}
+function playRestartJingle(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;[783.99,659.25,523.25].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.1,now+i*.1);g.gain.exponentialRampToValueAtTime(.01,now+i*.1+.2);o.connect(g);g.connect(ctx.destination);o.start(now+i*.1);o.stop(now+i*.1+.2)})}catch(e){}}
+function playMenuOpen(){try{const ctx=getAudioCtx();const now=ctx.currentTime;[440,554.37,659.25].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.08,now+i*.06);g.gain.exponentialRampToValueAtTime(.01,now+i*.06+.15);o.connect(g);g.connect(ctx.destination);o.start(now+i*.06);o.stop(now+i*.06+.15)})}catch(e){}}
+function playRankReveal(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;const notes=[392,523.25,659.25,784,1046.50];notes.forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.1,now+i*.09);g.gain.exponentialRampToValueAtTime(.01,now+i*.09+.35);o.connect(g);g.connect(ctx.destination);o.start(now+i*.09);o.stop(now+i*.09+.35)});const shimmer=ctx.createOscillator(),sg=ctx.createGain();shimmer.type='triangle';shimmer.frequency.value=1568;sg.gain.setValueAtTime(.06,now+.45);sg.gain.exponentialRampToValueAtTime(.001,now+.8);shimmer.connect(sg);sg.connect(ctx.destination);shimmer.start(now+.45);shimmer.stop(now+.8)}catch(e){}}
+function playShortlistChime(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;[659.25,784,1046.50].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.1,now+i*.1);g.gain.exponentialRampToValueAtTime(.01,now+i*.1+.3);o.connect(g);g.connect(ctx.destination);o.start(now+i*.1);o.stop(now+i*.1+.3)})}catch(e){}}
+function playThanksWrap(){if(!cfg.sound)return;try{const ctx=getAudioCtx();const now=ctx.currentTime;[523.25,659.25,784,1046.50,1318.51].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.08,now+i*.07);g.gain.exponentialRampToValueAtTime(.01,now+i*.07+.4);o.connect(g);g.connect(ctx.destination);o.start(now+i*.07);o.stop(now+i*.07+.4)});const o2=ctx.createOscillator(),g2=ctx.createGain();o2.type='triangle';o2.frequency.value=1568;g2.gain.setValueAtTime(.05,now+.4);g2.gain.exponentialRampToValueAtTime(.001,now+.9);o2.connect(g2);g2.connect(ctx.destination);o2.start(now+.4);o2.stop(now+.9)}catch(e){}}
+function playGameStart(){try{const ctx=getAudioCtx();const now=ctx.currentTime;[523.25,659.25,783.99,1046.50].forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.12,now+i*.08);g.gain.exponentialRampToValueAtTime(.01,now+i*.08+.2);o.connect(g);g.connect(ctx.destination);o.start(now+i*.08);o.stop(now+i*.08+.25)});const kick=ctx.createOscillator(),kg=ctx.createGain();kick.type='sine';kick.frequency.setValueAtTime(150,now+.32);kick.frequency.exponentialRampToValueAtTime(50,now+.45);kg.gain.setValueAtTime(.15,now+.32);kg.gain.exponentialRampToValueAtTime(.01,now+.45);kick.connect(kg);kg.connect(ctx.destination);kick.start(now+.32);kick.stop(now+.45)}catch(e){}}
+
+/* ===== Adjuster ===== */
+function getAdjustStep(price){return price<750000?10000:price<1500000?25000:price<3000000?50000:price<7000000?100000:250000}
+function formatStep(step){return step>=1000000?'$'+(step/1000000)+'M':'$'+(step/1000)+'K'}
+function updateAdjusterLabels(){const price=getCurrentPrice();const step=getAdjustStep(price);const fmt=formatStep(step);const minusLbl=document.getElementById('adjusterMinusLabel');const plusLbl=document.getElementById('adjusterPlusLabel');if(minusLbl)minusLbl.textContent=fmt;if(plusLbl)plusLbl.textContent=fmt}
+function adjustPrice(direction){const price=getCurrentPrice();const step=getAdjustStep(price);const newP=Math.max(500000,Math.min(20000000,price+direction*step));setPrice(newP);flashPriceColor(direction>0?'var(--adj-plus)':'var(--adj-minus)');playTick()}
+function startAdjust(dir){stopAdjust();adjustPrice(dir);adjustHoldStartTime=Date.now();adjustHoldTimeout=setTimeout(()=>{let repeatRate=120;adjustHoldInterval=setInterval(()=>{adjustPrice(dir);const held=Date.now()-adjustHoldStartTime;if(held>1500&&repeatRate>40){clearInterval(adjustHoldInterval);repeatRate=40;adjustHoldInterval=setInterval(()=>adjustPrice(dir),repeatRate)}},repeatRate)},350)}
+function stopAdjust(){if(adjustHoldTimeout){clearTimeout(adjustHoldTimeout);adjustHoldTimeout=null}if(adjustHoldInterval){clearInterval(adjustHoldInterval);adjustHoldInterval=null}}
+function flashPriceColor(clr){const el=document.getElementById('priceBig');el.style.color=clr;clearTimeout(colorResetTimer);colorResetTimer=setTimeout(()=>{el.style.color=''},200)}
+
+/* ===== Utilities ===== */
+function cleanNumber(s){if(typeof s==='number')return s;return parseFloat(String(s).replace(/[$,\s]/g,''))||0}
+function cleanInt(s){if(typeof s==='number')return Math.round(s);return parseInt(String(s).replace(/[$,\s]/g,''),10)||0}
+function extractDriveFileId(url){if(!url)return null;let m=url.match(/\/d\/([a-zA-Z0-9_-]+)/);if(m)return m[1];m=url.match(/id=([a-zA-Z0-9_-]+)/);return m?m[1]:null}
+function buildPhotoFallbacks(fileId){if(!fileId)return[];return['https://lh3.googleusercontent.com/d/'+fileId+'=w900','https://drive.google.com/thumbnail?id='+fileId+'&sz=w900','https://drive.google.com/uc?export=view&id='+fileId]}
+function loadPhotoIntoSlide(slideEl,fileId){if(!fileId){slideEl.classList.add('broken');slideEl.textContent='PHOTO UNAVAILABLE';return}const urls=buildPhotoFallbacks(fileId);let idx=0;function tryNext(){if(idx>=urls.length){slideEl.classList.add('broken');slideEl.textContent='PHOTO UNAVAILABLE';return}const url=urls[idx];idx++;const img=new Image();img.onload=()=>{slideEl.style.backgroundImage='url('+url+')';slideEl.classList.remove('broken')};img.onerror=tryNext;img.src=url}tryNext()}
+function parseCSV(text){const rows=[];let cur=[];let field='';let inQ=false;for(let i=0;i<text.length;i++){const c=text[i];if(inQ){if(c==='"'){if(i+1<text.length&&text[i+1]==='"'){field+='"';i++}else{inQ=false}}else{field+=c}}else{if(c==='"'){inQ=true}else if(c===','){cur.push(field);field=''}else if(c==='\n'){cur.push(field);rows.push(cur);cur=[];field=''}else if(c==='\r'){continue}else{field+=c}}}if(field||cur.length){cur.push(field);rows.push(cur)}return rows}
+function escapeHtml(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function parseTierField(raw){if(!raw)return{difficulty:'EASY',tier:''};const parts=raw.split(':');if(parts.length===2&&(parts[0]==='EASY'||parts[0]==='HARD'))return{difficulty:parts[0],tier:parts[1]};return{difficulty:'EASY',tier:raw}}
+
+/* ===== Fetch homes ===== */
+async function fetchHomes(){try{const r=await fetch(SHEET_CSV_URL+'&t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const rows=parseCSV(await r.text());if(rows.length<2)throw new Error('No data');const headers=rows[0].map(h=>(h||'').trim().toLowerCase());
+function col(name){return headers.indexOf(name)}
+const neighborhoodCol=col('neighborhood'),styleCol=col('style'),bedsCol=col('beds'),bathsCol=col('baths'),sqftCol=col('sqft'),listCol=col('list price'),ppsfCol=col('ppsf'),salesCol=col('sales price'),hoaCol=col('hoa'),activeCol=col('active'),notesCol=col('notes');
+const photoCols=[];for(let i=0;i<headers.length;i++){if(/^photo\d+$/.test(headers[i]))photoCols.push(i)}
+const homes=[];for(let i=1;i<rows.length;i++){const r=rows[i];if(!r)continue;if(activeCol>=0){const flag=(r[activeCol]||'').trim().toLowerCase();if(flag!=='yes'&&flag!=='true'&&flag!=='1')continue}const photos=[];for(const j of photoCols){const url=(r[j]||'').trim();if(url){const fid=extractDriveFileId(url);if(fid)photos.push(fid)}}if(photos.length===0)continue;homes.push({neighborhood:(r[neighborhoodCol]||'').trim(),style:(r[styleCol]||'').trim(),beds:cleanInt(r[bedsCol]),baths:cleanInt(r[bathsCol]),sqft:(r[sqftCol]||'').trim(),listPrice:cleanNumber(r[listCol]),ppsf:ppsfCol>=0?cleanNumber(r[ppsfCol]):null,price:cleanNumber(r[salesCol]),hoa:hoaCol>=0?cleanNumber(r[hoaCol]):null,photos,notes:notesCol>=0?(r[notesCol]||'').trim():''})}if(homes.length===0)throw new Error('No active homes');allSheetHomes=homes;usingFallback=false}catch(e){console.warn('Sheet fetch failed, using fallback:',e);allSheetHomes=FALLBACK_HOMES;usingFallback=true}}
+function shuffle(a,rng){const r=rng||Math.random;for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ===== Start game ===== */
+async function startGame(){
+  playGameStart();
+  const initials=(document.getElementById('playerInitials').value.trim()||'PLAYER').toUpperCase();
+  cfg.initials=initials;cfg.neighborhood=document.getElementById('playerNeighborhood').value.trim();
+  ROUND_TIME=DIFFICULTIES[cfg.difficulty].time;
+  document.getElementById('loadingScreen').classList.add('show');
+  await fetchHomes();
+  const pool=[...allSheetHomes];
+  const rng=challengeCode?mulberry32(hashCode(challengeCode)):null;
+  shuffle(pool,rng);
+  gameHomes=pool.slice(0,DIFFICULTIES[cfg.difficulty].homes);
+  if(gameHomes.length===0){alert('No homes available. Please try again later.');document.getElementById('loadingScreen').classList.remove('show');return}
+  currentRound=0;totalScore=0;roundResults=[];
+  showScreen('gameScreen');
+  loadRound();
+  document.getElementById('loadingScreen').classList.remove('show');
+}
+function hashCode(str){let h=0;for(let i=0;i<str.length;i++){h=Math.imul(31,h)+str.charCodeAt(i)|0}return h}
+
+/* ===== Timer ===== */
+function startTimer(){stopTimer();timeLeft=ROUND_TIME;updateTimerUI();timerInterval=setInterval(()=>{timeLeft--;updateTimerUI();if(timeLeft>10&&timeLeft>0)playTick();else if(timeLeft<=10&&timeLeft>0)playCountdownTick();if(timeLeft<=0){stopTimer();submitGuess()}},1000)}
+function stopTimer(){if(timerInterval){clearInterval(timerInterval);timerInterval=null}}
+function updateTimerUI(){const display=document.getElementById('timerDisplay');const bar=document.getElementById('timerBar');display.textContent=formatTimer(timeLeft);const pct=(timeLeft/ROUND_TIME)*100;bar.style.width=pct+'%';display.className='t-val';bar.style.background='var(--gold)';if(timeLeft<=5){display.classList.add('crit');bar.style.background='var(--red)'}else if(timeLeft<=10){display.classList.add('warn');bar.style.background='var(--adj-minus)'}}
+
+/* ===== Photo & Round ===== */
+function loadRound(){
+  window.scrollTo(0,0);const home=gameHomes[currentRound];currentPhoto=0;
+  document.getElementById('headerHomeLabel').textContent=(currentRound+1)+'/'+gameHomes.length;
+  document.getElementById('scoreDisplay').textContent=totalScore.toLocaleString();
+  const gallery=document.getElementById('photoGallery');
+  gallery.querySelectorAll('.photo-slide').forEach(s=>s.remove());
+  const totalPhotos=home.photos.length;
+  for(let i=0;i<totalPhotos;i++){const slide=document.createElement('div');slide.className='photo-slide'+(i===0?' active':'');slide.id='slide'+i;loadPhotoIntoSlide(slide,home.photos[i]);gallery.insertBefore(slide,gallery.firstChild)}
+  updatePhotoCount();
+  document.getElementById('propNeighborhoodText').textContent=home.neighborhood.toUpperCase();
+  const rawStyle=home.style||'-';
+  const normalizedStyle=rawStyle.replace(/\bSingle Family Home\b/gi,'Single Family').replace(/\bTenancy[- ]?in[- ]?Common\b/gi,'TIC').replace(/\bTenancy In Common\b/gi,'TIC');
+  document.getElementById('propStyle').textContent=normalizedStyle.toUpperCase();
+  document.getElementById('propBeds').textContent=home.beds;
+  document.getElementById('propBaths').textContent=home.baths;
+  const sqftNumeric=cleanNumber(home.sqft);
+  document.getElementById('propSqft').textContent=sqftNumeric>0?sqftNumeric.toLocaleString():(home.sqft||'—');
+  document.getElementById('propListPrice').textContent=formatPrice(home.listPrice);
+  setPrice(home.listPrice);startTimer();
+}
+function updatePhotoCount(){const home=gameHomes[currentRound];document.getElementById('photoCount').textContent=(currentPhoto+1)+'/'+home.photos.length}
+function goToPhoto(idx){const home=gameHomes[currentRound];const len=home.photos.length;idx=((idx%len)+len)%len;currentPhoto=idx;document.querySelectorAll('.photo-slide').forEach((s,i)=>s.classList.toggle('active',i===idx));updatePhotoCount()}
+function prevPhoto(){goToPhoto(currentPhoto-1)}
+function nextPhoto(){goToPhoto(currentPhoto+1)}
+
+/* ===== Slider / Price ===== */
+function positionToPrice(pos){const p=pos/1000;const breakpoints=[{pos:0,price:500000},{pos:.188,price:1000000},{pos:.376,price:2000000},{pos:.5,price:3000000},{pos:.624,price:5000000},{pos:.812,price:10000000},{pos:1,price:20000000}];for(let i=0;i<breakpoints.length-1;i++){if(p>=breakpoints[i].pos&&p<=breakpoints[i+1].pos){const t=(p-breakpoints[i].pos)/(breakpoints[i+1].pos-breakpoints[i].pos);return breakpoints[i].price+t*(breakpoints[i+1].price-breakpoints[i].price)}}return 3000000}
+function priceToPosition(price){const breakpoints=[{pos:0,price:500000},{pos:.188,price:1000000},{pos:.376,price:2000000},{pos:.5,price:3000000},{pos:.624,price:5000000},{pos:.812,price:10000000},{pos:1,price:20000000}];for(let i=0;i<breakpoints.length-1;i++){if(price>=breakpoints[i].price&&price<=breakpoints[i+1].price){const t=(price-breakpoints[i].price)/(breakpoints[i+1].price-breakpoints[i].price);return Math.round((breakpoints[i].pos+t*(breakpoints[i+1].pos-breakpoints[i].pos))*1000)}}return 500}
+function updateSliderFill(slider){const pct=((slider.value-slider.min)/(slider.max-slider.min))*100;slider.style.setProperty('--fill',pct+'%')}
+function setPrice(p){lastPriceVal=p;const slider=document.getElementById('priceSlider');slider.value=priceToPosition(p);updateSliderFill(slider);document.getElementById('priceBig').textContent=formatPrice(p);updateAdjusterLabels()}
+function onSliderChange(val){const price=positionToPrice(parseInt(val));const diff=price-lastPriceVal;lastPriceVal=price;document.getElementById('priceBig').textContent=formatPrice(price);updateSliderFill(document.getElementById('priceSlider'));updateAdjusterLabels();const slider=document.getElementById('priceSlider');if(diff>0){slider.style.setProperty('--slider-fill-color','var(--adj-plus)')}else if(diff<0){slider.style.setProperty('--slider-fill-color','var(--adj-minus)')}else{slider.style.setProperty('--slider-fill-color','')}clearTimeout(sliderColorResetTimer);sliderColorResetTimer=setTimeout(()=>{slider.style.setProperty('--slider-fill-color','')},300)}
+function getCurrentPrice(){return lastPriceVal}
+function formatPrice(n){if(n>=1000000){const m=n/1000000;if(m===Math.floor(m))return'$'+m+'M';return'$'+m.toFixed(2).replace(/\.?0+$/,'')+'M'}return'$'+(n/1000).toFixed(0)+'K'}
+
+/* ===== Submit & Next ===== */
+function submitGuess(){
+  if(document.getElementById('revealOverlay').classList.contains('show'))return;
+  stopTimer();const home=gameHomes[currentRound];const guess=getCurrentPrice();const actual=home.price;const diff=Math.abs(guess-actual)/actual;
+  const v=VERDICTS.find(v=>diff<=v.max);const pts=v.pts,verdict=v.text,vColor=v.color;
+  if(pts>=750)playCashRegister();else if(pts>=250)playCompletionBell();else playWrongBuzz();
+  totalScore+=pts;roundResults.push({home,guess,actual,pts,diff});
+  document.getElementById('scoreDisplay').textContent=totalScore.toLocaleString();
+  const overlay=document.getElementById('revealOverlay');
+  document.getElementById('revealVerdict').textContent=verdict;
+  document.getElementById('revealVerdict').style.color=vColor;
+  document.getElementById('revealPts').textContent='+'+pts+' pts';
+  document.getElementById('revealPts').style.color=vColor;
+  document.getElementById('revealGuessLabel').style.color=vColor;
+  document.getElementById('revealGuess').style.color=vColor;
+  ['revealRowList','revealRowGuess','revealRowSale'].forEach(id=>document.getElementById(id).classList.remove('revealed'));
+  document.getElementById('revealNotesRow').classList.remove('visible');
+  document.getElementById('revealList').textContent=formatPrice(home.listPrice);
+  document.getElementById('revealGuess').textContent=formatPrice(guess);
+  document.getElementById('revealActual').textContent=formatPrice(actual);
+  document.getElementById('revealNotes').textContent=home.notes||'';
+  const nextBtn=document.getElementById('nextBtn');nextBtn.textContent=currentRound>=gameHomes.length-1?'See Results':'Next Property';
+  overlay.classList.add('show');
+  setTimeout(()=>document.getElementById('revealRowList').classList.add('revealed'),150);
+  setTimeout(()=>document.getElementById('revealRowGuess').classList.add('revealed'),450);
+  setTimeout(()=>{document.getElementById('revealRowSale').classList.add('revealed');if(home.notes)document.getElementById('revealNotesRow').classList.add('visible')},750);
+}
+function nextRound(){document.getElementById('revealOverlay').classList.remove('show');currentRound++;if(currentRound>=gameHomes.length){showResults();return}loadRound()}
+
+/* ===== Leaderboard ===== */
+async function loadLeaderboard(){try{let csvText='';const urls=[LEADERBOARD_CSV_URL+'&t='+Date.now(),'https://docs.google.com/spreadsheets/d/1KVLze4dmyjVikSAL0RzMUbpNMlR_6BvDbudkeLQOfOQ/gviz/tq?tqx=out:csv&gid=729865303&t='+Date.now()];for(const url of urls){try{const res=await fetch(url,{cache:'no-store',redirect:'follow'});if(res.ok){csvText=await res.text();if(csvText&&csvText.length>20)break}}catch(e){continue}}if(!csvText)throw 0;const rows=parseCSV(csvText);if(rows.length<2)throw 0;const headers=rows[0].map(h=>(h||'').trim().toLowerCase().replace(/^"|"$/g,''));const nameCol=headers.findIndex(h=>h==='name'||h.includes('name'));const neighborhoodCol=headers.findIndex(h=>h==='neighborhood'||h.includes('neighborhood'));const scoreCol=headers.findIndex(h=>h==='score'||h.includes('score'));const tierCol=headers.findIndex(h=>h==='tier'||h.includes('tier'));const emailCol=headers.findIndex(h=>h==='email'||h.includes('email'));if(scoreCol<0)throw 0;const byEmail={};const byName={};const allEntries=[];for(let i=1;i<rows.length;i++){const r=rows[i];if(!r||r.length<=scoreCol)continue;const name=nameCol>=0?(r[nameCol]||'').trim():'';if(!name||name==='PLAYER')continue;const score=cleanInt(r[scoreCol]);if(score<=0)continue;const email=emailCol>=0?(r[emailCol]||'').trim().toLowerCase():'';const neighborhood=neighborhoodCol>=0?(r[neighborhoodCol]||'').trim():'';const rawTier=tierCol>=0?(r[tierCol]||'').trim().toUpperCase():'';const parsed=parseTierField(rawTier);const nameKey=name.toUpperCase();let existing=null;if(email&&byEmail[email])existing=byEmail[email];if(!existing&&byName[nameKey])existing=byName[nameKey];if(existing){if(score>existing.score){existing.score=score;existing.tier=parsed.tier;existing.difficulty=parsed.difficulty;if(neighborhood)existing.neighborhood=neighborhood}}else{const entry={name,neighborhood,score,tier:parsed.tier,difficulty:parsed.difficulty};allEntries.push(entry);if(email)byEmail[email]=entry;byName[nameKey]=entry}}allEntries.sort((a,b)=>b.score-a.score);leaderboardData=allEntries;renderLeaderboard('introLbBody',introLbDiff);renderLeaderboard('endLbBody',endLbDiff)}catch(e){['introLbBody','endLbBody'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="lb-empty"><strong>LEADERBOARD UNAVAILABLE</strong>Play a game to be the first on the board!</div>'})}}
+function buildLeaderboardHTML(entries,limit,meName){if(!entries.length)return'<div class="lb-empty"><strong>NO SCORES YET</strong>Play a game to be the first on the board!</div>';let html='';const show=entries.slice(0,limit||10);show.forEach((e,i)=>{const meCls=(meName&&e.name.toUpperCase()===meName.toUpperCase())?'me':'';html+='<div class="lb-row '+meCls+'"><div class="lb-left"><div class="lb-rank">'+(i+1)+'</div><div class="lb-meta"><div class="lb-name">'+escapeHtml(e.name)+'</div>'+(e.neighborhood?'<div class="lb-sub">'+escapeHtml(e.neighborhood)+'</div>':'')+'</div></div><div class="lb-tier">'+escapeHtml(e.tier||'—')+'</div><div class="lb-score">'+e.score.toLocaleString()+'</div></div>'});return html}
+function renderLeaderboard(targetId,diff){const el=document.getElementById(targetId);if(!el)return;const filtered=leaderboardData.filter(e=>e.difficulty===diff);el.innerHTML=buildLeaderboardHTML(filtered,10,cfg.initials)}
+function setIntroLbTab(diff){introLbDiff=diff;document.querySelectorAll('#introLbTabs .lb-tab').forEach(t=>t.classList.toggle('active',t.dataset.diff===diff));renderLeaderboard('introLbBody',diff)}
+function setEndLbTab(diff){endLbDiff=diff;document.querySelectorAll('#endLbTabs .lb-tab').forEach(t=>t.classList.toggle('active',t.dataset.diff===diff));renderLeaderboard('endLbBody',diff)}
+
+/* ===== Form Submission ===== */
+function submitToGoogleForm(data){
+  const form=new URLSearchParams();
+  Object.entries(data).forEach(([key,val])=>{if(FORM_FIELD_IDS[key]&&val!==undefined&&val!==''){form.append(FORM_FIELD_IDS[key],val)}});
+  fetch(FORM_SUBMIT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:form.toString()}).catch(()=>{});
+  if(data.email&&data.email!=='na'&&data.email!=='NA'&&data.email.includes('@')){
+    fetch('https://script.google.com/macros/s/AKfycbx2-n34Xc1U8gaVOCBS-A4ncSVe-iKZjAzdYDjYYNVrlzq_IuNilRbC70ULy-zuLz-v/exec',{method:'POST',body:JSON.stringify({email:data.email,name:data.name||'Player',score:data.score,tier:data.tier,neighborhood:data.neighborhood||''})}).catch(()=>{});
+  }
+}
+
+/* ===== Results Flow ===== */
+function showResults(){
+  playGameCompleteFanfare();
+  showScreen('resultsScreen');
+  showEndScreen(1);
+}
+function showEndScreen(n){
+  for(let i=1;i<=4;i++){const el=document.getElementById('endScreen'+i);if(el)el.classList.toggle('active',i===n)}
+  window.scrollTo(0,0);
+  if(n===1){
+    const avg=Math.round(totalScore/gameHomes.length);const tier=TIERS.find(t=>avg>=t.min&&avg<=t.max)||TIERS[0];
+    document.getElementById('endTierName').textContent=tier.name;document.getElementById('endTierName').style.color=tier.color;
+    document.getElementById('endScoreLine').textContent=totalScore.toLocaleString()+' pts';document.getElementById('endScoreLine').style.color=tier.color;
+    document.getElementById('endTierMsg').textContent=tier.msg;
+    const listEl=document.getElementById('breakdownList');listEl.innerHTML='';
+    roundResults.forEach(r=>{
+      const pctOffOver=((r.actual-r.home.listPrice)/r.home.listPrice*100);
+      const sub=pctOffOver<0?Math.abs(Math.round(pctOffOver))+'% off ask':Math.round(pctOffOver)+'% over ask';
+      const row=document.createElement('div');row.className='breakdown-row';
+      row.innerHTML='<div><div class="bd-name">'+escapeHtml(r.home.neighborhood+' '+r.home.style)+'</div><div class="bd-sub">'+sub+'</div></div><div class="bd-pts">+'+r.pts+'</div>';
+      listEl.appendChild(row);
+    });
+    const diffTier=cfg.difficulty+':'+tier.name;
+    submitToGoogleForm({name:cfg.initials,neighborhood:cfg.neighborhood||'-',score:totalScore,tier:diffTier,email:cfg.email||'',feedback:'[SCORE SAVE] '+gameHomes.length+' homes ('+cfg.difficulty+') | Avg: '+avg+'/home'});
+    leaderboardData=leaderboardData.filter(e=>!(e.name.toUpperCase()===cfg.initials.toUpperCase()&&e.difficulty===cfg.difficulty));
+    leaderboardData.push({name:cfg.initials,neighborhood:cfg.neighborhood,score:totalScore,tier:tier.name,difficulty:cfg.difficulty});
+    leaderboardData.sort((a,b)=>b.score-a.score);
+  }else if(n===2){
+    playRankReveal();
+    playerRank=1;for(const e of leaderboardData){if(e.difficulty===cfg.difficulty&&e.score>totalScore)playerRank++}
+    document.getElementById('endRankNum').textContent='#'+playerRank;
+    document.getElementById('endRankScore').textContent=totalScore.toLocaleString()+' pts';
+    endLbDiff=cfg.difficulty;document.querySelectorAll('#endLbTabs .lb-tab').forEach(t=>t.classList.toggle('active',t.dataset.diff===endLbDiff));
+    renderLeaderboard('endLbBody',endLbDiff);
+  }else if(n===3){playShortlistChime()}
+  else if(n===4){playThanksWrap();renderLeaderboard('endFinalLbBody',cfg.difficulty)}
+}
+function submitShortlist(optIn){
+  if(optIn){
+    const phone=document.getElementById('endShortlistPhone').value.trim();const digits=phone.replace(/\D/g,'');
+    if(digits.length<10){document.getElementById('shortlistPhoneError').style.display='block';return}
+    document.getElementById('shortlistPhoneError').style.display='none';
+    const avg=Math.round(totalScore/gameHomes.length);const tier=TIERS.find(t=>avg>=t.min&&avg<=t.max)||TIERS[0];
+    leadSubmitted=true;
+    submitToGoogleForm({name:cfg.initials,neighborhood:cfg.neighborhood||'-',score:totalScore,tier:cfg.difficulty+':'+tier.name,email:cfg.email,phone,feedback:['[NEWSLETTER OPT-IN] SF Insider weekly'].concat(collectLeadParts()).join(' | ')});
+    const btn=document.getElementById('endYesBtn');btn.textContent='SUBSCRIBED ✓';btn.classList.add('disabled');
+    setTimeout(()=>showEndScreen(4),800);
+  }else{showEndScreen(4)}
+}
+/* ===== Agent / Timeline / Share ===== */
+let selectedTimeline='';
+let leadSubmitted=false;
+function collectLeadParts(){
+  const feedback=document.getElementById('endFeedback').value.trim();
+  const parts=[];
+  if(selectedTimeline)parts.push('[SEARCH TIMELINE] '+selectedTimeline);
+  if(agentAnswerSubmitted)parts.push('[AGENT QUESTION] '+(cfg.agentAnswer?'YES':'NO'));
+  if(feedback)parts.push('[FEEDBACK] '+feedback);
+  return parts;
+}
+function submitLeadData(){
+  if(leadSubmitted)return;
+  const parts=collectLeadParts();
+  if(!parts.length)return;
+  leadSubmitted=true;
+  const avg=Math.round(totalScore/gameHomes.length);const tier=TIERS.find(t=>avg>=t.min&&avg<=t.max)||TIERS[0];
+  submitToGoogleForm({name:cfg.initials||'PLAYER',neighborhood:cfg.neighborhood||'-',score:totalScore,tier:cfg.difficulty+':'+tier.name,email:cfg.email||'',feedback:parts.join(' | ')});
+}
+function exitShortlist(action){
+  submitLeadData();
+  if(action==='challenge'){challengeFromResults()}else{resetGame()}
+}
+function selectTimeline(btn,val){selectedTimeline=val;document.querySelectorAll('#searchTimeline .pill-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function answerAgent(yes){
+  agentAnswerSubmitted=true;cfg.agentAnswer=yes;
+  const row=document.getElementById('agentBtnRow');
+  row.innerHTML=yes?'<button class="agent-btn yes selected" onclick="answerAgent(true)">Yes</button><button class="agent-btn no" onclick="answerAgent(false)">No</button>':'<button class="agent-btn yes" onclick="answerAgent(true)">Yes</button><button class="agent-btn no selected" onclick="answerAgent(false)">No</button>';
+}
+function handleFinalSubmit(){
+  const btn=document.getElementById('finalSubmitBtn');
+  if(btn.dataset.submitted==='true'){resetGame();return}
+  btn.dataset.submitted='true';
+  submitLeadData();
+  btn.textContent='Play Again';
+}
+function resetGame(){
+  playRestartJingle();
+  agentAnswerSubmitted=false;selectedTimeline='';cfg.agentAnswer=undefined;leadSubmitted=false;
+  document.querySelectorAll('#searchTimeline .pill-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('endFeedback').value='';
+  document.getElementById('agentBtnRow').innerHTML='<button class="agent-btn yes" onclick="answerAgent(true)">Yes</button><button class="agent-btn no" onclick="answerAgent(false)">No</button>';
+  document.getElementById('endYesBtn').classList.remove('disabled');document.getElementById('endYesBtn').textContent='Text Me Open Houses';
+  document.getElementById('shortlistPhoneError').style.display='none';
+  const fsBtn=document.getElementById('finalSubmitBtn');fsBtn.dataset.submitted='';fsBtn.textContent='Play Again';
+  challengeCode=null;challengeHost=null;
+  backToIntro();
+  loadLeaderboard();
+}
+
+/* ===== Init ===== */
+function readChallengeFromURL(){
+  const params=new URLSearchParams(window.location.search);
+  const code=params.get('challenge');
+  if(code){
+    challengeCode=code;challengeHost=params.get('host')||'';
+    const diff=(params.get('diff')||'EASY').toUpperCase();
+    cfg.difficulty=DIFFICULTIES[diff]?diff:'EASY';
+    goToSettings('friends');
+    setDifficulty(cfg.difficulty);
+    const line1=document.getElementById('settingsTitleLine1');
+    if(challengeHost)line1.textContent=challengeHost.toUpperCase()+"'S CHALLENGE";
+    const btn=document.getElementById('settingsFriendsButton');
+    btn.textContent='Start Playing';
+    friendsLinkState='ready';
+    return true;
+  }
+  return false;
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  renderSoundButtons();
+  setPrice(500000);
+  loadLeaderboard();
+  readChallengeFromURL();
+});
+</script>
+</body>
+</html>

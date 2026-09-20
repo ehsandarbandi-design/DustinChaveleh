@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
+import GameEmbed from "@/components/GameEmbed";
 import { realEstateIQ, site } from "@/lib/copy";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = { title: `${realEstateIQ.title} — ${site.logo}` };
 
-/** /playrealestateiq (BUILD.md §5): the page shell only — nav, footer, the hero copy, and a clearly marked
- *  container for the existing game. The game itself is not rebuilt here. */
+/** /playrealestateiq (BUILD.md §5): nav, footer, the hero copy, and the existing game embedded (not rebuilt). */
 export default function PlayRealEstateIQPage() {
   return (
     <main className="below-header">
@@ -27,12 +27,9 @@ export default function PlayRealEstateIQPage() {
         </div>
       </Section>
 
-      {/* ── Game embed target ─────────────────────────────────────────────────────────
-          The existing Real Estate IQ game (Google Sheets backend) mounts here. Keep this id. */}
+      {/* The existing Real Estate IQ game (public/real-estate-iq/index.html, Google Sheets backend), embedded as-is. */}
       <section id="game" className={`${styles.game} page`} data-tone="stone" data-game-embed="real-estate-iq">
-        <div className={styles.gameSlot}>
-          <span className="mono">[ REAL ESTATE IQ GAME EMBEDS HERE ]</span>
-        </div>
+        <GameEmbed title={realEstateIQ.title} />
       </section>
     </main>
   );

@@ -280,5 +280,11 @@
     "width": 180,
     "height": 180,
     "bytes": 3162
+  },
+  "public/real-estate-iq/index.html": {
+    "source": "The existing Real Estate IQ game, single-file HTML supplied by Ehsan (Sep 20, 2026); embedded as-is via components/GameEmbed.tsx",
+    "width": 0,
+    "height": 0,
+    "bytes": 82254
   }
 }
