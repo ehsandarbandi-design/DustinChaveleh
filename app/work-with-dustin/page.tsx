@@ -19,20 +19,24 @@ export default function WorkWithDustinPage() {
             <Reveal as="h1" className="h1">
               {workWithDustin.headline}
             </Reveal>
-            <p className={`p2 ${styles.body}`}>{workWithDustin.body}</p>
-            <dl className={styles.details}>
+            <Reveal as="p" className={`p2 ${styles.body}`}>{workWithDustin.body}</Reveal>
+            <Reveal as="dl" className={styles.details}>
               {workWithDustin.details.map((d) => (
                 <div key={d.label} className={styles.detail}>
                   <dt className={`mono ${styles.term}`}>{d.label}</dt>
                   <dd className="p3">{d.href ? <TextLink href={d.href}>{d.value}</TextLink> : d.value}</dd>
                 </div>
               ))}
-            </dl>
+            </Reveal>
           </div>
           <div className={styles.formBlock}>
-            <h2 className="h3">{workWithDustin.formHeadline}</h2>
-            <p className={`p2 ${styles.formIntro}`}>{workWithDustin.formIntro}</p>
-            <ContactForm />
+            <Reveal as="h2" className="h3">
+              {workWithDustin.formHeadline}
+            </Reveal>
+            <Reveal as="p" className={`p2 ${styles.formIntro}`}>{workWithDustin.formIntro}</Reveal>
+            <Reveal>
+              <ContactForm />
+            </Reveal>
           </div>
         </div>
       </Section>

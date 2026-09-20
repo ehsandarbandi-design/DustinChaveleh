@@ -17,9 +17,13 @@ export default function Journal() {
           {journal.headline}
         </Reveal>
       </div>
-      <Rail className={styles.rail} leading={<Button href={journal.button.href}>{journal.button.label}</Button>}>
+      <Rail className={styles.rail} leading={
+          <Reveal button>
+            <Button href={journal.button.href}>{journal.button.label}</Button>
+          </Reveal>
+        }>
         {posts.map((post, i) => (
-          <Reveal as="div" key={post.href} delay={Math.min(i, 2) * 80} className={styles.card}>
+          <Reveal as="div" key={post.href} stagger={i} className={styles.card}>
             <Card image={post.image ? { src: post.image, alt: post.title } : undefined} meta={post.dateLabel} title={post.title} text={post.excerpt} link={{ label: journal.cardLink, href: post.href }} sizes="(max-width: 767px) 75vw, 29vw" />
           </Reveal>
         ))}

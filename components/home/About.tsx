@@ -19,16 +19,18 @@ export default function About() {
             {about.headline[1]}
           </Reveal>
           {about.body.map((paragraph) => (
-            <p key={paragraph} className="p2">
+            <Reveal as="p" key={paragraph} className="p2">
               {paragraph}
-            </p>
+            </Reveal>
           ))}
-          <p className={`mono ${styles.smallPrint}`}>{about.smallPrint}</p>
-          <TextLink href={about.link.href} className={`h4 ${styles.link}`}>
-            {about.link.label}
-          </TextLink>
+          <Reveal as="p" className={`mono ${styles.smallPrint}`}>{about.smallPrint}</Reveal>
+          <Reveal className={styles.link}>
+            <TextLink href={about.link.href} className="h4">
+              {about.link.label}
+            </TextLink>
+          </Reveal>
         </div>
-        <Reveal as="figure" className={styles.media}>
+        <Reveal as="figure" mode="clip" className={styles.media}>
           <Img src="/images/portrait/dustin-1.webp" alt={site.logo} fill sizes="(max-width: 767px) 100vw, 50vw" className={styles.img} eager />
         </Reveal>
       </div>

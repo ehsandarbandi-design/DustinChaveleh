@@ -9,57 +9,65 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = { title: `${meetDustin.headline} — ${site.logo}` };
 
-/** /meetdustin (BUILD.md §5): hero beside a half-width portrait, body in columns 1–14, As Featured In on Stone,
- *  the pull-quote on Ink, three hairline resource rows, and the outlined button at the end. */
+/** /meetdustin (BUILD.md §5, laid out like the reference "Our Founder" screen): the H1 across the top, then the
+ *  subheadline, body and outlined button in columns 1–11 beside the portrait in columns 13–24; As Featured In on Stone, the pull-quote
+ *  on Ink, three hairline resource rows. */
 export default function MeetDustinPage() {
   const { featured, quote, resources } = meetDustin;
   return (
     <main className="below-header">
       <section className={`${styles.hero} page`} data-tone="paper">
         <div className={`grid ${styles.heroGrid}`}>
+          <Reveal as="h1" className={`h1 ${styles.headline}`}>
+            {meetDustin.headline}
+          </Reveal>
           <div className={styles.heroText}>
-            <Reveal as="h1" className="h1">
-              {meetDustin.headline}
+            <Reveal as="p" className={`h3 ${styles.subheadline}`}>
+              {meetDustin.subheadline}
             </Reveal>
-            <p className={`h4 ${styles.subheadline}`}>{meetDustin.subheadline}</p>
+            <div className={styles.body}>
+              {meetDustin.body.map((p) => (
+                <Reveal as="p" key={p} className="p2">
+                  {p}
+                </Reveal>
+              ))}
+            </div>
+            <Reveal className={styles.heroAction}>
+              <Button variant="outlined" href={meetDustin.button.href}>
+                {meetDustin.button.label}
+              </Button>
+            </Reveal>
           </div>
-          <Reveal as="figure" className={styles.portrait}>
+          <Reveal as="figure" mode="clip" className={styles.portrait}>
             <Img src={meetDustin.image} alt={site.logo} fill sizes="(max-width: 767px) 100vw, 50vw" className={styles.img} eager />
           </Reveal>
-          <div className={styles.body}>
-            {meetDustin.body.map((p) => (
-              <p key={p} className="p2">
-                {p}
-              </p>
-            ))}
-          </div>
         </div>
       </section>
 
       <Section label={featured.label} tone="stone" id="featured">
         <div className="grid">
-          <p className={`mono ${styles.publication}`}>{featured.publication}</p>
+          <Reveal as="p" className={`mono ${styles.publication}`}>{featured.publication}</Reveal>
           <div className={styles.featuredBody}>
             {featured.body.map((p) => (
-              <p key={p} className="p2">
+              <Reveal as="p" key={p} className="p2">
                 {p}
-              </p>
+              </Reveal>
             ))}
           </div>
         </div>
         <ul className={styles.press}>
           {featured.images.map((src, i) => (
-            <Reveal as="li" key={src} delay={i * 80} className={styles.pressItem}>
+            <Reveal as="li" key={src} mode="clip" stagger={i} className={styles.pressItem}>
               {/* alt text for the Business Insider images is [TODO] in content/copy.md */}
               <Img src={src} alt={featured.publication} fill sizes="(max-width: 767px) 100vw, 30vw" className={styles.img} />
             </Reveal>
           ))}
         </ul>
-        <div className={styles.featuredAction}>
+        <Reveal className={styles.featuredAction}>
           <Button variant="outlined" href={featured.button.href}>
             {featured.button.label}
           </Button>
-        </div>
+        </Reveal>
       </Section>
 
       <section className={`${styles.quote} page`} data-tone="ink">
@@ -68,7 +76,7 @@ export default function MeetDustinPage() {
             <Reveal as="p" className="p1">
               {quote.text}
             </Reveal>
-            <p className={`mono ${styles.attribution}`}>{quote.attribution}</p>
+            <Reveal as="p" className={`mono ${styles.attribution}`}>{quote.attribution}</Reveal>
           </blockquote>
         </div>
       </section>
@@ -84,17 +92,16 @@ export default function MeetDustinPage() {
           {resources.items.map((item) => (
             <div key={item.title}>
               <div className={`grid ${styles.row}`}>
-                <h3 className={`h3 ${styles.rowTitle}`}>{item.title}</h3>
-                <p className={`p2 ${styles.rowText}`}>{item.text}</p>
+                <Reveal as="h3" className={`h3 ${styles.rowTitle}`}>
+                  {item.title}
+                </Reveal>
+                <Reveal as="p" className={`p2 ${styles.rowText}`}>
+                  {item.text}
+                </Reveal>
               </div>
               <Hairline />
             </div>
           ))}
-        </div>
-        <div className={styles.end}>
-          <Button variant="outlined" arrow={false} href={meetDustin.button.href}>
-            {meetDustin.button.label}
-          </Button>
         </div>
       </Section>
     </main>

@@ -29,11 +29,25 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* Reveal on scroll (BUILD.md §2.4) — only section headings, images and cards.
+/* Reveal on scroll — the "Flex" site animation, copied from the reference's source (components/Reveal.tsx).
+   Every block: 0.8s, cubic-bezier(.19,1,.22,1). rise: fades in while rising 2vh. fade: opacity only.
+   clip: images wipe up from their bottom edge. Filled buttons also slide up out of their own box.
    The hidden state only applies once JS has run (html.js), so content is never lost. */
-html.js [data-reveal="pending"] { opacity: 0; transform: translateY(24px); }
-[data-reveal] { transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease); }
-[data-reveal="done"] { opacity: 1; transform: none; }
+[data-flex] { transition: transform .8s cubic-bezier(.19, 1, .22, 1), opacity .8s cubic-bezier(.19, 1, .22, 1), clip-path .8s cubic-bezier(.19, 1, .22, 1); }
+html.js [data-flex="pending"][data-flex-mode="rise"] { opacity: 0; transform: translate(0, 2vh); }
+html.js [data-flex="pending"][data-flex-mode="fade"] { opacity: 0; }
+html.js [data-flex="pending"][data-flex-mode="clip"] { clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+[data-flex="done"] { opacity: 1; transform: none; }
+[data-flex="done"][data-flex-mode="clip"] { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+[data-flex-button] > * { transition: transform .8s cubic-bezier(.19, 1, .22, 1), color var(--dur) var(--ease); }
+html.js [data-flex="pending"][data-flex-button] > * { transform: translate(0, 100%); }
+[data-flex="done"][data-flex-button] > * { transform: none; }
+/* words: h1–h3 rise word by word, each out of its own clipped box, 0.8s ease, 20ms apart.
+   The box keeps 0.15em below the line so descenders are not cut while the words rise. */
+.flexWord { display: inline-flex; overflow: hidden; padding-bottom: 0.15em; margin-bottom: -0.15em; }
+.flexWordIn { display: inline-block; transition: transform .8s ease, opacity .8s ease; transition-delay: calc(var(--i) * 20ms); }
+html.js [data-flex="pending"] .flexWordIn { opacity: 0; transform: translate(0, 100%); }
+[data-flex="done"] .flexWordIn { opacity: 1; transform: none; }
 
 /* Images fade in over 200ms ease-in once loaded */
 html.js img[data-loaded] { transition: opacity var(--dur-fast) ease-in; }
@@ -41,7 +55,7 @@ html.js img[data-loaded="false"] { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  html.js [data-flex], html.js .flexWordIn { opacity: 1; transform: none; clip-path: none; transition: none; }
   html.js img[data-loaded] { transition: none; }
 }
 

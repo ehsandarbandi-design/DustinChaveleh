@@ -28,7 +28,8 @@ export default function Img({ alt, onLoad, eager = false, ...props }: ImageProps
   }, [near]);
 
   if (!near) {
-    const size = props.fill ? { position: "absolute" as const, inset: 0 } : { display: "block", width: props.width, height: props.height };
+    // The placeholder never widens its container (a 112px logo in a 342px footer row would otherwise overflow)
+    const size = props.fill ? { position: "absolute" as const, inset: 0 } : { display: "block", width: props.width, height: props.height, maxWidth: "100%" };
     return (
       <>
         <span ref={sentinel} style={size} aria-hidden="true" />

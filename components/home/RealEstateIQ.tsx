@@ -14,10 +14,10 @@ export default function RealEstateIQ() {
         <Reveal as="h2" className={`h1 ${styles.headline}`}>
           {iq.headline}
         </Reveal>
-        <p className={`p1 ${styles.sub}`}>{iq.subheadline}</p>
-        <div className={styles.actions}>
+        <Reveal as="p" className={`p1 ${styles.sub}`}>{iq.subheadline}</Reveal>
+        <Reveal button className={styles.actions}>
           <Button href={iq.button.href}>{iq.button.label}</Button>
-        </div>
+        </Reveal>
       </div>
     </Section>
   );

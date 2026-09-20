@@ -17,13 +17,15 @@ export default function Neighborhoods() {
         className={styles.rail}
         counter
         trailing={
-          <TextLink href={neighborhoods.link.href} className="h4">
-            {neighborhoods.link.label}
-          </TextLink>
+          <Reveal>
+            <TextLink href={neighborhoods.link.href} className="h4">
+              {neighborhoods.link.label}
+            </TextLink>
+          </Reveal>
         }
       >
         {neighborhoods.items.map((n, i) => (
-          <Reveal as="div" key={n.slug} delay={Math.min(i, 3) * 80} className={styles.card}>
+          <Reveal as="div" key={n.slug} stagger={i} className={styles.card}>
             <Card image={n.image ? { src: n.image, alt: n.name } : undefined} title={n.name} text={n.description} sizes="(max-width: 767px) 75vw, 25vw" />
           </Reveal>
         ))}

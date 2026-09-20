@@ -30,7 +30,7 @@ export default function BlogIndex({ category }: { category?: string }) {
             {blog.headline}
           </Reveal>
         </div>
-        <nav className={styles.filters}>
+        <Reveal as="nav" className={styles.filters}>
           <ul className={styles.filterList}>
             {blog.categories.map((c) => {
               const active = !!category && c.toLowerCase() === category.toLowerCase();
@@ -44,23 +44,25 @@ export default function BlogIndex({ category }: { category?: string }) {
             })}
           </ul>
           <Hairline />
-        </nav>
+        </Reveal>
       </section>
 
       <section className={`${styles.posts} page`} data-tone="paper">
         {featured ? (
           <article className={`grid ${styles.featured}`}>
-            <Reveal as="figure" className={styles.featuredMedia}>
+            <Reveal as="figure" mode="clip" className={styles.featuredMedia}>
               {featured.image ? <Img src={featured.image} alt={featured.title} fill sizes="(max-width: 767px) 100vw, 55vw" className={styles.img} eager /> : <div className={styles.placeholder} aria-hidden="true" />}
             </Reveal>
             <div className={styles.featuredText}>
-              <p className={`mono ${styles.meta}`}>{featured.dateLabel}</p>
-              <h2 className="h2">{featured.href ? <TextLink href={featured.href}>{featured.title}</TextLink> : featured.title}</h2>
-              <p className={`p2 ${styles.excerpt}`}>{featured.excerpt}</p>
+              <Reveal as="p" className={`mono ${styles.meta}`}>{featured.dateLabel}</Reveal>
+              <Reveal as="h2" className="h2">{featured.href ? <TextLink href={featured.href}>{featured.title}</TextLink> : featured.title}</Reveal>
+              <Reveal as="p" className={`p2 ${styles.excerpt}`}>{featured.excerpt}</Reveal>
               {featured.href ? (
-                <TextLink href={featured.href} className="h4">
-                  {home.journal.cardLink}
-                </TextLink>
+                <Reveal>
+                  <TextLink href={featured.href} className="h4">
+                    {home.journal.cardLink}
+                  </TextLink>
+                </Reveal>
               ) : null}
             </div>
           </article>
@@ -68,7 +70,7 @@ export default function BlogIndex({ category }: { category?: string }) {
         {rest.length ? <Hairline /> : null}
         <ul className={`grid ${styles.list}`}>
           {rest.map((post, i) => (
-            <Reveal as="li" key={post.title} delay={(i % 2) * 80} className={styles.item}>
+            <Reveal as="li" key={post.title} stagger={i} className={styles.item}>
               <Card image={post.image ? { src: post.image, alt: post.title } : undefined} meta={post.dateLabel} title={post.title} text={post.excerpt} link={post.href ? { label: home.journal.cardLink, href: post.href } : undefined} sizes="(max-width: 767px) 100vw, 45vw" />
             </Reveal>
           ))}

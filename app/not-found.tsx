@@ -1,4 +1,5 @@
 import Section from "@/components/Section";
+import Reveal from "@/components/Reveal";
 import TextLink from "@/components/TextLink";
 import { site } from "@/lib/copy";
 import styles from "./not-found.module.css";
@@ -9,10 +10,14 @@ export default function NotFound() {
     <main className="below-header">
       <Section className={styles.section}>
         <div className="grid">
-          <h1 className={`h1 ${styles.headline}`}>This page has moved on.</h1>
-          <TextLink href="/" className={`h4 ${styles.link}`}>
-            {site.nav[0].label}
-          </TextLink>
+          <Reveal as="h1" className={`h1 ${styles.headline}`}>
+            This page has moved on.
+          </Reveal>
+          <Reveal className={styles.link}>
+            <TextLink href="/" className="h4">
+              {site.nav[0].label}
+            </TextLink>
+          </Reveal>
         </div>
       </Section>
     </main>

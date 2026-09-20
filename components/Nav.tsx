@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
+import Reveal from "./Reveal";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import Button from "./Button";
@@ -110,21 +111,25 @@ export default function Nav() {
 
   return (
     <header ref={headerRef} className={`${styles.header} ${styles[theme]} ${open ? styles.open : ""}`} data-theme={theme}>
-      <Logo id="nav-logo" className={styles.logo} />
+      <Reveal mode="fade" stagger={0} className={styles.logo}>
+        <Logo id="nav-logo" />
+      </Reveal>
 
       <nav className={styles.desktop}>
         <ul className={styles.links}>
-          {site.nav.map((item) => (
-            <li key={item.href}>
+          {site.nav.map((item, i) => (
+            <Reveal as="li" key={item.href} stagger={i + 1}>
               <TextLink href={item.href} className="h4">
                 {item.label}
               </TextLink>
-            </li>
+            </Reveal>
           ))}
         </ul>
-        <Button variant="outlined" arrow={false} href={site.cta.href}>
-          {site.cta.label}
-        </Button>
+        <Reveal stagger={site.nav.length + 1}>
+          <Button variant="outlined" arrow={false} href={site.cta.href}>
+            {site.cta.label}
+          </Button>
+        </Reveal>
       </nav>
 
       <button

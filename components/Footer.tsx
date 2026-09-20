@@ -2,6 +2,7 @@ import Logo from "./Logo";
 import TextLink from "./TextLink";
 import Hairline from "./Hairline";
 import Img from "./Img";
+import Reveal from "./Reveal";
 import { site } from "@/lib/copy";
 import sectionStyles from "./Section.module.css";
 import styles from "./Footer.module.css";
@@ -16,7 +17,7 @@ const brokerageLogos = [
 export default function Footer() {
   return (
     <footer className={`${sectionStyles.ink} ${styles.footer}`} data-tone="ink">
-      <div className={`${styles.row} ${styles.rowTop}`}>
+      <Reveal className={`${styles.row} ${styles.rowTop}`}>
         <Logo />
         <ul className={styles.nav}>
           {[...site.nav, site.cta].map((item) => (
@@ -27,10 +28,10 @@ export default function Footer() {
             </li>
           ))}
         </ul>
-      </div>
+      </Reveal>
       <Hairline />
 
-      <div className={styles.row}>
+      <Reveal className={styles.row}>
         <address className={`mono ${styles.contact}`}>
           <TextLink href={site.phone.href}>{site.phone.label}</TextLink>
           <TextLink href={`mailto:${site.email}`}>{site.email}</TextLink>
@@ -43,20 +44,20 @@ export default function Footer() {
             </li>
           ))}
         </ul>
-      </div>
+      </Reveal>
 
-      <div className={`${styles.row} ${styles.rowLast}`}>
+      <Reveal className={`${styles.row} ${styles.rowLast}`}>
         <div className={styles.legal}>
           <span className="mono">{site.license}</span>
           <ul className={styles.logos}>
             {brokerageLogos.map((logo) => (
               <li key={logo.src}>
-                <Img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} className={styles.logoImg} />
+                <Img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} className={styles.logoImg} eager />
               </li>
             ))}
           </ul>
         </div>
-      </div>
+      </Reveal>
     </footer>
   );
 }

@@ -152,13 +152,13 @@ export default function Styleguide() {
         <div className={styles.block}>
           <p className={`mono ${styles.blockTitle}`}>Card · blog (Stone placeholder until cover images exist) · neighborhood · missing photo</p>
           <div className={`grid ${styles.cards}`}>
-            <Reveal className={styles.cardCell}>
+            <Reveal stagger={0} className={styles.cardCell}>
               <Card meta={post.dateLabel} title={post.title} text={post.excerpt} link={{ label: home.journal.cardLink, href: post.href }} />
             </Reveal>
-            <Reveal delay={80} className={styles.cardCell}>
+            <Reveal stagger={1} className={styles.cardCell}>
               <Card image={{ src: castro.image!, alt: castro.name }} title={castro.name} text={castro.description} />
             </Reveal>
-            <Reveal delay={160} className={styles.cardCell}>
+            <Reveal stagger={2} className={styles.cardCell}>
               <Card title={marina.name} text={marina.description} />
             </Reveal>
           </div>

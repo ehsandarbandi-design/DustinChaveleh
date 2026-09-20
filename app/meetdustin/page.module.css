@@ -1,11 +1,14 @@
-/* Hero: H1 + H4 in columns 1–11, the portrait in columns 13–24 bleeding right, body below in columns 1–14 */
+/* Hero (the reference layout): the H1 across the top; then the subheadline, body and button in columns 1–11
+   beside the portrait in columns 13–24 bleeding right, as tall as the text (4:5 on mobile, between H1 and text) */
 .hero { padding-top: var(--space-2xl); padding-bottom: var(--section-pad); }
-.heroGrid { row-gap: var(--space-2xl); }
-.heroText { grid-column: 1 / span 11; grid-row: 1; align-self: end; }
-.subheadline { margin-top: var(--space-s); color: var(--graphite); }
-.portrait { grid-column: 13 / -1; grid-row: 1; position: relative; aspect-ratio: 4 / 5; margin: 0 calc(-1 * var(--gutter)) 0 0; overflow: hidden; background: var(--stone); }
+.heroGrid { align-items: stretch; row-gap: var(--space-xl); }
+.headline { grid-column: 1 / span 14; }
+.heroText { grid-column: 1 / span 11; display: flex; flex-direction: column; align-items: flex-start; }
+.subheadline { margin-top: 0; }
+.body { display: flex; flex-direction: column; gap: var(--space-m); margin-top: var(--space-m); }
+.heroAction { margin-top: auto; padding-top: var(--space-xl); }
+.portrait { grid-column: 13 / -1; align-self: stretch; justify-self: stretch; position: relative; margin: 0 calc(-1 * var(--gutter)) 0 0; overflow: hidden; background: var(--stone); }
 .img { object-fit: cover; }
-.body { grid-column: 1 / span 14; grid-row: 2; display: flex; flex-direction: column; gap: var(--space-m); }
 
 /* As Featured In */
 .publication { grid-column: 1 / span 4; color: var(--taupe); }
@@ -26,14 +29,13 @@
 .row { padding: var(--space-m) 0; row-gap: var(--space-s); }
 .rowTitle { grid-column: 1 / span 9; }
 .rowText { grid-column: 12 / -1; }
-.end { margin-top: var(--space-l); }
 
 @media (max-width: 767px) {
   .heroGrid { row-gap: var(--space-l); }
-  .heroText, .portrait, .body, .publication, .featuredBody, .blockquote, .resourcesHeadline, .rowTitle, .rowText { grid-column: 1 / -1; }
-  .heroText { grid-row: 2; }
-  .portrait { grid-row: 1; margin-right: 0; }
-  .body { grid-row: 3; }
+  .headline, .heroText, .portrait, .publication, .featuredBody, .blockquote, .resourcesHeadline, .rowTitle, .rowText { grid-column: 1 / -1; }
+  .portrait { order: 0; align-self: auto; aspect-ratio: 4 / 5; margin-right: 0; }   /* H1, photo, then the text on mobile */
+  .heroText { order: 1; }
+  .heroAction { padding-top: var(--space-l); }
   .featuredBody { margin-top: var(--space-s); }
   .press { flex-direction: column; }
   .pressItem { width: 100%; }

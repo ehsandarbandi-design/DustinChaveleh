@@ -23,9 +23,9 @@ export default function NextStep() {
               <Reveal as="h2" className="h2">
                 {block.title}
               </Reveal>
-              <p className={`p2 ${styles.body}`}>{block.body}</p>
+              <Reveal as="p" className={`p2 ${styles.body}`}>{block.body}</Reveal>
+              <Reveal className={styles.steps}>
               <Accordion
-                className={styles.steps}
                 items={block.guide.steps.map((step) => ({
                   id: step.number,
                   title: `${step.number}  ${step.title}`,
@@ -33,8 +33,9 @@ export default function NextStep() {
                   content: step.body ? <p className="p2">{step.body}</p> : <p className="mono">[ TEXT NEEDED ]</p>,
                 }))}
               />
+              </Reveal>
             </div>
-            <Reveal as="figure" className={styles.media}>
+            <Reveal as="figure" mode="clip" className={styles.media}>
               <Img src={block.guide.image} alt={block.title} fill sizes="(max-width: 767px) 100vw, 50vw" className={styles.img} />
             </Reveal>
           </div>

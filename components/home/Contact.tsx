@@ -18,7 +18,7 @@ export default function Contact() {
             <br />
             {contact.headline[1]}
           </Reveal>
-          <dl className={styles.details}>
+          <Reveal as="dl" className={styles.details}>
             {contact.details.map((d) => (
               <div key={d.label} className={styles.detail}>
                 <dt className={`mono ${styles.term}`}>{d.label}</dt>
@@ -27,9 +27,11 @@ export default function Contact() {
                 </dd>
               </div>
             ))}
-          </dl>
+          </Reveal>
         </div>
-        <ContactForm className={styles.form} />
+        <Reveal className={styles.form}>
+          <ContactForm />
+        </Reveal>
       </div>
     </Section>
   );

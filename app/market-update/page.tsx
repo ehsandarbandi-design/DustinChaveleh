@@ -23,19 +23,19 @@ export default function MarketUpdatePage() {
           <Reveal as="h1" className={`h1 ${styles.headline}`}>
             {marketUpdate.headline}
           </Reveal>
-          <p className={`p1 ${styles.intro}`}>{marketUpdate.intro}</p>
+          <Reveal as="p" className={`p1 ${styles.intro}`}>{marketUpdate.intro}</Reveal>
         </div>
 
         <div className={styles.stats}>
           <Hairline />
           {marketStats.stats.map((stat) => (
             <div key={stat.label}>
-              <div className={`grid ${styles.stat}`}>
+              <Reveal className={`grid ${styles.stat}`}>
                 <p className={`mono ${styles.statLabel}`}>{stat.label}</p>
                 <p className={`h1 ${styles.statValue}`}>{stat.value}</p>
                 <p className={`mono ${styles.statChange}`}>{stat.change}</p>
                 <p className={`p3 ${styles.statNote}`}>{stat.note}</p>
-              </div>
+              </Reveal>
               <Hairline />
             </div>
           ))}
@@ -44,7 +44,7 @@ export default function MarketUpdatePage() {
 
       <section className={`${styles.charts} page`} data-tone="paper">
         {charts.map((chart, i) => (
-          <Reveal as="figure" key={chart.title} delay={i * 80} className={styles.chart}>
+          <Reveal as="figure" key={chart.title} stagger={i} className={styles.chart}>
             <figcaption className={styles.chartCaption}>
               <h2 className="h3">{chart.title}</h2>
             </figcaption>
@@ -64,9 +64,9 @@ export default function MarketUpdatePage() {
         <div className="grid">
           <div className={styles.take}>
             {take.body.map((p) => (
-              <p key={p} className="p2">
+              <Reveal as="p" key={p} className="p2">
                 {p}
-              </p>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -74,15 +74,15 @@ export default function MarketUpdatePage() {
 
       <Section label={wantMore.label} id="want-more">
         <div className="grid">
-          <p className={`p2 ${styles.wantMoreBody}`}>{wantMore.body}</p>
-          <div className={styles.actions}>
+          <Reveal as="p" className={`p2 ${styles.wantMoreBody}`}>{wantMore.body}</Reveal>
+          <Reveal className={styles.actions}>
             {wantMore.links.map((link) => (
               <Button key={link.label} variant="outlined" href={link.href}>
                 {link.label}
               </Button>
             ))}
             <Button href={wantMore.button.href}>{wantMore.button.label}</Button>
-          </div>
+          </Reveal>
         </div>
       </Section>
     </main>

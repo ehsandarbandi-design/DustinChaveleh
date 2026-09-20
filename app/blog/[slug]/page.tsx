@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import Hairline from "@/components/Hairline";
+import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import Contact from "@/components/home/Contact";
 import { mdxComponents } from "@/components/blog/mdx";
@@ -35,13 +36,15 @@ export default async function PostPage({ params }: Params) {
         <div className="grid">
           <div className={styles.column}>
             <header className={styles.header}>
-              <p className={`mono ${styles.meta}`}>
+              <Reveal as="p" className={`mono ${styles.meta}`}>
                 <time dateTime={post.date}>{post.dateLabel}</time>
                 {post.tags?.length ? <span className={styles.tags}>{post.tags.join(" · ")}</span> : null}
-              </p>
-              <h1 className="h1">{post.title}</h1>
+              </Reveal>
+              <Reveal as="h1" className="h1">
+                {post.title}
+              </Reveal>
             </header>
-            <div className={styles.body}>
+            <Reveal className={styles.body}>
               {body ?? (
                 <>
                   <p className="p2">{post.excerpt}</p>
@@ -49,11 +52,13 @@ export default async function PostPage({ params }: Params) {
                   <p className={`mono ${styles.needed}`}>[ ARTICLE BODY NEEDED — content/blog/{slug}.mdx ]</p>
                 </>
               )}
-            </div>
+            </Reveal>
             <Hairline className={styles.rule} />
-            <Button variant="outlined" href="/blog">
-              Back to the blog
-            </Button>
+            <Reveal>
+              <Button variant="outlined" href="/blog">
+                Back to the blog
+              </Button>
+            </Reveal>
           </div>
         </div>
       </article>
