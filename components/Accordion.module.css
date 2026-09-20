@@ -1,4 +1,5 @@
-.list { display: flex; flex-direction: column; }
+/* Rules between rows share the colour of the "+" (the text colour) */
+.list { display: flex; flex-direction: column; --line: currentColor; }
 .heading { margin: 0; }
 .trigger {
   display: flex;
