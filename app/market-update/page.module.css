@@ -19,10 +19,10 @@
 
 .take { grid-column: 5 / span 17; display: flex; flex-direction: column; gap: var(--space-m); }
 
-/* Want more?: body, the two report links stacked, then the search button, in columns 1–11; the photo in 13–24 */
+/* Want more?: body, the two report links side by side, then the search button, in columns 1–11; the photo in 13–24 */
 .wantMoreGrid { align-items: start; row-gap: var(--space-l); }
 .wantMoreText { grid-column: 1 / span 11; display: flex; flex-direction: column; align-items: flex-start; }
-.links { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-s); margin-top: var(--space-l); }
+.links { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-s) var(--space-m); margin-top: var(--space-l); }
 .search { margin-top: var(--space-m); }
 .wantMoreMedia { grid-column: 13 / -1; position: relative; aspect-ratio: 4 / 3; margin: 0 calc(-1 * var(--gutter)) 0 0; overflow: hidden; background: var(--stone); }
 .img { object-fit: cover; }
