@@ -1,0 +1,88 @@
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);            /* 102px: 35px above and below the 32px logo (Figma hero frame) */
+  padding: 0 52px;                    /* Figma hero frame */
+  background: var(--header-bg);
+  color: var(--header-fg);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+/* Themes: over light sections, dark sections, and the hero (transparent, white text) */
+.light { --header-bg: var(--paper); --header-fg: var(--ink); --outline-color: var(--ink); --outline-flip: var(--paper); }
+.dark  { --header-bg: var(--ink);   --header-fg: var(--paper); --outline-color: var(--paper); --outline-flip: var(--ink); }
+.hero  { --header-bg: transparent;  --header-fg: var(--paper); --outline-color: var(--paper); --outline-flip: var(--ink); }
+
+.logo { position: relative; z-index: 2; }
+
+.desktop { display: flex; align-items: center; gap: 52px; }
+.links { display: flex; align-items: center; gap: 52px; }
+
+.toggle { display: none; }
+.panel { display: none; }
+
+@media (max-width: 1279px) {
+  .header { padding: 0 24px; }        /* 24px above and below the logo / hamburger */
+  .desktop { display: none; }
+
+  /* Hamburger 37 × 22 (two lines), tap target padded to 49 × 48 without changing layout */
+  .toggle {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 37px;
+    height: 22px;
+    box-sizing: content-box;
+    padding: 13px 6px;
+    margin: -13px -6px;
+    color: inherit;
+  }
+  .bar {
+    display: block;
+    width: 37px;
+    height: 2px;
+    background: currentColor;
+    transition: transform var(--dur) var(--ease);
+  }
+  .open .bar:first-child { transform: translateY(10px) rotate(45deg); }
+  .open .bar:last-child { transform: translateY(-10px) rotate(-45deg); }
+
+  /* Full-screen Paper panel: wipes down over 400ms; links right-aligned, 52px from the left, 231px from the top */
+  .panel {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 231px 24px 48px 52px;
+    text-align: right;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path var(--dur) var(--ease);
+  }
+  .open .panel { clip-path: inset(0 0 0 0); }
+  .open { --header-bg: transparent; --header-fg: var(--ink); --outline-color: var(--ink); --outline-flip: var(--paper); }
+
+  .panelLinks { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+  .panelLinks li {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .open .panelLinks li { opacity: 1; transform: none; }
+  .panelLink { font-size: var(--h2); color: var(--ink); }   /* Figma menu: 50px, the desktop H2 size */
+
+  .panelCta { margin-top: 120px; opacity: 0; transition: opacity var(--dur) var(--ease); }
+  .open .panelCta { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header, .bar, .panel, .panelLinks li, .panelCta { transition: none; }
+}

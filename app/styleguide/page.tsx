@@ -49,10 +49,7 @@ export default function Styleguide() {
   const marina = home.neighborhoods.items.find((n) => n.slug === "marina")!;
 
   return (
-    <main>
-      <div className={styles.bar}>
-        <Logo />
-      </div>
+    <main className="below-header">
 
       <Section label="COLORS">
         <ul className={styles.swatches}>

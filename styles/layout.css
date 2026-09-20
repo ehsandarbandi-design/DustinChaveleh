@@ -5,3 +5,5 @@
   column-gap: var(--col-gap);
 }
 .page { padding-left: var(--gutter); padding-right: var(--gutter); }
+/* Pages without a hero start below the fixed header. */
+.below-header { padding-top: var(--header-h); }

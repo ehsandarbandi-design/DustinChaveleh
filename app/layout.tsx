@@ -7,6 +7,8 @@ import "@/styles/reset.css";
 import "@/styles/type.css";
 import "@/styles/layout.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import { site } from "@/lib/copy";
 
 // The only two fonts: Inter 300/400/700 and Inconsolata 300, display: swap.
@@ -25,7 +27,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* Marks that JS is running so scroll-reveal / image-fade hidden states only apply with JS. */}
         <Script id="js-flag" strategy="beforeInteractive">{`document.documentElement.classList.add("js")`}</Script>
         <SmoothScroll />
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

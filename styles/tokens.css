@@ -25,6 +25,8 @@
   --gutter-mobile: 24px;
   --col-gap: 20px;          /* 24-column grid desktop, 8-column mobile */
   --cols: 24;
+  /* header (BUILD.md §3, from the Figma hero frame): 35px vertical padding + 32px logo */
+  --header-h: 102px;
 
   /* rhythm */
   --space-3xl: 192px; --space-2xl: 128px; --space-xl: 96px; --space-l: 64px;
@@ -53,10 +55,16 @@
   --btn-bg-hover: var(--graphite);
 }
 
+/* Below 1280px the desktop nav no longer fits (≈1235px needed): mobile menu, 24px padding + 32px logo */
+@media (max-width: 1279px) {
+  :root { --header-h: 80px; }
+}
+
 @media (max-width: 767px) {
   :root {
     --gutter: var(--gutter-mobile);
     --cols: 8;
     --section-pad: var(--space-xl);
+    --header-h: 70px;   /* 24px padding + 22px hamburger */
   }
 }
