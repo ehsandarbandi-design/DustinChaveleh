@@ -172,3 +172,41 @@ export const guides: { buyers: Guide; sellers: Guide } = {
     ],
   },
 };
+
+// Meet Dustin (/meetdustin)
+export const meetDustin = {
+  headline: "Meet Dustin Chaveleh",
+  subheadline: "San Francisco REALTOR®",
+  image: "/images/portrait/dustin-2.webp",
+  body: [
+    "Originally from Texas, I moved to San Francisco in 2019—sight unseen—and have since built my career across finance and tech, with experience at Bloomberg, Goldman Sachs, and other technology companies. Along the way, I developed a strong interest in real estate investing and built my own portfolio, which led me to pursue a residential sales license in San Francisco.",
+    "Having lived in Russian Hill, Mission Dolores, Corona Heights, Castro, and Rincon Hill, I bring a hyper-local perspective and use my experience around the city to navigate the complex San Francisco market for my clients. I'm passionate about helping people find not just a home, but a smart investment in one of the most dynamic cities in the world.",
+    "Beyond real estate, I take full advantage of everything the Bay Area has to offer—from the walkability of San Francisco to exploring Northern California, Tahoe, and Mammoth. I also share market insights and city trends across TikTok, YouTube, and Instagram.",
+    "First-time buyer. Upsizing. Relocating. Investor. Wherever you are in the journey, I'll meet you there with expertise, transparency, and a long-term mindset. Let's connect!",
+  ],
+  button: { label: "Work with Dustin", href: "/work-with-dustin" } as LinkItem,
+  featured: {
+    label: "AS FEATURED IN",
+    publication: "BUSINESS INSIDER",
+    // alt text for the three images is [TODO] in content/copy.md
+    images: ["/images/press/business-insider-1.webp", "/images/press/business-insider-2.webp", "/images/press/business-insider-3.webp"],
+    body: [
+      "In August 2026, Business Insider featured my fitness transformation as part of their longevity series, The Long-Term Investment. The short version: I rebuilt my training and nutrition from the ground up, and it ended up reshaping more than my physique — it gave me the confidence and consistency that helped me close my first deal less than a year later.",
+      "The habits weren't complicated. Show up, track progress, trust the process. Turns out that's a pretty good blueprint for building a business too.",
+    ],
+    button: { label: "Read the full article on Business Insider", href: "" } as LinkItem, // article URL is [TODO] in content/copy.md
+  },
+  quote: {
+    text: "I got into real estate in 2019, just before the pandemic reshaped the market. Through my own experience, I saw how powerful real estate can be as a tool for building wealth, creating stability, and planning for the future. Now, my goal is to share that perspective with others—helping them understand the true power of real estate while making the home buying process feel approachable, clear, and far less overwhelming.",
+    attribution: "— Dustin Chaveleh, REALTOR®",
+  },
+  resources: {
+    label: "RESOURCES",
+    headline: "Use my resources, skip the Guesswork.",
+    items: [
+      { title: "Buyer & Seller Guides", text: "Buying in SF is unlike anywhere else. I've put together a guide that walks you through the process, start to finish — what to expect, what to watch out for, and how to move confidently in a competitive market. Reach out, and I'll send it your way." },
+      { title: "Trusted Vendors List", text: "These are the people I call. Lenders, insurance brokers, inspectors, contractors — vetted through years of deals and real relationships. Especially for financing nuances like TICs, having the right team makes all the difference. Get in touch, and I'll connect you directly." },
+      { title: "Neighborhood Breakdowns", text: "SF has dozens of micro-neighborhoods, and the right one depends on your lifestyle, budget, and goals. I've put together a breakdown that goes beyond the headlines so you can find the pocket of the city that actually fits. Reach out and let's talk through it." },
+    ],
+  },
+};
