@@ -45,7 +45,7 @@ const jobs = [
   { group: "guides", src: "assets/images/For Sellers.jpg", out: "guides/for-sellers", widths: [1600], formats: ["webp"] },
   { group: "guides", src: "assets/images/For Buyers.jpg", out: "guides/for-buyers", widths: [1600], formats: ["webp"] },
   // press — Meet Dustin "As Featured In"
-  { group: "press", src: "assets/images/press/business-insider/business-insider-1.webp", out: "press/business-insider-1", widths: [1600], formats: ["webp"] },
+  { group: "press", src: "assets/images/press/business-insider/business-insider-1.png", out: "press/business-insider-1", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-2.webp", out: "press/business-insider-2", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-3.webp", out: "press/business-insider-3", widths: [1600], formats: ["webp"] },
   // brokerage logos — the white versions, for the Ink footer; shown 28px tall, exported at 4× height

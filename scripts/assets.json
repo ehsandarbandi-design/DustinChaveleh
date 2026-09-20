@@ -36,10 +36,10 @@
     "bytes": 473856
   },
   "public/images/press/business-insider-1.webp": {
-    "source": "assets/images/press/business-insider/business-insider-1.webp",
+    "source": "assets/images/press/business-insider/business-insider-1.png",
     "width": 1320,
-    "height": 1532,
-    "bytes": 112196
+    "height": 1454,
+    "bytes": 85296
   },
   "public/images/press/business-insider-2.webp": {
     "source": "assets/images/press/business-insider/business-insider-2.webp",

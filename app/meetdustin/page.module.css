@@ -1,21 +1,24 @@
 /* Hero (the reference layout): the H1 across the top; then the subheadline, body and button in columns 1–11
-   beside the portrait in columns 13–24 bleeding right, as tall as the text (4:5 on mobile, between H1 and text) */
+   beside the 4:5 portrait in columns 13–24 bleeding right; the button sits at the bottom of the text column */
 .hero { padding-top: var(--space-2xl); padding-bottom: var(--section-pad); }
-.heroGrid { align-items: stretch; row-gap: var(--space-xl); }
+.heroGrid { align-items: start; row-gap: var(--space-xl); }
 .headline { grid-column: 1 / span 14; }
 .heroText { grid-column: 1 / span 11; display: flex; flex-direction: column; align-items: flex-start; }
 .subheadline { margin-top: 0; }
 .body { display: flex; flex-direction: column; gap: var(--space-m); margin-top: var(--space-m); }
 .heroAction { margin-top: auto; padding-top: var(--space-xl); }
-.portrait { grid-column: 13 / -1; align-self: stretch; justify-self: stretch; position: relative; margin: 0 calc(-1 * var(--gutter)) 0 0; overflow: hidden; background: var(--stone); }
+.portrait { grid-column: 13 / -1; position: relative; aspect-ratio: 4 / 5; margin: 0 calc(-1 * var(--gutter)) 0 0; overflow: hidden; background: var(--stone); }
 .img { object-fit: cover; }
 
-/* As Featured In */
-.publication { grid-column: 1 / span 4; color: var(--taupe); }
-.featuredBody { grid-column: 5 / span 13; display: flex; flex-direction: column; gap: var(--space-m); }
-.press { display: flex; justify-content: space-between; gap: var(--col-gap); margin-top: var(--space-l); }
-.pressItem { position: relative; width: calc((100% - 23 * var(--col-gap)) / 24 * 7 + 6 * var(--col-gap)); aspect-ratio: 4 / 5; overflow: hidden; background: var(--paper); }
-.featuredAction { display: flex; align-items: center; gap: var(--space-s); margin-top: var(--space-l); }
+/* As Featured In (Figma 630:39): publication in Graphite at the left; body, the outlined button --space-l below it,
+   and --space-xl under that the collage — two screenshots stacked beside a tall one, 270:398 wide, one column gap */
+.featuredGrid { row-gap: var(--space-xl); }
+.publication { grid-column: 1 / span 4; color: var(--graphite); }
+.featuredBody { grid-column: 13 / -1; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-m); }
+.featuredAction { margin-top: calc(var(--space-l) - var(--space-m)); }
+.press { grid-column: 13 / span 10; display: grid; grid-template-columns: 270fr 398fr; gap: var(--col-gap); align-items: start; }
+.pressStack { display: flex; flex-direction: column; gap: var(--col-gap); }
+.pressItem { position: relative; margin: 0; overflow: hidden; background: var(--paper); }
 .needed { color: var(--taupe); }
 
 /* Pull-quote on Ink */
@@ -32,12 +35,9 @@
 
 @media (max-width: 767px) {
   .heroGrid { row-gap: var(--space-l); }
-  .headline, .heroText, .portrait, .publication, .featuredBody, .blockquote, .resourcesHeadline, .rowTitle, .rowText { grid-column: 1 / -1; }
-  .portrait { order: 0; align-self: auto; aspect-ratio: 4 / 5; margin-right: 0; }   /* H1, photo, then the text on mobile */
+  .headline, .heroText, .portrait, .publication, .featuredBody, .press, .blockquote, .resourcesHeadline, .rowTitle, .rowText { grid-column: 1 / -1; }
+  .featuredGrid { row-gap: var(--space-l); }
+  .portrait { order: 0; margin-right: 0; }   /* H1, photo, then the text on mobile */
   .heroText { order: 1; }
   .heroAction { padding-top: var(--space-l); }
-  .featuredBody { margin-top: var(--space-s); }
-  .press { flex-direction: column; }
-  .pressItem { width: 100%; }
-  .featuredAction { flex-wrap: wrap; }
 }

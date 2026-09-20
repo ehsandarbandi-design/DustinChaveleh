@@ -29,6 +29,11 @@
 .outlined:hover, .outlined:focus-visible { color: var(--outline-flip); }
 .outlined:hover::before, .outlined:focus-visible::before { height: 100%; }
 
+/* Long labels ("Read the full article on Business Insider") wrap on phones instead of overflowing */
+@media (max-width: 767px) {
+  .button { white-space: normal; text-align: left; max-width: 100%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .button, .button::before { transition: none; }
 }

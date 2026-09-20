@@ -49,7 +49,7 @@ This file is written by that script — do not edit by hand.
 | `public/images/neighborhoods/twin-peaks.webp` | `assets/images/neighborhoods/ Twin Peaks.jpg` | 1600 × 2400 | 643 KB |
 | `public/images/portrait/dustin-1.webp` | `assets/images/portrait/dustin-1.png` | 1856 × 2304 | 305 KB |
 | `public/images/portrait/dustin-2.webp` | `assets/images/portrait/dustin-2.png` | 2560 × 1524 | 156 KB |
-| `public/images/press/business-insider-1.webp` | `assets/images/press/business-insider/business-insider-1.webp` | 1320 × 1532 | 110 KB |
+| `public/images/press/business-insider-1.webp` | `assets/images/press/business-insider/business-insider-1.png` | 1320 × 1454 | 83 KB |
 | `public/images/press/business-insider-2.webp` | `assets/images/press/business-insider/business-insider-2.webp` | 1320 × 2465 | 146 KB |
 | `public/images/press/business-insider-3.webp` | `assets/images/press/business-insider/business-insider-3.webp` | 1320 × 2038 | 79 KB |
 | `public/real-estate-iq/index.html` | `The existing Real Estate IQ game, single-file HTML supplied by Ehsan (Sep 20, 2026); embedded as-is via components/GameEmbed.tsx` | 0 × 0 | 80 KB |
