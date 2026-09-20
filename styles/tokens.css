@@ -25,8 +25,8 @@
   --gutter-mobile: 24px;
   --col-gap: 20px;          /* 24-column grid desktop, 8-column mobile */
   --cols: 24;
-  /* header (BUILD.md §3, from the Figma hero frame): 35px vertical padding + 32px logo */
-  --header-h: 102px;
+  /* header — Figma hero frame 585:1633: 1792 × 118, logo centred at y 59 */
+  --header-h: 118px;
 
   /* rhythm */
   --space-3xl: 192px; --space-2xl: 128px; --space-xl: 96px; --space-l: 64px;
@@ -65,6 +65,6 @@
     --gutter: var(--gutter-mobile);
     --cols: 8;
     --section-pad: var(--space-xl);
-    --header-h: 70px;   /* 24px padding + 22px hamburger */
+    --header-h: 76px;   /* Figma mobile hero 601:1042: 393 × 76 */
   }
 }

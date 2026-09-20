@@ -35,13 +35,24 @@ export default function Nav() {
       io?.disconnect();
       const h = header.offsetHeight;
       const bottom = Math.max(window.innerHeight - h - 1, 0);
+      // Several elements can sit under the band at once (the pinned hero stays there while the next
+      // section slides over it), so the one that paints on top — last in document order — decides.
+      const under = new Set<HTMLElement>();
       io = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            if (!entry.isIntersecting) continue;
-            const tone = (entry.target as HTMLElement).dataset.tone;
-            setTheme(tone === "hero" ? "hero" : tone === "ink" ? "dark" : "light");
+            const el = entry.target as HTMLElement;
+            if (entry.isIntersecting) under.add(el);
+            else under.delete(el);
           }
+          let top: HTMLElement | null = null;
+          for (const el of under) {
+            if (!top || top.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING) top = el;
+          }
+          if (!top) return;
+          header.dataset.ready = "1";
+          const tone = top.dataset.tone;
+          setTheme(tone === "hero" ? "hero" : tone === "ink" ? "dark" : "light");
         },
         { rootMargin: `-${h}px 0px -${bottom}px 0px`, threshold: 0 },
       );
@@ -99,7 +110,7 @@ export default function Nav() {
 
   return (
     <header ref={headerRef} className={`${styles.header} ${styles[theme]} ${open ? styles.open : ""}`} data-theme={theme}>
-      <Logo className={styles.logo} />
+      <Logo id="nav-logo" className={styles.logo} />
 
       <nav className={styles.desktop}>
         <ul className={styles.links}>
@@ -130,6 +141,7 @@ export default function Nav() {
       </button>
 
       <div id={panelId} ref={panelRef} className={styles.panel} role="dialog" aria-modal="true" inert={!open}>
+        <div className={styles.panelBlock}>
         <ul className={styles.panelLinks}>
           {site.nav.map((item, i) => (
             <li key={item.href} style={{ transitionDelay: open ? `${i * 60}ms` : "0ms" }}>
@@ -143,6 +155,7 @@ export default function Nav() {
           <Button variant="outlined" arrow={false} href={site.cta.href} onClick={close}>
             {site.cta.label}
           </Button>
+        </div>
         </div>
       </div>
     </header>

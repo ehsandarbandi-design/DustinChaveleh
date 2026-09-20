@@ -5,27 +5,48 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: var(--header-h);            /* 102px: 35px above and below the 32px logo (Figma hero frame) */
-  padding: 0 52px;                    /* Figma hero frame */
+  height: var(--header-h);            /* 118px: Figma hero frame (logo centred at y 59) */
+  padding: 0 52px;                    /* Figma hero frame: 52.5px sides */
   background: var(--header-bg);
   color: var(--header-fg);
   transition: background-color 300ms ease, color 300ms ease;
 }
-/* Themes: over light sections, dark sections, and the hero (transparent, white text) */
+/* The Figma nav-bar gradient (exported asset) — shown only over the hero, cross-faded over 300ms */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("/images/hero/nav-bar-bg.png") center / 100% 100% no-repeat;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+/* Themes: over light sections, dark sections, and the hero (transparent + gradient, white text) */
 .light { --header-bg: var(--paper); --header-fg: var(--ink); --outline-color: var(--ink); --outline-flip: var(--paper); }
 .dark  { --header-bg: var(--ink);   --header-fg: var(--paper); --outline-color: var(--paper); --outline-flip: var(--ink); }
 .hero  { --header-bg: transparent;  --header-fg: var(--paper); --outline-color: var(--paper); --outline-flip: var(--ink); }
+.hero::before { opacity: 1; }
+/* Before the observer has run (first paint), a page that starts with the hero gets the hero theme. */
+html:has([data-tone="hero"]) .header:not([data-ready]) {
+  --header-bg: transparent; --header-fg: var(--paper); --outline-color: var(--paper); --outline-flip: var(--ink);
+}
+html:has([data-tone="hero"]) .header:not([data-ready])::before { opacity: 1; }
+/* On the hero page the nav logo is hidden until the headline flies into it (see Hero.tsx). */
+@media (prefers-reduced-motion: no-preference) {
+  html.js:has([data-tone="hero"]) :global(#nav-logo) { opacity: 0; }
+}
 
 .logo { position: relative; z-index: 2; }
 
-.desktop { display: flex; align-items: center; gap: 52px; }
+.desktop { position: relative; z-index: 1; display: flex; align-items: center; gap: 52px; }
 .links { display: flex; align-items: center; gap: 52px; }
 
 .toggle { display: none; }
 .panel { display: none; }
 
 @media (max-width: 1279px) {
-  .header { padding: 0 24px; }        /* 24px above and below the logo / hamburger */
+  .header { padding: 0 24px; }        /* Figma mobile frames: 24px */
   .desktop { display: none; }
 
   /* Hamburger 37 × 22 (two lines), tap target padded to 49 × 48 without changing layout */
@@ -49,10 +70,12 @@
     background: currentColor;
     transition: transform var(--dur) var(--ease);
   }
-  .open .bar:first-child { transform: translateY(10px) rotate(45deg); }
-  .open .bar:last-child { transform: translateY(-10px) rotate(-45deg); }
+  .open .bar:first-child { transform: translateY(10px) rotate(45deg) scaleX(0.84); }
+  .open .bar:last-child { transform: translateY(-10px) rotate(-45deg) scaleX(0.84); }
 
-  /* Full-screen Paper panel: wipes down over 400ms; links right-aligned, 52px from the left, 231px from the top */
+  /* Full-screen Paper panel (Figma "Menue Mobile" 624:3): wipes down over 400ms.
+     The links block starts 52px from the left, 231px from the top, and is as wide as its widest link;
+     links and the button right-align inside it. */
   .panel {
     display: block;
     position: fixed;
@@ -63,13 +86,14 @@
     background: var(--paper);
     color: var(--ink);
     padding: 231px 24px 48px 52px;
-    text-align: right;
     clip-path: inset(0 0 100% 0);
     transition: clip-path var(--dur) var(--ease);
   }
   .open .panel { clip-path: inset(0 0 0 0); }
   .open { --header-bg: transparent; --header-fg: var(--ink); --outline-color: var(--ink); --outline-flip: var(--paper); }
+  .open::before { opacity: 0; }
 
+  .panelBlock { display: flex; flex-direction: column; align-items: flex-end; gap: 120px; width: max-content; max-width: 100%; }
   .panelLinks { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
   .panelLinks li {
     opacity: 0;
@@ -77,12 +101,12 @@
     transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
   }
   .open .panelLinks li { opacity: 1; transform: none; }
-  .panelLink { font-size: var(--h2); color: var(--ink); }   /* Figma menu: 50px, the desktop H2 size */
+  .panelLink { font-size: var(--h2); color: var(--ink); }   /* Figma menu: Heading 2 at 50px */
 
-  .panelCta { margin-top: 120px; opacity: 0; transition: opacity var(--dur) var(--ease); }
+  .panelCta { opacity: 0; transition: opacity var(--dur) var(--ease); }
   .open .panelCta { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .header, .bar, .panel, .panelLinks li, .panelCta { transition: none; }
+  .header, .header::before, .bar, .panel, .panelLinks li, .panelCta { transition: none; }
 }
