@@ -116,7 +116,9 @@ export const contactForm = {
     message: { label: "Message", required: true, placeholder: "Tell Dustin a bit about what you're looking for..." },
   },
   button: "Send Message",
-  // success message, error message and the submit endpoint are [TODO] in content/copy.md
+  // Success and error messages are [TODO] in content/copy.md — visible markers until the text exists.
+  // Where submissions go is also [TODO]: set CONTACT_FORM_ENDPOINT (see .env.example).
+  messages: { success: "[ SUCCESS MESSAGE NEEDED ]", error: "[ ERROR MESSAGE NEEDED ]" },
 };
 
 export type Post = { date: string; dateLabel: string; title: string; href: string; excerpt: string; image?: string; tags?: string[] };

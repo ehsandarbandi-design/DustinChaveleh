@@ -11,10 +11,11 @@ type Props = {
   type?: "button" | "submit";
   onClick?: MouseEventHandler<HTMLElement>;
   className?: string;
+  disabled?: boolean;
   children: ReactNode;
 };
 
-export default function Button({ variant = "filled", arrow = true, href, type = "button", onClick, className = "", children }: Props) {
+export default function Button({ variant = "filled", arrow = true, href, type = "button", onClick, className = "", disabled, children }: Props) {
   const cls = [styles.button, styles[variant], variant === "filled" ? "mono" : "h4", className].join(" ");
   const label = (
     <>
@@ -38,7 +39,7 @@ export default function Button({ variant = "filled", arrow = true, href, type = 
     );
   }
   return (
-    <button type={type} className={cls} onClick={onClick}>
+    <button type={type} className={cls} onClick={onClick} disabled={disabled}>
       {label}
     </button>
   );

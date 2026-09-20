@@ -55,3 +55,10 @@ ffmpeg -i source.mp4 -an -vf "scale=1920:-2" -c:v libx264 -preset slow -crf 26 -
 ffmpeg -i source.mp4 -an -vf "scale=1920:-2" -c:v libvpx-vp9 -b:v 0 -crf 34 -row-mt 1 public/videos/NAME.webm
 ffmpeg -i source.mp4 -vf "scale=1600:-2" -frames:v 1 -q:v 9 public/videos/NAME.jpg
 ```
+
+## Contact form
+
+The form on Home and Work with Dustin posts to `/api/contact`, which validates the fields (honeypot, lengths,
+email shape) and forwards the JSON to the URL in `CONTACT_FORM_ENDPOINT` (copy `.env.example` to `.env.local`,
+and set the same variable in Vercel). Until it is set, submissions get a 503 and the form shows its error state.
+The success and error messages are still [TODO] in `content/copy.md`; `lib/copy.ts` shows markers meanwhile.
