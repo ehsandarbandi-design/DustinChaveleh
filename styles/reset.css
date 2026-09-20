@@ -1,0 +1,46 @@
+/* Global reset. Square corners and no shadows are rules of the site (BUILD.md, rule 5). */
+*, *::before, *::after { box-sizing: border-box; border-radius: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6, p, figure, blockquote, ul, ol, dl, dd { margin: 0; }
+h1, h2, h3, h4, h5, h6 { font-weight: inherit; font-size: inherit; }
+ul, ol { padding: 0; list-style: none; }
+img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+button, input, select, textarea {
+  font: inherit; letter-spacing: inherit; color: inherit;
+  background: none; border: 0; margin: 0; padding: 0;
+}
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+::selection { background: var(--ink); color: var(--paper); }
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Reveal on scroll (BUILD.md §2.4) — only section headings, images and cards.
+   The hidden state only applies once JS has run (html.js), so content is never lost. */
+html.js [data-reveal="pending"] { opacity: 0; transform: translateY(24px); }
+[data-reveal] { transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease); }
+[data-reveal="done"] { opacity: 1; transform: none; }
+
+/* Images fade in over 200ms ease-in once loaded */
+html.js img[data-loaded] { transition: opacity var(--dur-fast) ease-in; }
+html.js img[data-loaded="false"] { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  html.js img[data-loaded] { transition: none; }
+}

@@ -1,0 +1,14 @@
+/* One of the two allowed exceptions to the type sheet: the logo, Inter Bold. */
+.logo {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0;
+  color: inherit;
+  white-space: nowrap;
+}
+@media (max-width: 767px) {
+  .logo { font-size: 20px; }
+}

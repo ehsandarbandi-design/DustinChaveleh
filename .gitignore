@@ -1,0 +1,31 @@
+# Source assets never go in git (BUILD.md §8). Web versions live in public/ — see ASSETS.md.
+assets/
+*.mp4
+
+# dependencies
+node_modules/
+/.pnp
+.pnp.*
+
+# next.js
+.next/
+/out/
+/build
+*.tsbuildinfo
+next-env.d.ts
+
+# env
+.env*.local
+.env
+
+# vercel
+.vercel
+
+# os / editor
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

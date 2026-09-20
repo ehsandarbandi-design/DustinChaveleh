@@ -1,0 +1,62 @@
+/* Design tokens — the only values the UI may use.
+   Source: BUILD.md §2.1 and design/tokens.md. Do not add values here without asking. */
+:root {
+  /* color — the 5-color palette */
+  --paper: #FBFBFB;
+  --stone: #E2DFDB;
+  --taupe: #918F85;
+  --graphite: #4B4A4A;
+  --ink: #2D2C2B;
+
+  /* hero-only effect colors */
+  --hero-night: #050063;
+  --hero-glow: rgba(255, 229, 160, 0.4);
+
+  /* type — desktop sizes (mobile sizes below 768px follow) */
+  --h1: 76px; --h2: 50px; --h3: 33px; --h4: 21px;
+  --p1: 38px; --p2: 27px; --p3: 14px; --mono: 14px;
+  --h1-m: 44px; --h2-m: 34px; --h3-m: 26px; --h4-m: 21px;
+  --p1-m: 26px; --p2-m: 20px; --p3-m: 14px; --mono-m: 14px;
+  /* fluid factor: 0px at a 390px viewport, 1px at 1440px — used by the clamp() in type.css */
+  --fluid: calc((100vw - 390px) / 1050);
+
+  /* layout */
+  --gutter: 2vw;            /* page side margin: 29px @1440 */
+  --gutter-mobile: 24px;
+  --col-gap: 20px;          /* 24-column grid desktop, 8-column mobile */
+  --cols: 24;
+
+  /* rhythm */
+  --space-3xl: 192px; --space-2xl: 128px; --space-xl: 96px; --space-l: 64px;
+  --space-m: 40px; --space-s: 24px; --space-xs: 16px; --space-2xs: 8px;
+  --section-pad: var(--space-2xl);
+
+  /* motion */
+  --dur-fast: 200ms; --dur: 400ms; --dur-slow: 700ms;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+
+  /* hairline */
+  --line-light: var(--stone);
+  --line-dark: rgba(251, 251, 251, .3);
+
+  /* fonts — the variables are set by next/font in app/layout.tsx */
+  --font-sans: var(--font-inter), Inter, sans-serif;
+  --font-mono: var(--font-inconsolata), Inconsolata, monospace;
+
+  /* component defaults for a light (Paper) surface; Section tones override these */
+  --line: var(--line-light);
+  --marker: var(--ink);
+  --outline-color: var(--ink);
+  --outline-flip: var(--paper);
+  --btn-bg: var(--ink);
+  --btn-fg: var(--paper);
+  --btn-bg-hover: var(--graphite);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: var(--gutter-mobile);
+    --cols: 8;
+    --section-pad: var(--space-xl);
+  }
+}

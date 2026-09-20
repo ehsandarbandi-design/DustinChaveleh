@@ -1,0 +1,19 @@
+[
+  {
+    "id": "example-listing-1",
+    "status": "for-sale",
+    "address": "123 Example St",
+    "neighborhood": "Noe Valley",
+    "city": "San Francisco",
+    "price": 0,
+    "beds": 0,
+    "baths": 0,
+    "sqft": 0,
+    "description": "Replace with real listing text.",
+    "photos": [
+      "assets/images/listings/example-listing-1/01.webp"
+    ],
+    "link": "",
+    "featured": true
+  }
+]

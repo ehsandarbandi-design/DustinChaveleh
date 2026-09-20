@@ -1,0 +1,19 @@
+/* The 8 text styles — the complete list (BUILD.md §2.1).
+   Never add a size, weight or letter-spacing. Sizes scale with clamp() from the
+   mobile value (390px viewport) to the desktop value (1440px). */
+.h1, .h2, .h3, .h4, .p1, .p2, .p3 { font-family: var(--font-sans); margin: 0; }
+.mono { font-family: var(--font-mono); margin: 0; }
+
+/* headings — Inter 400 */
+.h1 { font-weight: 400; font-size: clamp(var(--h1-m), calc(var(--h1-m) + 32 * var(--fluid)), var(--h1)); line-height: 1.0; letter-spacing: -0.06em; }
+.h2 { font-weight: 400; font-size: clamp(var(--h2-m), calc(var(--h2-m) + 16 * var(--fluid)), var(--h2)); line-height: 1.0; letter-spacing: -0.06em; }
+.h3 { font-weight: 400; font-size: clamp(var(--h3-m), calc(var(--h3-m) + 7 * var(--fluid)), var(--h3));  line-height: 1.05; letter-spacing: -0.06em; }
+.h4 { font-weight: 400; font-size: var(--h4); line-height: 1.1; letter-spacing: -0.07em; }
+
+/* paragraphs — Inter 300 */
+.p1 { font-weight: 300; font-size: clamp(var(--p1-m), calc(var(--p1-m) + 12 * var(--fluid)), var(--p1)); line-height: 1.25; letter-spacing: -0.02em; }
+.p2 { font-weight: 300; font-size: clamp(var(--p2-m), calc(var(--p2-m) + 7 * var(--fluid)), var(--p2));  line-height: 1.45; letter-spacing: -0.03em; }
+.p3 { font-weight: 300; font-size: var(--p3); line-height: 1.5; letter-spacing: -0.05em; }
+
+/* monospace label — Inconsolata 300, uppercase */
+.mono { font-weight: 300; font-size: var(--mono); line-height: 1.6; letter-spacing: 0.02em; text-transform: uppercase; }

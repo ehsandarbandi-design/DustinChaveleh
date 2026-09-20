@@ -1,0 +1,7 @@
+/* Grid: 24 columns desktop / 8 mobile, 20px gap, no max width (full-bleed). */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+.page { padding-left: var(--gutter); padding-right: var(--gutter); }
