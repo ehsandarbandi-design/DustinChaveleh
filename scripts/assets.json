@@ -274,5 +274,11 @@
     "width": 1600,
     "height": 1067,
     "bytes": 238958
+  },
+  "app/icon.png": {
+    "source": "Figma › Favicon (629:9), exported via the Figma MCP — also app/apple-icon.png",
+    "width": 180,
+    "height": 180,
+    "bytes": 3162
   }
 }

@@ -5,6 +5,7 @@ This file is written by that script — do not edit by hand.
 
 | Public file | Source | Size | Weight |
 |---|---|---|---|
+| `app/icon.png` | `Figma › Favicon (629:9), exported via the Figma MCP — also app/apple-icon.png` | 180 × 180 | 3 KB |
 | `public/images/blog/before-you-buy-in-the-sunset-know-its-history.webp` | `assets/images/blog/Before You Buy in the Sunset, Know Its History.webp` | 1600 × 900 | 210 KB |
 | `public/images/blog/home-buyers-and-sellers-generational-trends.webp` | `assets/images/blog/Home Buyers and Sellers Generational Trends.jpg` | 1600 × 2133 | 775 KB |
 | `public/images/blog/i0ccwm3gm435y9qc8i31gw5zbbqd88.webp` | `assets/images/blog/Ranking the Best Platforms for Home Searching (2026 Guide)45.PNG` | 1320 × 1922 | 107 KB |

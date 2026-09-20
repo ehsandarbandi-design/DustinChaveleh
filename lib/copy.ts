@@ -239,3 +239,18 @@ export const marketUpdate = {
     button: { label: "Start Your Property Search", href: "https://zenlist.com/a/dustin.chaveleh" } as LinkItem,
   },
 };
+
+// Blog (/blog)
+export const blog = {
+  headline: "The San Francisco Real Estate Blog",
+  categories: ["Buyer Resources", "condo", "Home Ownership", "Listings", "Market News", "Neighborhoods", "Things to Do"],
+  button: { label: "Read the blog", href: "/blog" } as LinkItem,
+};
+
+// Neighborhood Guide posts (/blog/tag/Neighborhoods) — no URLs in content/copy.md yet
+export const neighborhoodPosts: Post[] = [
+  { date: "2026-06-13", dateLabel: "6/13/26", title: "The Excelsior: SF's Most Overlooked Neighborhood for Buyers", href: "", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "The Excelsior is a diverse residential neighborhood in the Southeastern quarter of the city, bounded by Mission Street to the west, Silver Avenue to the north, McLaren Park to the East, and Geneva Avenue to the south. It is in the SFAR's District 10." },
+  { date: "2026-04-11", dateLabel: "4/11/26", title: "The Castro Is Having a Moment", href: "", tags: ["Neighborhood Guide", "Home Ownership", "Neighborhoods", "first time home buyer"], excerpt: "The Castro has always been one of San Francisco's most iconic neighborhoods. Now, with the Castro Theatre being restored, new businesses opening along the corridor, and the housing market rebounding, it's also becoming one of the most interesting places to buy in 2026. Here's a look at the history, the homes, and what the market is doing right now." },
+  // date marked [TODO: looks wrong] in content/copy.md
+  { date: "2019-05-28", dateLabel: "5/28/19", title: "Duboce Triangle: Small Neighborhood, Big City Access", href: "", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "Duboce Triangle sits at the center of everything — walkable streets, classic Victorian architecture, easy transit access, and some of SF's best nearby neighborhoods. Median home prices are holding strong around $1.37M–$1.42M in 2026, and inventory remains tight. Here's what buyers need to know before shopping in this market." },
+];
