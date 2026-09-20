@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import About from "@/components/home/About";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -6,8 +7,8 @@ export default function Home() {
     <main>
       <Hero />
       <div className={styles.after}>
-        {/* Sections 2–9 are added here one at a time (BUILD.md §4). */}
-        <div className={styles.placeholder} data-tone="paper" />
+        <About />
+        {/* Sections 3–9 follow here, one at a time (BUILD.md §4). */}
       </div>
     </main>
   );
