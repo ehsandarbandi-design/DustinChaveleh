@@ -5,24 +5,11 @@
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--placeholder);
-  margin-bottom: var(--space-s);
+  margin: 0 0 var(--space-s);
 }
-.zoom {
-  position: absolute;
-  inset: 0;
-  opacity: 0.9;
-  transform: scale(1);
-  transition: transform var(--dur-slow) var(--ease), opacity var(--dur-fast) ease;
-  will-change: transform;
-}
-.card:hover .zoom, .card:focus-within .zoom { transform: scale(1.03); opacity: 1; }
 .img { object-fit: cover; }
 .placeholder { position: absolute; inset: 0; background: var(--placeholder); }
 .meta { color: var(--graphite); margin-bottom: var(--space-2xs); }
 .title { margin-bottom: var(--space-xs); }
 .text { margin-bottom: var(--space-xs); }
 .link { margin-top: auto; }
-@media (prefers-reduced-motion: reduce) {
-  .zoom { transition: none; }
-  .card:hover .zoom { transform: none; }
-}

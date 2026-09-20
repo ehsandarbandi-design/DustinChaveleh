@@ -1,4 +1,5 @@
 import Img from "./Img";
+import Reveal from "./Reveal";
 import TextLink from "./TextLink";
 import styles from "./Card.module.css";
 
@@ -15,19 +16,14 @@ export type CardProps = {
   className?: string;
 };
 
-/** Card (blog / neighborhood): no box, no border, no shadow. Image, then meta, .h3 title, .p3 text, text link. */
+/** Card (blog / neighborhood): no box, no border, no shadow. Image (wiping up into view like every other photo,
+ *  no hover effect), then meta, .h3 title, .p3 text, text link. */
 export default function Card({ image, meta, title, text, link, sizes = "(max-width: 767px) 100vw, 33vw", className = "" }: CardProps) {
   return (
     <article className={`${styles.card} ${className}`}>
-      <div className={styles.media}>
-        {image ? (
-          <div className={styles.zoom}>
-            <Img src={image.src} alt={image.alt} fill sizes={sizes} className={styles.img} />
-          </div>
-        ) : (
-          <div className={styles.placeholder} aria-hidden="true" />
-        )}
-      </div>
+      <Reveal as="figure" mode="clip" className={styles.media}>
+        {image ? <Img src={image.src} alt={image.alt} fill sizes={sizes} className={styles.img} /> : <div className={styles.placeholder} aria-hidden="true" />}
+      </Reveal>
       {meta ? <p className={`mono ${styles.meta}`}>{meta}</p> : null}
       <h3 className={`h3 ${styles.title}`}>{title}</h3>
       {text ? <p className={`p3 ${styles.text}`}>{text}</p> : null}
