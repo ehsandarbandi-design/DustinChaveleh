@@ -20,8 +20,7 @@ export default function Journal() {
       <Rail className={styles.rail} leading={<Button href={journal.button.href}>{journal.button.label}</Button>}>
         {posts.map((post, i) => (
           <Reveal as="div" key={post.href} delay={Math.min(i, 2) * 80} className={styles.card}>
-            {/* Cover images (assets/images/blog/) do not exist yet → placeholder block */}
-            <Card meta={post.dateLabel} title={post.title} text={post.excerpt} link={{ label: journal.cardLink, href: post.href }} sizes="(max-width: 767px) 75vw, 29vw" />
+            <Card image={post.image ? { src: post.image, alt: post.title } : undefined} meta={post.dateLabel} title={post.title} text={post.excerpt} link={{ label: journal.cardLink, href: post.href }} sizes="(max-width: 767px) 75vw, 29vw" />
           </Reveal>
         ))}
       </Rail>

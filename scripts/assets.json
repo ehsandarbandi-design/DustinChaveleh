@@ -172,5 +172,101 @@
     "width": 1024,
     "height": 68,
     "bytes": 15622
+  },
+  "public/images/neighborhoods/twin-peaks.webp": {
+    "source": "assets/images/neighborhoods/ Twin Peaks.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 658720
+  },
+  "public/images/neighborhoods/duboce-triangle.webp": {
+    "source": "assets/images/neighborhoods/Duboce Triangle.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 367134
+  },
+  "public/images/neighborhoods/embarcadero.webp": {
+    "source": "assets/images/neighborhoods/Embarcadero.jpg",
+    "width": 1600,
+    "height": 1048,
+    "bytes": 223684
+  },
+  "public/images/neighborhoods/excelsior.webp": {
+    "source": "assets/images/neighborhoods/Excelsior.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 248060
+  },
+  "public/images/neighborhoods/haight-ashbury.webp": {
+    "source": "assets/images/neighborhoods/Haight Ashbury.jpg",
+    "width": 1600,
+    "height": 1066,
+    "bytes": 358110
+  },
+  "public/images/neighborhoods/marina.webp": {
+    "source": "assets/images/neighborhoods/Marina.webp",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 509092
+  },
+  "public/images/neighborhoods/noe-valley.webp": {
+    "source": "assets/images/neighborhoods/Noe_Valley.jpg",
+    "width": 1280,
+    "height": 960,
+    "bytes": 265812
+  },
+  "public/images/neighborhoods/north-beach.webp": {
+    "source": "assets/images/neighborhoods/North Beach.webp",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 535594
+  },
+  "public/images/blog/san-francisco-transfer-taxes.webp": {
+    "source": "assets/images/blog/San Francisco Property Transfer Taxes 2026 Guide.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 602104
+  },
+  "public/images/blog/rent-control-in-san-francisco.webp": {
+    "source": "assets/images/blog/Rent Control in San Francisco.jpg",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 256718
+  },
+  "public/images/blog/i0ccwm3gm435y9qc8i31gw5zbbqd88.webp": {
+    "source": "assets/images/blog/Ranking the Best Platforms for Home Searching (2026 Guide)45.PNG",
+    "width": 1320,
+    "height": 1922,
+    "bytes": 109634
+  },
+  "public/images/blog/tenantbuyouts.webp": {
+    "source": "assets/images/blog/Tenant Buyout Costs in San Francisco.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 372198
+  },
+  "public/images/blog/schools-in-san-francisco.webp": {
+    "source": "assets/images/blog/Schools in San Francisco.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 146294
+  },
+  "public/images/blog/home-buyers-and-sellers-generational-trends.webp": {
+    "source": "assets/images/blog/Home Buyers and Sellers Generational Trends.jpg",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 793822
+  },
+  "public/images/blog/why-real-estate-deals-fall-through.webp": {
+    "source": "assets/images/blog/Why Real Estate Deals Fall Through.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 103306
+  },
+  "public/images/blog/before-you-buy-in-the-sunset-know-its-history.webp": {
+    "source": "assets/images/blog/Before You Buy in the Sunset, Know Its History.webp",
+    "width": 1600,
+    "height": 900,
+    "bytes": 214762
   }
 }

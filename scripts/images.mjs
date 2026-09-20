@@ -22,11 +22,24 @@ const jobs = [
   // portraits — full-bleed
   { group: "portrait", src: "assets/images/portrait/dustin-1.png", out: "portrait/dustin-1", widths: [2560], formats: ["webp"] },
   { group: "portrait", src: "assets/images/portrait/dustin-2.png", out: "portrait/dustin-2", widths: [2560], formats: ["webp"] },
-  // neighborhoods — cards
-  { group: "neighborhoods", src: "assets/images/neighborhoods/castro.jpg", out: "neighborhoods/castro", widths: [1600], formats: ["webp"] },
-  { group: "neighborhoods", src: "assets/images/neighborhoods/civic-center.jpg", out: "neighborhoods/civic-center", widths: [1600], formats: ["webp"] },
-  { group: "neighborhoods", src: "assets/images/neighborhoods/mission.jpg", out: "neighborhoods/mission", widths: [1600], formats: ["webp"] },
-  { group: "neighborhoods", src: "assets/images/neighborhoods/nob-hill.jpg", out: "neighborhoods/nob-hill", widths: [1600], formats: ["webp"] },
+  // neighborhoods — cards (source files are named by title; output by slug)
+  ...Object.entries({
+    "castro.jpg": "castro", "civic-center.jpg": "civic-center", "mission.jpg": "mission", "nob-hill.jpg": "nob-hill",
+    " Twin Peaks.jpg": "twin-peaks", "Duboce Triangle.jpg": "duboce-triangle", "Embarcadero.jpg": "embarcadero",
+    "Excelsior.jpg": "excelsior", "Haight Ashbury.jpg": "haight-ashbury", "Marina.webp": "marina",
+    "Noe_Valley.jpg": "noe-valley", "North Beach.webp": "north-beach",
+  }).map(([file, slug]) => ({ group: "neighborhoods", src: `assets/images/neighborhoods/${file}`, out: `neighborhoods/${slug}`, widths: [1600], formats: ["webp"] })),
+  // blog covers — cards (source files are named by post title; output by post slug)
+  ...Object.entries({
+    "San Francisco Property Transfer Taxes 2026 Guide.jpg": "san-francisco-transfer-taxes",
+    "Rent Control in San Francisco.jpg": "rent-control-in-san-francisco",
+    "Ranking the Best Platforms for Home Searching (2026 Guide)45.PNG": "i0ccwm3gm435y9qc8i31gw5zbbqd88",
+    "Tenant Buyout Costs in San Francisco.jpg": "tenantbuyouts",
+    "Schools in San Francisco.jpg": "schools-in-san-francisco",
+    "Home Buyers and Sellers Generational Trends.jpg": "home-buyers-and-sellers-generational-trends",
+    "Why Real Estate Deals Fall Through.jpg": "why-real-estate-deals-fall-through",
+    "Before You Buy in the Sunset, Know Its History.webp": "before-you-buy-in-the-sunset-know-its-history",
+  }).map(([file, slug]) => ({ group: "blog", src: `assets/images/blog/${file}`, out: `blog/${slug}`, widths: [1600], formats: ["webp"] })),
   // press — Meet Dustin "As Featured In"
   { group: "press", src: "assets/images/press/business-insider/business-insider-1.webp", out: "press/business-insider-1", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-2.webp", out: "press/business-insider-2", widths: [1600], formats: ["webp"] },
