@@ -23,8 +23,9 @@ function Chevron({ direction }: { direction: "prev" | "next" }) {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** A row of cards that scrolls sideways with the wheel, drag/swipe, arrow keys (native scroll-snap)
- *  and the Previous / Next chevrons. Cards set their own width. */
+/** A row of cards that scrolls sideways with a horizontal swipe, drag, arrow keys (native scroll-snap)
+ *  and the Previous / Next chevrons; vertical wheel gestures over it still scroll the page (Lenis only steps aside
+ *  for horizontal gestures). Cards set their own width. */
 export default function Rail({ children, leading, trailing, counter = false, className = "" }: Props) {
   const scroller = useRef<HTMLDivElement>(null);
   const [state, setState] = useState({ atStart: true, atEnd: false, index: 0, count: 0, progress: 0 });
@@ -65,7 +66,7 @@ export default function Rail({ children, leading, trailing, counter = false, cla
 
   return (
     <div className={`${styles.rail} ${className}`}>
-      <div ref={scroller} className={styles.scroller} tabIndex={0} data-lenis-prevent>
+      <div ref={scroller} className={styles.scroller} tabIndex={0} data-lenis-prevent-horizontal>
         {children}
       </div>
       <div className={styles.controls}>
