@@ -9,7 +9,7 @@ import styles from "./Footer.module.css";
 const brokerageLogos = [
   { src: "/images/logos/keller-williams.webp", alt: "Keller Williams", width: 168, height: 112 },
   { src: "/images/logos/realtor.webp", alt: "REALTOR®", width: 101, height: 112 },
-  { src: "/images/logos/car.webp", alt: "California Association of REALTORS®", width: 113, height: 112 },
+  { src: "/images/logos/car.webp", alt: "California Association of REALTORS®", width: 112, height: 112 },
 ];
 
 /** Footer (BUILD.md §4.9): Ink, Paper text, three rows separated by hairlines. */

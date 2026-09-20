@@ -32,9 +32,9 @@ This file is written by that script — do not edit by hand.
 | `public/images/hero/sky-1280.webp` | `assets/images/hero/Sky.png` | 1280 × 950 | 30 KB |
 | `public/images/hero/sky-2560.avif` | `assets/images/hero/Sky.png` | 2560 × 1900 | 54 KB |
 | `public/images/hero/sky-2560.webp` | `assets/images/hero/Sky.png` | 2560 × 1900 | 80 KB |
-| `public/images/logos/car.webp` | `assets/images/logos/car.webp` | 113 × 112 | 5 KB |
-| `public/images/logos/keller-williams.webp` | `assets/images/logos/keller-williams.webp` | 168 × 112 | 2 KB |
-| `public/images/logos/realtor.webp` | `assets/images/logos/realtor.webp` | 101 × 112 | 1 KB |
+| `public/images/logos/car.webp` | `assets/images/logos/car 1 white.png` | 112 × 112 | 6 KB |
+| `public/images/logos/keller-williams.webp` | `assets/images/logos/KellerWilliamsWhite.png` | 168 × 112 | 4 KB |
+| `public/images/logos/realtor.webp` | `assets/images/logos/Realtor white.png` | 101 × 112 | 1 KB |
 | `public/images/neighborhoods/castro.webp` | `assets/images/neighborhoods/castro.jpg` | 1600 × 2133 | 293 KB |
 | `public/images/neighborhoods/civic-center.webp` | `assets/images/neighborhoods/civic-center.jpg` | 1600 × 2000 | 255 KB |
 | `public/images/neighborhoods/duboce-triangle.webp` | `assets/images/neighborhoods/Duboce Triangle.jpg` | 1600 × 1067 | 359 KB |

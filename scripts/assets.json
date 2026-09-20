@@ -54,22 +54,22 @@
     "bytes": 80820
   },
   "public/images/logos/keller-williams.webp": {
-    "source": "assets/images/logos/keller-williams.webp",
+    "source": "assets/images/logos/KellerWilliamsWhite.png",
     "width": 168,
     "height": 112,
-    "bytes": 1854
+    "bytes": 4254
   },
   "public/images/logos/realtor.webp": {
-    "source": "assets/images/logos/realtor.webp",
+    "source": "assets/images/logos/Realtor white.png",
     "width": 101,
     "height": 112,
-    "bytes": 766
+    "bytes": 1160
   },
   "public/images/logos/car.webp": {
-    "source": "assets/images/logos/car.webp",
-    "width": 113,
+    "source": "assets/images/logos/car 1 white.png",
+    "width": 112,
     "height": 112,
-    "bytes": 4622
+    "bytes": 6206
   },
   "public/images/hero/sky-2560.avif": {
     "source": "assets/images/hero/Sky.png",
