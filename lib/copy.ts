@@ -190,7 +190,7 @@ export const meetDustin = {
     label: "AS FEATURED IN",
     publication: "BUSINESS INSIDER",
     // alt text for the three images is [TODO] in content/copy.md
-    images: ["/images/press/business-insider-1.webp", "/images/press/business-insider-2.webp", "/images/press/business-insider-3.webp"],
+    images: ["/images/press/business-insider-card.webp", "/images/press/business-insider-2.webp", "/images/press/business-insider-3.webp"],
     body: [
       "In August 2026, Business Insider featured my fitness transformation as part of their longevity series, The Long-Term Investment. The short version: I rebuilt my training and nutrition from the ground up, and it ended up reshaping more than my physique — it gave me the confidence and consistency that helped me close my first deal less than a year later.",
       "The habits weren't complicated. Show up, track progress, trust the process. Turns out that's a pretty good blueprint for building a business too.",

@@ -286,5 +286,11 @@
     "width": 112,
     "height": 112,
     "bytes": 6206
+  },
+  "public/images/press/business-insider-card.webp": {
+    "source": "assets/images/press/business-insider/business-insider-1.png",
+    "width": 1320,
+    "height": 1454,
+    "bytes": 85296
   }
 }
