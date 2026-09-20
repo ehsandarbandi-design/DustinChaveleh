@@ -49,9 +49,9 @@ const jobs = [
   { group: "press", src: "assets/images/press/business-insider/business-insider-2.webp", out: "press/business-insider-2", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-3.webp", out: "press/business-insider-3", widths: [1600], formats: ["webp"] },
   // brokerage logos — the white versions, for the Ink footer; shown 28px tall, exported at 4× height
-  { group: "logos", src: "assets/images/logos/KellerWilliamsWhite.png", out: "logos/keller-williams", heights: [112], formats: ["webp"] },
-  { group: "logos", src: "assets/images/logos/Realtor white.png", out: "logos/realtor", heights: [112], formats: ["webp"] },
-  { group: "logos", src: "assets/images/logos/car 1 white.png", out: "logos/car", heights: [112], formats: ["webp"] },
+  { group: "logos", src: "assets/images/logos/KellerWilliamsWhite.png", out: "logos/keller-williams-white", heights: [112], formats: ["webp"] },
+  { group: "logos", src: "assets/images/logos/Realtor white.png", out: "logos/realtor-white", heights: [112], formats: ["webp"] },
+  { group: "logos", src: "assets/images/logos/car 1 white.png", out: "logos/car-white", heights: [112], formats: ["webp"] },
 ];
 
 const wanted = process.argv.slice(2);
