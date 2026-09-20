@@ -1,0 +1,45 @@
+.bar { display: flex; align-items: center; min-height: 83px; padding: 0 var(--gutter); }
+.muted { color: var(--taupe); }
+
+/* colors */
+.swatches { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: var(--space-m) var(--col-gap); }
+.swatch { grid-column: span 4; }
+.chip { height: 160px; border: 1px solid var(--stone); margin-bottom: var(--space-xs); }
+
+/* type */
+.typeRow { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); column-gap: var(--col-gap); align-items: start; padding: var(--space-m) 0; }
+.typeSpec { grid-column: 1 / span 4; color: var(--taupe); }
+.typeSample { grid-column: 5 / span 17; }
+
+/* spacing */
+.spaceRow { display: flex; align-items: center; gap: var(--space-s); padding: var(--space-2xs) 0; }
+.spaceLabel { flex: none; width: 200px; color: var(--graphite); }
+.spaceBar { flex: none; height: 10px; max-width: 100%; background: var(--ink); }
+.motion { display: grid; gap: var(--space-2xs); margin-top: var(--space-l); color: var(--graphite); }
+
+/* grid */
+.gridDemo { row-gap: var(--space-m); }
+.cell { height: 64px; display: flex; align-items: flex-end; padding: var(--space-2xs); background: var(--stone); color: var(--taupe); }
+.spanStatement { grid-column: 5 / span 17; }
+.spanRight { grid-column: 16 / span 9; }
+
+/* components */
+.block { padding: var(--space-l) 0; }
+.block:first-child { padding-top: 0; }
+.blockTitle { color: var(--taupe); margin-bottom: var(--space-m); }
+.rowWrap { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-s) var(--space-m); }
+.hairDemo { display: flex; align-items: stretch; gap: var(--space-m); margin-bottom: var(--space-m); }
+.cards { row-gap: var(--space-l); }
+.cardCell { grid-column: span 7; }
+.form { row-gap: var(--space-m); }
+.half { grid-column: span 6; }
+.full { grid-column: span 12; }
+.inkSample { margin-bottom: var(--space-m); }
+
+@media (max-width: 767px) {
+  .typeSpec, .typeSample { grid-column: 1 / -1; }
+  .typeSpec { margin-bottom: var(--space-xs); }
+  .spaceLabel { width: 140px; }
+  .cell:nth-child(n + 9) { display: none; }
+  .spanStatement, .spanRight, .cardCell, .half, .full { grid-column: 1 / -1; }
+}

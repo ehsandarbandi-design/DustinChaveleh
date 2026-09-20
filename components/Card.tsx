@@ -1,0 +1,41 @@
+import Img from "./Img";
+import TextLink from "./TextLink";
+import styles from "./Card.module.css";
+
+export type CardProps = {
+  /** 4:5 portrait crop. Omit to render the Stone placeholder block (never substitute another photo). */
+  image?: { src: string; alt: string };
+  /** .mono meta line, e.g. the post date */
+  meta?: string;
+  title: string;
+  text?: string;
+  link?: { label: string; href: string };
+  /** next/image sizes hint for the card's width */
+  sizes?: string;
+  className?: string;
+};
+
+/** Card (blog / neighborhood): no box, no border, no shadow. Image, then meta, .h3 title, .p3 text, text link. */
+export default function Card({ image, meta, title, text, link, sizes = "(max-width: 767px) 100vw, 33vw", className = "" }: CardProps) {
+  return (
+    <article className={`${styles.card} ${className}`}>
+      <div className={styles.media}>
+        {image ? (
+          <div className={styles.zoom}>
+            <Img src={image.src} alt={image.alt} fill sizes={sizes} className={styles.img} />
+          </div>
+        ) : (
+          <div className={styles.placeholder} aria-hidden="true" />
+        )}
+      </div>
+      {meta ? <p className={`mono ${styles.meta}`}>{meta}</p> : null}
+      <h3 className={`h3 ${styles.title}`}>{title}</h3>
+      {text ? <p className={`p3 ${styles.text}`}>{text}</p> : null}
+      {link ? (
+        <TextLink href={link.href} className={`p3 ${styles.link}`}>
+          {link.label}
+        </TextLink>
+      ) : null}
+    </article>
+  );
+}

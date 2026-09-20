@@ -1,0 +1,25 @@
+.section {
+  padding: var(--section-pad) var(--gutter);
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+}
+/* Each tone sets the surface colors and the component defaults that depend on them. */
+.paper {
+  --tone-bg: var(--paper); --tone-fg: var(--ink);
+  --line: var(--line-light); --marker: var(--ink);
+  --outline-color: var(--ink); --outline-flip: var(--paper);
+  --btn-bg: var(--ink); --btn-fg: var(--paper); --btn-bg-hover: var(--graphite);
+}
+.stone {
+  --tone-bg: var(--stone); --tone-fg: var(--ink);
+  --line: var(--paper); --marker: var(--ink);
+  --outline-color: var(--ink); --outline-flip: var(--paper);
+  --btn-bg: var(--ink); --btn-fg: var(--paper); --btn-bg-hover: var(--graphite);
+}
+.ink {
+  --tone-bg: var(--ink); --tone-fg: var(--paper);
+  --line: var(--line-dark); --marker: var(--paper);
+  --outline-color: var(--paper); --outline-flip: var(--ink);
+  --btn-bg: var(--paper); --btn-fg: var(--ink); --btn-bg-hover: var(--stone);
+}
+.content { margin-top: var(--space-l); }

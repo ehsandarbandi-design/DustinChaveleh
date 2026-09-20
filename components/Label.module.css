@@ -1,0 +1,3 @@
+.row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-s); }
+.text { color: var(--taupe); }
+.marker { flex: none; width: 10px; height: 10px; background: var(--marker); }
