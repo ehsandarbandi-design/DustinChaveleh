@@ -1,12 +1,2 @@
-.hero { min-height: 70vh; min-height: 70svh; display: flex; flex-direction: column; justify-content: center; }
-.headline { grid-column: 1 / span 16; }
-.sub { grid-column: 1 / span 16; margin-top: var(--space-m); }
-.actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-s) var(--space-m); margin-top: var(--space-l); }
-.hint { color: var(--taupe); }
-
 /* The game, embedded between the gutters on Stone; the iframe sizes itself to the game's screens */
-.game { padding-top: var(--section-pad); padding-bottom: var(--section-pad); background: var(--stone); }
-
-@media (max-width: 767px) {
-  .headline, .sub { grid-column: 1 / -1; }
-}
+.game { padding-top: var(--space-l); padding-bottom: var(--section-pad); background: var(--stone); }
