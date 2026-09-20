@@ -1,2 +1,3 @@
-/* The game, embedded between the gutters on Stone; the iframe sizes itself to the game's screens */
-.game { padding-top: var(--space-l); padding-bottom: var(--section-pad); background: var(--stone); }
+/* The game fills the page edge to edge on its own background (the game's screens are white), so the
+   embed reads as one surface — no band, padding or gutters around it. */
+.game { background: #ffffff; padding: 0; }

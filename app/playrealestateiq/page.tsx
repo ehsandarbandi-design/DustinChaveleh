@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: `${realEstateIQ.title} — ${site.log
 export default function PlayRealEstateIQPage() {
   return (
     <main className="below-header">
-      <section id="game" className={`${styles.game} page`} data-tone="stone" data-game-embed="real-estate-iq">
+      <section id="game" className={styles.game} data-tone="paper" data-game-embed="real-estate-iq">
         <GameEmbed title={realEstateIQ.title} />
       </section>
     </main>
