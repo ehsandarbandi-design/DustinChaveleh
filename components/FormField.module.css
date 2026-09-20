@@ -1,5 +1,6 @@
 .field { display: flex; flex-direction: column; min-height: 48px; }
-.label { color: var(--taupe); margin-bottom: var(--space-2xs); }
+.label { color: var(--ink); margin-bottom: var(--space-xs); }
+.required { color: var(--graphite); margin-left: 0.6em; }
 .input {
   width: 100%;
   min-height: 48px;
@@ -21,13 +22,13 @@
   appearance: none;
   -webkit-appearance: none;
   flex: none;
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--ink);
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--graphite);
   background: transparent;
   cursor: pointer;
   transition: background-color var(--dur-fast) ease;
 }
-.checkbox:checked { background: var(--ink); }
+.checkbox:checked { background: var(--ink); border-color: var(--ink); }
 .checkbox:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.checkLabel { color: var(--taupe); cursor: pointer; }
+.checkLabel { color: var(--ink); cursor: pointer; }

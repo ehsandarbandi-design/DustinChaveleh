@@ -1,7 +1,18 @@
-/* Two columns inside whatever grid span the page gives the form */
-.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-m) var(--col-gap); }
+/* Two columns inside whatever grid span the page gives the form; groups sit --space-l apart */
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-l) var(--space-s); }
 .half { grid-column: span 1; }
 .full { grid-column: 1 / -1; }
+/* Full-width outlined submit with the Mono label (the reference form's button) */
+.submit {
+  width: 100%;
+  padding: 28px 26px;
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: var(--mono);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
 @media (max-width: 767px) {
   .half { grid-column: 1 / -1; }
 }

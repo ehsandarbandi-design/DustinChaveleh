@@ -24,7 +24,7 @@ export default function WorkWithDustinPage() {
               {workWithDustin.details.map((d) => (
                 <div key={d.label} className={styles.detail}>
                   <dt className={`mono ${styles.term}`}>{d.label}</dt>
-                  <dd className="p2">{d.href ? <TextLink href={d.href}>{d.value}</TextLink> : d.value}</dd>
+                  <dd className="p3">{d.href ? <TextLink href={d.href}>{d.value}</TextLink> : d.value}</dd>
                 </div>
               ))}
             </dl>

@@ -12,7 +12,7 @@ const brokerageLogos = [
   { src: "/images/logos/car-white.webp", alt: "California Association of REALTORS®", width: 112, height: 112 },
 ];
 
-/** Footer (BUILD.md §4.9): Ink, Paper text, three rows separated by hairlines. */
+/** Footer (BUILD.md §4.9): Ink, Paper text; nav row, then a hairline, then contact/social and the license/logos rows. */
 export default function Footer() {
   return (
     <footer className={`${sectionStyles.ink} ${styles.footer}`} data-tone="ink">
@@ -44,9 +44,8 @@ export default function Footer() {
           ))}
         </ul>
       </div>
-      <Hairline />
 
-      <div className={styles.row}>
+      <div className={`${styles.row} ${styles.rowLast}`}>
         <div className={styles.legal}>
           <span className="mono">{site.license}</span>
           <ul className={styles.logos}>
@@ -57,8 +56,6 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        {/* Fine print: no text for this line exists in content/copy.md yet */}
-        <p className={`p3 ${styles.finePrint}`}>[ TEXT NEEDED ]</p>
       </div>
     </footer>
   );

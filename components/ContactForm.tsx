@@ -26,7 +26,9 @@ export default function ContactForm({ className = "" }: { className?: string }) 
       <FormField id="contact-phone" name="phone" kind="tel" label={fields.phone.label} autoComplete="tel" className={styles.full} />
       <FormField id="contact-message" name="message" kind="textarea" label={fields.message.label} required placeholder={fields.message.placeholder} className={styles.full} />
       <div className={styles.full}>
-        <Button type="submit">{button}</Button>
+        <Button type="submit" variant="outlined" arrow={false} className={styles.submit}>
+          {button}
+        </Button>
       </div>
     </form>
   );
