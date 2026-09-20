@@ -8,6 +8,7 @@
 // 1600 for cards. Nothing is enlarged past its source size.
 import sharp from "sharp";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -66,6 +67,10 @@ try {
 } catch {}
 
 for (const job of selected) {
+  if (!existsSync(path.join(ROOT, job.src))) {
+    console.warn(`skip: source missing — ${job.src}`);
+    continue;
+  }
   const input = sharp(path.join(ROOT, job.src), { limitInputPixels: false }).rotate();
   const sizes = job.widths ? job.widths.map((width) => ({ width })) : job.heights.map((height) => ({ height }));
   for (const size of sizes) {
