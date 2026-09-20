@@ -1,6 +1,5 @@
 import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
-import TextLink from "@/components/TextLink";
 import Img from "@/components/Img";
 import Accordion from "@/components/Accordion";
 import { home, guides } from "@/lib/copy";
@@ -34,9 +33,6 @@ export default function NextStep() {
                   content: step.body ? <p className="p2">{step.body}</p> : <p className="mono">[ TEXT NEEDED ]</p>,
                 }))}
               />
-              <TextLink href={block.link.href} className={`h4 ${styles.link}`}>
-                {block.link.label}
-              </TextLink>
             </div>
             <Reveal as="figure" className={styles.media}>
               <Img src={block.guide.image} alt={block.title} fill sizes="(max-width: 767px) 100vw, 50vw" className={styles.img} />

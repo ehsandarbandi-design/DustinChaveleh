@@ -254,3 +254,13 @@ export const neighborhoodPosts: Post[] = [
   // date marked [TODO: looks wrong] in content/copy.md
   { date: "2019-05-28", dateLabel: "5/28/19", title: "Duboce Triangle: Small Neighborhood, Big City Access", href: "", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "Duboce Triangle sits at the center of everything — walkable streets, classic Victorian architecture, easy transit access, and some of SF's best nearby neighborhoods. Median home prices are holding strong around $1.37M–$1.42M in 2026, and inventory remains tight. Here's what buyers need to know before shopping in this market." },
 ];
+
+// Work with Dustin (/work-with-dustin)
+export const workWithDustin = {
+  label: "GET IN TOUCH",
+  headline: "Ready to make your move?",
+  body: "Whether you're just starting to think about buying or you've already found a place you love, Dustin is here to help you figure out the next step. Clear guidance, straightforward communication, and support at every stage of the process.",
+  details: home.contact.details,
+  formHeadline: "Connect with Dustin",
+  formIntro: "Fill out the form below, and I will get back to you promptly.",
+};
