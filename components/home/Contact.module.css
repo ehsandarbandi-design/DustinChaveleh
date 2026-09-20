@@ -1,0 +1,10 @@
+.grid { row-gap: var(--space-l); align-items: start; }
+.intro { grid-column: 1 / span 10; }
+.details { display: flex; flex-direction: column; gap: var(--space-s); margin-top: var(--space-l); }
+.detail { display: flex; flex-direction: column; gap: var(--space-2xs); }
+.term { color: var(--taupe); }
+.form { grid-column: 13 / -1; }
+
+@media (max-width: 767px) {
+  .intro, .form { grid-column: 1 / -1; }
+}

@@ -4,6 +4,7 @@ import Journal from "@/components/home/Journal";
 import RealEstateIQ from "@/components/home/RealEstateIQ";
 import Neighborhoods from "@/components/home/Neighborhoods";
 import NextStep from "@/components/home/NextStep";
+import Contact from "@/components/home/Contact";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -16,7 +17,8 @@ export default function Home() {
         <RealEstateIQ />
         <Neighborhoods />
         <NextStep />
-        {/* Sections 8–9 follow here, one at a time (BUILD.md §4). */}
+        <Contact />
+
       </div>
     </main>
   );
