@@ -264,3 +264,13 @@ export const workWithDustin = {
   formHeadline: "Connect with Dustin",
   formIntro: "Fill out the form below, and I will get back to you promptly.",
 };
+
+// Play Real Estate IQ (/playrealestateiq) — the existing game is embedded, not rebuilt
+export const realEstateIQ = {
+  title: "Real Estate IQ — Guess SF Home Prices",
+  label: "Test Your Market Knowledge",
+  headline: "REAL ESTATE IQ",
+  subheadline: "See the list price. Guess the sale price.",
+  button: "Play Now",
+  scrollHint: "SCROLL TO SEE HOW IT WORKS ↓",
+};

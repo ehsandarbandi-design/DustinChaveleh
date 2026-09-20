@@ -1,0 +1,13 @@
+.hero { min-height: 70vh; min-height: 70svh; display: flex; flex-direction: column; justify-content: center; }
+.headline { grid-column: 1 / span 16; }
+.sub { grid-column: 1 / span 16; margin-top: var(--space-m); }
+.actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-s) var(--space-m); margin-top: var(--space-l); }
+.hint { color: var(--taupe); }
+
+/* The container the game will be embedded into: full width between the gutters, tall enough to play in */
+.game { padding-top: var(--section-pad); padding-bottom: var(--section-pad); background: var(--stone); }
+.gameSlot { min-height: 70vh; min-height: 70svh; display: flex; align-items: center; justify-content: center; border: 1px solid var(--taupe); color: var(--taupe); }
+
+@media (max-width: 767px) {
+  .headline, .sub { grid-column: 1 / -1; }
+}
