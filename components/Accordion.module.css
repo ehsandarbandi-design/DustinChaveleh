@@ -1,0 +1,30 @@
+.list { display: flex; flex-direction: column; }
+.heading { margin: 0; }
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-xs) 0;
+  text-align: left;
+  color: inherit;
+}
+.titleWrap { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2xs); }
+.meta { color: var(--taupe); }
+/* the "+" — two 1px lines; the vertical one rotates away when open */
+.plus { position: relative; flex: none; width: 16px; height: 16px; }
+.plus span { position: absolute; left: 0; top: 50%; width: 16px; height: 1px; background: currentColor; transition: transform var(--dur) var(--ease); }
+.plus span:last-child { transform: rotate(90deg); }
+[data-open="true"] .plus span:last-child { transform: rotate(0deg); }
+
+/* height animation via the grid-rows trick */
+.panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur) var(--ease); }
+[data-open="true"] .panel { grid-template-rows: 1fr; }
+.panelInner { overflow: hidden; min-height: 0; }
+.content { padding: var(--space-2xs) 0 var(--space-m); }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel, .plus span { transition: none; }
+}

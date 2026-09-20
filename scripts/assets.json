@@ -268,5 +268,17 @@
     "width": 1600,
     "height": 900,
     "bytes": 214762
+  },
+  "public/images/guides/for-sellers.webp": {
+    "source": "assets/images/For Sellers.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 370702
+  },
+  "public/images/guides/for-buyers.webp": {
+    "source": "assets/images/For Buyers.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 238958
   }
 }

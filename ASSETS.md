@@ -13,6 +13,8 @@ This file is written by that script — do not edit by hand.
 | `public/images/blog/schools-in-san-francisco.webp` | `assets/images/blog/Schools in San Francisco.jpg` | 1600 × 1067 | 143 KB |
 | `public/images/blog/tenantbuyouts.webp` | `assets/images/blog/Tenant Buyout Costs in San Francisco.jpg` | 1600 × 2400 | 363 KB |
 | `public/images/blog/why-real-estate-deals-fall-through.webp` | `assets/images/blog/Why Real Estate Deals Fall Through.jpg` | 1600 × 2400 | 101 KB |
+| `public/images/guides/for-buyers.webp` | `assets/images/For Buyers.jpg` | 1600 × 1067 | 233 KB |
+| `public/images/guides/for-sellers.webp` | `assets/images/For Sellers.jpg` | 1600 × 1067 | 362 KB |
 | `public/images/hero/bay-1280.avif` | `assets/images/hero/Bay.png` | 1280 × 950 | 36 KB |
 | `public/images/hero/bay-1280.webp` | `assets/images/hero/Bay.png` | 1280 × 950 | 58 KB |
 | `public/images/hero/bay-2560.avif` | `assets/images/hero/Bay.png` | 2560 × 1900 | 123 KB |

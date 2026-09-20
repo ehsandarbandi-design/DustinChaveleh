@@ -40,6 +40,9 @@ const jobs = [
     "Why Real Estate Deals Fall Through.jpg": "why-real-estate-deals-fall-through",
     "Before You Buy in the Sunset, Know Its History.webp": "before-you-buy-in-the-sunset-know-its-history",
   }).map(([file, slug]) => ({ group: "blog", src: `assets/images/blog/${file}`, out: `blog/${slug}`, widths: [1600], formats: ["webp"] })),
+  // guides — Taking the Next Step / guide pages
+  { group: "guides", src: "assets/images/For Sellers.jpg", out: "guides/for-sellers", widths: [1600], formats: ["webp"] },
+  { group: "guides", src: "assets/images/For Buyers.jpg", out: "guides/for-buyers", widths: [1600], formats: ["webp"] },
   // press — Meet Dustin "As Featured In"
   { group: "press", src: "assets/images/press/business-insider/business-insider-1.webp", out: "press/business-insider-1", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-2.webp", out: "press/business-insider-2", widths: [1600], formats: ["webp"] },
