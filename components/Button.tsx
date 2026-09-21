@@ -17,7 +17,7 @@ type Props = {
 };
 
 export default function Button({ variant = "filled", arrow = true, href, type = "button", onClick, className = "", disabled, children }: Props) {
-  const cls = [styles.button, styles[variant], variant === "outlined" ? "h4" : "mono", className].join(" ");
+  const cls = [styles.button, styles[variant], className].join(" ");
   const label = (
     <>
       {arrow ? <Arrow /> : null}

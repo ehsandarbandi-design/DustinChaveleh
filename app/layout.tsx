@@ -11,9 +11,9 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/copy";
 
-// The only two fonts: Inter 300/400/700 and Inconsolata 300, display: swap.
+// The only two fonts: Inter 300/400/700 and Inconsolata 300 (labels) + 500 (buttons only), display: swap.
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "700"], display: "swap", variable: "--font-inter" });
-const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300"], display: "swap", preload: false, variable: "--font-inconsolata" });
+const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300", "500"], display: "swap", preload: false, variable: "--font-inconsolata" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

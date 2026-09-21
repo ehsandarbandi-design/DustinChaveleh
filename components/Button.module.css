@@ -1,39 +1,47 @@
-/* Hover mechanic (from the reference recordings): the fill is a block anchored to the bottom edge.
-   Filled (primary): the Ink fill drains down to a 1px bottom line and the text flips to Ink.
-   Outlined (secondary): the fill rises from the bottom edge to fill the button; on leave it drains back down.
-   Tertiary: a 2px bar under the label rises the same way. */
+/* The three buttons, from the reference site's settings and its Flex hover (Squarespace source):
+   Primary (filled): Inconsolata 500 0.9rem uppercase, padding 1.4em / 1.8em, Ink on Paper text.
+   Secondary (outlined): same type, 1px outline, padding 1em / 1.8em.
+   Tertiary (underline): Inconsolata 500 1rem, 1px underline, padding 1rem / 1.3rem.
+   Hover: a fill rises from the bottom edge (clip-path, .6s cubic-bezier(.19,1,.22,1)) and the text flips.
+   On the primary the rising fill is Paper with a 2px Ink border, so the Ink looks like it drains to a 2px line. */
 .button {
   position: relative;
   isolation: isolate;
   display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   text-align: center;
   white-space: nowrap;
   border: 0;
+  background: transparent;
   cursor: pointer;
-  transition: color var(--dur) var(--ease);
+  transition: color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .button::before {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: 0;
+  inset: 0;
   z-index: -1;
-  transition: height var(--dur) var(--ease);
+  clip-path: polygon(-2% 102%, 102% 102%, 102% 102%, -2% 102%);
+  transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
+.button:hover::before, .button:focus-visible::before { clip-path: polygon(-2% -2%, 102% -2%, 102% 102%, -2% 102%); }
 
-.filled { color: var(--btn-fg); padding: 20px 26px; }
-.filled::before { height: 100%; background: var(--btn-bg); }
+.filled { color: var(--btn-fg); background: var(--btn-bg); padding: 1.4em 1.8em; }
+.filled::before { background: var(--btn-fg); border: 2px solid var(--btn-bg); }
 .filled:hover, .filled:focus-visible { color: var(--btn-bg); }
-.filled:hover::before, .filled:focus-visible::before { height: 1px; }
 
-.outlined { color: var(--outline-color); border: 1px solid var(--outline-color); padding: 10px 11px; }
-.outlined::before { height: 0; background: var(--outline-color); }
+.outlined { color: var(--outline-color); border: 1px solid var(--outline-color); padding: 1em 1.8em; }
+.outlined::before { background: var(--outline-color); }
 .outlined:hover, .outlined:focus-visible { color: var(--outline-flip); }
-.outlined:hover::before, .outlined:focus-visible::before { height: 100%; }
 
-.tertiary { color: var(--outline-color); padding: 12px 0; }
-.tertiary::before { height: 2px; background: var(--outline-color); }
+.tertiary { font-size: 1rem; color: var(--outline-color); border-bottom: 1px solid var(--outline-color); padding: 1rem 1.3rem; }
+.tertiary::before { background: var(--outline-color); }
 .tertiary:hover, .tertiary:focus-visible { color: var(--outline-flip); }
-.tertiary:hover::before, .tertiary:focus-visible::before { height: 100%; }
 
 /* Long labels ("Read the full article on Business Insider") wrap on phones instead of overflowing */
 @media (max-width: 767px) {

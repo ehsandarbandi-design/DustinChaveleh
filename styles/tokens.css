@@ -44,7 +44,7 @@
 
   /* fonts — the variables are set by next/font in app/layout.tsx */
   --font-sans: var(--font-inter), Inter, sans-serif;
-  --font-mono: var(--font-inconsolata), Inconsolata, monospace;
+  --font-mono: var(--font-inconsolata), Inconsolata, monospace;   /* 300 for labels; 500 for buttons only (components/Button) */
 
   /* component defaults for a light (Paper) surface; Section tones override these */
   --line: var(--line-light);
