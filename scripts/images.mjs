@@ -18,7 +18,7 @@ const jobs = [
   // hero parallax layers (PNG with transparency for City and Cloude → keep alpha)
   { group: "hero", src: "assets/images/hero/Sky.png", out: "hero/sky", widths: [2560, 1280], formats: ["avif", "webp"] },
   { group: "hero", src: "assets/images/hero/Bay.png", out: "hero/bay", widths: [2560, 1280], formats: ["avif", "webp"] },
-  { group: "hero", src: "assets/images/hero/City.png", out: "hero/city", widths: [2560, 1280], formats: ["avif", "webp"] },
+  { group: "hero", src: "assets/images/hero/City 1.png", out: "hero/city-2", widths: [2560, 1280], formats: ["avif", "webp"] },   // "-2": new source, new filenames so no cache can serve the old layer
   { group: "hero", src: "assets/images/hero/Cloude.png", out: "hero/clouds", widths: [2560, 1280], formats: ["avif", "webp"] },
   // portraits — full-bleed
   { group: "portrait", src: "assets/images/portrait/dustin-1.png", out: "portrait/dustin-1", widths: [2560], formats: ["webp"] },
@@ -91,6 +91,8 @@ for (const job of selected) {
   }
 }
 
+// Drop records whose output was deleted (a source renamed or re-exported under a new name)
+for (const rel of Object.keys(record)) if (!existsSync(path.join(ROOT, rel))) delete record[rel];
 await writeFile(RECORD, JSON.stringify(record, null, 2) + "\n");
 
 const rows = Object.entries(record)

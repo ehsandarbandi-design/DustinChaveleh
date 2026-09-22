@@ -20,10 +20,10 @@ This file is written by that script — do not edit by hand.
 | `public/images/hero/bay-1280.webp` | `assets/images/hero/Bay.png` | 1280 × 950 | 58 KB |
 | `public/images/hero/bay-2560.avif` | `assets/images/hero/Bay.png` | 2560 × 1900 | 123 KB |
 | `public/images/hero/bay-2560.webp` | `assets/images/hero/Bay.png` | 2560 × 1900 | 190 KB |
-| `public/images/hero/city-1280.avif` | `assets/images/hero/City.png` | 1280 × 950 | 72 KB |
-| `public/images/hero/city-1280.webp` | `assets/images/hero/City.png` | 1280 × 950 | 187 KB |
-| `public/images/hero/city-2560.avif` | `assets/images/hero/City.png` | 2560 × 1900 | 259 KB |
-| `public/images/hero/city-2560.webp` | `assets/images/hero/City.png` | 2560 × 1900 | 456 KB |
+| `public/images/hero/city-2-1280.avif` | `assets/images/hero/City 1.png` | 1280 × 950 | 75 KB |
+| `public/images/hero/city-2-1280.webp` | `assets/images/hero/City 1.png` | 1280 × 950 | 195 KB |
+| `public/images/hero/city-2-2560.avif` | `assets/images/hero/City 1.png` | 2560 × 1900 | 285 KB |
+| `public/images/hero/city-2-2560.webp` | `assets/images/hero/City 1.png` | 2560 × 1900 | 508 KB |
 | `public/images/hero/clouds-1280.avif` | `assets/images/hero/Cloude.png` | 1280 × 950 | 30 KB |
 | `public/images/hero/clouds-1280.webp` | `assets/images/hero/Cloude.png` | 1280 × 950 | 125 KB |
 | `public/images/hero/clouds-2560.avif` | `assets/images/hero/Cloude.png` | 2560 × 1900 | 105 KB |
@@ -50,7 +50,6 @@ This file is written by that script — do not edit by hand.
 | `public/images/neighborhoods/twin-peaks.webp` | `assets/images/neighborhoods/ Twin Peaks.jpg` | 1600 × 2400 | 643 KB |
 | `public/images/portrait/dustin-1.webp` | `assets/images/portrait/dustin-1.png` | 1856 × 2304 | 305 KB |
 | `public/images/portrait/dustin-2.webp` | `assets/images/portrait/dustin-2.png` | 2560 × 1524 | 156 KB |
-| `public/images/press/business-insider-1.webp` | `assets/images/press/business-insider/business-insider-1.png` | 1320 × 1454 | 83 KB |
 | `public/images/press/business-insider-2.webp` | `assets/images/press/business-insider/business-insider-2.webp` | 1320 × 2465 | 146 KB |
 | `public/images/press/business-insider-3.webp` | `assets/images/press/business-insider/business-insider-3.webp` | 1320 × 2038 | 79 KB |
 | `public/images/press/business-insider-card.webp` | `assets/images/press/business-insider/business-insider-1.png` | 1320 × 1454 | 83 KB |

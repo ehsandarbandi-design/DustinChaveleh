@@ -35,12 +35,6 @@
     "height": 2400,
     "bytes": 473856
   },
-  "public/images/press/business-insider-1.webp": {
-    "source": "assets/images/press/business-insider/business-insider-1.png",
-    "width": 1320,
-    "height": 1454,
-    "bytes": 85296
-  },
   "public/images/press/business-insider-2.webp": {
     "source": "assets/images/press/business-insider/business-insider-2.webp",
     "width": 1320,
@@ -100,30 +94,6 @@
     "width": 1280,
     "height": 950,
     "bytes": 59636
-  },
-  "public/images/hero/city-2560.avif": {
-    "source": "assets/images/hero/City.png",
-    "width": 2560,
-    "height": 1900,
-    "bytes": 264944
-  },
-  "public/images/hero/city-2560.webp": {
-    "source": "assets/images/hero/City.png",
-    "width": 2560,
-    "height": 1900,
-    "bytes": 467414
-  },
-  "public/images/hero/city-1280.avif": {
-    "source": "assets/images/hero/City.png",
-    "width": 1280,
-    "height": 950,
-    "bytes": 74061
-  },
-  "public/images/hero/city-1280.webp": {
-    "source": "assets/images/hero/City.png",
-    "width": 1280,
-    "height": 950,
-    "bytes": 191630
   },
   "public/images/hero/clouds-2560.avif": {
     "source": "assets/images/hero/Cloude.png",
@@ -298,5 +268,29 @@
     "width": 1600,
     "height": 1198,
     "bytes": 298240
+  },
+  "public/images/hero/city-2-2560.avif": {
+    "source": "assets/images/hero/City 1.png",
+    "width": 2560,
+    "height": 1900,
+    "bytes": 291836
+  },
+  "public/images/hero/city-2-2560.webp": {
+    "source": "assets/images/hero/City 1.png",
+    "width": 2560,
+    "height": 1900,
+    "bytes": 520528
+  },
+  "public/images/hero/city-2-1280.avif": {
+    "source": "assets/images/hero/City 1.png",
+    "width": 1280,
+    "height": 950,
+    "bytes": 76473
+  },
+  "public/images/hero/city-2-1280.webp": {
+    "source": "assets/images/hero/City 1.png",
+    "width": 1280,
+    "height": 950,
+    "bytes": 199254
   }
 }

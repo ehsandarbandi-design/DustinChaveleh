@@ -16,15 +16,19 @@ const LAYER_H = 1330; // layer image height at scale 1 (1792 × 1330)
 
 type LayerName = "sky" | "bay" | "city" | "clouds";
 
+/** Output filenames per layer (a re-exported source gets a new suffix so caches cannot show the old one). */
+const FILE: Record<LayerName, string> = { sky: "sky", bay: "bay", city: "city-2", clouds: "clouds" };
+
 function Layer({ name, priority = false, ref }: { name: LayerName; priority?: boolean; ref?: Ref<HTMLDivElement> }) {
+  const file = FILE[name];
   return (
     <div className={styles.layer} ref={ref} data-layer={name}>
       <picture>
-        <source media="(max-width: 767px)" type="image/avif" srcSet={`/images/hero/${name}-1280.avif`} />
-        <source media="(max-width: 767px)" type="image/webp" srcSet={`/images/hero/${name}-1280.webp`} />
-        <source type="image/avif" srcSet={`/images/hero/${name}-2560.avif`} />
+        <source media="(max-width: 767px)" type="image/avif" srcSet={`/images/hero/${file}-1280.avif`} />
+        <source media="(max-width: 767px)" type="image/webp" srcSet={`/images/hero/${file}-1280.webp`} />
+        <source type="image/avif" srcSet={`/images/hero/${file}-2560.avif`} />
         <img
-          src={`/images/hero/${name}-2560.webp`}
+          src={`/images/hero/${file}-2560.webp`}
           alt=""
           width={2560}
           height={1900}
