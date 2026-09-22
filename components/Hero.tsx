@@ -24,8 +24,9 @@ function Layer({ name, priority = false, ref }: { name: LayerName; priority?: bo
   return (
     <div className={styles.layer} ref={ref} data-layer={name}>
       <picture>
-        <source media="(max-width: 767px)" type="image/avif" srcSet={`/images/hero/${file}-1280.avif`} />
-        <source media="(max-width: 767px)" type="image/webp" srcSet={`/images/hero/${file}-1280.webp`} />
+        {/* Phones draw the layers ~1400 CSS px wide, so 2x/3x screens need the 2560 file; 1x screens get 1280 */}
+        <source media="(max-width: 767px)" type="image/avif" srcSet={`/images/hero/${file}-1280.avif 1x, /images/hero/${file}-2560.avif 2x`} />
+        <source media="(max-width: 767px)" type="image/webp" srcSet={`/images/hero/${file}-1280.webp 1x, /images/hero/${file}-2560.webp 2x`} />
         <source type="image/avif" srcSet={`/images/hero/${file}-2560.avif`} />
         <img
           src={`/images/hero/${file}-2560.webp`}
