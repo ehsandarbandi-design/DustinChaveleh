@@ -292,5 +292,53 @@
     "width": 1280,
     "height": 950,
     "bytes": 199254
+  },
+  "public/images/hero/sky-1920.avif": {
+    "source": "assets/images/hero/Sky.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 36480
+  },
+  "public/images/hero/sky-1920.webp": {
+    "source": "assets/images/hero/Sky.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 53722
+  },
+  "public/images/hero/bay-1920.avif": {
+    "source": "assets/images/hero/Bay.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 77125
+  },
+  "public/images/hero/bay-1920.webp": {
+    "source": "assets/images/hero/Bay.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 124134
+  },
+  "public/images/hero/city-2-1920.avif": {
+    "source": "assets/images/hero/City 1.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 198055
+  },
+  "public/images/hero/city-2-1920.webp": {
+    "source": "assets/images/hero/City 1.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 359820
+  },
+  "public/images/hero/clouds-1920.avif": {
+    "source": "assets/images/hero/Cloude.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 71912
+  },
+  "public/images/hero/clouds-1920.webp": {
+    "source": "assets/images/hero/Cloude.png",
+    "width": 1920,
+    "height": 1425,
+    "bytes": 233398
   }
 }

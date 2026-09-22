@@ -24,9 +24,9 @@ function Layer({ name, priority = false, ref }: { name: LayerName; priority?: bo
   return (
     <div className={styles.layer} ref={ref} data-layer={name}>
       <picture>
-        {/* Phones draw the layers ~1400 CSS px wide, so 2x/3x screens need the 2560 file; 1x screens get 1280 */}
-        <source media="(max-width: 767px)" type="image/avif" srcSet={`/images/hero/${file}-1280.avif 1x, /images/hero/${file}-2560.avif 2x`} />
-        <source media="(max-width: 767px)" type="image/webp" srcSet={`/images/hero/${file}-1280.webp 1x, /images/hero/${file}-2560.webp 2x`} />
+        {/* Phones draw the layers ~1400 CSS px wide: 2x/3x screens get the 1920 file, 1x screens 1280 */}
+        <source media="(max-width: 767px)" type="image/avif" srcSet={`/images/hero/${file}-1280.avif 1x, /images/hero/${file}-1920.avif 2x`} />
+        <source media="(max-width: 767px)" type="image/webp" srcSet={`/images/hero/${file}-1280.webp 1x, /images/hero/${file}-1920.webp 2x`} />
         <source type="image/avif" srcSet={`/images/hero/${file}-2560.avif`} />
         <img
           src={`/images/hero/${file}-2560.webp`}
@@ -35,7 +35,7 @@ function Layer({ name, priority = false, ref }: { name: LayerName; priority?: bo
           height={1900}
           decoding="async"
           loading="eager"
-          fetchPriority={priority ? "high" : undefined}
+          fetchPriority={priority ? "high" : "low"}   /* the headline is the LCP; layers must not delay the fonts */
           draggable={false}
         />
       </picture>
@@ -167,7 +167,7 @@ export default function Hero() {
         <h1 className="sr-only">{home.hero.headline}</h1>
 
         <Layer name="sky" priority />
-        <Layer name="bay" priority ref={bayRef} />
+        <Layer name="bay" ref={bayRef} />
 
         {/* The name: one line on desktop, two words on mobile (Figma 601:1042). Hidden from screen readers —
             the nav logo is the accessible "Dustin Chaveleh". */}
@@ -181,7 +181,7 @@ export default function Hero() {
           <span className={styles.word} data-word>{second}</span>
         </div>
 
-        <Layer name="city" priority ref={cityRef} />
+        <Layer name="city" ref={cityRef} />
         <Layer name="clouds" ref={cloudsRef} />
         <div className={styles.night} ref={nightRef} aria-hidden="true" />
 
