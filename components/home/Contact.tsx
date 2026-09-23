@@ -10,7 +10,7 @@ import styles from "./Contact.module.css";
 export default function Contact() {
   const { contact } = home;
   return (
-    <Section label={contact.label} id="contact">
+    <Section label={contact.label} id="contact" className={styles.section}>
       <div className={`grid ${styles.grid}`}>
         <div className={styles.intro}>
           <Reveal as="h2" className="h1">

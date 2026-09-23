@@ -14,8 +14,9 @@ type TextareaProps = Base & { kind: "textarea"; placeholder?: string; rows?: num
 type CheckboxProps = Base & { kind: "checkbox" };
 export type FormFieldProps = TextProps | TextareaProps | CheckboxProps;
 
-/** Form field: no box. H4 label above ("(required)" in Graphite), transparent input with a 1px Stone
- *  bottom border only, H4 text, 12px bottom padding. Focus: 2px Ink bottom border. Minimum touch height 48px. */
+/** Form field: no box. P3 label above ("(required)" in Taupe), transparent input with a 1px Stone bottom
+ *  border only, P3 text — the sizes and spacing of the reference contact form. Focus: 2px Ink bottom border.
+ *  Compact on desktop; 48px minimum touch height on phones. */
 export default function FormField(props: FormFieldProps) {
   const { id, label, required, error, className = "" } = props;
   const name = props.name ?? id;
@@ -31,7 +32,7 @@ export default function FormField(props: FormFieldProps) {
     return (
       <div className={`${styles.field} ${styles.check} ${className}`}>
         <input id={id} name={name} type="checkbox" className={styles.checkbox} />
-        <label htmlFor={id} className={`h4 ${styles.checkLabel}`}>
+        <label htmlFor={id} className={`p3 ${styles.checkLabel}`}>
           {labelNode}
         </label>
       </div>
@@ -45,16 +46,16 @@ export default function FormField(props: FormFieldProps) {
     "aria-required": required || undefined,
     "aria-invalid": error ? true : undefined,
     "aria-describedby": errorId,
-    className: `h4 ${styles.input}`,
+    className: `p3 ${styles.input}`,
   };
 
   return (
     <div className={`${styles.field} ${className}`}>
-      <label htmlFor={id} className={`h4 ${styles.label}`}>
+      <label htmlFor={id} className={`p3 ${styles.label}`}>
         {labelNode}
       </label>
       {props.kind === "textarea" ? (
-        <textarea {...shared} rows={props.rows ?? 6} placeholder={props.placeholder} className={`h4 ${styles.input} ${styles.textarea}`} />
+        <textarea {...shared} rows={props.rows ?? 6} placeholder={props.placeholder} className={`p3 ${styles.input} ${styles.textarea}`} />
       ) : (
         <input {...shared} type={props.kind ?? "text"} placeholder={props.placeholder} autoComplete={props.autoComplete} />
       )}

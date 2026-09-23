@@ -1,5 +1,5 @@
 /* Two columns inside whatever grid span the page gives the form; groups sit --space-l apart */
-.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-l) var(--space-s); }
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-m) var(--space-s); }
 .half { grid-column: span 1; }
 .full { grid-column: 1 / -1; }
 /* Full-width secondary submit (the reference form's button) */
@@ -8,7 +8,7 @@
   .half { grid-column: 1 / -1; }
 }
 /* Status line under the button (success / error text is still [TODO] in content/copy.md) */
-.status { grid-column: 1 / -1; min-height: 1.5em; margin: calc(-1 * var(--space-l) + var(--space-xs)) 0 0; color: var(--ink); }
+.status { grid-column: 1 / -1; min-height: 1.5em; margin: calc(-1 * var(--space-m) + var(--space-xs)) 0 0; color: var(--ink); }
 .form[data-status="error"] .status { color: var(--graphite); }
 .form[aria-busy="true"] .submit { opacity: 0.5; cursor: progress; }
 /* Honeypot: off-screen, never displayed */

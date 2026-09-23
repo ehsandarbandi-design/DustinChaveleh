@@ -8,7 +8,7 @@
 // 1600 for cards. Nothing is enlarged past its source size.
 import sharp from "sharp";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -63,16 +63,34 @@ if (!selected.length) {
   process.exit(1);
 }
 
+/** Find a source by name, ignoring the extension and letter case, so a re-exported photo
+ *  ("Marina.webp" → "Marina.png") keeps working without editing this file. */
+function resolveSource(rel) {
+  if (existsSync(path.join(ROOT, rel))) return rel;
+  const dir = path.dirname(rel);
+  const base = path.basename(rel, path.extname(rel)).toLowerCase();
+  let entries = [];
+  try {
+    entries = readdirSync(path.join(ROOT, dir));
+  } catch {
+    return null;
+  }
+  const match = entries.find((f) => path.basename(f, path.extname(f)).toLowerCase() === base);
+  return match ? path.join(dir, match) : null;
+}
+
 let record = {};
 try {
   record = JSON.parse(await readFile(RECORD, "utf8"));
 } catch {}
 
 for (const job of selected) {
-  if (!existsSync(path.join(ROOT, job.src))) {
+  const src = resolveSource(job.src);
+  if (!src) {
     console.warn(`skip: source missing — ${job.src}`);
     continue;
   }
+  job.src = src;
   const input = sharp(path.join(ROOT, job.src), { limitInputPixels: false }).rotate();
   const sizes = job.widths ? job.widths.map((width) => ({ width })) : job.heights.map((height) => ({ height }));
   for (const size of sizes) {

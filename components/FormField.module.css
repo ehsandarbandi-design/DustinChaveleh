@@ -1,10 +1,10 @@
-.field { display: flex; flex-direction: column; min-height: 48px; }
-.label { color: var(--ink); margin-bottom: var(--space-xs); }
-.required { color: var(--graphite); margin-left: 0.6em; }
+.field { display: flex; flex-direction: column; }
+.label { color: var(--ink); margin-bottom: var(--space-s); }
+.required { color: var(--taupe); margin-left: 0.6em; }
 .input {
   width: 100%;
-  min-height: 48px;
-  padding: 0 0 12px;
+  min-height: 32px;
+  padding: 6px 0;
   background: transparent;
   border: 0;
   border-bottom: 1px solid var(--stone);
@@ -12,7 +12,7 @@
   transition: border-color var(--dur-fast) ease;
 }
 .input::placeholder { color: var(--taupe); opacity: 1; }
-.input:focus { outline: none; border-bottom: 2px solid var(--ink); padding-bottom: 11px; }
+.input:focus { outline: none; border-bottom: 2px solid var(--ink); padding-bottom: 5px; }
 .input[aria-invalid="true"] { border-bottom-color: var(--ink); }
 .textarea { resize: vertical; }
 .error { margin-top: var(--space-2xs); color: var(--ink); }
@@ -22,8 +22,8 @@
   appearance: none;
   -webkit-appearance: none;
   flex: none;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   border: 1px solid var(--graphite);
   background: transparent;
   cursor: pointer;
@@ -32,3 +32,9 @@
 .checkbox:checked { background: var(--ink); border-color: var(--ink); }
 .checkbox:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .checkLabel { color: var(--ink); cursor: pointer; }
+
+/* Touch targets stay 48px on phones */
+@media (max-width: 767px) {
+  .input { min-height: 48px; }
+  .check { min-height: 48px; }
+}

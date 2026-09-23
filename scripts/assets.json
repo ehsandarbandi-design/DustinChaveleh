@@ -12,22 +12,22 @@
     "bytes": 159956
   },
   "public/images/neighborhoods/castro.webp": {
-    "source": "assets/images/neighborhoods/castro.jpg",
+    "source": "assets/images/neighborhoods/Castro.png",
     "width": 1600,
-    "height": 2133,
-    "bytes": 299950
+    "height": 1073,
+    "bytes": 175882
   },
   "public/images/neighborhoods/civic-center.webp": {
-    "source": "assets/images/neighborhoods/civic-center.jpg",
+    "source": "assets/images/neighborhoods/civic-center.png",
     "width": 1600,
-    "height": 2000,
-    "bytes": 261138
+    "height": 1342,
+    "bytes": 153522
   },
   "public/images/neighborhoods/mission.webp": {
-    "source": "assets/images/neighborhoods/mission.jpg",
+    "source": "assets/images/neighborhoods/mission.png",
     "width": 1600,
-    "height": 1200,
-    "bytes": 288854
+    "height": 1195,
+    "bytes": 296378
   },
   "public/images/neighborhoods/nob-hill.webp": {
     "source": "assets/images/neighborhoods/nob-hill.jpg",
@@ -126,10 +126,10 @@
     "bytes": 658720
   },
   "public/images/neighborhoods/duboce-triangle.webp": {
-    "source": "assets/images/neighborhoods/Duboce Triangle.jpg",
+    "source": "assets/images/neighborhoods/Duboce Triangle.png",
     "width": 1600,
-    "height": 1067,
-    "bytes": 367134
+    "height": 1073,
+    "bytes": 402228
   },
   "public/images/neighborhoods/embarcadero.webp": {
     "source": "assets/images/neighborhoods/Embarcadero.jpg",
@@ -138,28 +138,28 @@
     "bytes": 223684
   },
   "public/images/neighborhoods/excelsior.webp": {
-    "source": "assets/images/neighborhoods/Excelsior.jpg",
+    "source": "assets/images/neighborhoods/Excelsior.png",
     "width": 1600,
-    "height": 1067,
-    "bytes": 248060
+    "height": 1073,
+    "bytes": 247280
   },
   "public/images/neighborhoods/haight-ashbury.webp": {
-    "source": "assets/images/neighborhoods/Haight Ashbury.jpg",
+    "source": "assets/images/neighborhoods/Haight Ashbury.png",
     "width": 1600,
-    "height": 1066,
-    "bytes": 358110
+    "height": 1153,
+    "bytes": 230268
   },
   "public/images/neighborhoods/marina.webp": {
-    "source": "assets/images/neighborhoods/Marina.webp",
+    "source": "assets/images/neighborhoods/Marina.png",
     "width": 1600,
-    "height": 2400,
-    "bytes": 509092
+    "height": 1073,
+    "bytes": 183614
   },
   "public/images/neighborhoods/noe-valley.webp": {
-    "source": "assets/images/neighborhoods/Noe_Valley.jpg",
-    "width": 1280,
-    "height": 960,
-    "bytes": 265812
+    "source": "assets/images/neighborhoods/Noe_Valley.png",
+    "width": 1600,
+    "height": 1073,
+    "bytes": 374614
   },
   "public/images/neighborhoods/north-beach.webp": {
     "source": "assets/images/neighborhoods/North Beach.webp",
@@ -198,22 +198,22 @@
     "bytes": 146294
   },
   "public/images/blog/home-buyers-and-sellers-generational-trends.webp": {
-    "source": "assets/images/blog/Home Buyers and Sellers Generational Trends.jpg",
+    "source": "assets/images/blog/Home Buyers and Sellers Generational Trends.png",
     "width": 1600,
-    "height": 2133,
-    "bytes": 793822
+    "height": 2143,
+    "bytes": 656682
   },
   "public/images/blog/why-real-estate-deals-fall-through.webp": {
-    "source": "assets/images/blog/Why Real Estate Deals Fall Through.jpg",
+    "source": "assets/images/blog/Why Real Estate Deals Fall Through.png",
     "width": 1600,
-    "height": 2400,
-    "bytes": 103306
+    "height": 2385,
+    "bytes": 85126
   },
   "public/images/blog/before-you-buy-in-the-sunset-know-its-history.webp": {
-    "source": "assets/images/blog/Before You Buy in the Sunset, Know Its History.webp",
+    "source": "assets/images/blog/Before You Buy in the Sunset, Know Its History.png",
     "width": 1600,
-    "height": 900,
-    "bytes": 214762
+    "height": 893,
+    "bytes": 243496
   },
   "public/images/guides/for-sellers.webp": {
     "source": "assets/images/For Sellers.jpg",

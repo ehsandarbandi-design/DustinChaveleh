@@ -1,3 +1,5 @@
+/* Sized like the reference contact page: --space-xl section padding, the form's own type at P3 */
+.section { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
 .grid { row-gap: var(--space-l); align-items: start; }
 .intro { grid-column: 1 / span 10; }
 .details { display: flex; flex-direction: column; gap: var(--space-xs); margin-top: var(--space-l); }

@@ -6,14 +6,14 @@ This file is written by that script — do not edit by hand.
 | Public file | Source | Size | Weight |
 |---|---|---|---|
 | `app/icon.png` | `Figma › Favicon (629:9), exported via the Figma MCP — also app/apple-icon.png` | 180 × 180 | 3 KB |
-| `public/images/blog/before-you-buy-in-the-sunset-know-its-history.webp` | `assets/images/blog/Before You Buy in the Sunset, Know Its History.webp` | 1600 × 900 | 210 KB |
-| `public/images/blog/home-buyers-and-sellers-generational-trends.webp` | `assets/images/blog/Home Buyers and Sellers Generational Trends.jpg` | 1600 × 2133 | 775 KB |
+| `public/images/blog/before-you-buy-in-the-sunset-know-its-history.webp` | `assets/images/blog/Before You Buy in the Sunset, Know Its History.png` | 1600 × 893 | 238 KB |
+| `public/images/blog/home-buyers-and-sellers-generational-trends.webp` | `assets/images/blog/Home Buyers and Sellers Generational Trends.png` | 1600 × 2143 | 641 KB |
 | `public/images/blog/i0ccwm3gm435y9qc8i31gw5zbbqd88.webp` | `assets/images/blog/Ranking the Best Platforms for Home Searching (2026 Guide)45.PNG` | 1320 × 1922 | 107 KB |
 | `public/images/blog/rent-control-in-san-francisco.webp` | `assets/images/blog/Rent Control in San Francisco.jpg` | 1600 × 1200 | 251 KB |
 | `public/images/blog/san-francisco-transfer-taxes.webp` | `assets/images/blog/San Francisco Property Transfer Taxes 2026 Guide.jpg` | 1600 × 2400 | 588 KB |
 | `public/images/blog/schools-in-san-francisco.webp` | `assets/images/blog/Schools in San Francisco.jpg` | 1600 × 1067 | 143 KB |
 | `public/images/blog/tenantbuyouts.webp` | `assets/images/blog/Tenant Buyout Costs in San Francisco.jpg` | 1600 × 2400 | 363 KB |
-| `public/images/blog/why-real-estate-deals-fall-through.webp` | `assets/images/blog/Why Real Estate Deals Fall Through.jpg` | 1600 × 2400 | 101 KB |
+| `public/images/blog/why-real-estate-deals-fall-through.webp` | `assets/images/blog/Why Real Estate Deals Fall Through.png` | 1600 × 2385 | 83 KB |
 | `public/images/guides/for-buyers.webp` | `assets/images/For Buyers.jpg` | 1600 × 1067 | 233 KB |
 | `public/images/guides/for-sellers.webp` | `assets/images/For Sellers.jpg` | 1600 × 1067 | 362 KB |
 | `public/images/hero/bay-1280.avif` | `assets/images/hero/Bay.png` | 1280 × 950 | 36 KB |
@@ -44,16 +44,16 @@ This file is written by that script — do not edit by hand.
 | `public/images/logos/keller-williams-white.webp` | `assets/images/logos/KellerWilliamsWhite.png` | 168 × 112 | 4 KB |
 | `public/images/logos/realtor-white.webp` | `assets/images/logos/Realtor white.png` | 101 × 112 | 1 KB |
 | `public/images/market/bird-view.webp` | `assets/images/Bird view.webp` | 1600 × 1198 | 291 KB |
-| `public/images/neighborhoods/castro.webp` | `assets/images/neighborhoods/castro.jpg` | 1600 × 2133 | 293 KB |
-| `public/images/neighborhoods/civic-center.webp` | `assets/images/neighborhoods/civic-center.jpg` | 1600 × 2000 | 255 KB |
-| `public/images/neighborhoods/duboce-triangle.webp` | `assets/images/neighborhoods/Duboce Triangle.jpg` | 1600 × 1067 | 359 KB |
+| `public/images/neighborhoods/castro.webp` | `assets/images/neighborhoods/Castro.png` | 1600 × 1073 | 172 KB |
+| `public/images/neighborhoods/civic-center.webp` | `assets/images/neighborhoods/civic-center.png` | 1600 × 1342 | 150 KB |
+| `public/images/neighborhoods/duboce-triangle.webp` | `assets/images/neighborhoods/Duboce Triangle.png` | 1600 × 1073 | 393 KB |
 | `public/images/neighborhoods/embarcadero.webp` | `assets/images/neighborhoods/Embarcadero.jpg` | 1600 × 1048 | 218 KB |
-| `public/images/neighborhoods/excelsior.webp` | `assets/images/neighborhoods/Excelsior.jpg` | 1600 × 1067 | 242 KB |
-| `public/images/neighborhoods/haight-ashbury.webp` | `assets/images/neighborhoods/Haight Ashbury.jpg` | 1600 × 1066 | 350 KB |
-| `public/images/neighborhoods/marina.webp` | `assets/images/neighborhoods/Marina.webp` | 1600 × 2400 | 497 KB |
-| `public/images/neighborhoods/mission.webp` | `assets/images/neighborhoods/mission.jpg` | 1600 × 1200 | 282 KB |
+| `public/images/neighborhoods/excelsior.webp` | `assets/images/neighborhoods/Excelsior.png` | 1600 × 1073 | 241 KB |
+| `public/images/neighborhoods/haight-ashbury.webp` | `assets/images/neighborhoods/Haight Ashbury.png` | 1600 × 1153 | 225 KB |
+| `public/images/neighborhoods/marina.webp` | `assets/images/neighborhoods/Marina.png` | 1600 × 1073 | 179 KB |
+| `public/images/neighborhoods/mission.webp` | `assets/images/neighborhoods/mission.png` | 1600 × 1195 | 289 KB |
 | `public/images/neighborhoods/nob-hill.webp` | `assets/images/neighborhoods/nob-hill.jpg` | 1600 × 2400 | 463 KB |
-| `public/images/neighborhoods/noe-valley.webp` | `assets/images/neighborhoods/Noe_Valley.jpg` | 1280 × 960 | 260 KB |
+| `public/images/neighborhoods/noe-valley.webp` | `assets/images/neighborhoods/Noe_Valley.png` | 1600 × 1073 | 366 KB |
 | `public/images/neighborhoods/north-beach.webp` | `assets/images/neighborhoods/North Beach.webp` | 1600 × 2400 | 523 KB |
 | `public/images/neighborhoods/twin-peaks.webp` | `assets/images/neighborhoods/ Twin Peaks.jpg` | 1600 × 2400 | 643 KB |
 | `public/images/portrait/dustin-1.webp` | `assets/images/portrait/dustin-1.png` | 1856 × 2304 | 305 KB |

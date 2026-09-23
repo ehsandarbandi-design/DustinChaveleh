@@ -13,7 +13,7 @@ export const metadata: Metadata = { title: `${workWithDustin.headline} — ${sit
 export default function WorkWithDustinPage() {
   return (
     <main className="below-header">
-      <Section label={workWithDustin.label} id="work-with-dustin">
+      <Section label={workWithDustin.label} id="work-with-dustin" className={styles.section}>
         <div className={`grid ${styles.grid}`}>
           <div className={styles.intro}>
             <Reveal as="h1" className="h1">
@@ -33,7 +33,7 @@ export default function WorkWithDustinPage() {
             <Reveal as="h2" className="h3">
               {workWithDustin.formHeadline}
             </Reveal>
-            <Reveal as="p" className={`p2 ${styles.formIntro}`}>{workWithDustin.formIntro}</Reveal>
+            <Reveal as="p" className={`p3 ${styles.formIntro}`}>{workWithDustin.formIntro}</Reveal>
             <Reveal>
               <ContactForm />
             </Reveal>
