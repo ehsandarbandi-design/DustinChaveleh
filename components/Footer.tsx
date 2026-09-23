@@ -3,6 +3,7 @@ import TextLink from "./TextLink";
 import Hairline from "./Hairline";
 import Img from "./Img";
 import Reveal from "./Reveal";
+import Social from "./Social";
 import { site } from "@/lib/copy";
 import sectionStyles from "./Section.module.css";
 import styles from "./Footer.module.css";
@@ -37,13 +38,7 @@ export default function Footer() {
           <TextLink href={`mailto:${site.email}`}>{site.email}</TextLink>
           <span>{site.office}</span>
         </address>
-        <ul className={`mono ${styles.social}`}>
-          {site.social.map((s) => (
-            <li key={s.href}>
-              <TextLink href={s.href}>{s.label}</TextLink>
-            </li>
-          ))}
-        </ul>
+        <Social className={styles.social} />
       </Reveal>
 
       <Reveal className={`${styles.row} ${styles.rowLast}`}>

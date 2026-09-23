@@ -1,6 +1,7 @@
 import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
+import Social from "@/components/Social";
 import Img from "@/components/Img";
 import { home, site } from "@/lib/copy";
 import styles from "./About.module.css";
@@ -23,6 +24,9 @@ export default function About() {
               {paragraph}
             </Reveal>
           ))}
+          <Reveal className={styles.social}>
+            <Social />
+          </Reveal>
           <Reveal as="p" className={`mono ${styles.smallPrint}`}>{about.smallPrint}</Reveal>
           <Reveal className={styles.link}>
             <Button variant="tertiary" href={about.link.href}>

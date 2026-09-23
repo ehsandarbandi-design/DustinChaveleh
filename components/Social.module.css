@@ -1,0 +1,1 @@
+.list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-s); color: var(--tone-fg, inherit); }

@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import Img from "@/components/Img";
 import Button from "@/components/Button";
+import Social from "@/components/Social";
 import Hairline from "@/components/Hairline";
 import Video from "@/components/Video";
 import { meetDustin, site } from "@/lib/copy";
@@ -45,6 +46,9 @@ export default function MeetDustinPage() {
                 </Reveal>
               ))}
             </div>
+            <Reveal className={styles.social}>
+              <Social />
+            </Reveal>
             <Reveal className={styles.heroAction}>
               <Button variant="outlined" href={meetDustin.button.href}>
                 {meetDustin.button.label}

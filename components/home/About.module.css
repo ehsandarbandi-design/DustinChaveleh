@@ -1,6 +1,7 @@
 .grid { row-gap: var(--space-l); align-items: start; }
 .text { grid-column: 1 / span 11; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-m); }
 .headline { margin-bottom: var(--space-s); }
+.social { margin-top: calc(var(--space-s) - var(--space-m)); }   /* --space-s below the last paragraph */
 .smallPrint { color: var(--taupe); margin-top: var(--space-s); }
 .link { margin-top: calc(var(--space-s) - var(--space-m)); }   /* --space-s below the DRE line */
 
