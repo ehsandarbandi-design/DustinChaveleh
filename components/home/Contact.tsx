@@ -7,7 +7,7 @@ import Label from "@/components/Label";
 import { home } from "@/lib/copy";
 import styles from "./Contact.module.css";
 
-/** Home §8 — Get In Touch (Paper): the label, then the contact details (phone, e-mail, office, license) and the call button in
+/** Home §8 — Get In Touch (Paper, Figma 684:3814): the label at the top left, the contact details at the bottom left (phone, e-mail, office, license) and the call button in
  *  columns 1–10; the two-line headline on top of the form in columns 13–24. Reused at the end of blog posts. */
 export default function Contact() {
   const { contact } = home;
