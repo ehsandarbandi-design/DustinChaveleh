@@ -24,21 +24,19 @@ function PressImage({ src, stagger }: { src: string; stagger: number }) {
 
 export const metadata: Metadata = pageMeta({ title: `${meetDustin.headline} — ${site.logo}`, description: seo.meetDustin, path: "/meetdustin" });
 
-/** /meetdustin (BUILD.md §5, laid out like the reference "Our Founder" screen): the H1 across the top, then the
- *  subheadline, body and outlined button in columns 1–11 beside the portrait in columns 13–24; As Featured In on Stone (Figma 630:39: publication
+/** /meetdustin (BUILD.md §5): the [ ABOUT ] row, then (Figma 690:5103) the H1, body, social links, DRE line and outlined
+ *  button in columns 1–11 beside the portrait in columns 13–24, which runs from the top of the H1 to the bottom of the
+ *  button; As Featured In on Stone (Figma 630:39: publication as an H3
  *  left, body + button and the screenshot collage in columns 13–24), the pull-quote over the background loop (Ink scrim), three hairline resource rows. */
 export default function MeetDustinPage() {
   const { featured, quote, resources } = meetDustin;
   return (
     <main className="below-header">
-      <section className={`${styles.hero} page`} data-tone="paper">
+      <Section label={meetDustin.label} id="about" className={styles.hero}>
         <div className={`grid ${styles.heroGrid}`}>
-          <Reveal as="h1" className={`h1 ${styles.headline}`}>
-            {meetDustin.headline}
-          </Reveal>
           <div className={styles.heroText}>
-            <Reveal as="p" className={`h3 ${styles.subheadline}`}>
-              {meetDustin.subheadline}
+            <Reveal as="h1" className="h1">
+              {meetDustin.headline}
             </Reveal>
             <div className={styles.body}>
               {meetDustin.body.map((p) => (
@@ -50,7 +48,10 @@ export default function MeetDustinPage() {
             <Reveal className={styles.social}>
               <Social />
             </Reveal>
-            <Reveal className={styles.heroAction}>
+            <Reveal as="p" className="mono">
+              {meetDustin.smallPrint}
+            </Reveal>
+            <Reveal button>
               <Button variant="outlined" href={meetDustin.button.href}>
                 {meetDustin.button.label}
               </Button>
@@ -60,11 +61,11 @@ export default function MeetDustinPage() {
             <Img src={meetDustin.image} alt={site.logo} fill sizes="(max-width: 767px) 100vw, 50vw" className={styles.img} eager />
           </Reveal>
         </div>
-      </section>
+      </Section>
 
       <Section label={featured.label} tone="stone" id="featured">
         <div className={`grid ${styles.featuredGrid}`}>
-          <Reveal as="p" className={`mono ${styles.publication}`}>
+          <Reveal as="h2" className={`h3 ${styles.publication}`}>
             {featured.publication}
           </Reveal>
           <div className={styles.featuredBody}>

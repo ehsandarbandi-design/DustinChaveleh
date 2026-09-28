@@ -333,8 +333,10 @@ export const guides: { buyers: Guide; sellers: Guide } = {
 
 // Meet Dustin (/meetdustin)
 export const meetDustin = {
+  label: "ABOUT",
   headline: "Meet Dustin Chaveleh",
-  subheadline: "San Francisco REALTOR®",
+  subheadline: "San Francisco REALTOR®",   // not shown since the Figma 690:5103 layout; kept for reference
+  smallPrint: "CA DRE # 02368948",
   image: "/images/portrait/dustin-2.webp",
   body: [
     "Originally from Texas, I moved to San Francisco in 2019—sight unseen—and have since built my career across finance and tech, with experience at Bloomberg, Goldman Sachs, and other technology companies. Along the way, I developed a strong interest in real estate investing and built my own portfolio, which led me to pursue a residential sales license in San Francisco.",
@@ -345,7 +347,7 @@ export const meetDustin = {
   button: { label: "Work with Dustin", href: "/work-with-dustin" } as LinkItem,
   featured: {
     label: "AS FEATURED IN",
-    publication: "BUSINESS INSIDER",
+    publication: "Business Insider",
     // alt text for the three images is [TODO] in content/copy.md
     images: ["/images/press/business-insider-card.webp", "/images/press/business-insider-2.webp", "/images/press/business-insider-3.webp"],
     body: [

@@ -1,20 +1,17 @@
-/* Hero (the reference layout): the H1 across the top; then the subheadline, body and button in columns 1–11
-   beside the 4:5 portrait in columns 13–24 bleeding right; the button sits at the bottom of the text column */
-.hero { padding-top: var(--space-2xl); padding-bottom: var(--section-pad); }
-.heroGrid { align-items: start; row-gap: var(--space-xl); }
-.headline { grid-column: 1 / span 14; }
-.heroText { grid-column: 1 / span 11; display: flex; flex-direction: column; align-items: flex-start; }
-.subheadline { margin-top: 0; }
-.body { display: flex; flex-direction: column; gap: var(--space-m); margin-top: var(--space-m); }
-.social { margin-top: var(--space-m); }
-.heroAction { margin-top: auto; padding-top: var(--space-xl); }
-.portrait { grid-column: 13 / -1; position: relative; aspect-ratio: 4 / 5; margin: 0 calc(-1 * var(--gutter)) 0 0; overflow: hidden; background: var(--stone); }
+/* About (Figma 690:5103): under the [ ABOUT ] row, the text column (columns 1–11, --space-l between the H1, the body,
+   the DRE line and the button) beside the portrait in columns 13–24 inside the page margin. The portrait stretches to
+   the text column's height, so its top is level with the H1 and its bottom with the button. */
+.heroGrid { align-items: stretch; row-gap: var(--space-l); }
+.heroText { grid-column: 1 / span 11; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-l); }
+.body { display: flex; flex-direction: column; gap: var(--space-m); }
+.social { margin-top: calc(var(--space-s) - var(--space-l)); }   /* --space-s under the last paragraph */
+.portrait { grid-column: 13 / -1; position: relative; margin: 0; overflow: hidden; background: var(--stone); }
 .img { object-fit: cover; }
 
 /* As Featured In (Figma 630:39): publication in Graphite at the left; body, the outlined button --space-l below it,
    and --space-xl under that the collage — two screenshots stacked beside a tall one, 270:398 wide, one column gap */
 .featuredGrid { row-gap: var(--space-xl); }
-.publication { grid-column: 1 / span 4; color: var(--graphite); }
+.publication { grid-column: 1 / span 11; }
 .featuredBody { grid-column: 13 / -1; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-m); }
 .featuredAction { margin-top: calc(var(--space-l) - var(--space-m)); }
 .press { grid-column: 13 / span 10; display: grid; grid-template-columns: 270fr 398fr; gap: var(--col-gap); align-items: start; }
@@ -40,9 +37,7 @@
 
 @media (max-width: 767px) {
   .heroGrid { row-gap: var(--space-l); }
-  .headline, .heroText, .portrait, .publication, .featuredBody, .press, .blockquote, .resourcesHeadline, .rowTitle, .rowText { grid-column: 1 / -1; }
+  .heroText, .portrait, .publication, .featuredBody, .press, .blockquote, .resourcesHeadline, .rowTitle, .rowText { grid-column: 1 / -1; }
   .featuredGrid { row-gap: var(--space-l); }
-  .portrait { order: 0; margin-right: 0; }   /* H1, photo, then the text on mobile */
-  .heroText { order: 1; }
-  .heroAction { padding-top: var(--space-l); }
+  .portrait { aspect-ratio: 4 / 5; }   /* text, then the photo on mobile */
 }
