@@ -11,8 +11,8 @@
 - **Site title (browser tab):** Dustin Chaveleh | San Francisco based REALTOR®
 - **Meta description:** see "SEO" at the end of this file (drafted Sep 28, 2026)
 - **Logo text:** Dustin Chaveleh
-- **Nav:** Home · Meet Dustin · Market Update · Blog · Play Games · **Work with Dustin** (button)
-  - URLs: `/` · `/meetdustin` · `/market-update` · `/blog` · `/playrealestateiq` · `/work-with-dustin`
+- **Nav:** Home · Meet Dustin · Market Update · Blog · FAQ · Play Games · **Work with Dustin** (button)
+  - URLs: `/` · `/meetdustin` · `/market-update` · `/blog` · `/faq` · `/playrealestateiq` · `/work-with-dustin`
   - Figma says "Market update" and "Play Games"; current site says "Market Update" and "Play Game". [TODO: pick one — suggest "Market Update" and "Play Games"]
 - **License:** CA DRE #02368948
 - **Phone:** (512) 391-9306  → `sms:5123919306`
@@ -25,7 +25,7 @@
   - YouTube: https://www.youtube.com/@Dust_in_SF
   - Google profile: https://share.google/4Gu8ZNLQdxIxLXwXv
 - **Property search (external):** https://zenlist.com/a/dustin.chaveleh
-- **Book a call (external):** Book a 15-Minute Call → https://calendly.com/dustinchaveleh-kw/15min
+- **Book a call (external):** Book a 30-Minute Call (tertiary button) → https://calendly.com/dustinchaveleh-kw/15min
   - Line above the button (Home Contact and Work with Dustin): Prefer to talk it through? Pick a time for a quick call.
 
 ---
@@ -307,7 +307,7 @@ Meta descriptions (≈155 characters each), drafted Sep 28, 2026 in the site's v
 - **Blog:** Dustin's blog on buying and selling in San Francisco. Transfer taxes, rent control, schools, neighborhoods and where the market is headed, in plain English.
 - **Blog category pages:** Everything filed under {category} on Dustin Chaveleh's San Francisco real estate blog.
 - **Blog posts:** the post's excerpt.
-- **Work with Dustin:** Buying or selling in San Francisco? Book a 15-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.
+- **Work with Dustin:** Buying or selling in San Francisco? Book a 30-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.
 - **FAQ:** Straight answers to what San Francisco buyers and sellers ask most: down payments, timelines, schools, early listing access and what working with Dustin costs.
 - **Play Real Estate IQ:** See a real San Francisco listing and guess what it sold for. Nail it within 10% and score 1,000 points a home. Harder than it sounds.
 
@@ -331,7 +331,7 @@ Excerpts of Dustin's Google reviews, cut at a full sentence. Update the rating i
 - Label: [ FAQ ]
 - Headline: Before you make your move.
 - Intro: The questions I hear most from buyers and sellers, with straight answers. If yours isn't here, ask me.
-- Linked from: the footer ("FAQ"), and Work with Dustin (tertiary button "Read the FAQ" under the call button)
+- Linked from: the header nav and footer ("FAQ"), and Work with Dustin (tertiary button "Read the FAQ" under the call button)
 
 ### Getting started
 
@@ -339,7 +339,7 @@ Excerpts of Dustin's Google reviews, cut at a full sentence. Update the rating i
 Start with a conversation, not a listing. We'll talk through your budget, your timing and what you want your days to look like: the commute, the space, the kind of block you want to come home to.
 
 Next, get fully underwritten pre-approval, not just pre-qualification, so your offer holds up when it counts. Then we start touring.
-→ Book a 15-Minute Call: https://calendly.com/dustinchaveleh-kw/15min
+→ Book a 30-Minute Call: https://calendly.com/dustinchaveleh-kw/15min
 
 **Do I really need 20% down?**
 No. Plenty of buyers put down less, and San Francisco has programs built for first-time buyers. The city's Downpayment Assistance Loan Program offers up to $500,000 in deferred down payment help on market-rate homes, awarded by lottery.

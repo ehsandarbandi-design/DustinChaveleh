@@ -13,10 +13,10 @@ export const site = {
     { label: "Meet Dustin", href: "/meetdustin" },
     { label: "Market Update", href: "/market-update" },
     { label: "Blog", href: "/blog" },
+    { label: "FAQ", href: "/faq" },
     { label: "Play Games", href: "/playrealestateiq" },
   ] as LinkItem[],
   cta: { label: "Work with Dustin", href: "/work-with-dustin" } as LinkItem,
-  /** Footer only (not in the header nav). */
   faq: { label: "FAQ", href: "/faq" } as LinkItem,
   license: "CA DRE #02368948",
   phone: { label: "(512) 391-9306", href: "sms:5123919306" } as LinkItem,
@@ -32,7 +32,7 @@ export const site = {
   propertySearch: "https://zenlist.com/a/dustin.chaveleh",
   bookCall: {
     intro: "Prefer to talk it through? Pick a time for a quick call.",
-    button: { label: "Book a 15-Minute Call", href: "https://calendly.com/dustinchaveleh-kw/15min" } as LinkItem,
+    button: { label: "Book a 30-Minute Call", href: "https://calendly.com/dustinchaveleh-kw/15min" } as LinkItem,
   },
 };
 
@@ -76,7 +76,7 @@ export const faq: { label: string; headline: string; intro: string; groups: { ti
             "Next, get fully underwritten pre-approval, not just pre-qualification, so your offer holds up when it counts. Then we start touring."
           ],
           link: {
-            label: "Book a 15-Minute Call",
+            label: "Book a 30-Minute Call",
             href: "https://calendly.com/dustinchaveleh-kw/15min"
           }
         },
@@ -188,7 +188,7 @@ export const seo = {
   marketUpdate: "A monthly read on the San Francisco market: median price, days on market, sale-to-list and inventory, plus Dustin's honest take on what it means for you.",
   blog: "Dustin's blog on buying and selling in San Francisco. Transfer taxes, rent control, schools, neighborhoods and where the market is headed, in plain English.",
   blogCategory: (category: string) => `Everything filed under ${category} on Dustin Chaveleh's San Francisco real estate blog.`,
-  workWithDustin: "Buying or selling in San Francisco? Book a 15-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.",
+  workWithDustin: "Buying or selling in San Francisco? Book a 30-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.",
   faq: "Straight answers to what San Francisco buyers and sellers ask most: down payments, timelines, schools, early listing access and what working with Dustin costs.",
   realEstateIQ: "See a real San Francisco listing and guess what it sold for. Nail it within 10% and score 1,000 points a home. Harder than it sounds.",
 };

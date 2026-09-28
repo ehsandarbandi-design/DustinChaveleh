@@ -42,6 +42,10 @@ html:has([data-tone="hero"]) .header:not([data-ready])::before { opacity: 1; }
 
 .desktop { position: relative; z-index: 1; display: flex; align-items: center; gap: 52px; }
 .links { display: flex; align-items: center; gap: 52px; }
+/* Six links + the CTA: between 1280 and 1439px the Figma 52px gaps would run into the logo */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .desktop, .links { gap: var(--space-m); }
+}
 
 .toggle { display: none; }
 .panel { display: none; }

@@ -19,11 +19,13 @@
 .meta { color: var(--graphite); }
 .excerpt { margin-top: var(--space-2xs); }
 
-/* The rest in two columns (columns 1–11 and 14–24) */
+/* The rest in three columns of 8 grid columns, 20px apart (like the neighborhood cards); two on tablets */
 .list { row-gap: var(--space-xl); }
-.item:nth-child(odd) { grid-column: 1 / span 11; }
-.item:nth-child(even) { grid-column: 14 / span 11; }
+.item { grid-column: span 8; }
 
+@media (max-width: 1023px) {
+  .item { grid-column: span 12; }
+}
 @media (max-width: 767px) {
-  .headline, .featuredMedia, .featuredText, .item:nth-child(odd), .item:nth-child(even) { grid-column: 1 / -1; }
+  .headline, .featuredMedia, .featuredText, .item { grid-column: 1 / -1; }
 }

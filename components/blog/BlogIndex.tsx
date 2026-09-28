@@ -19,7 +19,7 @@ const matches = (post: Post, category: string) => {
 };
 
 /** /blog and /blog/tag/[tag] (BUILD.md §5): H1, the category filter row in Mono (active category underlined),
- *  the newest post as a full-width featured row with a large image, then the rest in two columns. */
+ *  the newest post as a full-width featured row with a large image, then the rest in three columns. */
 export default function BlogIndex({ category }: { category?: string }) {
   const list = category ? allPosts.filter((p) => matches(p, category)) : allPosts;
   const [featured, ...rest] = list;
@@ -72,7 +72,7 @@ export default function BlogIndex({ category }: { category?: string }) {
         <ul className={`grid ${styles.list}`}>
           {rest.map((post, i) => (
             <Reveal as="li" key={post.title} stagger={i} className={styles.item}>
-              <Card image={post.image ? { src: post.image, alt: post.title } : undefined} meta={post.dateLabel} title={post.title} text={post.excerpt} link={post.href ? { label: home.journal.cardLink, href: post.href } : undefined} sizes="(max-width: 767px) 100vw, 45vw" />
+              <Card image={post.image ? { src: post.image, alt: post.title } : undefined} meta={post.dateLabel} title={post.title} text={post.excerpt} link={post.href ? { label: home.journal.cardLink, href: post.href } : undefined} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 32vw" />
             </Reveal>
           ))}
         </ul>
