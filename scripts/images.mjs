@@ -40,6 +40,9 @@ const jobs = [
     "Home Buyers and Sellers Generational Trends.jpg": "home-buyers-and-sellers-generational-trends",
     "Why Real Estate Deals Fall Through.jpg": "why-real-estate-deals-fall-through",
     "Before You Buy in the Sunset, Know Its History.webp": "before-you-buy-in-the-sunset-know-its-history",
+    // Unsplash (see content/image-credits.md)
+    "Which Neighborhoods Are Selling the Furthest Over Asking Right Now.jpg": "6w1tfsq3p6nott2rnyo1o4i7ue56e4",
+    "Why San Francisco Duplexes Sell for Less Than Single-Family Homes.jpg": "why-san-francisco-duplexes-sell-for-less-than-single-family-homes",
   }).map(([file, slug]) => ({ group: "blog", src: `assets/images/blog/${file}`, out: `blog/${slug}`, widths: [1600], formats: ["webp"] })),
   // guides — Taking the Next Step / guide pages
   { group: "guides", src: "assets/images/For Sellers.jpg", out: "guides/for-sellers", widths: [1600], formats: ["webp"] },

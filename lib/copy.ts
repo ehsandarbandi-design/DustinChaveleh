@@ -16,6 +16,8 @@ export const site = {
     { label: "Play Games", href: "/playrealestateiq" },
   ] as LinkItem[],
   cta: { label: "Work with Dustin", href: "/work-with-dustin" } as LinkItem,
+  /** Footer only (not in the header nav). */
+  faq: { label: "FAQ", href: "/faq" } as LinkItem,
   license: "CA DRE #02368948",
   phone: { label: "(512) 391-9306", href: "sms:5123919306" } as LinkItem,
   email: "dustinchaveleh@kw.com",
@@ -34,6 +36,151 @@ export const site = {
   },
 };
 
+/** Testimonials (content/copy.md → Testimonials). Excerpts of Google reviews, cut at a full sentence. */
+export const testimonials = {
+  label: "CLIENT REVIEWS",
+  headline: "First-time buyers, in their own words.",
+  rating: "5.0 on Google",
+  button: {
+    label: "Read the reviews on Google",
+    href: "https://share.google/4Gu8ZNLQdxIxLXwXv"
+  },
+  items: [
+    {
+      quote: "We are grateful to have Dustin help us buy our first ever home! As first-time homebuyers, the process felt overwhelming at times, but he was very patient, supportive, and there for us every step of the way. Thank you for making this milestone in our lives even more meaningful.",
+      name: "Jessie So",
+      note: "First-time homebuyers"
+    },
+    {
+      quote: "Meeting Dustin was the best part of our home-buying journey. As first-time homebuyers, my spouse and I had little to no knowledge of the process. From the very beginning, Dustin took the time to guide us every step of the way. What we appreciated most was his honesty.",
+      name: "Daryl Miranda",
+      note: "First-time homebuyers"
+    }
+  ]
+};
+
+export type FaqItem = { q: string; a: string[]; link?: LinkItem };
+/** FAQ (content/copy.md → FAQ). DRAFT: written Sep 28, 2026 for Dustin to approve. */
+export const faq: { label: string; headline: string; intro: string; groups: { title: string; items: FaqItem[] }[] } = {
+  label: "FAQ",
+  headline: "Before you make your move.",
+  intro: "The questions I hear most from buyers and sellers, with straight answers. If yours isn't here, ask me.",
+  groups: [
+    {
+      title: "Getting started",
+      items: [
+        {
+          q: "I'm thinking about buying in San Francisco. Where do I start?",
+          a: [
+            "Start with a conversation, not a listing. We'll talk through your budget, your timing and what you want your days to look like: the commute, the space, the kind of block you want to come home to.",
+            "Next, get fully underwritten pre-approval, not just pre-qualification, so your offer holds up when it counts. Then we start touring."
+          ],
+          link: {
+            label: "Book a 15-Minute Call",
+            href: "https://calendly.com/dustinchaveleh-kw/15min"
+          }
+        },
+        {
+          q: "Do I really need 20% down?",
+          a: [
+            "No. Plenty of buyers put down less, and San Francisco has programs built for first-time buyers. The city's Downpayment Assistance Loan Program offers up to $500,000 in deferred down payment help on market-rate homes, awarded by lottery.",
+            "There are also programs for SFUSD teachers and a mortgage credit certificate that turns part of your interest into a tax credit. I broke them all down in one post."
+          ],
+          link: {
+            label: "Read the post",
+            href: "/blog/home-buyers-and-sellers-generational-trends"
+          }
+        },
+        {
+          q: "How long does it take to buy a home here?",
+          a: [
+            "The search itself averages about ten weeks. Once your offer is accepted, escrow usually takes around a month.",
+            "Well-priced homes still move fast in this city, so being ready to act matters more than having time to wait."
+          ],
+          link: {
+            label: "See the latest market numbers",
+            href: "/market-update"
+          }
+        },
+        {
+          q: "Can I see homes before they show up on Zillow or Redfin?",
+          a: [
+            "Yes. I set my clients up on Zenlist, which pulls straight from the local MLS, including Coming Soon listings, often hours or days before the big portals have them.",
+            "Request access through my link and I'll approve you."
+          ],
+          link: {
+            label: "Start Your Property Search",
+            href: "https://zenlist.com/a/dustin.chaveleh"
+          }
+        },
+        {
+          q: "Does the neighborhood decide which school my kids go to?",
+          a: [
+            "Not in San Francisco. The whole city is one school district, SFUSD, and families apply and rank schools through its assignment process. Buying on a certain street doesn't lock in a certain school.",
+            "So pick where to live for the commute, the housing and the feel of the block, and plan school enrollment as its own timeline. Check SFUSD for the current rules before you apply."
+          ],
+          link: {
+            label: "Read the post",
+            href: "/blog/schools-in-san-francisco"
+          }
+        }
+      ]
+    },
+    {
+      title: "Working with Dustin",
+      items: [
+        {
+          q: "What does it cost to work with you as a buyer?",
+          a: [
+            "Before we tour homes together, we sign a short buyer agreement that spells out how I'm paid. That's now standard across California.",
+            "In many deals the seller covers it. We'll go over how it works for your situation on our first call, before you commit to anything."
+          ]
+        },
+        {
+          q: "I'm selling. What should I do first?",
+          a: [
+            "Get clear on what a good outcome looks like for you: the highest price, a specific move date, or lining the sale up with your next purchase. That shapes the pricing, the prep and the marketing.",
+            "One cost San Francisco sellers often don't expect is the city's transfer tax. The seller usually pays it, and the rate climbs with the sale price."
+          ],
+          link: {
+            label: "Read the post",
+            href: "/blog/san-francisco-transfer-taxes"
+          }
+        },
+        {
+          q: "Which neighborhoods do you cover?",
+          a: [
+            "All of San Francisco. I've lived in Russian Hill, Mission Dolores, Corona Heights, the Castro and Rincon Hill, so I bring a local's read on each part of the city, not just the listing data.",
+            "Not sure where you'd fit? That's a good first conversation."
+          ],
+          link: {
+            label: "Browse the neighborhood guides",
+            href: "/blog/tag/Neighborhoods"
+          }
+        },
+        {
+          q: "I'm moving to San Francisco from out of state. Can you help?",
+          a: [
+            "That's how I got here. I moved from Texas in 2019, sight unseen.",
+            "Tell me where you'll be working and how you like to live, and I'll help you narrow the city down to a few neighborhoods before you start touring."
+          ]
+        },
+        {
+          q: "Do you work with investors?",
+          a: [
+            "Yes. I came to real estate through building my own portfolio, and I still invest.",
+            "In San Francisco the numbers depend heavily on rent control and tenant rules, so we look at those before we look at returns."
+          ],
+          link: {
+            label: "Read the post",
+            href: "/blog/rent-control-in-san-francisco"
+          }
+        }
+      ]
+    }
+  ]
+};
+
 /** Meta descriptions (content/copy.md → SEO). */
 export const seo = {
   home: "San Francisco REALTOR® Dustin Chaveleh helps first-time buyers, professionals and relocators buy and sell in SF with a finance-and-data mindset.",
@@ -42,6 +189,7 @@ export const seo = {
   blog: "Dustin's blog on buying and selling in San Francisco. Transfer taxes, rent control, schools, neighborhoods and where the market is headed, in plain English.",
   blogCategory: (category: string) => `Everything filed under ${category} on Dustin Chaveleh's San Francisco real estate blog.`,
   workWithDustin: "Buying or selling in San Francisco? Book a 15-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.",
+  faq: "Straight answers to what San Francisco buyers and sellers ask most: down payments, timelines, schools, early listing access and what working with Dustin costs.",
   realEstateIQ: "See a real San Francisco listing and guess what it sold for. Nail it within 10% and score 1,000 points a home. Harder than it sounds.",
 };
 
@@ -147,8 +295,8 @@ export const posts: Post[] = [
   { date: "2026-07-28", dateLabel: "Jul 28, 2026", title: "Home Buyers and Sellers Generational Trends", href: "/blog/home-buyers-and-sellers-generational-trends", image: "/images/blog/home-buyers-and-sellers-generational-trends.webp", excerpt: "This post breaks down key findings from the National Association of REALTORS® (NAR) Generational Trends Report, exploring how younger buyers are navigating today's competitive housing market." },
   { date: "2026-07-24", dateLabel: "Jul 24, 2026", title: "Why Real Estate Deals Fall Through", href: "/blog/why-real-estate-deals-fall-through", image: "/images/blog/why-real-estate-deals-fall-through.webp", tags: ["first time home buyer","Home Ownership"], excerpt: "Most real estate deals don't die from one big dramatic thing — they die from inspection surprises, financing hiccups, and timing that doesn't line up. Here's the actual breakdown by category and percentage, using the latest 2026 NAR and Redfin data, plus what SF buyers and sellers can do to keep their deal off the list." },
   { date: "2026-07-22", dateLabel: "Jul 22, 2026", title: "Before You Buy in the Sunset, Know Its History", href: "/blog/before-you-buy-in-the-sunset-know-its-history", image: "/images/blog/before-you-buy-in-the-sunset-know-its-history.webp", tags: ["first time home buyer","San Francisco","Home Ownership"], excerpt: "Ever notice how every block in the Sunset looks like a variation on the same house? That's not a coincidence — it's the legacy of a 1930s building boom that put up two houses a day. Here's the real story behind the stucco, the narrow lots, and the little style flourishes that make each one unique." },
-  { date: "2026-07-16", dateLabel: "Jul 16, 2026", title: "Which Neighborhoods Are Selling the Furthest Over Asking Right Now", href: "/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4", tags: ["first time home buyer","Home Ownership","Market News"], excerpt: "Inner Sunset and Outer Sunset single-family homes are now closing over 141% of list price, while Bernal Heights leads all neighborhoods in year-over-year gains. Here's where San Francisco's 2026 market is running hottest — and the one neighborhood where condos are still going for less than asking." },
-  { date: "2026-07-16", dateLabel: "Jul 16, 2026", title: "Why San Francisco Duplexes Sell for Less Than Single-Family Homes", href: "/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes", tags: ["Home Ownership"], excerpt: "Over half of SF duplexes sell with a tenant in place, and that tenant costs sellers 44% per square foot. Here's why rent control makes vacancy the real premium — and how savvy buyers are closing the gap to single-family pricing." },
+  { date: "2026-07-16", dateLabel: "Jul 16, 2026", title: "Which Neighborhoods Are Selling the Furthest Over Asking Right Now", href: "/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4", image: "/images/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4.webp", tags: ["first time home buyer","Home Ownership","Market News"], excerpt: "Inner Sunset and Outer Sunset single-family homes are now closing over 141% of list price, while Bernal Heights leads all neighborhoods in year-over-year gains. Here's where San Francisco's 2026 market is running hottest — and the one neighborhood where condos are still going for less than asking." },
+  { date: "2026-07-16", dateLabel: "Jul 16, 2026", title: "Why San Francisco Duplexes Sell for Less Than Single-Family Homes", href: "/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes", image: "/images/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes.webp", tags: ["Home Ownership"], excerpt: "Over half of SF duplexes sell with a tenant in place, and that tenant costs sellers 44% per square foot. Here's why rent control makes vacancy the real premium — and how savvy buyers are closing the gap to single-family pricing." },
 ];
 
 // Buyer's Guide (/buyers-guide) and Seller's Guide (/sellers-guide)
@@ -266,10 +414,10 @@ export const blog = {
 
 // Neighborhood Guide posts (/blog/tag/Neighborhoods) — no URLs in content/copy.md yet
 export const neighborhoodPosts: Post[] = [
-  { date: "2026-06-13", dateLabel: "6/13/26", title: "The Excelsior: SF's Most Overlooked Neighborhood for Buyers", href: "", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "The Excelsior is a diverse residential neighborhood in the Southeastern quarter of the city, bounded by Mission Street to the west, Silver Avenue to the north, McLaren Park to the East, and Geneva Avenue to the south. It is in the SFAR's District 10." },
-  { date: "2026-04-11", dateLabel: "4/11/26", title: "The Castro Is Having a Moment", href: "", tags: ["Neighborhood Guide", "Home Ownership", "Neighborhoods", "first time home buyer"], excerpt: "The Castro has always been one of San Francisco's most iconic neighborhoods. Now, with the Castro Theatre being restored, new businesses opening along the corridor, and the housing market rebounding, it's also becoming one of the most interesting places to buy in 2026. Here's a look at the history, the homes, and what the market is doing right now." },
+  { date: "2026-06-13", dateLabel: "6/13/26", title: "The Excelsior: SF's Most Overlooked Neighborhood for Buyers", href: "", image: "/images/neighborhoods/excelsior.webp", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "The Excelsior is a diverse residential neighborhood in the Southeastern quarter of the city, bounded by Mission Street to the west, Silver Avenue to the north, McLaren Park to the East, and Geneva Avenue to the south. It is in the SFAR's District 10." },
+  { date: "2026-04-11", dateLabel: "4/11/26", title: "The Castro Is Having a Moment", href: "", image: "/images/neighborhoods/castro.webp", tags: ["Neighborhood Guide", "Home Ownership", "Neighborhoods", "first time home buyer"], excerpt: "The Castro has always been one of San Francisco's most iconic neighborhoods. Now, with the Castro Theatre being restored, new businesses opening along the corridor, and the housing market rebounding, it's also becoming one of the most interesting places to buy in 2026. Here's a look at the history, the homes, and what the market is doing right now." },
   // date marked [TODO: looks wrong] in content/copy.md
-  { date: "2019-05-28", dateLabel: "5/28/19", title: "Duboce Triangle: Small Neighborhood, Big City Access", href: "", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "Duboce Triangle sits at the center of everything — walkable streets, classic Victorian architecture, easy transit access, and some of SF's best nearby neighborhoods. Median home prices are holding strong around $1.37M–$1.42M in 2026, and inventory remains tight. Here's what buyers need to know before shopping in this market." },
+  { date: "2019-05-28", dateLabel: "5/28/19", title: "Duboce Triangle: Small Neighborhood, Big City Access", href: "", image: "/images/neighborhoods/duboce-triangle.webp", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "Duboce Triangle sits at the center of everything — walkable streets, classic Victorian architecture, easy transit access, and some of SF's best nearby neighborhoods. Median home prices are holding strong around $1.37M–$1.42M in 2026, and inventory remains tight. Here's what buyers need to know before shopping in this market." },
 ];
 
 // Work with Dustin (/work-with-dustin)

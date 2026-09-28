@@ -21,7 +21,7 @@ export default function Footer() {
       <Reveal className={`${styles.row} ${styles.rowTop}`}>
         <Logo />
         <ul className={styles.nav}>
-          {[...site.nav, site.cta].map((item) => (
+          {[...site.nav, site.faq, site.cta].map((item) => (
             <li key={item.href}>
               <TextLink href={item.href} className="h4">
                 {item.label}

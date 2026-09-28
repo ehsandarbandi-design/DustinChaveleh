@@ -5,6 +5,7 @@ import RealEstateIQ from "@/components/home/RealEstateIQ";
 import Neighborhoods from "@/components/home/Neighborhoods";
 import NextStep from "@/components/home/NextStep";
 import Contact from "@/components/home/Contact";
+import Testimonials from "@/components/Testimonials";
 import { site, seo } from "@/lib/copy";
 import { pageMeta } from "@/lib/seo";
 import styles from "./page.module.css";
@@ -19,6 +20,7 @@ export default function Home() {
         <About />
         <Journal />
         <RealEstateIQ />
+        <Testimonials />
         <Neighborhoods />
         <NextStep />
         <Contact />

@@ -6,6 +6,7 @@ This file is written by that script — do not edit by hand.
 | Public file | Source | Size | Weight |
 |---|---|---|---|
 | `app/icon.png` | `Figma › Favicon (629:9), exported via the Figma MCP — also app/apple-icon.png` | 180 × 180 | 3 KB |
+| `public/images/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4.webp` | `assets/images/blog/Which Neighborhoods Are Selling the Furthest Over Asking Right Now.jpg` | 1600 × 2388 | 314 KB |
 | `public/images/blog/before-you-buy-in-the-sunset-know-its-history.webp` | `assets/images/blog/Before You Buy in the Sunset, Know Its History.png` | 1600 × 893 | 238 KB |
 | `public/images/blog/home-buyers-and-sellers-generational-trends.webp` | `assets/images/blog/Home Buyers and Sellers Generational Trends.png` | 1600 × 2143 | 641 KB |
 | `public/images/blog/i0ccwm3gm435y9qc8i31gw5zbbqd88.webp` | `assets/images/blog/Ranking the Best Platforms for Home Searching (2026 Guide)45.PNG` | 1320 × 1922 | 107 KB |
@@ -14,6 +15,7 @@ This file is written by that script — do not edit by hand.
 | `public/images/blog/schools-in-san-francisco.webp` | `assets/images/blog/Schools in San Francisco.jpg` | 1600 × 1067 | 143 KB |
 | `public/images/blog/tenantbuyouts.webp` | `assets/images/blog/Tenant Buyout Costs in San Francisco.jpg` | 1600 × 2400 | 363 KB |
 | `public/images/blog/why-real-estate-deals-fall-through.webp` | `assets/images/blog/Why Real Estate Deals Fall Through.png` | 1600 × 2385 | 83 KB |
+| `public/images/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes.webp` | `assets/images/blog/Why San Francisco Duplexes Sell for Less Than Single-Family Homes.jpg` | 1600 × 2400 | 334 KB |
 | `public/images/guides/for-buyers.webp` | `assets/images/For Buyers.jpg` | 1600 × 1067 | 233 KB |
 | `public/images/guides/for-sellers.webp` | `assets/images/For Sellers.jpg` | 1600 × 1067 | 362 KB |
 | `public/images/hero/bay-1280.avif` | `assets/images/hero/Bay.png` | 1280 × 950 | 36 KB |

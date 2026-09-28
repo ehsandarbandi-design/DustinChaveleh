@@ -308,4 +308,89 @@ Meta descriptions (≈155 characters each), drafted Sep 28, 2026 in the site's v
 - **Blog category pages:** Everything filed under {category} on Dustin Chaveleh's San Francisco real estate blog.
 - **Blog posts:** the post's excerpt.
 - **Work with Dustin:** Buying or selling in San Francisco? Book a 15-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.
+- **FAQ:** Straight answers to what San Francisco buyers and sellers ask most: down payments, timelines, schools, early listing access and what working with Dustin costs.
 - **Play Real Estate IQ:** See a real San Francisco listing and guess what it sold for. Nail it within 10% and score 1,000 points a home. Harder than it sounds.
+
+---
+
+## Testimonials (Home and Work with Dustin)
+
+Excerpts of Dustin's Google reviews, cut at a full sentence. Update the rating if it changes.
+
+- Label: [ CLIENT REVIEWS ]
+- Headline: First-time buyers, in their own words.
+- Rating: 5.0 on Google
+- Button: Read the reviews on Google → https://share.google/4Gu8ZNLQdxIxLXwXv
+- "We are grateful to have Dustin help us buy our first ever home! As first-time homebuyers, the process felt overwhelming at times, but he was very patient, supportive, and there for us every step of the way. Thank you for making this milestone in our lives even more meaningful." — Jessie So, First-time homebuyers
+- "Meeting Dustin was the best part of our home-buying journey. As first-time homebuyers, my spouse and I had little to no knowledge of the process. From the very beginning, Dustin took the time to guide us every step of the way. What we appreciated most was his honesty." — Daryl Miranda, First-time homebuyers
+
+---
+
+## FAQ (`/faq`) — DRAFT, written Sep 28, 2026, awaiting Dustin's approval
+
+- Label: [ FAQ ]
+- Headline: Before you make your move.
+- Intro: The questions I hear most from buyers and sellers, with straight answers. If yours isn't here, ask me.
+- Linked from: the footer ("FAQ"), and Work with Dustin (tertiary button "Read the FAQ" under the call button)
+
+### Getting started
+
+**I'm thinking about buying in San Francisco. Where do I start?**
+Start with a conversation, not a listing. We'll talk through your budget, your timing and what you want your days to look like: the commute, the space, the kind of block you want to come home to.
+
+Next, get fully underwritten pre-approval, not just pre-qualification, so your offer holds up when it counts. Then we start touring.
+→ Book a 15-Minute Call: https://calendly.com/dustinchaveleh-kw/15min
+
+**Do I really need 20% down?**
+No. Plenty of buyers put down less, and San Francisco has programs built for first-time buyers. The city's Downpayment Assistance Loan Program offers up to $500,000 in deferred down payment help on market-rate homes, awarded by lottery.
+
+There are also programs for SFUSD teachers and a mortgage credit certificate that turns part of your interest into a tax credit. I broke them all down in one post.
+→ Read the post: /blog/home-buyers-and-sellers-generational-trends
+
+**How long does it take to buy a home here?**
+The search itself averages about ten weeks. Once your offer is accepted, escrow usually takes around a month.
+
+Well-priced homes still move fast in this city, so being ready to act matters more than having time to wait.
+→ See the latest market numbers: /market-update
+
+**Can I see homes before they show up on Zillow or Redfin?**
+Yes. I set my clients up on Zenlist, which pulls straight from the local MLS, including Coming Soon listings, often hours or days before the big portals have them.
+
+Request access through my link and I'll approve you.
+→ Start Your Property Search: https://zenlist.com/a/dustin.chaveleh
+
+**Does the neighborhood decide which school my kids go to?**
+Not in San Francisco. The whole city is one school district, SFUSD, and families apply and rank schools through its assignment process. Buying on a certain street doesn't lock in a certain school.
+
+So pick where to live for the commute, the housing and the feel of the block, and plan school enrollment as its own timeline. Check SFUSD for the current rules before you apply.
+→ Read the post: /blog/schools-in-san-francisco
+
+### Working with Dustin
+
+**What does it cost to work with you as a buyer?**
+Before we tour homes together, we sign a short buyer agreement that spells out how I'm paid. That's now standard across California.
+
+In many deals the seller covers it. We'll go over how it works for your situation on our first call, before you commit to anything.
+
+**I'm selling. What should I do first?**
+Get clear on what a good outcome looks like for you: the highest price, a specific move date, or lining the sale up with your next purchase. That shapes the pricing, the prep and the marketing.
+
+One cost San Francisco sellers often don't expect is the city's transfer tax. The seller usually pays it, and the rate climbs with the sale price.
+→ Read the post: /blog/san-francisco-transfer-taxes
+
+**Which neighborhoods do you cover?**
+All of San Francisco. I've lived in Russian Hill, Mission Dolores, Corona Heights, the Castro and Rincon Hill, so I bring a local's read on each part of the city, not just the listing data.
+
+Not sure where you'd fit? That's a good first conversation.
+→ Browse the neighborhood guides: /blog/tag/Neighborhoods
+
+**I'm moving to San Francisco from out of state. Can you help?**
+That's how I got here. I moved from Texas in 2019, sight unseen.
+
+Tell me where you'll be working and how you like to live, and I'll help you narrow the city down to a few neighborhoods before you start touring.
+
+**Do you work with investors?**
+Yes. I came to real estate through building my own portfolio, and I still invest.
+
+In San Francisco the numbers depend heavily on rent control and tenant rules, so we look at those before we look at returns.
+→ Read the post: /blog/rent-control-in-san-francisco

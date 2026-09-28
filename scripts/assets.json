@@ -340,5 +340,17 @@
     "width": 1920,
     "height": 1425,
     "bytes": 233398
+  },
+  "public/images/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4.webp": {
+    "source": "assets/images/blog/Which Neighborhoods Are Selling the Furthest Over Asking Right Now.jpg",
+    "width": 1600,
+    "height": 2388,
+    "bytes": 321632
+  },
+  "public/images/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes.webp": {
+    "source": "assets/images/blog/Why San Francisco Duplexes Sell for Less Than Single-Family Homes.jpg",
+    "width": 1600,
+    "height": 2400,
+    "bytes": 341792
   }
 }
