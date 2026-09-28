@@ -54,6 +54,7 @@
 ### 3. Blog preview
 - Headline: Read About Your Neighborhood, Your Move
 - Cards (latest posts — pull from the blog list below, newest first). Each card: title, excerpt, date, "Read more →"
+- Button (tertiary, right of the rail): View all blogs → `/blog`
 
 ### 4. Real Estate IQ promo
 - Headline: Think You Know the San Francisco Market?
@@ -159,6 +160,17 @@ In the housing market, demand has returned, but inventory remains tight — and 
 
 For buyers, the advantage is being prepared — having financing in place and the ability to act decisively when the right home hits the market. For sellers, the advantage is timing and pricing correctly, as serious buyers are active and competition can quickly drive strong outcomes when a property is positioned well.
 
+- Button: Start Your Property Search → https://zenlist.com/a/dustin.chaveleh (now in the Property search section below, which sits between Dustin's take and Want More?)
+
+### Property search (Home, between Neighborhoods and Taking the Next Step; Market Update) — DRAFT, Sep 28, 2026, awaiting Dustin's approval
+Taken from Dustin's post "Ranking the Best Platforms for Home Searching (2026 Guide)".
+- Label: PROPERTY SEARCH
+- Headline: Zenlist is what I use when it's time to hunt.
+- Body: Public portals are fine for window shopping. Zenlist pulls straight from the local MLS, so new listings reach you when they reach me, not a day or two later.
+- 01 "Coming Soon" access: Listings appear on your feed hours or days before Zillow and Redfin pull them in.
+- 02 Chat on the listing: No more emailing Zillow links or texting screenshots. We talk right on the listing card.
+- 03 Filters that matter: Architectural style, HOA fee caps, exact school borders. And no ads.
+- Small print: Access is by invite from a licensed agent. Request it and I'll approve you.
 - Button: Start Your Property Search → https://zenlist.com/a/dustin.chaveleh
 
 ---

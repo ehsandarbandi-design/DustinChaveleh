@@ -5,7 +5,8 @@ import styles from "./Accordion.module.css";
 
 export type AccordionItem = { id: string; title: ReactNode; meta?: ReactNode; content: ReactNode };
 
-/** Hairline rows that expand one at a time. Title left, a "+" at the far right that turns into "×". */
+/** Hairline rows that expand one at a time, every line in .p3 (the content passed in uses .p3 too). Title left,
+ *  a "+" at the far right that turns into "−". */
 export default function Accordion({ items, className = "" }: { items: AccordionItem[]; className?: string }) {
   const [openId, setOpenId] = useState<string | null>(null);
   const base = useId();
@@ -20,8 +21,8 @@ export default function Accordion({ items, className = "" }: { items: AccordionI
             <h3 className={styles.heading}>
               <button type="button" className={styles.trigger} aria-expanded={open} aria-controls={panelId} onClick={() => setOpenId(open ? null : item.id)}>
                 <span className={styles.titleWrap}>
-                  <span className={`h4 ${styles.title}`}>{item.title}</span>
-                  {item.meta ? <span className={`mono ${styles.meta}`}>{item.meta}</span> : null}
+                  <span className={`p3 ${styles.title}`}>{item.title}</span>
+                  {item.meta ? <span className={`p3 ${styles.meta}`}>{item.meta}</span> : null}
                 </span>
                 <span className={styles.plus} aria-hidden="true">
                   <span />

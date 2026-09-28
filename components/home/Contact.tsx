@@ -3,16 +3,18 @@ import Reveal from "@/components/Reveal";
 import TextLink from "@/components/TextLink";
 import ContactForm from "@/components/ContactForm";
 import BookCall from "@/components/BookCall";
+import Label from "@/components/Label";
 import { home } from "@/lib/copy";
 import styles from "./Contact.module.css";
 
-/** Home §8 — Get In Touch (Paper): the contact details (phone, e-mail, office, license) and the call button in
+/** Home §8 — Get In Touch (Paper): the label, then the contact details (phone, e-mail, office, license) and the call button in
  *  columns 1–10; the two-line headline on top of the form in columns 13–24. Reused at the end of blog posts. */
 export default function Contact() {
   const { contact } = home;
   return (
-    <Section label={contact.label} id="contact" className={styles.section}>
+    <Section id="contact" className={styles.section}>
       <div className={`grid ${styles.grid}`}>
+        <Label inline align="h1">{contact.label}</Label>
         <div className={styles.intro}>
           <Reveal as="dl" className={styles.details}>
             {contact.details.map((d) => (

@@ -1,0 +1,21 @@
+/* One column on the right half, like Client reviews: --space-m between blocks */
+.column { grid-column: 13 / -1; grid-row: 1; display: flex; flex-direction: column; gap: var(--space-m); }
+.points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+/* number | title, with the text under the title; hairline above each row */
+.point {
+  display: grid;
+  grid-template-columns: var(--space-m) 1fr;
+  column-gap: var(--space-s);
+  row-gap: var(--space-2xs);
+  padding: var(--space-s) 0;
+  border-top: 1px solid var(--line);
+}
+.point:last-child { border-bottom: 1px solid var(--line); }
+.number { color: var(--taupe); grid-row: 1 / span 2; padding-top: 0.35em; }
+.text { grid-column: 2; color: var(--stone); }
+.actions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-s); margin-top: var(--space-xs); }
+.note { color: var(--taupe); }
+
+@media (max-width: 767px) {
+  .column { grid-column: 1 / -1; grid-row: auto; }
+}

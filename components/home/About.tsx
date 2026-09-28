@@ -3,16 +3,18 @@ import Reveal from "@/components/Reveal";
 import Button from "@/components/Button";
 import Social from "@/components/Social";
 import Img from "@/components/Img";
+import Label from "@/components/Label";
 import { home, site } from "@/lib/copy";
 import styles from "./About.module.css";
 
-/** Home §2 — About: headline above the body in columns 1–11, Dustin's portrait in columns 13–24
- *  bleeding to the right edge; stacked on mobile (text, then photo). */
+/** Home §2 — About: the label, then the headline above the body in columns 1–11; Dustin's portrait in columns
+ *  13–24 starting level with the label and bleeding to the right edge; stacked on mobile (label, text, photo). */
 export default function About() {
   const { about } = home;
   return (
-    <Section label={about.label} id="about">
+    <Section id="about">
       <div className={`grid ${styles.grid}`}>
+        <Label inline>{about.label}</Label>
         <div className={styles.text}>
           <Reveal as="h2" className={`h1 ${styles.headline}`}>
             {about.headline[0]}
@@ -29,7 +31,7 @@ export default function About() {
           </Reveal>
           <Reveal as="p" className={`mono ${styles.smallPrint}`}>{about.smallPrint}</Reveal>
           <Reveal className={styles.link}>
-            <Button href={about.link.href}>
+            <Button variant="outlined" href={about.link.href}>
               {about.link.label}
             </Button>
           </Reveal>

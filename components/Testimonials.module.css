@@ -1,5 +1,5 @@
 /* Figma 682:3813 — one column on the right half, 40px between blocks */
-.column { grid-column: 13 / -1; display: flex; flex-direction: column; gap: var(--space-m); }
+.column { grid-column: 13 / -1; grid-row: 1; display: flex; flex-direction: column; gap: var(--space-m); }
 .item { margin: 0; padding-top: var(--space-m); border-top: 1px solid var(--paper); display: flex; flex-direction: column; gap: var(--space-m); }
 .quote { margin: 0; }
 .quote p { margin: 0; }
@@ -9,5 +9,5 @@
 .rating { color: var(--graphite); }
 
 @media (max-width: 767px) {
-  .column { grid-column: 1 / -1; }
+  .column { grid-column: 1 / -1; grid-row: auto; }
 }

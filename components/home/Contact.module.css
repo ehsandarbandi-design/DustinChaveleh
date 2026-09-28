@@ -1,14 +1,15 @@
 /* Sized like the reference contact page: --space-xl section padding, the form's own type at P3 */
 .section { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
-.grid { row-gap: var(--space-l); align-items: start; }
-.intro { grid-column: 1 / span 10; }
+.grid { grid-template-rows: auto 1fr; row-gap: var(--space-l); align-items: start; }
+.intro { grid-column: 1 / span 10; grid-row: 2; }
 .details { display: flex; flex-direction: column; gap: var(--space-xs); }
 .detail { display: flex; flex-direction: column; gap: 2px; }
 .term { color: var(--taupe); }
-.form { grid-column: 13 / -1; }
+.form { grid-column: 13 / -1; grid-row: 1 / span 2; }   /* headline level with the label */
 .headline { margin-bottom: var(--space-l); }
 
 @media (max-width: 767px) {
-  .intro, .form { grid-column: 1 / -1; }
+  .grid { grid-template-rows: none; }
+  .intro, .form { grid-column: 1 / -1; grid-row: auto; }
   .form { order: -1; }   /* headline and form first on phones, details after */
 }

@@ -8,11 +8,17 @@
 .media { grid-column: 13 / -1; position: relative; aspect-ratio: 4 / 5; margin: 0 calc(-1 * var(--gutter)) 0 0; overflow: hidden; background: var(--paper); }
 .img { object-fit: cover; }
 
+/* Sellers block carries the inline label: text in row 2, photo from the label's row */
+.labelled { grid-template-rows: auto 1fr; }
+.labelled .text { grid-row: 2; }
+.labelled .media { grid-row: 1 / span 2; }
+
 /* Buyers: photo on the left, text on the right */
 .flip .text { grid-column: 14 / span 11; grid-row: 1; }
 .flip .media { grid-column: 1 / span 12; grid-row: 1; margin: 0 0 0 calc(-1 * var(--gutter)); }
 
 @media (max-width: 767px) {
-  .text, .flip .text, .media, .flip .media { grid-column: 1 / -1; grid-row: auto; margin: 0; }
+  .labelled { grid-template-rows: none; }
+  .text, .flip .text, .media, .flip .media, .labelled .text, .labelled .media { grid-column: 1 / -1; grid-row: auto; margin: 0; }
   .media { order: -1; }   /* photo first on mobile */
 }

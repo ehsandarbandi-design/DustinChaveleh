@@ -1,3 +1,21 @@
 .row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-s); }
 .text { color: var(--taupe); }
 .marker { flex: none; width: 10px; height: 10px; background: var(--marker); }
+
+/* Inline label: a grid item in the section's own 24-column grid, first row, left columns. The section puts its
+   left-hand content in row 2 and its right-hand title or image across rows 1–2, so that title or image starts
+   level with the label. On phones everything stacks and the label comes first. */
+.inline { grid-column: 1 / span 11; grid-row: 1; }
+
+/* Line the label's capitals up with the top of what sits beside it (measured font metrics: Inconsolata caps start
+   0.512em below the top of a 1.6 line; Inter caps 0.3875em below the top of a 1.5 line). */
+@media (min-width: 768px) {
+  .image { margin-top: calc(var(--mono) * -0.512); }
+  .h1 { padding-top: calc(clamp(var(--h1-m), calc(var(--h1-m) + 32 * var(--fluid)), var(--h1)) * 0.3875 - var(--mono) * 0.512); }
+  .h2 { padding-top: calc(clamp(var(--h2-m), calc(var(--h2-m) + 16 * var(--fluid)), var(--h2)) * 0.3875 - var(--mono) * 0.512); }
+  .h3 { padding-top: calc(clamp(var(--h3-m), calc(var(--h3-m) + 7 * var(--fluid)), var(--h3)) * 0.3875 - var(--mono) * 0.512); }
+}
+
+@media (max-width: 767px) {
+  .inline { grid-column: 1 / -1; grid-row: auto; order: -2; }
+}

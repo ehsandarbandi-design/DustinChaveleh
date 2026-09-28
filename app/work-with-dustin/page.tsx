@@ -5,6 +5,7 @@ import TextLink from "@/components/TextLink";
 import ContactForm from "@/components/ContactForm";
 import BookCall from "@/components/BookCall";
 import Button from "@/components/Button";
+import Label from "@/components/Label";
 import Testimonials from "@/components/Testimonials";
 import { workWithDustin, site, seo } from "@/lib/copy";
 import { pageMeta } from "@/lib/seo";
@@ -17,8 +18,9 @@ export const metadata: Metadata = pageMeta({ title: `${workWithDustin.headline} 
 export default function WorkWithDustinPage() {
   return (
     <main className="below-header">
-      <Section label={workWithDustin.label} id="work-with-dustin" className={styles.section}>
+      <Section id="work-with-dustin" className={styles.section}>
         <div className={`grid ${styles.grid}`}>
+          <Label inline align="h3">{workWithDustin.label}</Label>
           <div className={styles.intro}>
             <Reveal as="h1" className="h1">
               {workWithDustin.headline}

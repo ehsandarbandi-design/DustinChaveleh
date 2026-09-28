@@ -9,13 +9,15 @@ import marketStats from "@/content/market-stats.json";
 import marketCharts from "@/content/market-charts.json";
 import AppreciationGrid from "@/components/AppreciationGrid";
 import Img from "@/components/Img";
+import Label from "@/components/Label";
+import PropertySearch from "@/components/PropertySearch";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = pageMeta({ title: `${marketUpdate.headline} — ${site.logo}`, description: seo.marketUpdate, path: "/market-update" });
 
 /** /market-update (BUILD.md §5): H1 + P1, the four stats as full-width hairline rows, three chart blocks
- *  (labelled Stone placeholders until data exists), Dustin's take on Stone, the two report links stacked with the
- *  Zenlist button under them beside the bird's-eye photo. Stats come from content/market-stats.json. */
+ *  (labelled Stone placeholders until data exists), Dustin's take on Stone, the Zenlist property search on Ink, the two
+ *  report links beside the bird's-eye photo. Stats come from content/market-stats.json. */
 export default function MarketUpdatePage() {
   const { charts, take, wantMore } = marketUpdate;
   return (
@@ -74,8 +76,11 @@ export default function MarketUpdatePage() {
         </div>
       </Section>
 
-      <Section label={wantMore.label} id="want-more">
+      <PropertySearch />
+
+      <Section id="want-more">
         <div className={`grid ${styles.wantMoreGrid}`}>
+          <Label inline>{wantMore.label}</Label>
           <div className={styles.wantMoreText}>
             <Reveal as="p" className="p2">
               {wantMore.body}
@@ -86,9 +91,6 @@ export default function MarketUpdatePage() {
                   {link.label}
                 </Button>
               ))}
-            </Reveal>
-            <Reveal button className={styles.search}>
-              <Button href={wantMore.button.href}>{wantMore.button.label}</Button>
             </Reveal>
           </div>
           <Reveal as="figure" mode="clip" className={styles.wantMoreMedia}>

@@ -1,16 +1,18 @@
 import Section from "./Section";
 import Reveal from "./Reveal";
 import Button from "./Button";
+import Label from "./Label";
 import { testimonials } from "@/lib/copy";
 import styles from "./Testimonials.module.css";
 
 /** Client reviews (Figma 682:3813, Stone): the H2, the two quotes stacked, each under a hairline, then the Google
- *  rating and a secondary button, all in columns 13–24. Full width on mobile. */
+ *  rating and a secondary button, all in columns 13–24, with the label on the left level with the H2. Full width on mobile. */
 export default function Testimonials() {
   const { label, headline, rating, button, items } = testimonials;
   return (
-    <Section label={label} tone="stone" id="reviews">
+    <Section tone="stone" id="reviews">
       <div className="grid">
+        <Label inline align="h2">{label}</Label>
         <div className={styles.column}>
           <Reveal as="h2" className="h2">
             {headline}

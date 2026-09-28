@@ -218,7 +218,7 @@ export const home = {
     label: "JOURNAL",
     headline: "Read About Your Neighborhood, Your Move",
     cardLink: "Read more →",
-    button: { label: "Read the blog", href: "/blog" } as LinkItem,
+    button: { label: "View all blogs", href: "/blog" } as LinkItem,
   },
   iq: {
     label: "TEST YOURSELF",
@@ -395,6 +395,21 @@ export const marketUpdate = {
     ] as LinkItem[],
     button: { label: "Start Your Property Search", href: "https://zenlist.com/a/dustin.chaveleh" } as LinkItem,
   },
+};
+
+// Property search (Home and Market Update) — DRAFT from Dustin's post "Ranking the Best Platforms for Home
+// Searching (2026 Guide)", awaiting his approval (content/copy.md → Property search)
+export const propertySearch = {
+  label: "PROPERTY SEARCH",
+  headline: "Zenlist is what I use when it's time to hunt.",
+  body: "Public portals are fine for window shopping. Zenlist pulls straight from the local MLS, so new listings reach you when they reach me, not a day or two later.",
+  points: [
+    { title: "“Coming Soon” access", text: "Listings appear on your feed hours or days before Zillow and Redfin pull them in." },
+    { title: "Chat on the listing", text: "No more emailing Zillow links or texting screenshots. We talk right on the listing card." },
+    { title: "Filters that matter", text: "Architectural style, HOA fee caps, exact school borders. And no ads." },
+  ],
+  note: "Access is by invite from a licensed agent. Request it and I'll approve you.",
+  button: { label: "Start Your Property Search", href: "https://zenlist.com/a/dustin.chaveleh" } as LinkItem,
 };
 
 // Blog (/blog)

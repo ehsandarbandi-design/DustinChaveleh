@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import Accordion from "@/components/Accordion";
 import Button from "@/components/Button";
+import Label from "@/components/Label";
 import BookCall from "@/components/BookCall";
 import JsonLd from "@/components/JsonLd";
 import { faq, site, seo } from "@/lib/copy";
@@ -18,8 +19,9 @@ export default function FaqPage() {
   return (
     <main className="below-header">
       <JsonLd data={faqJsonLd(faq)} />
-      <Section label={faq.label} id="faq">
+      <Section id="faq">
         <div className={`grid ${styles.grid}`}>
+          <Label inline align="mono">{faq.label}</Label>
           <div className={styles.intro}>
             <Reveal as="h1" className="h1">
               {faq.headline}
@@ -40,7 +42,7 @@ export default function FaqPage() {
                     content: (
                       <div className={styles.answer}>
                         {item.a.map((p) => (
-                          <p key={p} className="p2">
+                          <p key={p} className="p3">
                             {p}
                           </p>
                         ))}
