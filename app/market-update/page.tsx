@@ -3,14 +3,15 @@ import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import Hairline from "@/components/Hairline";
 import Button from "@/components/Button";
-import { marketUpdate, site } from "@/lib/copy";
+import { marketUpdate, site, seo } from "@/lib/copy";
+import { pageMeta } from "@/lib/seo";
 import marketStats from "@/content/market-stats.json";
 import marketCharts from "@/content/market-charts.json";
 import AppreciationGrid from "@/components/AppreciationGrid";
 import Img from "@/components/Img";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = { title: `${marketUpdate.headline} — ${site.logo}` };
+export const metadata: Metadata = pageMeta({ title: `${marketUpdate.headline} — ${site.logo}`, description: seo.marketUpdate, path: "/market-update" });
 
 /** /market-update (BUILD.md §5): H1 + P1, the four stats as full-width hairline rows, three chart blocks
  *  (labelled Stone placeholders until data exists), Dustin's take on Stone, the two report links stacked with the

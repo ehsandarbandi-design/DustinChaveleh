@@ -2,6 +2,7 @@ import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import TextLink from "@/components/TextLink";
 import ContactForm from "@/components/ContactForm";
+import BookCall from "@/components/BookCall";
 import { home } from "@/lib/copy";
 import styles from "./Contact.module.css";
 
@@ -28,6 +29,7 @@ export default function Contact() {
               </div>
             ))}
           </Reveal>
+          <BookCall />
         </div>
         <Reveal className={styles.form}>
           <ContactForm />

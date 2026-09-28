@@ -6,7 +6,8 @@ import Button from "@/components/Button";
 import Social from "@/components/Social";
 import Hairline from "@/components/Hairline";
 import Video from "@/components/Video";
-import { meetDustin, site } from "@/lib/copy";
+import { meetDustin, site, seo } from "@/lib/copy";
+import { pageMeta } from "@/lib/seo";
 import assets from "@/scripts/assets.json";
 import styles from "./page.module.css";
 
@@ -21,7 +22,7 @@ function PressImage({ src, stagger }: { src: string; stagger: number }) {
   );
 }
 
-export const metadata: Metadata = { title: `${meetDustin.headline} — ${site.logo}` };
+export const metadata: Metadata = pageMeta({ title: `${meetDustin.headline} — ${site.logo}`, description: seo.meetDustin, path: "/meetdustin" });
 
 /** /meetdustin (BUILD.md §5, laid out like the reference "Our Founder" screen): the H1 across the top, then the
  *  subheadline, body and outlined button in columns 1–11 beside the portrait in columns 13–24; As Featured In on Stone (Figma 630:39: publication

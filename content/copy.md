@@ -9,7 +9,7 @@
 ## Global
 
 - **Site title (browser tab):** Dustin Chaveleh | San Francisco based REALTOR®
-- **Meta description:** [TODO — ≈155 characters]
+- **Meta description:** see "SEO" at the end of this file (drafted Sep 28, 2026)
 - **Logo text:** Dustin Chaveleh
 - **Nav:** Home · Meet Dustin · Market Update · Blog · Play Games · **Work with Dustin** (button)
   - URLs: `/` · `/meetdustin` · `/market-update` · `/blog` · `/playrealestateiq` · `/work-with-dustin`
@@ -25,6 +25,8 @@
   - YouTube: https://www.youtube.com/@Dust_in_SF
   - Google profile: https://share.google/4Gu8ZNLQdxIxLXwXv
 - **Property search (external):** https://zenlist.com/a/dustin.chaveleh
+- **Book a call (external):** Book a 15-Minute Call → https://calendly.com/dustinchaveleh-kw/15min
+  - Line above the button (Home Contact and Work with Dustin): Prefer to talk it through? Pick a time for a quick call.
 
 ---
 
@@ -292,3 +294,18 @@ Key copy:
 - Closing CTA: READY TO PROVE YOU KNOW SF? Real homes. Real prices. One shot at Legend. PLAY NOW →
 - Lead capture: GET THE SATURDAY SHORTLIST? Get a text with open homes worth seeing this weekend — Including off-market deals & homes I'm hosting.
 - Footer tag: New Homes Drop Every Month
+
+---
+
+## SEO
+
+Meta descriptions (≈155 characters each), drafted Sep 28, 2026 in the site's voice.
+
+- **Home:** San Francisco REALTOR® Dustin Chaveleh helps first-time buyers, professionals and relocators buy and sell in SF with a finance-and-data mindset.
+- **Meet Dustin:** Texas roots, San Francisco hustle. Dustin came to SF for finance and tech at Bloomberg and Goldman Sachs. Now he helps people buy and sell across the city.
+- **Market Update:** A monthly read on the San Francisco market: median price, days on market, sale-to-list and inventory, plus Dustin's honest take on what it means for you.
+- **Blog:** Dustin's blog on buying and selling in San Francisco. Transfer taxes, rent control, schools, neighborhoods and where the market is headed, in plain English.
+- **Blog category pages:** Everything filed under {category} on Dustin Chaveleh's San Francisco real estate blog.
+- **Blog posts:** the post's excerpt.
+- **Work with Dustin:** Buying or selling in San Francisco? Book a 15-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.
+- **Play Real Estate IQ:** See a real San Francisco listing and guess what it sold for. Nail it within 10% and score 1,000 points a home. Harder than it sounds.

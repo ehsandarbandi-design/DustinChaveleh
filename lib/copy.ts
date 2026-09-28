@@ -7,7 +7,6 @@ export type LinkItem = { label: string; href: string };
 export const site = {
   url: "https://www.dustinchaveleh.com",
   title: "Dustin Chaveleh | San Francisco based REALTOR®",
-  // metaDescription: marked [TODO] in content/copy.md
   logo: "Dustin Chaveleh",
   nav: [
     { label: "Home", href: "/" },
@@ -29,6 +28,21 @@ export const site = {
     { label: "Google", href: "https://share.google/4Gu8ZNLQdxIxLXwXv" },
   ] as LinkItem[],
   propertySearch: "https://zenlist.com/a/dustin.chaveleh",
+  bookCall: {
+    intro: "Prefer to talk it through? Pick a time for a quick call.",
+    button: { label: "Book a 15-Minute Call", href: "https://calendly.com/dustinchaveleh-kw/15min" } as LinkItem,
+  },
+};
+
+/** Meta descriptions (content/copy.md → SEO). */
+export const seo = {
+  home: "San Francisco REALTOR® Dustin Chaveleh helps first-time buyers, professionals and relocators buy and sell in SF with a finance-and-data mindset.",
+  meetDustin: "Texas roots, San Francisco hustle. Dustin came to SF for finance and tech at Bloomberg and Goldman Sachs. Now he helps people buy and sell across the city.",
+  marketUpdate: "A monthly read on the San Francisco market: median price, days on market, sale-to-list and inventory, plus Dustin's honest take on what it means for you.",
+  blog: "Dustin's blog on buying and selling in San Francisco. Transfer taxes, rent control, schools, neighborhoods and where the market is headed, in plain English.",
+  blogCategory: (category: string) => `Everything filed under ${category} on Dustin Chaveleh's San Francisco real estate blog.`,
+  workWithDustin: "Buying or selling in San Francisco? Book a 15-minute call with Dustin or send him a message. Clear guidance and straightforward communication, start to finish.",
+  realEstateIQ: "See a real San Francisco listing and guess what it sold for. Nail it within 10% and score 1,000 points a home. Harder than it sounds.",
 };
 
 export type Neighborhood = { name: string; slug: string; description: string; image?: string };

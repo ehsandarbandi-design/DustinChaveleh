@@ -9,7 +9,9 @@ import "@/styles/layout.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { site } from "@/lib/copy";
+import JsonLd from "@/components/JsonLd";
+import { site, seo } from "@/lib/copy";
+import { siteJsonLd } from "@/lib/seo";
 
 // The only two fonts: Inter 300/400/700 and Inconsolata 300 (labels) + 500 (buttons only), display: swap.
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "700"], display: "swap", variable: "--font-inter" });
@@ -18,13 +20,16 @@ const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300", "500"], di
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: site.title,
-  // description: the meta description is marked [TODO] in content/copy.md
+  description: seo.home,
+  openGraph: { type: "website", siteName: site.logo, locale: "en_US", title: site.title, description: seo.home, url: "/" },
+  twitter: { card: "summary", title: site.title, description: seo.home },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${inconsolata.variable}`} suppressHydrationWarning>
       <body>
+        <JsonLd data={siteJsonLd} />
         {/* Marks that JS is running so scroll-reveal / image-fade hidden states only apply with JS. */}
         <Script id="js-flag" strategy="beforeInteractive">{`document.documentElement.classList.add("js")`}</Script>
         <SmoothScroll />

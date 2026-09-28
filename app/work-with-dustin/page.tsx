@@ -3,10 +3,12 @@ import Section from "@/components/Section";
 import Reveal from "@/components/Reveal";
 import TextLink from "@/components/TextLink";
 import ContactForm from "@/components/ContactForm";
-import { workWithDustin, site } from "@/lib/copy";
+import BookCall from "@/components/BookCall";
+import { workWithDustin, site, seo } from "@/lib/copy";
+import { pageMeta } from "@/lib/seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = { title: `${workWithDustin.headline} — ${site.logo}` };
+export const metadata: Metadata = pageMeta({ title: `${workWithDustin.headline} — ${site.logo}`, description: seo.workWithDustin, path: "/work-with-dustin" });
 
 /** /work-with-dustin (BUILD.md §5): H1, P2 intro and the contact details in columns 1–10, the same form as
  *  the home page in columns 13–24 under its own headline and intro. */
@@ -28,6 +30,7 @@ export default function WorkWithDustinPage() {
                 </div>
               ))}
             </Reveal>
+            <BookCall />
           </div>
           <div className={styles.formBlock}>
             <Reveal as="h2" className="h3">

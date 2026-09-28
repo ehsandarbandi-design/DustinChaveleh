@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogIndex from "@/components/blog/BlogIndex";
-import { blog, site } from "@/lib/copy";
+import { blog, site, seo } from "@/lib/copy";
+import { pageMeta } from "@/lib/seo";
 
 type Params = { params: Promise<{ tag: string }> };
 
@@ -13,7 +14,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const category = resolve((await params).tag);
-  return { title: `${category ?? blog.headline} — ${site.logo}` };
+  if (!category) return { title: `${blog.headline} — ${site.logo}` };
+  return pageMeta({ title: `${category} — ${site.logo}`, description: seo.blogCategory(category), path: `/blog/tag/${encodeURIComponent(category)}` });
 }
 
 /** /blog/tag/[tag] — the same index filtered to one category (existing URLs such as /blog/tag/Neighborhoods). */

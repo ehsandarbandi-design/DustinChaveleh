@@ -9,6 +9,8 @@ import Contact from "@/components/home/Contact";
 import { mdxComponents } from "@/components/blog/mdx";
 import { findPost, linkedPosts, readPostBody, slugOf } from "@/lib/posts";
 import { site } from "@/lib/copy";
+import { pageMeta, postJsonLd } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
 import styles from "./page.module.css";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -19,7 +21,8 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const post = findPost((await params).slug);
-  return { title: `${post?.title ?? site.title} — ${site.logo}`, description: post?.excerpt };
+  if (!post) return { title: site.title };
+  return pageMeta({ title: `${post.title} — ${site.logo}`, description: post.excerpt, path: post.href, article: { publishedTime: post.date, image: post.image } });
 }
 
 /** /blog/[slug] (BUILD.md §5): single column in columns 7–18, date and tags in Mono over the H1, body in P2
@@ -33,6 +36,7 @@ export default async function PostPage({ params }: Params) {
 
   return (
     <main className="below-header">
+      <JsonLd data={postJsonLd({ title: post.title, excerpt: post.excerpt, date: post.date, path: post.href, image: post.image })} />
       <article className={`${styles.article} page`} data-tone="paper">
         <div className="grid">
           <div className={styles.column}>
