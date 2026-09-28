@@ -82,9 +82,9 @@
   Link: How the Process Works for Buying → `/buyers-guide`
 
 ### 7. Contact
-- Headline: Ready to make
+- Headline (above the form, right column): Ready to make
   your move?
-- Details: CA License DRE # 02368948 · Phone (512) 391-9306 · E-mail dustinchaveleh@kw.com · Office 1624 California Street, San Francisco, CA 94109
+- Details: Phone (512) 391-9306 · E-mail dustinchaveleh@kw.com · Office 1624 California Street, San Francisco, CA 94109 · CA License DRE # 02368948
 - Form (see "Contact form" below)
 
 ---
@@ -235,7 +235,7 @@ Buyer Resources · Days on Market → Market News · SF Roadways → Things to D
 
 - Headline: Ready to make your move?
 - Body: Whether you're just starting to think about buying or you've already found a place you love, Dustin is here to help you figure out the next step. Clear guidance, straightforward communication, and support at every stage of the process.
-- Details: CA License DRE #02368948 · Phone (512) 391-9306 · E-mail dustinchaveleh@kw.com · Office 1624 California Street, San Francisco, CA 94109
+- Details: Phone (512) 391-9306 · E-mail dustinchaveleh@kw.com · Office 1624 California Street, San Francisco, CA 94109 · CA License DRE #02368948
 - Form headline: Connect with Dustin
 - Form intro: Fill out the form below, and I will get back to you promptly.
 

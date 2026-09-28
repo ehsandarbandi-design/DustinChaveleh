@@ -4,11 +4,11 @@
 .h1, .h2, .h3, .h4, .p1, .p2, .p3 { font-family: var(--font-sans); margin: 0; }
 .mono { font-family: var(--font-mono); margin: 0; }
 
-/* headings — Inter 400 */
-.h1 { font-weight: 400; font-size: clamp(var(--h1-m), calc(var(--h1-m) + 32 * var(--fluid)), var(--h1)); line-height: 1.0; letter-spacing: -0.06em; }
-.h2 { font-weight: 400; font-size: clamp(var(--h2-m), calc(var(--h2-m) + 16 * var(--fluid)), var(--h2)); line-height: 1.0; letter-spacing: -0.06em; }
-.h3 { font-weight: 400; font-size: clamp(var(--h3-m), calc(var(--h3-m) + 7 * var(--fluid)), var(--h3));  line-height: 1.05; letter-spacing: -0.06em; }
-.h4 { font-weight: 400; font-size: var(--h4); line-height: 1.1; letter-spacing: -0.07em; }
+/* headings — Inter 400, 150% line height for legibility (Sep 28, 2026) */
+.h1 { font-weight: 400; font-size: clamp(var(--h1-m), calc(var(--h1-m) + 32 * var(--fluid)), var(--h1)); line-height: 1.5; letter-spacing: -0.06em; }
+.h2 { font-weight: 400; font-size: clamp(var(--h2-m), calc(var(--h2-m) + 16 * var(--fluid)), var(--h2)); line-height: 1.5; letter-spacing: -0.06em; }
+.h3 { font-weight: 400; font-size: clamp(var(--h3-m), calc(var(--h3-m) + 7 * var(--fluid)), var(--h3));  line-height: 1.5; letter-spacing: -0.06em; }
+.h4 { font-weight: 400; font-size: var(--h4); line-height: 1.5; letter-spacing: -0.07em; }
 
 /* paragraphs — Inter 300 */
 .p1 { font-weight: 300; font-size: clamp(var(--p1-m), calc(var(--p1-m) + 12 * var(--fluid)), var(--p1)); line-height: 1.25; letter-spacing: -0.02em; }

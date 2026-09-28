@@ -1,6 +1,6 @@
 /* 8-column cards, 20px apart: three per view, the row filling columns 1–24 exactly */
 .rail { --card: calc((100% - 23 * var(--col-gap)) / 24 * 8 + 7 * var(--col-gap)); --rail-gap: var(--col-gap); }
-.card { width: var(--card); }
+/* card width comes from the rail grid column (grid-auto-columns: var(--card)) */
 
 @media (max-width: 767px) {
   /* 6 of 8 columns so the next card peeks in */

@@ -6,19 +6,14 @@ import BookCall from "@/components/BookCall";
 import { home } from "@/lib/copy";
 import styles from "./Contact.module.css";
 
-/** Home §8 — Contact (BUILD.md §4.8): Paper. H1 on two lines and the details list in columns 1–10,
- *  the form in columns 13–24. Reused at the end of blog posts. */
+/** Home §8 — Get In Touch (Paper): the contact details (phone, e-mail, office, license) and the call button in
+ *  columns 1–10; the two-line headline on top of the form in columns 13–24. Reused at the end of blog posts. */
 export default function Contact() {
   const { contact } = home;
   return (
     <Section label={contact.label} id="contact" className={styles.section}>
       <div className={`grid ${styles.grid}`}>
         <div className={styles.intro}>
-          <Reveal as="h2" className="h1">
-            {contact.headline[0]}
-            <br />
-            {contact.headline[1]}
-          </Reveal>
           <Reveal as="dl" className={styles.details}>
             {contact.details.map((d) => (
               <div key={d.label} className={styles.detail}>
@@ -31,9 +26,16 @@ export default function Contact() {
           </Reveal>
           <BookCall />
         </div>
-        <Reveal className={styles.form}>
-          <ContactForm />
-        </Reveal>
+        <div className={styles.form}>
+          <Reveal as="h2" className={`h1 ${styles.headline}`}>
+            {contact.headline[0]}
+            <br />
+            {contact.headline[1]}
+          </Reveal>
+          <Reveal>
+            <ContactForm />
+          </Reveal>
+        </div>
       </div>
     </Section>
   );

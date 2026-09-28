@@ -2,11 +2,13 @@
 .section { padding-top: var(--space-xl); padding-bottom: var(--space-xl); }
 .grid { row-gap: var(--space-l); align-items: start; }
 .intro { grid-column: 1 / span 10; }
-.details { display: flex; flex-direction: column; gap: var(--space-xs); margin-top: var(--space-l); }
+.details { display: flex; flex-direction: column; gap: var(--space-xs); }
 .detail { display: flex; flex-direction: column; gap: 2px; }
 .term { color: var(--taupe); }
 .form { grid-column: 13 / -1; }
+.headline { margin-bottom: var(--space-l); }
 
 @media (max-width: 767px) {
   .intro, .form { grid-column: 1 / -1; }
+  .form { order: -1; }   /* headline and form first on phones, details after */
 }

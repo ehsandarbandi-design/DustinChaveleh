@@ -1,14 +1,15 @@
 .headline { grid-column: 1 / span 14; }
-/* Three 7-column cards per view: the gaps are what is left of 24 columns after 3 × 7 */
+/* Same as the Neighborhoods rail: 8-column cards, 20px apart, three per view; excerpts capped at four lines */
 .rail {
-  --card: calc((100% - 23 * var(--col-gap)) / 24 * 7 + 6 * var(--col-gap));
-  --rail-gap: calc((100% - 3 * var(--card)) / 2);
+  --card: calc((100% - 23 * var(--col-gap)) / 24 * 8 + 7 * var(--col-gap));
+  --rail-gap: var(--col-gap);
+  --card-text-lines: 4;
   margin-top: var(--space-l);
 }
-.card { width: var(--card); }
+/* card width comes from the rail grid column (grid-auto-columns: var(--card)) */
 
 @media (max-width: 767px) {
   .headline { grid-column: 1 / -1; }
   /* 6 of 8 columns so the next card peeks in */
-  .rail { --card: calc((100% - 7 * var(--col-gap)) / 8 * 6 + 5 * var(--col-gap)); --rail-gap: var(--col-gap); }
+  .rail { --card: calc((100% - 7 * var(--col-gap)) / 8 * 6 + 5 * var(--col-gap)); }
 }

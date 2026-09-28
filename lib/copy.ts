@@ -261,10 +261,10 @@ export const home = {
     label: "GET IN TOUCH",
     headline: ["Ready to make", "your move?"],
     details: [
-      { label: "CA License", value: "DRE # 02368948" },
       { label: "Phone", value: "(512) 391-9306", href: "sms:5123919306" },
       { label: "E-mail", value: "dustinchaveleh@kw.com", href: "mailto:dustinchaveleh@kw.com" },
       { label: "Office", value: "1624 California Street, San Francisco, CA 94109" },
+      { label: "CA License", value: "DRE # 02368948" },
     ],
   },
 };

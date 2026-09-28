@@ -13,6 +13,9 @@ type Status = "idle" | "sending" | "sent" | "error";
 export default function ContactForm({ className = "" }: { className?: string }) {
   const { fields, button, messages } = contactForm;
   const [status, setStatus] = useState<Status>("idle");
+  // The browser's own validity check covers the required fields and the email format
+  const [complete, setComplete] = useState(false);
+  const check = (form: HTMLFormElement) => setComplete(form.checkValidity());
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,13 +36,14 @@ export default function ContactForm({ className = "" }: { className?: string }) 
       if (!res.ok) throw new Error(String(res.status));
       setStatus("sent");
       form.reset();
+      setComplete(false);
     } catch {
       setStatus("error");
     }
   };
 
   return (
-    <form className={`${styles.form} ${className}`} onSubmit={onSubmit} data-status={status} aria-busy={status === "sending"}>
+    <form className={`${styles.form} ${className}`} onSubmit={onSubmit} onInput={(e) => check(e.currentTarget)} onChange={(e) => check(e.currentTarget)} data-status={status} aria-busy={status === "sending"}>
       <FormField id="contact-first-name" name="firstName" label={fields.firstName.label} required autoComplete="given-name" className={styles.half} />
       <FormField id="contact-last-name" name="lastName" label={fields.lastName.label} autoComplete="family-name" className={styles.half} />
       <FormField id="contact-email" name="email" kind="email" label={fields.email.label} required autoComplete="email" className={styles.full} />
@@ -52,7 +56,7 @@ export default function ContactForm({ className = "" }: { className?: string }) 
         <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <div className={styles.full}>
-        <Button type="submit" variant="outlined" arrow={false} className={styles.submit} disabled={status === "sending"}>
+        <Button type="submit" variant="outlined" arrow={false} className={styles.submit} disabled={!complete || status === "sending"}>
           {button}
         </Button>
       </div>

@@ -29,19 +29,20 @@
   clip-path: polygon(-2% 102%, 102% 102%, 102% 102%, -2% 102%);
   transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.button:hover::before, .button:focus-visible::before { clip-path: polygon(-2% -2%, 102% -2%, 102% 102%, -2% 102%); }
+.button:not(:disabled):hover::before, .button:focus-visible::before { clip-path: polygon(-2% -2%, 102% -2%, 102% 102%, -2% 102%); }
+.button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .filled { color: var(--btn-fg); background: var(--btn-bg); padding: 1.4em 1.8em; }
 .filled::before { background: var(--btn-fg); border: 2px solid var(--btn-bg); }
-.filled:hover, .filled:focus-visible { color: var(--btn-bg); }
+.filled:not(:disabled):hover, .filled:focus-visible { color: var(--btn-bg); }
 
 .outlined { color: var(--outline-color); border: 1px solid var(--outline-color); padding: 1em 1.8em; }
 .outlined::before { background: var(--outline-color); }
-.outlined:hover, .outlined:focus-visible { color: var(--outline-flip); }
+.outlined:not(:disabled):hover, .outlined:focus-visible { color: var(--outline-flip); }
 
 .tertiary { font-size: 1rem; color: var(--outline-color); border-bottom: 1px solid var(--outline-color); padding: 1rem 1.3rem; }
 .tertiary::before { background: var(--outline-color); }
-.tertiary:hover, .tertiary:focus-visible { color: var(--outline-flip); }
+.tertiary:not(:disabled):hover, .tertiary:focus-visible { color: var(--outline-flip); }
 
 /* Long labels ("Read the full article on Business Insider") wrap on phones instead of overflowing */
 @media (max-width: 767px) {
