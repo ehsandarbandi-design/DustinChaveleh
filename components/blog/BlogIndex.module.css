@@ -8,6 +8,11 @@
 .filter:hover, .filter[aria-current="page"] { background-size: 100% 1px; }
 .filter[aria-current="page"] { color: var(--ink); }
 
+/* /blog/tag/Neighborhoods: every neighborhood above the posts */
+.hoods { padding-top: var(--space-l); padding-bottom: 0; }
+.subhead { color: var(--taupe); margin-bottom: var(--space-m); }
+.hoods .subhead { margin-bottom: var(--space-l); }
+
 .posts { padding-top: var(--space-l); padding-bottom: var(--section-pad); display: flex; flex-direction: column; gap: var(--space-l); }
 
 /* Featured (newest) post: large image in columns 1–13, text in columns 15–24 */

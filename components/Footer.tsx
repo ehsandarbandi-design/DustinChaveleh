@@ -10,11 +10,12 @@ import styles from "./Footer.module.css";
 
 const brokerageLogos = [
   { src: "/images/logos/keller-williams-white.webp", alt: "Keller Williams", width: 168, height: 112 },
-  { src: "/images/logos/realtor-white.webp", alt: "REALTOR®", width: 101, height: 112 },
-  { src: "/images/logos/car-white.webp", alt: "California Association of REALTORS®", width: 112, height: 112 },
+  { src: "/images/logos/realtor-mark-white.webp", alt: "REALTOR®", width: 97, height: 112 },
+  { src: "/images/logos/car-mark-white.webp", alt: "California Association of REALTORS®", width: 102, height: 112 },
 ];
 
-/** Footer (BUILD.md §4.9): Ink, Paper text; nav row, then a hairline, then contact/social and the license/logos rows. */
+/** Footer (Figma 678:2035): Ink, Paper text. Logo and nav; a 30% hairline; phone, email, office and CA DRE on the
+ *  left with the social links on the right; then the three brokerage logos, 28px tall and bottom-aligned. */
 export default function Footer() {
   return (
     <footer className={`${sectionStyles.ink} ${styles.footer}`} data-tone="ink">
@@ -30,28 +31,26 @@ export default function Footer() {
           ))}
         </ul>
       </Reveal>
-      <Hairline />
+      <Hairline className={styles.rule} />
 
       <Reveal className={styles.row}>
         <address className={`mono ${styles.contact}`}>
           <TextLink href={site.phone.href}>{site.phone.label}</TextLink>
           <TextLink href={`mailto:${site.email}`}>{site.email}</TextLink>
           <span>{site.office}</span>
+          <span>{site.license}</span>
         </address>
         <Social className={styles.social} />
       </Reveal>
 
       <Reveal className={`${styles.row} ${styles.rowLast}`}>
-        <div className={styles.legal}>
-          <span className="mono">{site.license}</span>
-          <ul className={styles.logos}>
-            {brokerageLogos.map((logo) => (
-              <li key={logo.src}>
-                <Img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} className={styles.logoImg} eager />
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className={styles.logos}>
+          {brokerageLogos.map((logo) => (
+            <li key={logo.src}>
+              <Img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} className={styles.logoImg} eager />
+            </li>
+          ))}
+        </ul>
       </Reveal>
     </footer>
   );

@@ -245,18 +245,6 @@
     "height": 112,
     "bytes": 4254
   },
-  "public/images/logos/realtor-white.webp": {
-    "source": "assets/images/logos/Realtor white.png",
-    "width": 101,
-    "height": 112,
-    "bytes": 1160
-  },
-  "public/images/logos/car-white.webp": {
-    "source": "assets/images/logos/car 1 white.png",
-    "width": 112,
-    "height": 112,
-    "bytes": 6206
-  },
   "public/images/press/business-insider-card.webp": {
     "source": "assets/images/press/business-insider/business-insider-1.png",
     "width": 1320,
@@ -352,5 +340,197 @@
     "width": 1600,
     "height": 2400,
     "bytes": 341792
+  },
+  "public/images/blog/db7amhstzhebn1uuvlvuprk98ir19x.webp": {
+    "source": "assets/images/blog/db7amhstzhebn1uuvlvuprk98ir19x.png",
+    "width": 1374,
+    "height": 1436,
+    "bytes": 215866
+  },
+  "public/images/blog/looking-for-a-low-hoa-building.webp": {
+    "source": "assets/images/blog/looking-for-a-low-hoa-building.webp",
+    "width": 1500,
+    "height": 1000,
+    "bytes": 149096
+  },
+  "public/images/blog/securing-a-coveted-spot-in-san-franciscos-community-gardens.webp": {
+    "source": "assets/images/blog/securing-a-coveted-spot-in-san-franciscos-community-gardens.jpg",
+    "width": 1600,
+    "height": 2133,
+    "bytes": 793552
+  },
+  "public/images/blog/hoa-fees-are-skyrocketing.webp": {
+    "source": "assets/images/blog/hoa-fees-are-skyrocketing.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 10302
+  },
+  "public/images/blog/sfs-best-beaches-this-summer-and-how-not-to-get-burned-by-the-fog.webp": {
+    "source": "assets/images/blog/sfs-best-beaches-this-summer-and-how-not-to-get-burned-by-the-fog.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 210340
+  },
+  "public/images/blog/rent-tools-park-passes-amp-gear-for-free.webp": {
+    "source": "assets/images/blog/rent-tools-park-passes-amp-gear-for-free.jpg",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 203706
+  },
+  "public/images/blog/why-the-bay-area-housing-market-wont-crash.webp": {
+    "source": "assets/images/blog/why-the-bay-area-housing-market-wont-crash.jpg",
+    "width": 1600,
+    "height": 1068,
+    "bytes": 48734
+  },
+  "public/images/blog/oorb0h0udemeqwujwce2zib0jxaqqe.webp": {
+    "source": "assets/images/blog/oorb0h0udemeqwujwce2zib0jxaqqe.jpg",
+    "width": 500,
+    "height": 407,
+    "bytes": 26216
+  },
+  "public/images/blog/everything-you-need-to-know-about-condo-conversion-in-san-francisco.webp": {
+    "source": "assets/images/blog/everything-you-need-to-know-about-condo-conversion-in-san-francisco.jpg",
+    "width": 913,
+    "height": 1280,
+    "bytes": 234804
+  },
+  "public/images/blog/permitted-vs-unpermitted-work-in-sf-what-every-buyer-needs-to-know.webp": {
+    "source": "assets/images/blog/permitted-vs-unpermitted-work-in-sf-what-every-buyer-needs-to-know.jpg",
+    "width": 1400,
+    "height": 788,
+    "bytes": 107982
+  },
+  "public/images/blog/san-francisco-spring-sales-data.webp": {
+    "source": "assets/images/blog/san-francisco-spring-sales-data.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 290718
+  },
+  "public/images/blog/tic.webp": {
+    "source": "assets/images/blog/tic.jpg",
+    "width": 1600,
+    "height": 900,
+    "bytes": 105758
+  },
+  "public/images/blog/sf-condos-vs-single-family-homes-wheres-the-better-play-in-2026.webp": {
+    "source": "assets/images/blog/sf-condos-vs-single-family-homes-wheres-the-better-play-in-2026.jpg",
+    "width": 1600,
+    "height": 1071,
+    "bytes": 275448
+  },
+  "public/images/blog/10-questions-to-ask-before-buying-a-condo.webp": {
+    "source": "assets/images/blog/10-questions-to-ask-before-buying-a-condo.webp",
+    "width": 1500,
+    "height": 1125,
+    "bytes": 156458
+  },
+  "public/images/blog/what-is-a-brokers-tour-and-why-your-agent-should-be-on-one.webp": {
+    "source": "assets/images/blog/what-is-a-brokers-tour-and-why-your-agent-should-be-on-one.jpg",
+    "width": 851,
+    "height": 575,
+    "bytes": 76710
+  },
+  "public/images/blog/what-questions-should-i-ask-a-potential-real-estate-agent.webp": {
+    "source": "assets/images/blog/what-questions-should-i-ask-a-potential-real-estate-agent.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 55040
+  },
+  "public/images/blog/why-is-san-francisco-condo-market-up-almost-30-in-one-year.webp": {
+    "source": "assets/images/blog/why-is-san-francisco-condo-market-up-almost-30-in-one-year.png",
+    "width": 879,
+    "height": 485,
+    "bytes": 21692
+  },
+  "public/images/blog/why-tenant-occupied-properties-lag-behind-in-san-franciscos-market.webp": {
+    "source": "assets/images/blog/why-tenant-occupied-properties-lag-behind-in-san-franciscos-market.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 63102
+  },
+  "public/images/blog/hows-the-condo-market-in-2026-heres-what-you-need-to-know.webp": {
+    "source": "assets/images/blog/hows-the-condo-market-in-2026-heres-what-you-need-to-know.jpg",
+    "width": 1600,
+    "height": 2134,
+    "bytes": 253412
+  },
+  "public/images/blog/ai-is-transforming-san-francisco-real-estate-in-2026.webp": {
+    "source": "assets/images/blog/ai-is-transforming-san-francisco-real-estate-in-2026.jpg",
+    "width": 1600,
+    "height": 900,
+    "bytes": 218316
+  },
+  "public/images/blog/new-water-conservation-requirements-for-homeowners.webp": {
+    "source": "assets/images/blog/new-water-conservation-requirements-for-homeowners.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 30712
+  },
+  "public/images/blog/homeowners-insurance-in-sf.webp": {
+    "source": "assets/images/blog/homeowners-insurance-in-sf.jpg",
+    "width": 275,
+    "height": 183,
+    "bytes": 12180
+  },
+  "public/images/blog/understanding-tics-what-you-need-to-know-before-buying.webp": {
+    "source": "assets/images/blog/understanding-tics-what-you-need-to-know-before-buying.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 146160
+  },
+  "public/images/blog/how-fast-can-you-drive-in-sf.webp": {
+    "source": "assets/images/blog/how-fast-can-you-drive-in-sf.webp",
+    "width": 1280,
+    "height": 985,
+    "bytes": 123154
+  },
+  "public/images/blog/preapproval-vs-prequalification.webp": {
+    "source": "assets/images/blog/preapproval-vs-prequalification.png",
+    "width": 1600,
+    "height": 1066,
+    "bytes": 96814
+  },
+  "public/images/blog/bnjfcx8zl8862k49op1m2n31wmzge3.webp": {
+    "source": "assets/images/blog/bnjfcx8zl8862k49op1m2n31wmzge3.jpg",
+    "width": 1600,
+    "height": 1067,
+    "bytes": 251610
+  },
+  "public/images/blog/san-francisco-luxury-real-estate-188m-grand-victorian-in-pacific-heights.webp": {
+    "source": "assets/images/blog/san-francisco-luxury-real-estate-188m-grand-victorian-in-pacific-heights.webp",
+    "width": 1456,
+    "height": 970,
+    "bytes": 325058
+  },
+  "public/images/blog/affordable-housing-guide.webp": {
+    "source": "assets/images/blog/affordable-housing-guide.png",
+    "width": 1548,
+    "height": 1026,
+    "bytes": 301252
+  },
+  "public/images/blog/the-ipo-pipeline-is-quietly-building-a-new-liquidity-cycle-for-san-francisco-real-estate.webp": {
+    "source": "assets/images/blog/the-ipo-pipeline-is-quietly-building-a-new-liquidity-cycle-for-san-francisco-real-estate.png",
+    "width": 1600,
+    "height": 1156,
+    "bytes": 46930
+  },
+  "public/images/blog/igptw1wkmlvd0862c0vlczk2r8e0ap.webp": {
+    "source": "assets/images/blog/igptw1wkmlvd0862c0vlczk2r8e0ap.jpg",
+    "width": 1000,
+    "height": 1500,
+    "bytes": 213940
+  },
+  "public/images/logos/realtor-mark-white.webp": {
+    "source": "assets/images/logos/Realtor white.png",
+    "width": 97,
+    "height": 112,
+    "bytes": 1886
+  },
+  "public/images/logos/car-mark-white.webp": {
+    "source": "assets/images/logos/car 1 white.png",
+    "width": 102,
+    "height": 112,
+    "bytes": 6340
   }
 }

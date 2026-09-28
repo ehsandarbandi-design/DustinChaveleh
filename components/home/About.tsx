@@ -29,7 +29,7 @@ export default function About() {
           </Reveal>
           <Reveal as="p" className={`mono ${styles.smallPrint}`}>{about.smallPrint}</Reveal>
           <Reveal className={styles.link}>
-            <Button variant="tertiary" href={about.link.href}>
+            <Button href={about.link.href}>
               {about.link.label}
             </Button>
           </Reveal>

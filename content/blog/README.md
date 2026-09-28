@@ -1,7 +1,7 @@
 # Blog posts
 
 One file per post, named by the post's slug (the last part of its URL): `content/blog/<slug>.mdx`.
-The post must also be listed in `lib/copy.ts` (title, date, excerpt, cover image, tags) — the file
+The post must also be listed in `content/blog/posts.json` (title, date, excerpt, cover image, tags) — the file
 holds only the article body.
 
 Write plain Markdown: paragraphs, `##` sub-headings, lists, links and images (`![alt](/images/blog/...)`).

@@ -11,8 +11,8 @@
 - **Site title (browser tab):** Dustin Chaveleh | San Francisco based REALTOR®
 - **Meta description:** see "SEO" at the end of this file (drafted Sep 28, 2026)
 - **Logo text:** Dustin Chaveleh
-- **Nav:** Home · Meet Dustin · Market Update · Blog · FAQ · Play Games · **Work with Dustin** (button)
-  - URLs: `/` · `/meetdustin` · `/market-update` · `/blog` · `/faq` · `/playrealestateiq` · `/work-with-dustin`
+- **Nav:** Home · Meet Dustin · Market Update · Blog · Play Games · FAQ · **Work with Dustin** (button) — order from the Figma footer (678:2035)
+  - URLs: `/` · `/meetdustin` · `/market-update` · `/blog` · `/playrealestateiq` · `/faq` · `/work-with-dustin`
   - Figma says "Market update" and "Play Games"; current site says "Market Update" and "Play Game". [TODO: pick one — suggest "Market Update" and "Play Games"]
 - **License:** CA DRE #02368948
 - **Phone:** (512) 391-9306  → `sms:5123919306`
@@ -169,27 +169,65 @@ For buyers, the advantage is being prepared — having financing in place and th
 - Categories: Buyer Resources · condo · Home Ownership · Listings · Market News · Neighborhoods · Things to Do
 
 ### Posts (newest first)
-| Date | Title | URL | Excerpt |
-|---|---|---|---|
-| Aug 31, 2026 | San Francisco Property Transfer Taxes 2026 Guide | /blog/san-francisco-transfer-taxes | Real estate transfer taxes are rarely a fun topic to discuss, but they are a closing cost that adds up quickly if you aren't paying attention. In this guide, I break down how the home price you are targeting translates directly into your tax liability, and why crossing specific threshold lines can instantly triple your tax rate and cost you tens of thousands of dollars. |
-| Aug 19, 2026 | Rent Control in San Francisco | /blog/rent-control-in-san-francisco | The market that makes you want to sell is the market that makes your tenant want to stay. When rents are climbing there is nowhere cheaper for them to go, and when they are finally ready to move, prices have usually softened too. Here is the Rent control 101 for San Francisco sellers. |
-| Aug 14, 2026 | Ranking the Best Platforms for Home Searching (2026 Guide) | /blog/i0ccwm3gm435y9qc8i31gw5zbbqd88 | Thinking about buying a home? Relying on just one app like Zillow or Redfin means you might be missing out on exclusive and "Coming Soon" listings. Discover why a multi-app setup—and private MLS access—is essential for seeing the full picture of inventory in today's market. |
-| Aug 3, 2026 | Tenant Buyout Costs in San Francisco | /blog/tenantbuyouts | Rent buyouts — landlords paying tenants cash to voluntarily give up a rent-controlled unit — are happening in San Francisco at a pace not seen since before the pandemic. Here's the quick version: what's driving it, where it's happening, and what the city does (and doesn't) tell you about the price tag. |
-| Jul 29, 2026 | Schools in San Francisco | /blog/schools-in-san-francisco | San Francisco is a single unified school district — which means there's no "good school" neighborhood to buy into, and moving across the city won't automatically change your kid's assigned school. Here's why the suburban playbook doesn't apply here, and how to plan your home search and school enrollment as two separate timelines. |
-| Jul 28, 2026 | Home Buyers and Sellers Generational Trends | /blog/home-buyers-and-sellers-generational-trends | This post breaks down key findings from the National Association of REALTORS® (NAR) Generational Trends Report, exploring how younger buyers are navigating today's competitive housing market. |
-| Jul 24, 2026 | Why Real Estate Deals Fall Through | /blog/why-real-estate-deals-fall-through | Most real estate deals don't die from one big dramatic thing — they die from inspection surprises, financing hiccups, and timing that doesn't line up. Here's the actual breakdown by category and percentage, using the latest 2026 NAR and Redfin data, plus what SF buyers and sellers can do to keep their deal off the list. |
-| Jul 22, 2026 | Before You Buy in the Sunset, Know Its History | /blog/before-you-buy-in-the-sunset-know-its-history | Ever notice how every block in the Sunset looks like a variation on the same house? That's not a coincidence — it's the legacy of a 1930s building boom that put up two houses a day. Here's the real story behind the stucco, the narrow lots, and the little style flourishes that make each one unique. |
-| Jul 16, 2026 | Which Neighborhoods Are Selling the Furthest Over Asking Right Now | /blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4 | Inner Sunset and Outer Sunset single-family homes are now closing over 141% of list price, while Bernal Heights leads all neighborhoods in year-over-year gains. Here's where San Francisco's 2026 market is running hottest — and the one neighborhood where condos are still going for less than asking. |
-| Jul 16, 2026 | Why San Francisco Duplexes Sell for Less Than Single-Family Homes | /blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes | Over half of SF duplexes sell with a tenant in place, and that tenant costs sellers 44% per square foot. Here's why rent control makes vacancy the real premium — and how savvy buyers are closing the gap to single-family pricing. |
 
-### Neighborhood Guide posts (`/blog/tag/Neighborhoods`)
-| Date | Title | Tags | Excerpt |
-|---|---|---|---|
-| 6/13/26 | The Excelsior: SF's Most Overlooked Neighborhood for Buyers | first time home buyer, Neighborhood Guide | The Excelsior is a diverse residential neighborhood in the Southeastern quarter of the city, bounded by Mission Street to the west, Silver Avenue to the north, McLaren Park to the East, and Geneva Avenue to the south. It is in the SFAR's District 10. |
-| 4/11/26 | The Castro Is Having a Moment | Neighborhood Guide, Home Ownership, Neighborhoods, first time home buyer | The Castro has always been one of San Francisco's most iconic neighborhoods. Now, with the Castro Theatre being restored, new businesses opening along the corridor, and the housing market rebounding, it's also becoming one of the most interesting places to buy in 2026. Here's a look at the history, the homes, and what the market is doing right now. |
-| 5/28/19 [TODO: date looks wrong] | Duboce Triangle: Small Neighborhood, Big City Access | first time home buyer, Neighborhood Guide | Duboce Triangle sits at the center of everything — walkable streets, classic Victorian architecture, easy transit access, and some of SF's best nearby neighborhoods. Median home prices are holding strong around $1.37M–$1.42M in 2026, and inventory remains tight. Here's what buyers need to know before shopping in this market. |
+Imported Sep 28, 2026 from https://www.dustinchaveleh.com/blog (all 43 posts, bodies in `content/blog/<slug>.mdx`).
+The data lives in `content/blog/posts.json`; this table is a copy for reference.
+Tags are the ones Dustin set on the old site, except where noted: posts that had no tags were given one, and two
+neighborhood pieces gained "Neighborhoods" (marked *). Covers are the old site's images until new ones arrive.
 
-[TODO: Full article bodies — export from Squarespace and save as `content/blog/<slug>.md`]
+- **Neighborhoods tag page:** every neighborhood from the home rail appears above the posts, under "All neighborhoods",
+  with "Read the guide" on the ones that have a post; the posts follow under "Neighborhood posts".
+
+| Date | Title | URL | Tags |
+|---|---|---|---|
+| 2026-09-21 | 1965 Market Street: 23-Story SF High-Rise Gets Final Approval | `/blog/db7amhstzhebn1uuvlvuprk98ir19x` | Market News |
+| 2026-08-31 | San Francisco Property Transfer Taxes 2026 Guide | `/blog/san-francisco-transfer-taxes` | Home Ownership |
+| 2026-08-19 | Rent Control in San Francisco | `/blog/rent-control-in-san-francisco` | Home Ownership |
+| 2026-08-14 | Ranking the Best Platforms for Home Searching (2026 Guide) | `/blog/i0ccwm3gm435y9qc8i31gw5zbbqd88` | Market News |
+| 2026-08-03 | Tenant Buyout Costs in San Francisco | `/blog/tenantbuyouts` | Market News |
+| 2026-07-29 | Schools in San Francisco | `/blog/schools-in-san-francisco` | Buyer Resources |
+| 2026-07-28 | Home Buyers and Sellers Generational Trends | `/blog/home-buyers-and-sellers-generational-trends` | Buyer Resources |
+| 2026-07-24 | Why Real Estate Deals Fall Through | `/blog/why-real-estate-deals-fall-through` | Home Ownership |
+| 2026-07-22 | Before You Buy in the Sunset, Know Its History | `/blog/before-you-buy-in-the-sunset-know-its-history` | Home Ownership, Neighborhoods |
+| 2026-07-16 | Which Neighborhoods Are Selling the Furthest Over Asking Right Now | `/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4` | Home Ownership, Market News, Neighborhoods |
+| 2026-07-16 | Why San Francisco Duplexes Sell for Less Than Single-Family Homes | `/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes` | Home Ownership |
+| 2026-07-13 | Looking for a Low HOA Building? | `/blog/looking-for-a-low-hoa-building` | condo, Home Ownership |
+| 2026-07-01 | Securing a Coveted Spot in San Francisco’s Community Gardens | `/blog/securing-a-coveted-spot-in-san-franciscos-community-gardens` | Things to Do, Home Ownership |
+| 2026-06-30 | HOA Fees are Skyrocketing | `/blog/hoa-fees-are-skyrocketing` | Home Ownership |
+| 2026-06-13 | The Excelsior: SF's Most Overlooked Neighborhood for Buyers | `/blog/the-excelsior-sfs-most-overlooked-neighborhood-for-buyers` | Neighborhoods |
+| 2026-06-13 | SF's Best Beaches This Summer (And How Not to Get Burned by the Fog) | `/blog/sfs-best-beaches-this-summer-and-how-not-to-get-burned-by-the-fog` | Things to Do |
+| 2026-06-10 | Rent Tools, Park Passes & Gear for Free! | `/blog/rent-tools-park-passes-amp-gear-for-free` | Things to Do, Home Ownership |
+| 2026-06-09 | Why the Bay Area Housing Market Won’t Crash | `/blog/why-the-bay-area-housing-market-wont-crash` | Market News |
+| 2026-06-08 | Let’s talk about Days on Market. Is it a bad signal? | `/blog/oorb0h0udemeqwujwce2zib0jxaqqe` | Market News |
+| 2026-05-30 | Everything You Need to Know About Condo Conversion in San Francisco | `/blog/everything-you-need-to-know-about-condo-conversion-in-san-francisco` | Home Ownership |
+| 2026-05-25 | Permitted vs. Unpermitted Work in SF — What Every Buyer Needs to Know | `/blog/permitted-vs-unpermitted-work-in-sf-what-every-buyer-needs-to-know` | Home Ownership |
+| 2026-05-24 | San Francisco Spring Sales Data | `/blog/san-francisco-spring-sales-data` | Market News, Home Ownership |
+| 2026-05-24 | The TIC Conversion Guide for SF Owners | `/blog/tic` | Home Ownership |
+| 2026-05-14 | SF Condos vs Single-Family Homes: Where's the Better Play in 2026? | `/blog/sf-condos-vs-single-family-homes-wheres-the-better-play-in-2026` | Home Ownership |
+| 2026-05-13 | 10 Questions to Ask Before Buying a Condo | `/blog/10-questions-to-ask-before-buying-a-condo` | Home Ownership |
+| 2026-05-12 | What Is a Broker's Tour — and Why Your Agent Should Be On One | `/blog/what-is-a-brokers-tour-and-why-your-agent-should-be-on-one` | Market News |
+| 2026-05-09 | What Questions Should I Ask a Potential Real Estate Agent? | `/blog/what-questions-should-i-ask-a-potential-real-estate-agent` | Home Ownership |
+| 2026-05-07 | Why is San Francisco Condo Market up almost 30% in One Year | `/blog/why-is-san-francisco-condo-market-up-almost-30-in-one-year` | Market News |
+| 2026-05-06 | Why Tenant-Occupied Properties Lag Behind in San Francisco’s Market | `/blog/why-tenant-occupied-properties-lag-behind-in-san-franciscos-market` | Home Ownership |
+| 2026-05-04 | How’s the Condo Market in 2026? Here’s what you need to know. | `/blog/hows-the-condo-market-in-2026-heres-what-you-need-to-know` | Market News |
+| 2026-04-30 | AI Is Transforming San Francisco Real Estate in 2026 | `/blog/ai-is-transforming-san-francisco-real-estate-in-2026` | Market News |
+| 2026-04-29 | New Water Conservation Requirements for Homeowners | `/blog/new-water-conservation-requirements-for-homeowners` | Home Ownership |
+| 2026-04-28 | Getting Your Homeowners Insurance Right: What You Need to Know | `/blog/homeowners-insurance-in-sf` | Home Ownership, Buyer Resources |
+| 2026-04-28 | Understanding TICs: What You Need to Know Before Buying | `/blog/understanding-tics-what-you-need-to-know-before-buying` | Home Ownership |
+| 2026-04-27 | From Slow Streets to Fast Lanes: Navigating San Francisco’s Roadways | `/blog/how-fast-can-you-drive-in-sf` | Things to Do |
+| 2026-04-27 | Pre-approval vs Prequalification | `/blog/preapproval-vs-prequalification` | Home Ownership, Market News |
+| 2026-04-25 | What to know about Appraisals | `/blog/bnjfcx8zl8862k49op1m2n31wmzge3` | Buyer Resources |
+| 2026-04-24 | San Francisco Luxury Real Estate: $18.8M Grand Victorian in Pacific Heights | `/blog/san-francisco-luxury-real-estate-188m-grand-victorian-in-pacific-heights` | Listings |
+| 2026-04-22 | BMR’s - Your Guide to Affordable Housing in SF | `/blog/affordable-housing-guide` | Buyer Resources |
+| 2026-04-21 | The IPO Pipeline Is Quietly Building a New Liquidity Cycle for SF Real Estate | `/blog/the-ipo-pipeline-is-quietly-building-a-new-liquidity-cycle-for-san-francisco-real-estate` | Market News |
+| 2026-04-12 | First of the Month, SF Edition | `/blog/igptw1wkmlvd0862c0vlczk2r8e0ap` | Things to Do |
+| 2026-04-11 | The Castro Is Having a Moment | `/blog/the-castro-is-having-a-moment` | Neighborhoods |
+| 2019-05-28 | Duboce Triangle: Small Neighborhood, Big City Access | `/blog/Blog Post Title One-3zaa9-zlxng-njalb` | Neighborhoods |
+
+Tag decisions (not set on the old site): 1965 Market Street → Market News · Transfer Taxes → Home Ownership ·
+Rent Control → Home Ownership · Tenant Buyouts → Market News · Schools → Buyer Resources · Generational Trends →
+Buyer Resources · Days on Market → Market News · SF Roadways → Things to Do · BMR / Affordable Housing → Buyer Resources ·
+*Sunset history and *Which Neighborhoods Are Selling… → also Neighborhoods.
 
 ---
 

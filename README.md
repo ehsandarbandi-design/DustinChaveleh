@@ -37,9 +37,13 @@ placeholders until their data is supplied.
 
 ## Add a blog post
 
-1. Add the post to `posts` in `lib/copy.ts` (date, title, URL slug, excerpt, cover image under
-   `public/images/blog/`, tags). The blog index, category pages and home page read from there.
+1. Add the post to `content/blog/posts.json`, newest first: date, dateLabel, title, href (`/blog/<slug>`),
+   excerpt, image (`/images/blog/<slug>.webp`) and tags. Tags must be from the seven blog categories
+   (Buyer Resources, condo, Home Ownership, Listings, Market News, Neighborhoods, Things to Do); a post is listed
+   on a category page when one of its tags matches. The blog index, category pages and home page read from there.
 2. Put the article body in `content/blog/<slug>.mdx` as Markdown (see `content/blog/README.md`).
+3. Put the cover photo in `assets/images/blog/` named like the post's title (any extension; punctuation doesn't
+   matter) and run `npm run images -- blog`. A title-named file replaces the cover downloaded from the old site.
 
 A post without a body still gets its page (metadata and excerpt) with a visible marker where the body belongs.
 

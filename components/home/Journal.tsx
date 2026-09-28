@@ -22,7 +22,7 @@ export default function Journal() {
             <Button href={journal.button.href}>{journal.button.label}</Button>
           </Reveal>
         }>
-        {posts.map((post, i) => (
+        {posts.slice(0, 10).map((post, i) => (
           <Reveal as="div" key={post.href} stagger={i} className={styles.card}>
             <Card image={post.image ? { src: post.image, alt: post.title } : undefined} meta={post.dateLabel} title={post.title} text={post.excerpt} link={{ label: journal.cardLink, href: post.href }} sizes="(max-width: 767px) 75vw, 29vw" />
           </Reveal>

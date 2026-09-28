@@ -53,11 +53,22 @@ const jobs = [
   { group: "press", src: "assets/images/press/business-insider/business-insider-1.png", out: "press/business-insider-card", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-2.webp", out: "press/business-insider-2", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-3.webp", out: "press/business-insider-3", widths: [1600], formats: ["webp"] },
-  // brokerage logos — the white versions, for the Ink footer; shown 28px tall, exported at 4× height
-  { group: "logos", src: "assets/images/logos/KellerWilliamsWhite.png", out: "logos/keller-williams-white", heights: [112], formats: ["webp"] },
-  { group: "logos", src: "assets/images/logos/Realtor white.png", out: "logos/realtor-white", heights: [112], formats: ["webp"] },
-  { group: "logos", src: "assets/images/logos/car 1 white.png", out: "logos/car-white", heights: [112], formats: ["webp"] },
+  // brokerage logos — the white versions, for the Ink footer; padding trimmed, shown 28px tall, exported at 4× height
+  { group: "logos", src: "assets/images/logos/KellerWilliamsWhite.png", out: "logos/keller-williams-white", heights: [112], formats: ["webp"], trim: true },
+  { group: "logos", src: "assets/images/logos/Realtor white.png", out: "logos/realtor-mark-white", heights: [112], formats: ["webp"], trim: true },
+  { group: "logos", src: "assets/images/logos/car 1 white.png", out: "logos/car-mark-white", heights: [112], formats: ["webp"], trim: true },
 ];
+
+// Blog covers for every other post in content/blog/posts.json. The source is looked up by the post's title
+// first (drop a replacement in assets/images/blog/ named like the post), then by its URL slug (the cover
+// downloaded from the old site).
+for (const p of JSON.parse(await readFile(path.join(ROOT, "content/blog/posts.json"), "utf8"))) {
+  if (!p.image || !p.image.startsWith("/images/blog/")) continue;
+  const out = p.image.replace(/^\/images\//, "").replace(/\.webp$/, "");
+  if (jobs.some((j) => j.out === out)) continue;
+  const slug = p.href.replace(/^\/blog\//, "");
+  jobs.push({ group: "blog", src: `assets/images/blog/${p.title}.jpg`, fallback: `assets/images/blog/${slug}.jpg`, out, widths: [1600], formats: ["webp"] });
+}
 
 const wanted = process.argv.slice(2);
 const selected = wanted.length ? jobs.filter((j) => wanted.includes(j.group)) : jobs;
@@ -66,19 +77,20 @@ if (!selected.length) {
   process.exit(1);
 }
 
-/** Find a source by name, ignoring the extension and letter case, so a re-exported photo
+/** Find a source by name, ignoring the extension, letter case and punctuation, so a re-exported photo
  *  ("Marina.webp" → "Marina.png") keeps working without editing this file. */
 function resolveSource(rel) {
   if (existsSync(path.join(ROOT, rel))) return rel;
   const dir = path.dirname(rel);
-  const base = path.basename(rel, path.extname(rel)).toLowerCase();
+  const key = (name) => path.basename(name, path.extname(name)).toLowerCase().replace(/[^a-z0-9]+/g, "");
+  const base = key(rel);
   let entries = [];
   try {
     entries = readdirSync(path.join(ROOT, dir));
   } catch {
     return null;
   }
-  const match = entries.find((f) => path.basename(f, path.extname(f)).toLowerCase() === base);
+  const match = entries.find((f) => key(f) === base);
   return match ? path.join(dir, match) : null;
 }
 
@@ -88,13 +100,14 @@ try {
 } catch {}
 
 for (const job of selected) {
-  const src = resolveSource(job.src);
+  const src = resolveSource(job.src) ?? (job.fallback ? resolveSource(job.fallback) : null);
   if (!src) {
     console.warn(`skip: source missing — ${job.src}`);
     continue;
   }
   job.src = src;
-  const input = sharp(path.join(ROOT, job.src), { limitInputPixels: false }).rotate();
+  let input = sharp(path.join(ROOT, job.src), { limitInputPixels: false }).rotate();
+  if (job.trim) input = sharp(await input.trim({ threshold: 10 }).toBuffer());
   const sizes = job.widths ? job.widths.map((width) => ({ width })) : job.heights.map((height) => ({ height }));
   for (const size of sizes) {
     for (const fmt of job.formats) {

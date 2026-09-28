@@ -2,6 +2,8 @@
 // content/copy.md is the source of truth: change text there first, then here.
 // Nothing in this file may say something copy.md does not say.
 
+import postsData from "@/content/blog/posts.json";
+
 export type LinkItem = { label: string; href: string };
 
 export const site = {
@@ -13,8 +15,8 @@ export const site = {
     { label: "Meet Dustin", href: "/meetdustin" },
     { label: "Market Update", href: "/market-update" },
     { label: "Blog", href: "/blog" },
-    { label: "FAQ", href: "/faq" },
     { label: "Play Games", href: "/playrealestateiq" },
+    { label: "FAQ", href: "/faq" },
   ] as LinkItem[],
   cta: { label: "Work with Dustin", href: "/work-with-dustin" } as LinkItem,
   faq: { label: "FAQ", href: "/faq" } as LinkItem,
@@ -285,19 +287,9 @@ export const contactForm = {
 
 export type Post = { date: string; dateLabel: string; title: string; href: string; excerpt: string; image?: string; tags?: string[] };
 
-// Blog posts, newest first (links only — bodies stay on the current site until migrated)
-export const posts: Post[] = [
-  { date: "2026-08-31", dateLabel: "Aug 31, 2026", title: "San Francisco Property Transfer Taxes 2026 Guide", href: "/blog/san-francisco-transfer-taxes", image: "/images/blog/san-francisco-transfer-taxes.webp", excerpt: "Real estate transfer taxes are rarely a fun topic to discuss, but they are a closing cost that adds up quickly if you aren't paying attention. In this guide, I break down how the home price you are targeting translates directly into your tax liability, and why crossing specific threshold lines can instantly triple your tax rate and cost you tens of thousands of dollars." },
-  { date: "2026-08-19", dateLabel: "Aug 19, 2026", title: "Rent Control in San Francisco", href: "/blog/rent-control-in-san-francisco", image: "/images/blog/rent-control-in-san-francisco.webp", excerpt: "The market that makes you want to sell is the market that makes your tenant want to stay. When rents are climbing there is nowhere cheaper for them to go, and when they are finally ready to move, prices have usually softened too. Here is the Rent control 101 for San Francisco sellers." },
-  { date: "2026-08-14", dateLabel: "Aug 14, 2026", title: "Ranking the Best Platforms for Home Searching (2026 Guide)", href: "/blog/i0ccwm3gm435y9qc8i31gw5zbbqd88", image: "/images/blog/i0ccwm3gm435y9qc8i31gw5zbbqd88.webp", tags: ["first time home buyer","Market Update","Market News"], excerpt: "Thinking about buying a home? Relying on just one app like Zillow or Redfin means you might be missing out on exclusive and \"Coming Soon\" listings. Discover why a multi-app setup—and private MLS access—is essential for seeing the full picture of inventory in today's market." },
-  { date: "2026-08-03", dateLabel: "Aug 3, 2026", title: "Tenant Buyout Costs in San Francisco", href: "/blog/tenantbuyouts", image: "/images/blog/tenantbuyouts.webp", excerpt: "Rent buyouts — landlords paying tenants cash to voluntarily give up a rent-controlled unit — are happening in San Francisco at a pace not seen since before the pandemic. Here's the quick version: what's driving it, where it's happening, and what the city does (and doesn't) tell you about the price tag." },
-  { date: "2026-07-29", dateLabel: "Jul 29, 2026", title: "Schools in San Francisco", href: "/blog/schools-in-san-francisco", image: "/images/blog/schools-in-san-francisco.webp", excerpt: "San Francisco is a single unified school district — which means there's no \"good school\" neighborhood to buy into, and moving across the city won't automatically change your kid's assigned school. Here's why the suburban playbook doesn't apply here, and how to plan your home search and school enrollment as two separate timelines." },
-  { date: "2026-07-28", dateLabel: "Jul 28, 2026", title: "Home Buyers and Sellers Generational Trends", href: "/blog/home-buyers-and-sellers-generational-trends", image: "/images/blog/home-buyers-and-sellers-generational-trends.webp", excerpt: "This post breaks down key findings from the National Association of REALTORS® (NAR) Generational Trends Report, exploring how younger buyers are navigating today's competitive housing market." },
-  { date: "2026-07-24", dateLabel: "Jul 24, 2026", title: "Why Real Estate Deals Fall Through", href: "/blog/why-real-estate-deals-fall-through", image: "/images/blog/why-real-estate-deals-fall-through.webp", tags: ["first time home buyer","Home Ownership"], excerpt: "Most real estate deals don't die from one big dramatic thing — they die from inspection surprises, financing hiccups, and timing that doesn't line up. Here's the actual breakdown by category and percentage, using the latest 2026 NAR and Redfin data, plus what SF buyers and sellers can do to keep their deal off the list." },
-  { date: "2026-07-22", dateLabel: "Jul 22, 2026", title: "Before You Buy in the Sunset, Know Its History", href: "/blog/before-you-buy-in-the-sunset-know-its-history", image: "/images/blog/before-you-buy-in-the-sunset-know-its-history.webp", tags: ["first time home buyer","San Francisco","Home Ownership"], excerpt: "Ever notice how every block in the Sunset looks like a variation on the same house? That's not a coincidence — it's the legacy of a 1930s building boom that put up two houses a day. Here's the real story behind the stucco, the narrow lots, and the little style flourishes that make each one unique." },
-  { date: "2026-07-16", dateLabel: "Jul 16, 2026", title: "Which Neighborhoods Are Selling the Furthest Over Asking Right Now", href: "/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4", image: "/images/blog/6w1tfsq3p6nott2rnyo1o4i7ue56e4.webp", tags: ["first time home buyer","Home Ownership","Market News"], excerpt: "Inner Sunset and Outer Sunset single-family homes are now closing over 141% of list price, while Bernal Heights leads all neighborhoods in year-over-year gains. Here's where San Francisco's 2026 market is running hottest — and the one neighborhood where condos are still going for less than asking." },
-  { date: "2026-07-16", dateLabel: "Jul 16, 2026", title: "Why San Francisco Duplexes Sell for Less Than Single-Family Homes", href: "/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes", image: "/images/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes.webp", tags: ["Home Ownership"], excerpt: "Over half of SF duplexes sell with a tenant in place, and that tenant costs sellers 44% per square foot. Here's why rent control makes vacancy the real premium — and how savvy buyers are closing the gap to single-family pricing." },
-];
+// Every blog post, newest first: title, date, URL, excerpt, cover and tags (content/blog/posts.json).
+// Bodies are content/blog/<slug>.mdx. Tags use the seven categories in blog.categories.
+export const posts: Post[] = postsData as Post[];
 
 // Buyer's Guide (/buyers-guide) and Seller's Guide (/sellers-guide)
 export type GuideStep = { number: string; title: string; subtitle: string; body?: string };
@@ -409,16 +401,11 @@ export const marketUpdate = {
 export const blog = {
   headline: "The San Francisco Real Estate Blog",
   categories: ["Buyer Resources", "condo", "Home Ownership", "Listings", "Market News", "Neighborhoods", "Things to Do"],
+  /** /blog/tag/Neighborhoods: every neighborhood from the home rail above the neighborhood posts */
+  neighborhoodsPage: { all: "All neighborhoods", posts: "Neighborhood posts", guide: "Read the guide" },
   button: { label: "Read the blog", href: "/blog" } as LinkItem,
 };
 
-// Neighborhood Guide posts (/blog/tag/Neighborhoods) — no URLs in content/copy.md yet
-export const neighborhoodPosts: Post[] = [
-  { date: "2026-06-13", dateLabel: "6/13/26", title: "The Excelsior: SF's Most Overlooked Neighborhood for Buyers", href: "", image: "/images/neighborhoods/excelsior.webp", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "The Excelsior is a diverse residential neighborhood in the Southeastern quarter of the city, bounded by Mission Street to the west, Silver Avenue to the north, McLaren Park to the East, and Geneva Avenue to the south. It is in the SFAR's District 10." },
-  { date: "2026-04-11", dateLabel: "4/11/26", title: "The Castro Is Having a Moment", href: "", image: "/images/neighborhoods/castro.webp", tags: ["Neighborhood Guide", "Home Ownership", "Neighborhoods", "first time home buyer"], excerpt: "The Castro has always been one of San Francisco's most iconic neighborhoods. Now, with the Castro Theatre being restored, new businesses opening along the corridor, and the housing market rebounding, it's also becoming one of the most interesting places to buy in 2026. Here's a look at the history, the homes, and what the market is doing right now." },
-  // date marked [TODO: looks wrong] in content/copy.md
-  { date: "2019-05-28", dateLabel: "5/28/19", title: "Duboce Triangle: Small Neighborhood, Big City Access", href: "", image: "/images/neighborhoods/duboce-triangle.webp", tags: ["first time home buyer", "Neighborhood Guide"], excerpt: "Duboce Triangle sits at the center of everything — walkable streets, classic Victorian architecture, easy transit access, and some of SF's best nearby neighborhoods. Median home prices are holding strong around $1.37M–$1.42M in 2026, and inventory remains tight. Here's what buyers need to know before shopping in this market." },
-];
 
 // Work with Dustin (/work-with-dustin)
 export const workWithDustin = {

@@ -31,7 +31,7 @@ export default async function PostPage({ params }: Params) {
   const { slug } = await params;
   const post = findPost(slug);
   if (!post) notFound();
-  const source = await readPostBody(slug);
+  const source = await readPostBody(slugOf(post));
   const body = source ? (await compileMDX({ source, components: mdxComponents, options: { parseFrontmatter: true, mdxOptions: { remarkPlugins: [remarkGfm] } } })).content : null;
 
   return (

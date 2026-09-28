@@ -16,9 +16,11 @@
 .nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-xs) var(--space-m); }
 .contact { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2xs); font-style: normal; }
 .social { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-s); }
-.legal { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-m); }
-.logos { display: flex; align-items: center; gap: var(--space-s); }
-.logoImg { height: 28px; width: auto; opacity: 0.7; }
+.rule { opacity: 0.3; }
+/* Padding is trimmed from the logo files, so one height and a shared bottom edge line them up */
+.logos { display: flex; align-items: flex-end; gap: var(--space-s); }
+.logos li { display: flex; }
+.logoImg { display: block; height: 28px; width: auto; opacity: 0.7; }
 
 @media (max-width: 767px) {
   .row, .rowTop { flex-direction: column; align-items: flex-start; }

@@ -5,17 +5,19 @@ import Img from "@/components/Img";
 import Card from "@/components/Card";
 import TextLink from "@/components/TextLink";
 import Button from "@/components/Button";
-import { blog, home, posts, neighborhoodPosts, type Post } from "@/lib/copy";
+import { blog, home, posts, type Post } from "@/lib/copy";
 import styles from "./BlogIndex.module.css";
 
-/** Every post, newest first. Neighborhood Guide posts have no URLs in content/copy.md yet. */
-export const allPosts: Post[] = [...posts, ...neighborhoodPosts].sort((a, b) => (a.date < b.date ? 1 : -1));
+/** Every post, newest first (content/blog/posts.json). */
+export const allPosts: Post[] = posts;
 
-/** A post matches a category when a tag equals it, or starts with its singular (so "Neighborhood Guide" sits under Neighborhoods). */
-const matches = (post: Post, category: string) => {
-  const c = category.toLowerCase();
-  const stem = c.replace(/s$/, "");
-  return (post.tags ?? []).some((t) => t.toLowerCase() === c || t.toLowerCase().startsWith(stem));
+/** A post is in a category when one of its tags is that category. */
+const matches = (post: Post, category: string) => (post.tags ?? []).some((t) => t.toLowerCase() === category.toLowerCase());
+
+/** The neighborhood's guide post, if one exists ("The Castro" → "The Castro Is Having a Moment"). */
+const guideFor = (name: string) => {
+  const key = name.replace(/^The /, "").toLowerCase();
+  return posts.find((p) => p.href && matches(p, "Neighborhoods") && p.title.toLowerCase().includes(key));
 };
 
 /** /blog and /blog/tag/[tag] (BUILD.md §5): H1, the category filter row in Mono (active category underlined),
@@ -48,7 +50,24 @@ export default function BlogIndex({ category }: { category?: string }) {
         </Reveal>
       </section>
 
+      {category === "Neighborhoods" ? (
+        <section className={`${styles.hoods} page`} data-tone="paper">
+          <h2 className={`mono ${styles.subhead}`}>{blog.neighborhoodsPage.all}</h2>
+          <ul className={`grid ${styles.list}`}>
+            {home.neighborhoods.items.map((n, i) => {
+              const guide = guideFor(n.name);
+              return (
+                <Reveal as="li" key={n.slug} stagger={i} className={styles.item}>
+                  <Card image={n.image ? { src: n.image, alt: n.name } : undefined} title={n.name} text={n.description} link={guide ? { label: blog.neighborhoodsPage.guide, href: guide.href } : undefined} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 32vw" />
+                </Reveal>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
+
       <section className={`${styles.posts} page`} data-tone="paper">
+        {category === "Neighborhoods" ? <h2 className={`mono ${styles.subhead}`}>{blog.neighborhoodsPage.posts}</h2> : null}
         {featured ? (
           <article className={`grid ${styles.featured}`}>
             <Reveal as="figure" mode="clip" className={styles.featuredMedia}>
