@@ -42,6 +42,7 @@ export const site = {
 export const testimonials = {
   label: "CLIENT REVIEWS",
   headline: "First-time buyers, in their own words.",
+  image: { src: "/images/reviews/clients.webp", alt: "An agent going over a floor plan with two buyers at a kitchen island" },
   rating: "5.0 on Google",
   button: {
     label: "Read the reviews on Google",

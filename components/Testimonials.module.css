@@ -1,5 +1,8 @@
-/* Figma 682:3813 — one column on the right half, 40px between blocks */
-.column { grid-column: 13 / -1; grid-row: 1; display: flex; flex-direction: column; gap: var(--space-m); }
+/* Figma 682:3813 — label top left, photo bottom left, one column on the right half with 40px between blocks */
+.grid { grid-template-rows: auto 1fr; }
+.media { grid-column: 1 / span 7; grid-row: 2; align-self: end; position: relative; margin: 0; aspect-ratio: 375 / 648; overflow: hidden; background: var(--paper); }
+.img { object-fit: cover; }
+.column { grid-column: 13 / -1; grid-row: 1 / span 2; display: flex; flex-direction: column; gap: var(--space-m); }
 .item { margin: 0; padding-top: var(--space-m); border-top: 1px solid var(--paper); display: flex; flex-direction: column; gap: var(--space-m); }
 .quote { margin: 0; }
 .quote p { margin: 0; }
@@ -9,5 +12,7 @@
 .rating { color: var(--graphite); }
 
 @media (max-width: 767px) {
+  .grid { grid-template-rows: none; row-gap: var(--space-l); }
   .column { grid-column: 1 / -1; grid-row: auto; }
+  .media { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 4 / 5; }
 }

@@ -532,5 +532,11 @@
     "width": 102,
     "height": 112,
     "bytes": 6340
+  },
+  "public/images/reviews/clients.webp": {
+    "source": "assets/images/Reviews.webp",
+    "width": 1600,
+    "height": 1970,
+    "bytes": 202034
   }
 }

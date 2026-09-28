@@ -12,8 +12,8 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = pageMeta({ title: `FAQ: Buying and Selling in San Francisco — ${site.logo}`, description: seo.faq, path: "/faq" });
 
-/** /faq: H1 and intro in columns 1–11 with the Calendly block under them; the questions in two groups as
- *  hairline accordions in columns 13–24. Answers stay in the HTML (collapsed, not removed) so search can read them.
+/** /faq, like the reference: the label alone on the left, level with the H1; in columns 13–24 the H1 and intro,
+ *  the questions in two groups as hairline accordions, then the Calendly block. Answers stay in the HTML (collapsed, not removed) so search can read them.
  *  DRAFT copy awaiting Dustin's approval (content/copy.md → FAQ). */
 export default function FaqPage() {
   return (
@@ -21,17 +21,16 @@ export default function FaqPage() {
       <JsonLd data={faqJsonLd(faq)} />
       <Section id="faq">
         <div className={`grid ${styles.grid}`}>
-          <Label inline align="mono">{faq.label}</Label>
-          <div className={styles.intro}>
-            <Reveal as="h1" className="h1">
-              {faq.headline}
-            </Reveal>
-            <Reveal as="p" className={`p2 ${styles.lead}`}>
-              {faq.intro}
-            </Reveal>
-            <BookCall />
-          </div>
-          <div className={styles.groups}>
+          <Label inline align="h1">{faq.label}</Label>
+          <div className={styles.column}>
+            <div className={styles.intro}>
+              <Reveal as="h1" className="h1">
+                {faq.headline}
+              </Reveal>
+              <Reveal as="p" className={`p2 ${styles.lead}`}>
+                {faq.intro}
+              </Reveal>
+            </div>
             {faq.groups.map((group) => (
               <Reveal key={group.title} className={styles.group}>
                 <h2 className={`mono ${styles.groupTitle}`}>{group.title}</h2>
@@ -57,6 +56,7 @@ export default function FaqPage() {
                 />
               </Reveal>
             ))}
+            <BookCall className={styles.call} />
           </div>
         </div>
       </Section>

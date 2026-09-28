@@ -49,6 +49,8 @@ const jobs = [
   { group: "guides", src: "assets/images/For Buyers.jpg", out: "guides/for-buyers", widths: [1600], formats: ["webp"] },
   // market — Market Update "Want more?"
   { group: "market", src: "assets/images/Bird view.webp", out: "market/bird-view", widths: [1600], formats: ["webp"] },
+  // reviews — Client reviews photo (Figma 682:3813)
+  { group: "reviews", src: "assets/images/Reviews.webp", out: "reviews/clients", widths: [1600], formats: ["webp"] },
   // press — Meet Dustin "As Featured In"
   { group: "press", src: "assets/images/press/business-insider/business-insider-1.png", out: "press/business-insider-card", widths: [1600], formats: ["webp"] },
   { group: "press", src: "assets/images/press/business-insider/business-insider-2.webp", out: "press/business-insider-2", widths: [1600], formats: ["webp"] },

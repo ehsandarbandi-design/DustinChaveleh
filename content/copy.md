@@ -369,6 +369,7 @@ Excerpts of Dustin's Google reviews, cut at a full sentence. Update the rating i
 
 - Label: [ CLIENT REVIEWS ]
 - Headline: First-time buyers, in their own words.
+- Photo (left, bottom): assets/images/Reviews.webp — alt: An agent going over a floor plan with two buyers at a kitchen island
 - Rating: 5.0 on Google
 - Button: Read the reviews on Google → https://share.google/4Gu8ZNLQdxIxLXwXv
 - "We are grateful to have Dustin help us buy our first ever home! As first-time homebuyers, the process felt overwhelming at times, but he was very patient, supportive, and there for us every step of the way. Thank you for making this milestone in our lives even more meaningful." — Jessie So, First-time homebuyers
