@@ -92,7 +92,7 @@ export default function Styleguide() {
           ))}
         </ul>
         <div className={styles.motion}>
-          <p className="mono">--gutter 2vw / 24px · --col-gap 20px · 24 / 8 columns</p>
+          <p className="mono">--gutter 48px / 24px · --col-gap 20px · 24 / 8 columns</p>
           <p className="mono">--dur-fast 200ms · --dur 400ms · --dur-slow 700ms</p>
           <p className="mono">--ease cubic-bezier(.22, 1, .36, 1)</p>
         </div>

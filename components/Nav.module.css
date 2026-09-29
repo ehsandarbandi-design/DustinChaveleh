@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   height: var(--header-h);            /* 118px: Figma hero frame (logo centred at y 59) */
-  padding: 0 52px;                    /* Figma hero frame: 52.5px sides */
+  padding: 0 var(--gutter);           /* the site margin: 48px, 24px on phones, same as every section */
   background: var(--header-bg);
   color: var(--header-fg);
   transition: background-color 300ms ease, color 300ms ease;
@@ -51,7 +51,6 @@ html:has([data-tone="hero"]) .header:not([data-ready])::before { opacity: 1; }
 .panel { display: none; }
 
 @media (max-width: 1279px) {
-  .header { padding: 0 24px; }        /* Figma mobile frames: 24px */
   .desktop { display: none; }
 
   /* Hamburger 37 × 22 (two lines), tap target padded to 49 × 48 without changing layout */
