@@ -49,6 +49,9 @@ const jobs = [
   { group: "guides", src: "assets/images/For Buyers.jpg", out: "guides/for-buyers", widths: [1600], formats: ["webp"] },
   // market — Market Update "Want more?"
   { group: "market", src: "assets/images/Bird view.webp", out: "market/bird-view", widths: [1600], formats: ["webp"] },
+  // game — the two Real Estate IQ phone screens on the home promo (Figma 695:3), kept at their own 402px width
+  { group: "game", src: "assets/images/game/Game screen.png", out: "game/game-screen", widths: [402], formats: ["webp"] },
+  { group: "game", src: "assets/images/game/Results screen.png", out: "game/results-screen", widths: [402], formats: ["webp"] },
   // reviews — Client reviews photo (Figma 682:3813)
   { group: "reviews", src: "assets/images/Reviews.webp", out: "reviews/clients", widths: [1600], formats: ["webp"] },
   // press — Meet Dustin "As Featured In"

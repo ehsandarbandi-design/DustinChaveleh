@@ -1,15 +1,18 @@
-.section {
-  --marker: var(--taupe);              /* BUILD.md: label + ■ in Taupe on this section */
-  min-height: 70vh;
-  min-height: 70svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.headline { grid-column: 1 / span 16; }
-.sub { grid-column: 1 / span 16; margin-top: var(--space-m); }
-.actions { grid-column: 1 / -1; margin-top: var(--space-l); }
+.section { --marker: var(--taupe); }   /* label ■ in Taupe (Figma 695:3) */
+.grid { align-items: start; row-gap: var(--space-l); }
+.text { grid-column: 1 / span 14; }
+.sub { margin-top: var(--space-m); }
+.actions { margin-top: var(--space-l); }
 
+/* Two phone screens (402 × 764 exports), side by side in columns 16–24 */
+.screens { grid-column: 16 / -1; display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-m); }
+.screen { position: relative; margin: 0; aspect-ratio: 402 / 764; overflow: hidden; background: var(--stone); }
+.img { object-fit: cover; }
+
+@media (max-width: 1023px) {
+  .text { grid-column: 1 / -1; }
+  .screens { grid-column: 1 / -1; max-width: 640px; }
+}
 @media (max-width: 767px) {
-  .headline, .sub { grid-column: 1 / -1; }
+  .screens { column-gap: var(--col-gap); }
 }

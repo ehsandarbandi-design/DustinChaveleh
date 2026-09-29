@@ -222,9 +222,13 @@ export const home = {
     button: { label: "View all blogs", href: "/blog" } as LinkItem,
   },
   iq: {
-    label: "TEST YOURSELF",
-    headline: "Think You Know the San Francisco Market?",
-    subheadline: "Test your local market expertise.",
+    label: "REAL ESTATE IQ",
+    headline: ["Think You Know", "the San Francisco Market?"],
+    subheadline: "Play Real Estate IQ and test your market knowledge.",
+    screens: [
+      { src: "/images/game/game-screen.webp", alt: "Real Estate IQ game screen: guess what a single-family home in the Castro sold for" },
+      { src: "/images/game/results-screen.webp", alt: "Real Estate IQ results screen: Legend level, 36,000 points, and the round breakdown" },
+    ],
     button: { label: "Play Real Estate IQ", href: "/playrealestateiq" } as LinkItem,
   },
   neighborhoods: {

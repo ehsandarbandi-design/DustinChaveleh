@@ -56,9 +56,11 @@
 - Cards (latest posts — pull from the blog list below, newest first). Each card: title, excerpt, date, "Read more →"
 - Button (tertiary, right of the rail): View all blogs → `/blog`
 
-### 4. Real Estate IQ promo
-- Headline: Think You Know the San Francisco Market?
-- Subheadline: Test your local market expertise.
+### 4. Real Estate IQ promo (Figma 695:3)
+- Label: [ REAL ESTATE IQ ]
+- Headline (two lines): Think You Know / the San Francisco Market?
+- Subheadline: Play Real Estate IQ and test your market knowledge.
+- Images: the game screen and the results screen (assets/images/game/)
 - Button: Play Real Estate IQ → `/playrealestateiq`
 
 ### 5. Neighborhoods (carousel, 11 items)

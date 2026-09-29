@@ -46,6 +46,8 @@ This file is written by that script — do not edit by hand.
 | `public/images/blog/why-san-francisco-duplexes-sell-for-less-than-single-family-homes.webp` | `assets/images/blog/Why San Francisco Duplexes Sell for Less Than Single-Family Homes.jpg` | 1600 × 2400 | 334 KB |
 | `public/images/blog/why-tenant-occupied-properties-lag-behind-in-san-franciscos-market.webp` | `assets/images/blog/why-tenant-occupied-properties-lag-behind-in-san-franciscos-market.jpg` | 1600 × 1067 | 62 KB |
 | `public/images/blog/why-the-bay-area-housing-market-wont-crash.webp` | `assets/images/blog/why-the-bay-area-housing-market-wont-crash.jpg` | 1600 × 1068 | 48 KB |
+| `public/images/game/game-screen.webp` | `assets/images/game/Game screen.png` | 402 × 764 | 33 KB |
+| `public/images/game/results-screen.webp` | `assets/images/game/Results screen.png` | 402 × 764 | 12 KB |
 | `public/images/guides/for-buyers.webp` | `assets/images/For Buyers.jpg` | 1600 × 1067 | 233 KB |
 | `public/images/guides/for-sellers.webp` | `assets/images/For Sellers.jpg` | 1600 × 1067 | 362 KB |
 | `public/images/hero/bay-1280.avif` | `assets/images/hero/Bay.png` | 1280 × 950 | 36 KB |

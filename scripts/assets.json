@@ -538,5 +538,17 @@
     "width": 1600,
     "height": 1970,
     "bytes": 202034
+  },
+  "public/images/game/game-screen.webp": {
+    "source": "assets/images/game/Game screen.png",
+    "width": 402,
+    "height": 764,
+    "bytes": 34000
+  },
+  "public/images/game/results-screen.webp": {
+    "source": "assets/images/game/Results screen.png",
+    "width": 402,
+    "height": 764,
+    "bytes": 12722
   }
 }
