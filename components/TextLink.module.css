@@ -10,4 +10,7 @@
   box-decoration-break: clone;
   transition: background-size var(--dur-fast) ease;
 }
-.link:hover, .link:focus-visible { background-size: 100% 1px; }
+.link:focus-visible { background-size: 100% 1px; }
+@media (hover: hover) and (pointer: fine) {
+  .link:hover { background-size: 100% 1px; }
+}

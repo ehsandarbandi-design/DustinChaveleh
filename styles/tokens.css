@@ -35,7 +35,7 @@
   --section-pad: var(--space-2xl);
 
   /* motion */
-  --dur-fast: 200ms; --dur: 400ms; --dur-slow: 700ms;
+  --dur-press: 160ms; --dur-fast: 200ms; --dur-ui: 250ms; --dur: 400ms; --dur-slow: 700ms;   /* press feedback; hovers; accordions (UI stays under 300ms) */
   --ease: cubic-bezier(.22, 1, .36, 1);
 
   /* hairline */

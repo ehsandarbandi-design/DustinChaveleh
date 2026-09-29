@@ -3,7 +3,9 @@
 .tabs { display: flex; gap: var(--space-2xs); }
 .tab { padding: 10px 16px; border: 1px solid var(--ink); color: var(--ink); background: transparent; transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease; }
 .tab[aria-selected="true"] { background: var(--ink); color: var(--paper); }
-.tab:hover:not([aria-selected="true"]) { background: var(--stone); }
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover:not([aria-selected="true"]) { background: var(--stone); }
+}
 
 .legend { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-s); color: var(--graphite); }
 .legendItem { display: inline-flex; align-items: center; gap: var(--space-2xs); }

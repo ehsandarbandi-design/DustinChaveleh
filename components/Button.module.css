@@ -3,7 +3,10 @@
    Secondary (outlined): same type, 1px outline, padding 1em / 1.8em.
    Tertiary (underline): Inconsolata 500 1rem, 1px underline, padding 1rem / 1.3rem.
    Hover: a fill rises from the bottom edge (clip-path, .6s cubic-bezier(.19,1,.22,1)) and the text flips.
-   On the primary the rising fill is Paper with a 2px Ink border, so the Ink looks like it drains to a 2px line. */
+   On the primary the rising fill is Paper with a 2px Ink border, so the Ink looks like it drains to a 2px line.
+   Hover only on devices with a mouse (a tap on a phone would leave the fill stuck); keyboard focus shows it too.
+   Press: a slight 0.97 shrink over 160ms. Uses the separate `scale` property so it never fights the reveal's
+   slide-up, which animates `transform` (reset.css, [data-flex-button]). */
 .button {
   position: relative;
   isolation: isolate;
@@ -19,8 +22,9 @@
   border: 0;
   background: transparent;
   cursor: pointer;
-  transition: color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: color 0.6s cubic-bezier(0.19, 1, 0.22, 1), transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), scale var(--dur-press) var(--ease);
 }
+.button:not(:disabled):active { scale: 0.97; }
 .button::before {
   content: "";
   position: absolute;
@@ -29,20 +33,26 @@
   clip-path: polygon(-2% 102%, 102% 102%, 102% 102%, -2% 102%);
   transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.button:not(:disabled):hover::before, .button:focus-visible::before { clip-path: polygon(-2% -2%, 102% -2%, 102% 102%, -2% 102%); }
+.button:focus-visible::before { clip-path: polygon(-2% -2%, 102% -2%, 102% 102%, -2% 102%); }
 .button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .filled { color: var(--btn-fg); background: var(--btn-bg); padding: 1.4em 1.8em; }
 .filled::before { background: var(--btn-fg); border: 2px solid var(--btn-bg); }
-.filled:not(:disabled):hover, .filled:focus-visible { color: var(--btn-bg); }
+.filled:focus-visible { color: var(--btn-bg); }
 
 .outlined { color: var(--outline-color); border: 1px solid var(--outline-color); padding: 1em 1.8em; }
 .outlined::before { background: var(--outline-color); }
-.outlined:not(:disabled):hover, .outlined:focus-visible { color: var(--outline-flip); }
+.outlined:focus-visible { color: var(--outline-flip); }
 
 .tertiary { font-size: 1rem; color: var(--outline-color); border-bottom: 1px solid var(--outline-color); padding: 1rem 1.3rem; }
 .tertiary::before { background: var(--outline-color); }
-.tertiary:not(:disabled):hover, .tertiary:focus-visible { color: var(--outline-flip); }
+.tertiary:focus-visible { color: var(--outline-flip); }
+
+@media (hover: hover) and (pointer: fine) {
+  .button:not(:disabled):hover::before { clip-path: polygon(-2% -2%, 102% -2%, 102% 102%, -2% 102%); }
+  .filled:not(:disabled):hover { color: var(--btn-bg); }
+  .outlined:not(:disabled):hover, .tertiary:not(:disabled):hover { color: var(--outline-flip); }
+}
 
 /* Long labels ("Read the full article on Business Insider") wrap on phones instead of overflowing */
 @media (max-width: 767px) {
@@ -51,4 +61,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .button, .button::before { transition: none; }
+  .button:not(:disabled):active { scale: none; }
 }

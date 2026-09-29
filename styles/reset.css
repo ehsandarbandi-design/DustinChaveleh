@@ -49,8 +49,8 @@ html.js [data-flex="pending"][data-flex-button] > * { transform: translate(0, 10
 html.js [data-flex="pending"] .flexWordIn { opacity: 0; transform: translate(0, 100%); }
 [data-flex="done"] .flexWordIn { opacity: 1; transform: none; }
 
-/* Images fade in over 200ms ease-in once loaded */
-html.js img[data-loaded] { transition: opacity var(--dur-fast) ease-in; }
+/* Images fade in over 200ms once loaded, on the fast-start --ease curve so they show up right away */
+html.js img[data-loaded] { transition: opacity var(--dur-fast) var(--ease); }
 html.js img[data-loaded="false"] { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
