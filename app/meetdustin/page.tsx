@@ -24,7 +24,7 @@ function PressImage({ src, stagger }: { src: string; stagger: number }) {
 
 export const metadata: Metadata = pageMeta({ title: `${meetDustin.headline} — ${site.logo}`, description: seo.meetDustin, path: "/meetdustin" });
 
-/** /meetdustin (BUILD.md §5): the [ ABOUT ] row, then (Figma 690:5103) the H1, body, social links, DRE line and outlined
+/** /meetdustin (BUILD.md §5): the [ ABOUT ] row, then (Figma 690:5103) the H1, the H4 subheadline, body, social links, DRE line and outlined
  *  button in columns 1–11 beside the portrait in columns 13–24, which runs from the top of the H1 to the bottom of the
  *  button; As Featured In on Stone (Figma 630:39: publication as an H3
  *  left, body + button and the screenshot collage in columns 13–24), the pull-quote over the background loop (Ink scrim), three hairline resource rows. */
@@ -37,6 +37,9 @@ export default function MeetDustinPage() {
           <div className={styles.heroText}>
             <Reveal as="h1" className="h1">
               {meetDustin.headline}
+            </Reveal>
+            <Reveal as="p" className="h4">
+              {meetDustin.subheadline}
             </Reveal>
             <div className={styles.body}>
               {meetDustin.body.map((p) => (

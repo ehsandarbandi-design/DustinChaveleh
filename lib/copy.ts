@@ -335,7 +335,7 @@ export const guides: { buyers: Guide; sellers: Guide } = {
 export const meetDustin = {
   label: "ABOUT",
   headline: "Meet Dustin Chaveleh",
-  subheadline: "San Francisco REALTOR®",   // not shown since the Figma 690:5103 layout; kept for reference
+  subheadline: "San Francisco REALTOR®",
   smallPrint: "CA DRE # 02368948",
   image: "/images/portrait/dustin-2.webp",
   body: [

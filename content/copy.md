@@ -94,7 +94,7 @@
 
 - Label: [ ABOUT ]
 - Headline: Meet Dustin Chaveleh
-- Subheadline: San Francisco REALTOR® (not shown in the Figma 690:5103 layout)
+- Subheadline (H4, under the headline): San Francisco REALTOR®
 - Small print (under the social links): CA DRE # 02368948
 - Body:
   Originally from Texas, I moved to San Francisco in 2019—sight unseen—and have since built my career across finance and tech, with experience at Bloomberg, Goldman Sachs, and other technology companies. Along the way, I developed a strong interest in real estate investing and built my own portfolio, which led me to pursue a residential sales license in San Francisco.
