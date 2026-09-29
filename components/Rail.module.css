@@ -18,6 +18,7 @@
 }
 .scroller::-webkit-scrollbar { display: none; }
 .scroller > * { grid-row: 1 / span 5; display: grid; grid-template-rows: subgrid; scroll-snap-align: start; }
+.scroller > * > :global(article) { grid-row: 1 / span 5; grid-template-rows: subgrid; }   /* the Card inside each slot */
 .scroller:focus-visible { outline: 2px solid currentColor; outline-offset: 8px; }
 
 /* Controls on the 24-column grid: left half (columns 1–12) and right half (13–24) */

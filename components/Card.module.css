@@ -1,6 +1,7 @@
-/* Rows: 1 image · 2 meta · 3 title · 4 text · 5 link. Inside a Rail the card is a subgrid of the rail's rows
-   (titles, text and links align across cards); anywhere else it is a plain one-column grid. */
-.card { display: grid; grid-template-rows: subgrid; grid-row: 1 / span 5; justify-items: start; align-items: start; }
+/* Rows: 1 image · 2 meta · 3 title · 4 text · 5 link. A plain one-column grid; inside a Rail it becomes a subgrid
+   of the rail's rows (Rail.module.css) so titles, text and links align across cards. Never subgrid outside a
+   rail: with no parent grid the card collapses and the cards overlap. */
+.card { display: grid; justify-items: start; align-items: start; }
 .media {
   grid-row: 1;
   justify-self: stretch;
