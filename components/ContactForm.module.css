@@ -2,6 +2,13 @@
 .form { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-m) var(--space-s); }
 .half { grid-column: span 1; }
 .full { grid-column: 1 / -1; }
+/* Sign-up box: --space-xs under the Email line (the reference form), not the full --space-m row gap */
+.newsletter { margin-top: calc(var(--space-xs) - var(--space-m)); }
+/* Two columns: Email | Phone in one row, the sign-up box after it, then Message and the button */
+@media (min-width: 768px) {
+  .newsletter { order: 1; }
+  .after { order: 2; }
+}
 /* Full-width secondary submit (the reference form's button) */
 .submit { width: 100%; }
 @media (max-width: 767px) {

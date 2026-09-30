@@ -4,7 +4,6 @@ import Reveal from "@/components/Reveal";
 import TextLink from "@/components/TextLink";
 import ContactForm from "@/components/ContactForm";
 import BookCall from "@/components/BookCall";
-import Button from "@/components/Button";
 import Label from "@/components/Label";
 import Testimonials from "@/components/Testimonials";
 import { workWithDustin, site, seo } from "@/lib/copy";
@@ -35,11 +34,6 @@ export default function WorkWithDustinPage() {
               ))}
             </Reveal>
             <BookCall />
-            <Reveal className={styles.faqLink}>
-              <Button variant="tertiary" href={site.faq.href}>
-                Read the FAQ
-              </Button>
-            </Reveal>
           </div>
           <div className={styles.formBlock}>
             <Reveal as="h2" className="h3">

@@ -6,7 +6,7 @@ type Base = {
   name?: string;
   label: string;
   required?: boolean;
-  /** Error message, shown between the label and the input (reference form). */
+  /** Error message, shown under the input. */
   error?: string;
   className?: string;
 };
@@ -17,7 +17,7 @@ export type FormFieldProps = TextProps | TextareaProps | CheckboxProps;
 
 /** Form field: no box. P3 label above ("(required)" in Taupe), transparent input with a 1px Stone bottom
  *  border only, P3 text — the sizes and spacing of the reference contact form. Focus: 2px Ink bottom border.
- *  Compact on desktop; 48px minimum touch height on phones. An error sits between the label and the input, is
+ *  Compact on desktop; 48px minimum touch height on phones. An error sits under the input, is
  *  announced with the field (aria-describedby) and marks the input aria-invalid. */
 export default function FormField(props: FormFieldProps) {
   const { id, label, required, error, className = "" } = props;
@@ -56,16 +56,16 @@ export default function FormField(props: FormFieldProps) {
       <label htmlFor={id} className={`p3 ${styles.label}`}>
         {labelNode}
       </label>
-      {error ? (
-        <FormError id={errorId} className={styles.error}>
-          {error}
-        </FormError>
-      ) : null}
       {props.kind === "textarea" ? (
         <textarea {...shared} rows={props.rows ?? 6} placeholder={props.placeholder} className={`p3 ${styles.input} ${styles.textarea}`} />
       ) : (
         <input {...shared} type={props.kind ?? "text"} placeholder={props.placeholder} autoComplete={props.autoComplete} />
       )}
+      {error ? (
+        <FormError id={errorId} className={styles.error}>
+          {error}
+        </FormError>
+      ) : null}
     </div>
   );
 }

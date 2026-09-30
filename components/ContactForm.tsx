@@ -85,16 +85,17 @@ export default function ContactForm({ className = "" }: { className?: string }) 
       ) : null}
       <FormField id="contact-first-name" name="firstName" label={fields.firstName.label} required autoComplete="given-name" error={errors.firstName} className={styles.half} />
       <FormField id="contact-last-name" name="lastName" label={fields.lastName.label} required autoComplete="family-name" error={errors.lastName} className={styles.half} />
-      <FormField id="contact-email" name="email" kind="email" label={fields.email.label} required autoComplete="email" error={errors.email} className={styles.full} />
-      <FormField id="contact-newsletter" name="newsletter" kind="checkbox" label={fields.newsletter.label} className={styles.full} />
-      <FormField id="contact-phone" name="phone" kind="tel" label={fields.phone.label} autoComplete="tel" error={errors.phone} className={styles.full} />
-      <FormField id="contact-message" name="message" kind="textarea" label={fields.message.label} required placeholder={fields.message.placeholder} error={errors.message} className={styles.full} />
+      <FormField id="contact-email" name="email" kind="email" label={fields.email.label} required autoComplete="email" error={errors.email} className={styles.half} />
+      {/* The sign-up box belongs to the email: right under it on phones; on wider screens after the Email | Phone row */}
+      <FormField id="contact-newsletter" name="newsletter" kind="checkbox" label={fields.newsletter.label} className={`${styles.full} ${styles.newsletter}`} />
+      <FormField id="contact-phone" name="phone" kind="tel" label={fields.phone.label} autoComplete="tel" error={errors.phone} className={styles.half} />
+      <FormField id="contact-message" name="message" kind="textarea" label={fields.message.label} required placeholder={fields.message.placeholder} error={errors.message} className={`${styles.full} ${styles.after}`} />
       {/* Honeypot: hidden from people, filled by bots */}
       <div className={styles.honeypot} aria-hidden="true">
         <label htmlFor="contact-company">Company</label>
         <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
-      <div className={styles.full}>
+      <div className={`${styles.full} ${styles.after}`}>
         <Button type="submit" variant="outlined" arrow={false} className={styles.submit} disabled={status === "sending"}>
           {button}
         </Button>
