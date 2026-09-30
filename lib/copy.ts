@@ -278,7 +278,7 @@ export const home = {
 export const contactForm = {
   fields: {
     firstName: { label: "First Name", required: true },
-    lastName: { label: "Last Name", required: false },
+    lastName: { label: "Last Name", required: true },
     email: { label: "Email", required: true },
     newsletter: { label: "Sign up for news and updates" },
     phone: { label: "Phone", required: false },
@@ -288,6 +288,13 @@ export const contactForm = {
   // Success and error messages are [TODO] in content/copy.md — visible markers until the text exists.
   // Where submissions go is also [TODO]: set CONTACT_FORM_ENDPOINT (see .env.example).
   messages: { success: "[ SUCCESS MESSAGE NEEDED ]", error: "[ ERROR MESSAGE NEEDED ]" },
+  // Validation messages, worded like the reference form (Squarespace)
+  errors: {
+    summary: "Form submission failed. Review the following information:",
+    required: "is required.",   // "First Name is required."
+    email: "Email is not valid. Email addresses should follow the format user@domain.com.",
+    phone: "Phone is not valid. Phone numbers should have 10 to 15 digits, for example (415) 555-0123.",
+  },
 };
 
 export type Post = { date: string; dateLabel: string; title: string; href: string; excerpt: string; image?: string; tags?: string[] };

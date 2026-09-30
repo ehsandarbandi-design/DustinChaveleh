@@ -257,12 +257,18 @@ Buyer Resources · Days on Market → Market News · SF Roadways → Things to D
 
 ### Contact form (used on Home and Work with Dustin)
 - First Name (required)
-- Last Name
+- Last Name (required)
 - Email (required)
 - Checkbox: Sign up for news and updates
 - Phone
 - Message (required) — placeholder: Tell Dustin a bit about what you're looking for...
 - Button: Send Message
+- Validation (shown when Send Message is pressed with a problem; the summary sits at the top of the form, each field's
+  message between its label and its input, and each clears as soon as the field is fixed):
+  - Summary: Form submission failed. Review the following information: First Name, Last Name, Email, and Message.
+  - Empty required field: "<Field> is required." (e.g. First Name is required.)
+  - Email: Email is not valid. Email addresses should follow the format user@domain.com.
+  - Phone (optional, checked only when filled): Phone is not valid. Phone numbers should have 10 to 15 digits, for example (415) 555-0123.
 - Success message: [TODO]
 - Error message: [TODO]
 - Where submissions go: [TODO — e.g. email, Formspree, Vercel function, CRM]

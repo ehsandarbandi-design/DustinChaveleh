@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { validateContact } from "@/lib/contactValidation";
 
 /** POST /api/contact — validates the contact form and forwards it to CONTACT_FORM_ENDPOINT
  *  (any JSON webhook: Formspree, Make, Zapier, a CRM…). Where submissions go is still [TODO] in
@@ -22,9 +23,9 @@ export async function POST(request: Request) {
     if (value.length > MAX[key]) return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
     data[key] = value;
   }
-  if (!data.firstName || !data.message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email ?? "")) {
-    return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
-  }
+  // Same checks as the form (lib/contactValidation.ts): first and last name, email, message required; phone format
+  const errors = validateContact({ firstName: data.firstName ?? "", lastName: data.lastName ?? "", email: data.email ?? "", phone: data.phone ?? "", message: data.message ?? "" });
+  if (Object.keys(errors).length) return NextResponse.json({ ok: false, error: "invalid", errors }, { status: 400 });
 
   const endpoint = process.env.CONTACT_FORM_ENDPOINT;
   if (!endpoint) return NextResponse.json({ ok: false, error: "unconfigured" }, { status: 503 });

@@ -15,7 +15,7 @@
 .input:focus { outline: none; border-bottom: 2px solid var(--ink); padding-bottom: 5px; }
 .input[aria-invalid="true"] { border-bottom-color: var(--ink); }
 .textarea { resize: vertical; }
-.error { margin-top: var(--space-2xs); color: var(--ink); }
+.error { margin: calc(var(--space-2xs) - var(--space-s)) 0 var(--space-2xs); }   /* 8px under the label */
 
 .check { flex-direction: row; align-items: center; gap: var(--space-xs); }
 .checkbox {

@@ -12,5 +12,6 @@
 .status { position: absolute; top: 100%; left: 0; right: 0; margin: var(--space-xs) 0 0; color: var(--ink); }
 .form[data-status="error"] .status { color: var(--graphite); }
 .form[aria-busy="true"] .submit { cursor: progress; }
+.summary { scroll-margin-top: calc(var(--header-h) + var(--space-s)); }   /* when focused, the summary scrolls clear of the fixed header */
 /* Honeypot: off-screen, never displayed */
 .honeypot { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
