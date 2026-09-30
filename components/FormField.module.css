@@ -1,10 +1,10 @@
 .field { display: flex; flex-direction: column; }
 .label { color: var(--ink); margin-bottom: var(--space-s); }
-.required { color: var(--taupe); margin-left: 0.6em; }
+.required { color: var(--taupe); margin-left: var(--space-2xs); }
 .input {
   width: 100%;
   min-height: 32px;
-  padding: 6px 0;
+  padding: 8px 0;
   background: transparent;
   border: 0;
   border-bottom: 1px solid var(--stone);
@@ -12,7 +12,7 @@
   transition: border-color var(--dur-fast) ease;
 }
 .input::placeholder { color: var(--taupe); opacity: 1; }
-.input:focus { outline: none; border-bottom: 2px solid var(--ink); padding-bottom: 5px; }
+.input:focus { outline: none; border-bottom-color: var(--ink); box-shadow: inset 0 -1px 0 var(--ink); }   /* 2px line without moving the text */
 .input[aria-invalid="true"] { border-bottom-color: var(--ink); }
 .textarea { resize: vertical; }
 .error { margin-top: var(--space-2xs); }   /* 8px under the input line */

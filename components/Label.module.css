@@ -8,12 +8,12 @@
 .inline { grid-column: 1 / span 11; grid-row: 1; }
 
 /* Line the label's capitals up with the top of what sits beside it (measured font metrics: Inconsolata caps start
-   0.512em below the top of a 1.6 line; Inter caps 0.3875em below the top of a 1.5 line). */
+   0.512em below the top of a 1.6 line; Inter caps 0.3875em below the top of a 1.5 line), rounded to the nearest 4px. */
 @media (min-width: 768px) {
-  .image { margin-top: calc(var(--mono) * -0.512); }
-  .h1 { padding-top: calc(clamp(var(--h1-m), calc(var(--h1-m) + 32 * var(--fluid)), var(--h1)) * 0.3875 - var(--mono) * 0.512); }
-  .h2 { padding-top: calc(clamp(var(--h2-m), calc(var(--h2-m) + 16 * var(--fluid)), var(--h2)) * 0.3875 - var(--mono) * 0.512); }
-  .h3 { padding-top: calc(clamp(var(--h3-m), calc(var(--h3-m) + 7 * var(--fluid)), var(--h3)) * 0.3875 - var(--mono) * 0.512); }
+  .image { margin-top: round(nearest, calc(var(--mono) * -0.512), 4px); }
+  .h1 { padding-top: round(nearest, calc(clamp(var(--h1-m), calc(var(--h1-m) + 32 * var(--fluid)), var(--h1)) * 0.3875 - var(--mono) * 0.512), 4px); }
+  .h2 { padding-top: round(nearest, calc(clamp(var(--h2-m), calc(var(--h2-m) + 16 * var(--fluid)), var(--h2)) * 0.3875 - var(--mono) * 0.512), 4px); }
+  .h3 { padding-top: round(nearest, calc(clamp(var(--h3-m), calc(var(--h3-m) + 7 * var(--fluid)), var(--h3)) * 0.3875 - var(--mono) * 0.512), 4px); }
 }
 
 @media (max-width: 767px) {

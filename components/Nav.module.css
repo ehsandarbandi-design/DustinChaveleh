@@ -63,8 +63,8 @@ html:has([data-tone="hero"]) .header:not([data-ready])::before { opacity: 1; }
     width: 37px;
     height: 22px;
     box-sizing: content-box;
-    padding: 13px 6px;
-    margin: -13px -6px;
+    padding: 12px 8px;
+    margin: -12px -8px;
     color: inherit;
   }
   .bar {
@@ -78,7 +78,7 @@ html:has([data-tone="hero"]) .header:not([data-ready])::before { opacity: 1; }
   .open .bar:last-child { transform: translateY(-10px) rotate(-45deg) scaleX(0.84); }
 
   /* Full-screen Paper panel (Figma "Menue Mobile" 624:3): wipes down over 400ms.
-     The links block starts at the site margin (--gutter, same as the logo), 231px from the top, and is as wide as its widest link;
+     The links block starts at the site margin (--gutter, same as the logo), 232px from the top, and is as wide as its widest link;
      links and the button left-align at the site margin, level with the logo. */
   .panel {
     display: block;
@@ -89,7 +89,7 @@ html:has([data-tone="hero"]) .header:not([data-ready])::before { opacity: 1; }
     overscroll-behavior: contain;
     background: var(--paper);
     color: var(--ink);
-    padding: 231px var(--gutter) 48px var(--gutter);
+    padding: 232px var(--gutter) 48px var(--gutter);
     clip-path: inset(0 0 100% 0);
     transition: clip-path var(--dur) var(--ease);
   }

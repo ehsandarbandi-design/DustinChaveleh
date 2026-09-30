@@ -13,7 +13,7 @@
 /* paragraphs — Inter 300 */
 .p1 { font-weight: 300; font-size: clamp(var(--p1-m), calc(var(--p1-m) + 12 * var(--fluid)), var(--p1)); line-height: 1.25; letter-spacing: -0.02em; }
 .p2 { font-weight: 300; font-size: clamp(var(--p2-m), calc(var(--p2-m) + 7 * var(--fluid)), var(--p2));  line-height: 1.45; letter-spacing: -0.03em; }
-.p3 { font-weight: 300; font-size: var(--p3); line-height: 1.5; letter-spacing: -0.05em; }
+.p3 { font-weight: 300; font-size: var(--p3); line-height: 1.5; letter-spacing: 0; }   /* 0 for legibility (Sep 29, 2026) */
 
 /* monospace label — Inconsolata 300, uppercase */
 .mono { font-weight: 300; font-size: var(--mono); line-height: 1.6; letter-spacing: 0.02em; text-transform: uppercase; }

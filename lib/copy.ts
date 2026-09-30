@@ -442,8 +442,6 @@ export const workWithDustin = {
   headline: "Ready to make your move?",
   body: "Whether you're just starting to think about buying or you've already found a place you love, Dustin is here to help you figure out the next step. Clear guidance, straightforward communication, and support at every stage of the process.",
   details: home.contact.details,
-  formHeadline: "Connect with Dustin",
-  formIntro: "Fill out the form below, and I will get back to you promptly.",
 };
 
 // Play Real Estate IQ (/playrealestateiq) — the existing game is embedded, not rebuilt; the hero copy lives inside it

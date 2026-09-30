@@ -1,7 +1,8 @@
 /* The three buttons, from the reference site's settings and its Flex hover (Squarespace source):
-   Primary (filled): Inconsolata 500 0.9rem uppercase, padding 1.4em / 1.8em, Ink on Paper text.
-   Secondary (outlined): same type, 1px outline, padding 1em / 1.8em.
-   Tertiary (underline): Inconsolata 500 1rem, 1px underline, padding 1rem / 1.3rem.
+   Primary (filled): Inconsolata 500 0.9rem uppercase, padding 20px / 24px, Ink on Paper text.
+   Secondary (outlined): same type, 1px outline, padding 16px / 24px.
+   Tertiary (underline): Inconsolata 500 1rem, 1px underline, padding 16px / 20px.
+   (The reference used em paddings; rounded to whole multiples of 4px, Sep 29, 2026.)
    Hover: a fill rises from the bottom edge (clip-path, .6s cubic-bezier(.19,1,.22,1)) and the text flips.
    On the primary the rising fill is Paper with a 2px Ink border, so the Ink looks like it drains to a 2px line.
    Hover only on devices with a mouse (a tap on a phone would leave the fill stuck); keyboard focus shows it too.
@@ -36,15 +37,15 @@
 .button:focus-visible::before { clip-path: polygon(-2% -2%, 102% -2%, 102% 102%, -2% 102%); }
 .button:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.filled { color: var(--btn-fg); background: var(--btn-bg); padding: 1.4em 1.8em; }
+.filled { color: var(--btn-fg); background: var(--btn-bg); padding: 20px 24px; }
 .filled::before { background: var(--btn-fg); border: 2px solid var(--btn-bg); }
 .filled:focus-visible { color: var(--btn-bg); }
 
-.outlined { color: var(--outline-color); border: 1px solid var(--outline-color); padding: 1em 1.8em; }
+.outlined { color: var(--outline-color); border: 1px solid var(--outline-color); padding: 16px 24px; }
 .outlined::before { background: var(--outline-color); }
 .outlined:focus-visible { color: var(--outline-flip); }
 
-.tertiary { font-size: 1rem; color: var(--outline-color); border-bottom: 1px solid var(--outline-color); padding: 1rem 1.3rem; }
+.tertiary { font-size: 1rem; color: var(--outline-color); border-bottom: 1px solid var(--outline-color); padding: 16px 20px; }
 .tertiary::before { background: var(--outline-color); }
 .tertiary:focus-visible { color: var(--outline-flip); }
 

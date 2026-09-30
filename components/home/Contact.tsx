@@ -7,15 +7,29 @@ import Label from "@/components/Label";
 import { home } from "@/lib/copy";
 import styles from "./Contact.module.css";
 
-/** Home §8 — Get In Touch (Paper, Figma 684:3814): the label at the top left, the contact details at the bottom left (phone, e-mail, office, license) and the call button in
- *  columns 1–10; the two-line headline on top of the form in columns 13–24. Reused at the end of blog posts. */
-export default function Contact() {
+type Props = {
+  /** h2 on the home page; h1 on Work with Dustin, where this section is the page (Figma 704:2482) */
+  headingAs?: "h1" | "h2";
+  /** P2 paragraph above the contact details (Work with Dustin) */
+  body?: string;
+  id?: string;
+};
+
+/** Get In Touch (Paper, Figma 684:3814 home / 704:2482 Work with Dustin): the label at the top left; at the bottom
+ *  left the optional paragraph, the contact details and the call button, the call button level with Send Message;
+ *  the two-line headline on top of the form in columns 13–24. On phones: label, headline and form, then the rest. */
+export default function Contact({ headingAs = "h2", body, id = "contact" }: Props) {
   const { contact } = home;
   return (
-    <Section id="contact" className={styles.section}>
+    <Section id={id} className={styles.section}>
       <div className={`grid ${styles.grid}`}>
         <Label inline align="h1">{contact.label}</Label>
         <div className={styles.intro}>
+          {body ? (
+            <Reveal as="p" className={`p2 ${styles.body}`}>
+              {body}
+            </Reveal>
+          ) : null}
           <Reveal as="dl" className={styles.details}>
             {contact.details.map((d) => (
               <div key={d.label} className={styles.detail}>
@@ -29,7 +43,7 @@ export default function Contact() {
           <BookCall />
         </div>
         <div className={styles.form}>
-          <Reveal as="h2" className={`h1 ${styles.headline}`}>
+          <Reveal as={headingAs} className={`h1 ${styles.headline}`}>
             {contact.headline[0]}
             <br />
             {contact.headline[1]}

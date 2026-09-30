@@ -35,7 +35,7 @@ const typeStyles = [
   { cls: "h4", spec: "H4 · Inter 400 · 21px · 1.1 · −0.07em", sample: site.nav[1].label },
   { cls: "p1", spec: "P1 · Inter 300 · 38 / 26px · 1.25 · −0.02em", sample: home.iq.subheadline },
   { cls: "p2", spec: "P2 · Inter 300 · 27 / 20px · 1.45 · −0.03em", sample: home.about.body[0] },
-  { cls: "p3", spec: "P3 · Inter 300 · 14px · 1.5 · −0.05em", sample: home.nextStep.buyers.body },
+  { cls: "p3", spec: "P3 · Inter 300 · 14px · 1.5 · 0", sample: home.nextStep.buyers.body },
   { cls: "mono", spec: "Mono · Inconsolata 300 · 14px · 1.6 · +0.02em · uppercase", sample: site.license },
 ];
 

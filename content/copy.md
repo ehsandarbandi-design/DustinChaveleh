@@ -252,8 +252,9 @@ Buyer Resources · Days on Market → Market News · SF Roadways → Things to D
 - Headline: Ready to make your move?
 - Body: Whether you're just starting to think about buying or you've already found a place you love, Dustin is here to help you figure out the next step. Clear guidance, straightforward communication, and support at every stage of the process.
 - Details: Phone (512) 391-9306 · E-mail dustinchaveleh@kw.com · Office 1624 California Street, San Francisco, CA 94109 · CA License DRE #02368948
-- Form headline: Connect with Dustin
-- Form intro: Fill out the form below, and I will get back to you promptly.
+- Layout (Figma 704:2482): same as the home Get In Touch; the headline (two lines, the page's H1) sits over the form,
+  the body above the details. "Connect with Dustin" and "Fill out the form below, and I will get back to you
+  promptly." are no longer shown.
 
 ### Contact form (used on Home and Work with Dustin)
 - First Name (required)

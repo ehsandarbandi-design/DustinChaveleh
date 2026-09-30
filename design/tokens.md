@@ -64,7 +64,7 @@ Photo palette (for image grading, not UI) is in `design/image-direction.md`.
 | --text-h4 | Heading 4 | Inter | 400 | 21px | 100% (1.0) | −7% (−1.47px) | nav link, button, small title |
 | --text-p1 | Paragraph 1 | Inter | 300 | 38px | 100% (1.0) | −2% (−0.76px) | statement paragraph, hero subheadline |
 | --text-p2 | Paragraph 2 | Inter | 300 | 27px | 100% (1.0) | −3% (−0.81px) | body |
-| --text-p3 | Paragraph 3 | Inter | 300 | 14px | 100% (1.0) | −5% (−0.7px) | caption, meta, fine print |
+| --text-p3 | Paragraph 3 | Inter | 300 | 14px | 150% (1.5) | 0 (changed from −5% on Sep 29, 2026, for legibility) | caption, meta, fine print |
 | --text-mono | Monospace | Inconsolata | 300 | 14px | 100% (1.0) | 0 | UPPERCASE labels, e.g. `[ ABOUT ]` |
 
 Letter spacing is given as a percentage of the font size, so it scales correctly with `em`

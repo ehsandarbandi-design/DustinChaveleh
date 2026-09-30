@@ -5,7 +5,7 @@
 .item { margin: 0; padding-top: var(--space-m); border-top: 1px solid var(--paper); display: flex; flex-direction: column; gap: var(--space-m); }
 .quote { margin: 0; }
 .quote p { margin: 0; }
-.caption { display: flex; flex-direction: column; gap: 2px; }
+.caption { display: flex; flex-direction: column; gap: 4px; }
 .note { color: var(--taupe); }
 .actions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-s); }
 .rating { color: var(--graphite); }
